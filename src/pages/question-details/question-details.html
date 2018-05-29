@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      <span>Question details</span>
+      <span>Detalles del seguimiento</span>
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -17,7 +17,7 @@
       </ion-col>
       <ion-col no-padding col-12>
         <p class="vote-call-to-action">
-          Was this question usefull? Rate it!
+          Fue útil este seguimiento? Califícalo!
         </p>
         <ion-row class="question-actions-row">
           <ion-col no-padding col-4>
@@ -53,9 +53,9 @@
 
   <div *ngIf="answers.length > 0">
     <h3 class="answers-call-out">
-      <span class="call-out-explanation">We found </span>
+      <span class="call-out-explanation">Encontramos </span>
       <ion-badge class="call-out-tag">{{ answers.length }}</ion-badge>
-      <span> Answers for this question!</span>
+      <span> comentarios para este seguimiento!</span>
     </h3>
 
     <ion-list class="answers-list">
@@ -100,7 +100,7 @@
 <ion-footer>
   <ion-toolbar>
     <button ion-button block (click)="createAnswerModal()" color="answer">
-      <b>Know the Answer? Don't be shy!</b>
+      <b>Contéstanos este seguimiento? No seas tímido!</b>
     </button>
   </ion-toolbar>
 </ion-footer>

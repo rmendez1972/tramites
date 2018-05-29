@@ -33,14 +33,14 @@ export class MyApp {
 
     this.pages = [
       {
-        title: 'All',
+        title: 'Todos los Trámites',
         component: LearnFeedPage,
         params: {
           query: 'all'
         }
       },
       {
-        title: 'Basic',
+        title: 'Ultimo Trámite',
         component: LearnFeedPage,
         params: {
           query: 'basic'

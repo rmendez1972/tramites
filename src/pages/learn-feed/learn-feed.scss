@@ -20,6 +20,7 @@ learn-feed-page {
 		}
 	}
 
+
 	.category-concept-card
 	{
 		background-color: $theme-color-3;
@@ -27,27 +28,59 @@ learn-feed-page {
 		box-shadow: none;
 		margin-bottom: 20px;
 
+		ion-card {
+		   position: relative;
+		   text-align: center;
+		 }
 		.category-title
 		{
-			color: #FFF;
-			font-weight: 600;
-			font-size: 2.2rem;
-			margin: 0px;
+			position: absolute;
+		    top: 36%;
+		    font-size: 2.0em;
+		    width: 100%;
+		    font-weight: bold;
+		    color: #0077ff;
+		}
+		h2,p{
+			color:#0077ff;
+		}
+
+		.category-item
+		{
+
+		    font-size: 1.0em;
+		    width: 100%;
+		    font-weight: bold;
+		    color:#0077ff;
+		    //background: transparent;
+		    //opacity: 0.6;
+		}
+		.bar-custom{
+			background-color: #0077ff;
 		}
 
 		.category-description
 		{
-			color: #FFF;
-			margin-bottom: 20px;
+			font-size: 1.0em;
+		    position: absolute;
+		    top: 20%;
+		    width: 100%;
+		    color: #0077ff;
 		}
 
 		.category-tag
 		{
-			border: 1px solid #FFF;
-			color: #FFF;
+			font-size: 1.0em;
+		    position: relative;
+		    top: 2%;
+		    width: 100%;
+		    color: #0077ff;
+
+			border: 1px solid #0077ff;
 			background: transparent;
-			font-weight: 300;
-			margin-right: 4px;
+
+
+			//margin-right: 4px;
 			opacity: 0.6;
 		}
 	}

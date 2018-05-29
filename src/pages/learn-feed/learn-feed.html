@@ -1,34 +1,42 @@
-<ion-header>
-  <ion-navbar>
+<ion-header >
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      <span>Learn Ionic!</span>
+      <span>Trámites SEDETUS</span>
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <h3 class="search-query">
-    <span>Showing: </span>
+    <span>Mostrando: </span>
     <ion-badge class="query-tag">{{ _query }}</ion-badge>
-    <span class="query-explanation"> concepts</span>
+    <span class="query-explanation"> los Seguimientos</span>
   </h3>
 
-  <ion-card class="category-concept-card" [style.background-color]="category.background" *ngFor="let category of categories" (click)="openDetails({ category: category })">
-    <ion-card-header>
+  <ion-card [style.background-color]="category.background" *ngFor="let category of categories" (click)="openDetails({ category: category })">
+    <ion-item class="category-item">
+      <ion-avatar item-start>
+        <img src="../assets/img/user_sedetus.png">
+      </ion-avatar>
+      <h2>Usuario de SEDETUS</h2>
+      <p>5 Dic de 2017</p>
+    </ion-item>
+    <img src="../assets/img/rsz_fondo_soles_grises.png"/>
+    <div>
       <h2 class="category-title">{{ category.title }}</h2>
-    </ion-card-header>
-    <ion-card-content>
+    </div>
+    <div>
       <p class="category-description">
         {{ category.description }}
       </p>
       <ion-row>
-        <ion-col no-padding>
+        <ion-col >
           <ion-badge class="category-tag" *ngFor="let tag of category.tags" item-right>{{ tag.name }}</ion-badge>
         </ion-col>
       </ion-row>
-    </ion-card-content>
+    </div>
   </ion-card>
 </ion-content>

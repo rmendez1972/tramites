@@ -1,33 +1,38 @@
 {
   "categories": [
     {
-      "slug": "IONIC-3",
-      "title": "Ionic 3",
-      "description": "Ask about Ionic 3",
+      "slug": "Trémite I",
+      "title": "Tramite I",
+      "description": "seguimiento I",
       "background": "#0077ff",
       "tags": [
         {
-          "name": "Ionic3"
+          "name": "SEDETUS"
         },
         {
-          "name": "Angular4"
+          "name": "Trámite de constancia de compatibilidad"
         },
         {
-          "name": "Typescript"
+          "name": "Dirección de Administración Urbana"
         }
       ]
     },
     {
-      "slug": "ANGULAR-4",
-      "title": "Angular 4",
-      "description": "Ask about Angular 4",
+      "slug": "Tramite I ",
+      "title": "Trámite I",
+      "description": "seguimiento II",
       "background": "#F84C61",
       "tags":[
         {
           "name": "Typescript"
+        },{
+          "name": "SEDETUS"
         },
         {
-          "name": "Angular4"
+          "name": "Trámite de constancia de compatibilidad"
+        },
+        {
+          "name": "Dirección de Administración Urbana"
         }
       ]
     },
