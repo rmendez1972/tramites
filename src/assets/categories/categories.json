@@ -4,7 +4,7 @@
       "slug": "Trémite I",
       "title": "Tramite I",
       "description": "seguimiento I",
-      "background": "#0077ff",
+      "background": "#F0F0F0",
       "tags": [
         {
           "name": "SEDETUS"
@@ -21,7 +21,7 @@
       "slug": "Tramite I ",
       "title": "Trámite I",
       "description": "seguimiento II",
-      "background": "#F84C61",
+      "background": "#F0F0F0",
       "tags":[
         {
           "name": "Typescript"
@@ -37,10 +37,10 @@
       ]
     },
     {
-      "slug": "IONIC-NATIVE",
-      "title": "Ionic Native",
-      "description": "Ask about Ionic Native",
-      "background": "#16144A",
+      "slug": "Tramite I",
+      "title": "Trámite I",
+      "description": "Seguimeinto III",
+      "background": "#F0F0F0",
       "tags": [
         {
             "name": "Ionic3"
@@ -51,10 +51,10 @@
       ]
     },
     {
-      "slug": "IONIC-CLI",
-      "title": "Ionic CLI",
-      "description": "Ask about Ionic CLI",
-      "background": "#432B9C",
+      "slug": "Tramite I",
+      "title": "Trámite I",
+      "description": "Seguimiento IV",
+      "background": "#F0F0F0",
       "tags": [
         {
             "name": "Ionic3"

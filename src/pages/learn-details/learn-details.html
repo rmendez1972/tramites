@@ -10,16 +10,28 @@
 </ion-header>
 
 <ion-content>
-  <ion-row class="category-concept-details" [style.background-color]="category.background">
+  <!-- <ion-row class="category-concept-details" [style.background-color]="category.background">
     <ion-col no-padding col-12>
-      <h2 class="category-title">{{ category.title }}!</h2>
+      <h2 class="category-title">{{ category.title }}</h2>
     </ion-col>
     <ion-col no-padding col-12>
       <p class="category-description">
         {{ category.description }}
       </p>
     </ion-col>
-  </ion-row>
+  </ion-row>-->
+
+  <ion-card>
+  <img src="assets/img/header.png"/>
+  <ion-card-content>
+    <ion-card-title>
+      {{ category.title }}
+    </ion-card-title>
+    <p>
+     {{ category.description }}
+    </p>
+  </ion-card-content>
+</ion-card>
 
   <div *ngIf="questions.length == 0">
     <h3 class="questions-call-out">
@@ -29,9 +41,9 @@
 
   <div *ngIf="questions.length > 0">
     <h3 class="questions-call-out">
-      <span>Find all the Questions and Answers about </span>
+      <span>Recuperado todos mis comentarios a este Seguimiento del Trámites: </span>
       <ion-badge class="call-out-tag">{{ category.title }}</ion-badge>
-      <span class="call-out-explanation"> from the community</span>
+
     </h3>
 
     <ion-list class="questions-list">
@@ -78,8 +90,8 @@
 
 <ion-footer>
   <ion-toolbar>
-    <button ion-button block (click)="createQuestionModal()" color="ask">
-      <b>Crear un nuevo seguimiento para este trámite? Hazlo!</b>
+    <button ion-button round block (click)="createQuestionModal()" color="default">
+      <b>Crearr nuevo comentario a este seguimiento?</b>
     </button>
   </ion-toolbar>
 </ion-footer>
