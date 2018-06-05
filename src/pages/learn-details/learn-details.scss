@@ -8,7 +8,7 @@ learn-details-page {
 
 		.category-title
 		{
-			color: #FFF;
+			color: #0077ff;
 			font-weight: 600;
 			font-size: 2.4rem;
 			margin: 0px;
@@ -17,12 +17,17 @@ learn-details-page {
 
 		.category-description
 		{
-			color: #FFF;
+			color: #0077ff;
 			font-size: 1.6rem;
 			margin: 0px;
 			text-align: center;
 		}
 	}
+
+	ion-card {
+		   position: relative;
+		   text-align: center;
+		 }
 
 	.questions-call-out
 	{

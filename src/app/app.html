@@ -1,4 +1,4 @@
-<ion-menu [content]="content" [swipeEnabled]="true">
+<ion-menu [content]="content" [swipeEnabled]="true" >
   <ion-header>
     <ion-toolbar color="primary">
     	<ion-buttons start>
@@ -16,11 +16,12 @@
   </ion-header>
   <ion-content class="menu-content">
 
-	    <img src="../assets/img/header.png"/>
+	    <img src="assets/img/header.png"/>
 
 
-    <ion-list class="menu-list">
-      <button ion-item detail-none *ngFor="let page of pages" (click)="openPage(page)">
+    <ion-list>
+
+      <button ion-item  *ngFor="let page of pages" (click)="openPage(page)">
         {{ page.title }}
       </button>
     </ion-list>

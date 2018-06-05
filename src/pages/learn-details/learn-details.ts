@@ -44,7 +44,7 @@ export class LearnDetailsPage {
 
   getQuestions(){
     let loading = this.loadingCtrl.create({
-      content: 'Recuperando Datos...'
+      content: 'Recuperando Datos del Servidor de SEDETUS...'
     });
     loading.present();
     this.questionService.getQuestionsBySlug(this.category.slug)
@@ -56,8 +56,8 @@ export class LearnDetailsPage {
 
   delete(questionId){
     let confirm = this.alertCtrl.create({
-      title: 'Delete question',
-      message: 'Are you sure you want to delete this question?',
+      title: 'Eliminar comentario',
+      message: 'Seguro de eliminar tu comentario a este seguimiento?',
       buttons: [
         {
           text: 'No',
@@ -66,7 +66,7 @@ export class LearnDetailsPage {
           }
         },
         {
-          text: 'Yes',
+          text: 'Si',
           handler: () => {
             this.questionService.deleteQuestion(questionId)
             .then(res => this.getQuestions());
