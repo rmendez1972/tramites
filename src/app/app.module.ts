@@ -19,7 +19,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SDKBrowserModule } from '../../sdk/index';
 
-
+import {ServiceUrl} from '../serviceUrl'
 
 
 @NgModule({
@@ -51,6 +51,7 @@ import { SDKBrowserModule } from '../../sdk/index';
     QuestionService,
     AnswerService,
     SeguimientoService,
+    ServiceUrl,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
