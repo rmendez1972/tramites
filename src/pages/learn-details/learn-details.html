@@ -1,11 +1,16 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
       <span>Trámites SEDETUS</span>
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showAlert()">
+        <ion-icon name="information-circle" ></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -89,8 +94,8 @@
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
-    <button ion-button round block (click)="createQuestionModal()" color="default">
+  <ion-toolbar color="primary">
+    <button ion-button round block (click)="createQuestionModal()" color="light">
       <b>Crearr nuevo comentario a este seguimiento?</b>
     </button>
   </ion-toolbar>
