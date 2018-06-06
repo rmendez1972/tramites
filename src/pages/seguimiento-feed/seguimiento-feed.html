@@ -21,7 +21,7 @@
     <span class="query-explanation"> los Seguimientos</span>
   </h3>
 
-  <ion-card [style.background-color]="data.background" *ngFor="let soli of solicitud"  (click)="openDetails({ solicitud: solicitud,tramite:tramite,seguimientos:seguimientos })">
+  <ion-card [style.background-color]="data.background" *ngFor="let seg of seguimientos"  (click)="openDetails({ solicitud: solicitud,tramite:tramite,seguimientos:seguimientos })">
     <ion-item class="category-item" >
       <ion-avatar item-start>
         <img src="assets/img/user_sedetus.png">
@@ -29,14 +29,14 @@
       <h2 >Usuario de enlace de:</h2>
       <h2 *ngFor="let tram of tramite">
       {{tram.unidadAdministrativa}}</h2>
-      <p >{{soli.fecha_ingreso}}</p>
+      <p *ngFor="let soli of solicitud">{{soli.fecha_ingreso}}</p>
     </ion-item>
     <img src="assets/img/rsz_fondo_soles_grises.png"/>
     <div *ngFor="let tram of tramite">
       <h2 class="category-title"> {{tram.nombre}}</h2>
     </div>
     <div class="category-description" >
-       <h2 *ngFor="let seg of seguimientos">{{seg.observaciones}}</h2>
+       <h2 >{{seg.observaciones}}</h2>
     </div>
     <div>
       <ion-row>
