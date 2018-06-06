@@ -41,6 +41,7 @@ export class QuestionDetailsPage {
   }
 
   editAnswerModal(answer) {
+    console.log('Entrando a editAnswerModal');
     let edit_answer_data = {
       mode: 'Edit',
       answer: answer,
