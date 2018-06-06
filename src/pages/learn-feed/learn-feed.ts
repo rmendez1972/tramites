@@ -11,8 +11,10 @@ import { CategoryModel } from '../../services/learn.model';
 })
 export class LearnFeedPage {
   _query : string = 'all';
-  categories : Array<CategoryModel> = new Array<CategoryModel>();
-
+  data : Array<CategoryModel> = new Array<CategoryModel>();
+  solicitud:Array<CategoryModel> = new Array<CategoryModel>();
+  tramite:Array<CategoryModel> = new Array<CategoryModel>();
+  seguimientos:Array<CategoryModel> = new Array<CategoryModel>();
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -24,9 +26,21 @@ export class LearnFeedPage {
 
   ionViewWillEnter() {
     this.learnService.getFeedCategories()
-    .subscribe(data => {
-      this.categories = data.categories
-    });
+    .subscribe(
+      (data) => {this.data = data.data;},
+    );
+    this.learnService.getSolicitudes()
+    .subscribe(
+      (solicitud) => {this.solicitud = solicitud.solicitud;},
+      );
+    this.learnService.getTramite()
+    .subscribe(
+      (tramite)=> {this.tramite =tramite.tramite;},
+      );
+    this.learnService.getSeguimientos()
+    .subscribe(
+      (seguimientos)=>{this.seguimientos = seguimientos.seguimientos;}
+      )
   }
 
   openDetails(params) {

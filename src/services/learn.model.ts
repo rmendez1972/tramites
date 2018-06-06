@@ -1,7 +1,5 @@
 export class CategoryModel {
-  slug: string;
-  title: string;
-  description: string;
-  background: string;
-  tags: Array<string>;
+  nombre: string;
+  id_tramite: string;
+  tramite: string;
 }

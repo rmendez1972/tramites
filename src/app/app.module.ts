@@ -19,6 +19,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SDKBrowserModule } from '../../sdk/index';
 
+
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -26,12 +29,12 @@ import { SDKBrowserModule } from '../../sdk/index';
     LearnDetailsPage,
     QuestionDetailsPage,
     ManageQuestionPage,
-    ManageAnswerPage
+    ManageAnswerPage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    SDKBrowserModule.forRoot()
+    SDKBrowserModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

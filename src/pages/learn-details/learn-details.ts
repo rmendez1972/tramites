@@ -27,6 +27,7 @@ export class LearnDetailsPage {
     public modalCtrl: ModalController
   ) {
     let category_param = navParams.get('category');
+    console.log(category_param);
     this.category = isPresent(category_param) ? category_param : null;
   }
 
