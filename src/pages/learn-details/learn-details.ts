@@ -7,6 +7,7 @@ import { AnswerService } from '../../services/answer.service';
 
 import { QuestionDetailsPage } from '../question-details/question-details';
 import { ManageQuestionPage } from '../manage-question/manage-question';
+//import { ManageAnswerPage } from '../manage-answer/manage-answer';//igh
 
 @Component({
   selector: 'learn-details-page',
@@ -18,6 +19,8 @@ export class LearnDetailsPage {
   solicitud : any;
   tramite : any;
   seguimientos : any;
+
+  questionId: any;//igh
 
   constructor(
     public navCtrl: NavController,
@@ -47,6 +50,20 @@ export class LearnDetailsPage {
       this.getQuestions();
     });
     create_question_modal.present();
+  }
+
+  editQuestionModal(question) { //igh
+    console.log ('aqui estoy');
+    let edit_question_data = {
+      mode: 'Edit',
+      question: question,
+      questionId: this.questionId
+    };
+    let edit_question_modal = this.modalCtrl.create(ManageQuestionPage, { data: edit_question_data });
+    edit_question_modal.onDidDismiss(data => {
+      this.getQuestions();
+    });
+    edit_question_modal.present();
   }
 
   ionViewWillEnter() {
