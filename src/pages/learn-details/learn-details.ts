@@ -7,6 +7,7 @@ import { AnswerService } from '../../services/answer.service';
 
 import { QuestionDetailsPage } from '../question-details/question-details';
 import { ManageQuestionPage } from '../manage-question/manage-question';
+//import { ManageAnswerPage } from '../manage-answer/manage-answer';//igh
 
 @Component({
   selector: 'learn-details-page',
@@ -15,7 +16,11 @@ import { ManageQuestionPage } from '../manage-question/manage-question';
 export class LearnDetailsPage {
 
   questions: Array<any> = [];
-  category : any;
+  solicitud : any;
+  tramite : any;
+  seguimientos : any;
+
+  questionId: any;//igh
 
   constructor(
     public navCtrl: NavController,
@@ -24,18 +29,41 @@ export class LearnDetailsPage {
     public answerService: AnswerService,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+
   ) {
-    let category_param = navParams.get('category');
-    this.category = isPresent(category_param) ? category_param : null;
+    let solicitud_param = navParams.get('solicitud');
+    let tramite_param = navParams.get('tramite');
+    let seguimientos_param = navParams.get('seguimientos');
+
+    console.log(solicitud_param);
+    console.log(tramite_param);
+    console.log(seguimientos_param);
+    this.solicitud = isPresent(solicitud_param) ? solicitud_param : null;
+    this.tramite = isPresent(tramite_param) ? tramite_param : null;
+    this.seguimientos= isPresent(seguimientos_param) ? seguimientos_param : null;
   }
 
   createQuestionModal() {
-    let create_question_modal = this.modalCtrl.create(ManageQuestionPage, { slug: this.category.slug });
+    let create_question_modal = this.modalCtrl.create(ManageQuestionPage, { slug: this.solicitud.slug });
     create_question_modal.onDidDismiss(data => {
       this.getQuestions();
     });
     create_question_modal.present();
+  }
+
+  editQuestionModal(question) { //igh
+    console.log ('aqui estoy');
+    let edit_question_data = {
+      mode: 'Edit',
+      question: question,
+      questionId: this.questionId
+    };
+    let edit_question_modal = this.modalCtrl.create(ManageQuestionPage, { data: edit_question_data });
+    edit_question_modal.onDidDismiss(data => {
+      this.getQuestions();
+    });
+    edit_question_modal.present();
   }
 
   ionViewWillEnter() {
@@ -47,7 +75,7 @@ export class LearnDetailsPage {
       content: 'Recuperando Datos del Servidor de SEDETUS...'
     });
     loading.present();
-    this.questionService.getQuestionsBySlug(this.category.slug)
+    this.questionService.getQuestionsBySlug(this.solicitud.slug)
     .then(res => {
       this.questions = res;
       loading.dismiss();
@@ -86,7 +114,7 @@ export class LearnDetailsPage {
   addPositiveVote(question){
     let data = question;
     data.positiveVotes += 1;
-    data.questionSlug = this.category.slug;
+    data.questionSlug = this.solicitud.slug;
     this.questionService.updateQuestion(data)
     .then(res => this.getQuestions())
   }
@@ -94,7 +122,7 @@ export class LearnDetailsPage {
   addNegativeVote(question){
     let data = question;
     data.negativeVotes += 1;
-    data.questionSlug = this.category.slug;
+    data.questionSlug = this.solicitud.slug;
     this.questionService.updateQuestion(data)
     .then(res => this.getQuestions())
   }
@@ -108,6 +136,17 @@ export class LearnDetailsPage {
     this.navCtrl.push(QuestionDetailsPage, {
       id: question.id
     });
+  }
+
+   // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
+  showAlert() {
+
+    const alert = this.alertCtrl.create({
+      title: 'Atento Aviso!',
+      subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de nuestra aplicación web en la dirección (url) http://qroo.gob.mx/sedetus desde tu laptop o computadora de escritorio',
+      buttons: ['Ok']
+    });
+    alert.present();
   }
 
 }
