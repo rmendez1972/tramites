@@ -19,10 +19,19 @@
 	    <img src="assets/img/header.png"/>
 
 
-    <ion-list>
+    <ion-list inset>
+      <ion-list-header>
+        Filtros
+      </ion-list-header>
 
       <button ion-item  *ngFor="let page of pages" (click)="openPage(page)">
         {{ page.title }}
+      </button>
+       <ion-list-header>
+        Información
+      </ion-list-header>
+      <button ion-item   (click)="showAlert()">
+        Recomendación para adjuntar archivos
       </button>
     </ion-list>
   </ion-content>
