@@ -3,7 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 
-import { LearnFeedPage } from '../pages/learn-feed/learn-feed';
+import { SeguimientoFeedPage } from '../pages/seguimiento-feed/seguimiento-feed';
 import { LearnDetailsPage } from '../pages/learn-details/learn-details';
 import { QuestionDetailsPage } from '../pages/question-details/question-details';
 import { ManageQuestionPage } from '../pages/manage-question/manage-question';
@@ -11,7 +11,7 @@ import { ManageAnswerPage } from '../pages/manage-answer/manage-answer';
 
 import { QuestionService } from '../services/question.service';
 import { AnswerService } from '../services/answer.service';
-import { LearnService } from '../services/learn.service';
+import { SeguimientoService } from '../services/seguimiento.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -25,7 +25,7 @@ import { SDKBrowserModule } from '../../sdk/index';
 @NgModule({
   declarations: [
     MyApp,
-    LearnFeedPage,
+    SeguimientoFeedPage,
     LearnDetailsPage,
     QuestionDetailsPage,
     ManageQuestionPage,
@@ -39,7 +39,7 @@ import { SDKBrowserModule } from '../../sdk/index';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LearnFeedPage,
+    SeguimientoFeedPage,
     LearnDetailsPage,
     QuestionDetailsPage,
     ManageQuestionPage,
@@ -50,7 +50,7 @@ import { SDKBrowserModule } from '../../sdk/index';
     SplashScreen,
     QuestionService,
     AnswerService,
-    LearnService,
+    SeguimientoService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

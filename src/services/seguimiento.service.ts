@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 
 
 @Injectable()
-export class LearnService {
+export class SeguimientoService {
 	private seguimientosUrl: string;
 
 	constructor(public http: Http,

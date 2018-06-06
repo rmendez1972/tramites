@@ -3,7 +3,7 @@ import { Platform, MenuController, Nav, App, AlertController } from 'ionic-angul
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { LearnFeedPage } from '../pages/learn-feed/learn-feed';
+import { SeguimientoFeedPage } from '../pages/seguimiento-feed/seguimiento-feed';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make LearnFeedPage the root (or first) page
-  rootPage: any = LearnFeedPage;
+  rootPage: any = SeguimientoFeedPage;
 
   pages: Array<{title: string, component: any, params: any}>;
 
@@ -35,21 +35,21 @@ export class MyApp {
     this.pages = [
       {
         title: 'Todos los Trámites',
-        component: LearnFeedPage,
+        component: SeguimientoFeedPage,
         params: {
           query: 'all'
         }
       },
       {
         title: 'Ultimo Trámite',
-        component: LearnFeedPage,
+        component: SeguimientoFeedPage,
         params: {
           query: 'basic'
         }
       },
       {
         title: 'Core',
-        component: LearnFeedPage,
+        component: SeguimientoFeedPage,
         params: {
           query: 'core'
         }

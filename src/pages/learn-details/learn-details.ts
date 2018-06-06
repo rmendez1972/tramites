@@ -15,7 +15,9 @@ import { ManageQuestionPage } from '../manage-question/manage-question';
 export class LearnDetailsPage {
 
   questions: Array<any> = [];
-  category : any;
+  solicitud : any;
+  tramite : any;
+  seguimientos : any;
 
   constructor(
     public navCtrl: NavController,
@@ -27,13 +29,20 @@ export class LearnDetailsPage {
     public modalCtrl: ModalController,
 
   ) {
-    let category_param = navParams.get('category');
-    console.log(category_param);
-    this.category = isPresent(category_param) ? category_param : null;
+    let solicitud_param = navParams.get('solicitud');
+    let tramite_param = navParams.get('tramite');
+    let seguimientos_param = navParams.get('seguimientos');
+
+    console.log(solicitud_param);
+    console.log(tramite_param);
+    console.log(seguimientos_param);
+    this.solicitud = isPresent(solicitud_param) ? solicitud_param : null;
+    this.tramite = isPresent(tramite_param) ? tramite_param : null;
+    this.seguimientos= isPresent(seguimientos_param) ? seguimientos_param : null;
   }
 
   createQuestionModal() {
-    let create_question_modal = this.modalCtrl.create(ManageQuestionPage, { slug: this.category.slug });
+    let create_question_modal = this.modalCtrl.create(ManageQuestionPage, { slug: this.solicitud.slug });
     create_question_modal.onDidDismiss(data => {
       this.getQuestions();
     });
@@ -49,7 +58,7 @@ export class LearnDetailsPage {
       content: 'Recuperando Datos del Servidor de SEDETUS...'
     });
     loading.present();
-    this.questionService.getQuestionsBySlug(this.category.slug)
+    this.questionService.getQuestionsBySlug(this.solicitud.slug)
     .then(res => {
       this.questions = res;
       loading.dismiss();
@@ -88,7 +97,7 @@ export class LearnDetailsPage {
   addPositiveVote(question){
     let data = question;
     data.positiveVotes += 1;
-    data.questionSlug = this.category.slug;
+    data.questionSlug = this.solicitud.slug;
     this.questionService.updateQuestion(data)
     .then(res => this.getQuestions())
   }
@@ -96,7 +105,7 @@ export class LearnDetailsPage {
   addNegativeVote(question){
     let data = question;
     data.negativeVotes += 1;
-    data.questionSlug = this.category.slug;
+    data.questionSlug = this.solicitud.slug;
     this.questionService.updateQuestion(data)
     .then(res => this.getQuestions())
   }

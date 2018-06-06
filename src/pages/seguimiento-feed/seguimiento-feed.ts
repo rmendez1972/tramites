@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { isPresent } from 'ionic-angular/util/util';
 import { LearnDetailsPage } from '../learn-details/learn-details';
-import { LearnService } from '../../services/learn.service';
-import { CategoryModel } from '../../services/learn.model';
+import { SeguimientoService } from '../../services/seguimiento.service';
+import { CategoryModel } from '../../services/seguimiento.model';
 
 @Component({
   selector: 'learn-feed-page',
-  templateUrl: 'learn-feed.html',
+  templateUrl: 'seguimiento-feed.html',
 })
-export class LearnFeedPage {
+export class SeguimientoFeedPage {
   _query : string = 'all';
   data : Array<CategoryModel> = new Array<CategoryModel>();
   solicitud:Array<CategoryModel> = new Array<CategoryModel>();
@@ -18,7 +18,7 @@ export class LearnFeedPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public learnService: LearnService,
+    public seguimientoService: SeguimientoService,
     public alertCtrl: AlertController
   ) {
     let query_param = navParams.get('query');
@@ -26,19 +26,19 @@ export class LearnFeedPage {
   }
 
   ionViewWillEnter() {
-    this.learnService.getFeedCategories()
+    this.seguimientoService.getFeedCategories()
     .subscribe(
       (data) => {this.data = data.data;},
     );
-    this.learnService.getSolicitudes()
+    this.seguimientoService.getSolicitudes()
     .subscribe(
       (solicitud) => {this.solicitud = solicitud.solicitud;},
       );
-    this.learnService.getTramite()
+    this.seguimientoService.getTramite()
     .subscribe(
       (tramite)=> {this.tramite =tramite.tramite;},
       );
-    this.learnService.getSeguimientos()
+    this.seguimientoService.getSeguimientos()
     .subscribe(
       (seguimientos)=>{this.seguimientos = seguimientos.seguimientos;}
       )
