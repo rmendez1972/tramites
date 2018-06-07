@@ -1,22 +1,23 @@
-<ion-menu [content]="content" [swipeEnabled]="true" >
+<ion-menu [content]="content" [swipeEnabled]="false" [persistent]="true"  >
   <ion-header>
     <ion-toolbar color="primary">
-    	<ion-buttons start>
+      <ion-buttons start>
         <button ion-button icon-only>
           <ion-icon name="contact"></ion-icon>
         </button>
       </ion-buttons>
       <ion-title>Menú Principal</ion-title>
-	    <ion-buttons end>
+      <ion-buttons end>
         <button ion-button icon-only>
           <ion-icon name="search"></ion-icon>
         </button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
+
   <ion-content class="menu-content">
 
-	    <img src="assets/img/header.png"/>
+      <img src="assets/img/header.png"/>
 
 
     <ion-list inset>
@@ -24,14 +25,23 @@
         Filtros
       </ion-list-header>
 
-      <button ion-item  *ngFor="let page of pages" (click)="openPage(page)">
-        {{ page.title }}
-      </button>
-       <ion-list-header>
+      <ion-item>
+        <button ion-item  *ngFor="let page of pages" (click)="openPage(page)">
+          <ion-icon name="{{page.icon}}" item-start></ion-icon>
+          {{ page.title }}
+        </button>
+      </ion-item>
+
+      <ion-list-header>
         Información
       </ion-list-header>
       <button ion-item   (click)="showAlert()">
+        <ion-icon name="eye" item-start></ion-icon>
         Recomendación para adjuntar archivos
+      </button>
+      <button ion-item   (click)="cerrarSesion()">
+        <ion-icon name="log-out" item-start></ion-icon>
+        Cerrar Sesión
       </button>
     </ion-list>
   </ion-content>
