@@ -28,10 +28,10 @@
   <img src="assets/img/header.png"/>
   <ion-card-content>
     <ion-card-title>
-      {{ category.title }}
+      {{tramite[0].nombre}}
     </ion-card-title>
     <p>
-     {{ category.description }}
+     {{ seguimientos[0].observaciones}}
     </p>
   </ion-card-content>
 </ion-card>
@@ -45,7 +45,7 @@
   <div *ngIf="questions.length > 0">
     <h3 class="questions-call-out">
       <span>Recuperado todos mis comentarios a este Seguimiento del Trámites: </span>
-      <ion-badge class="call-out-tag">{{ category.title }}</ion-badge>
+      <ion-badge class="call-out-tag">{{tramite[0].nombre}}</ion-badge>
 
     </h3>
 
@@ -79,6 +79,9 @@
                 </div>
               </ion-col>
               <ion-col col-4 class="actions-details">
+                  <button class="edit-button" ion-button small round clear icon-only color="dark" (click)="editQuestionModal(question)">
+                      <ion-icon name="md-create"></ion-icon>
+                    </button>
                 <button class="delete-button" ion-button small round clear icon-only color="danger" (click)="delete(question.id)">
                   <ion-icon name="ios-trash-outline"></ion-icon>
                 </button>
@@ -94,7 +97,7 @@
 <ion-footer>
   <ion-toolbar color="primary">
     <button ion-button round block (click)="createQuestionModal()" color="light">
-      <b>Crearr nuevo comentario a este seguimiento?</b>
+      <b>Crear nuevo comentario a este seguimiento?</b>
     </button>
   </ion-toolbar>
 </ion-footer>

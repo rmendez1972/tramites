@@ -3,9 +3,13 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 
+
 import { Welcome } from '../pages/welcome/welcome';
 import { Login } from '../pages/login/login';
 import { LearnFeedPage } from '../pages/learn-feed/learn-feed';
+
+import { SeguimientoFeedPage } from '../pages/seguimiento-feed/seguimiento-feed';
+
 import { LearnDetailsPage } from '../pages/learn-details/learn-details';
 import { QuestionDetailsPage } from '../pages/question-details/question-details';
 import { ManageQuestionPage } from '../pages/manage-question/manage-question';
@@ -13,7 +17,7 @@ import { ManageAnswerPage } from '../pages/manage-answer/manage-answer';
 
 import { QuestionService } from '../services/question.service';
 import { AnswerService } from '../services/answer.service';
-import { LearnService } from '../services/learn.service';
+import { SeguimientoService } from '../services/seguimiento.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -21,28 +25,39 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SDKBrowserModule } from '../../sdk/index';
 
+import {ServiceUrl} from '../serviceUrl'
+
+
 @NgModule({
   declarations: [
     MyApp,
+
     Welcome,
     Login,
     LearnFeedPage,
+
+    SeguimientoFeedPage,
+
     LearnDetailsPage,
     QuestionDetailsPage,
     ManageQuestionPage,
-    ManageAnswerPage
+    ManageAnswerPage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    SDKBrowserModule.forRoot()
+    SDKBrowserModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+
     Welcome,
     Login,
     LearnFeedPage,
+
+    SeguimientoFeedPage,
+
     LearnDetailsPage,
     QuestionDetailsPage,
     ManageQuestionPage,
@@ -53,7 +68,8 @@ import { SDKBrowserModule } from '../../sdk/index';
     SplashScreen,
     QuestionService,
     AnswerService,
-    LearnService,
+    SeguimientoService,
+    ServiceUrl,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

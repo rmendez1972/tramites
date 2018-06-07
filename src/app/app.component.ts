@@ -3,8 +3,12 @@ import { Platform, MenuController, Nav, App, AlertController } from 'ionic-angul
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+<<<<<<< HEAD
 import { Welcome } from '../pages/welcome/welcome';
 import { LearnFeedPage } from '../pages/learn-feed/learn-feed';
+=======
+import { SeguimientoFeedPage } from '../pages/seguimiento-feed/seguimiento-feed';
+>>>>>>> af6e57f1e8b8164a62bbd90bd7f30d94a86fbbd7
 
 
 @Component({
@@ -15,8 +19,12 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make LearnFeedPage the root (or first) page
+<<<<<<< HEAD
   rootPage: any = Welcome;
 
+=======
+  rootPage: any = SeguimientoFeedPage;
+>>>>>>> af6e57f1e8b8164a62bbd90bd7f30d94a86fbbd7
 
   pages: Array<{title: string, component: any, params: any}>;
 
@@ -38,21 +46,21 @@ export class MyApp {
     this.pages = [
       {
         title: 'Todos los Trámites',
-        component: LearnFeedPage,
+        component: SeguimientoFeedPage,
         params: {
           query: 'all'
         }
       },
       {
         title: 'Ultimo Trámite',
-        component: LearnFeedPage,
+        component: SeguimientoFeedPage,
         params: {
           query: 'basic'
         }
       },
       {
         title: 'Core',
-        component: LearnFeedPage,
+        component: SeguimientoFeedPage,
         params: {
           query: 'core'
         }
