@@ -49,6 +49,6 @@ constructor() {}
 		}
 		  
 		  getUrlpushSeguimiento():String{
-			return this.URLpushseguimiento='http://189.221.153.178:8080/tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
+			return this.URLpushseguimiento='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
 		}
 }
