@@ -4,6 +4,8 @@ import { isPresent } from 'ionic-angular/util/util';
 import { Validators, FormGroup, FormControl} from '@angular/forms';
 import { AnswerService } from '../../services/answer.service';
 import { Answer } from '../../../sdk';
+import {SeguimientoService} from '../../services/seguimiento.service';
+import { CategoryModel } from '../../services/seguimiento.model';
 
 
 @Component({
@@ -17,11 +19,13 @@ export class ManageAnswerPage {
   _answer_id: string;
   answerForm: FormGroup;
   answer: Answer = new Answer();
+  data : Array<CategoryModel> = new Array<CategoryModel>();
 
   constructor(
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    public answerService: AnswerService
+    public answerService: AnswerService,
+    public seguimientoservices: SeguimientoService,
   ) {
     let data = navParams.get('data');
     this._mode = isPresent(data) && isPresent(data.mode) ? data.mode : '';
@@ -46,7 +50,9 @@ export class ManageAnswerPage {
 
   onSubmit(value){
     let data = value;
+
     data.questionId = this._question_id;
+    
     if(this.answer.answer){
       data.id = this.answer.id;
       data.positiveVotes = this.answer.positiveVotes;

@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { NavParams, ViewController, NavController } from 'ionic-angular';
+import { NavParams, ViewController } from 'ionic-angular';
+import { isPresent } from 'ionic-angular/util/util';
+import { Validators, FormGroup, FormControl} from '@angular/forms';
+import { AnswerService } from '../../services/answer.service';
+import { Answer } from '../../../sdk';
+import {SeguimientoService} from '../../services/seguimiento.service';
+import { CategoryModel } from '../../services/seguimiento.model';
+
 
 /**
  * Generated class for the RespuestaSeguimientoPage page.
@@ -14,11 +21,51 @@ import { NavParams, ViewController, NavController } from 'ionic-angular';
 })
 export class RespuestaSeguimientoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  _mode : string;
+  _question_id: string;
+  _answer_id: string;
+  answerForm: FormGroup;
+  answer: Answer = new Answer();
+  data : Array<CategoryModel> = new Array<CategoryModel>();
+
+  constructor(
+    public navParams: NavParams,
+    public viewCtrl: ViewController,
+    public answerService: AnswerService,
+    public seguimientoservices: SeguimientoService,
+  ) {
+    let data = navParams.get('data');
+    this._mode = isPresent(data) && isPresent(data.mode) ? data.mode : '';
+    this._question_id = isPresent(data) && isPresent(data.questionId) ? data.questionId : '';
+    this._answer_id = isPresent(data) && isPresent(data.answerId) ? data.answerId : '';
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RespuestaSeguimientoPage');
+  ionViewWillLoad() {
+    let data = this.navParams.get('data');
+    if(data.answer){
+      this.answer = data.answer;
+    }
+    this.answerForm = new FormGroup({
+      answer: new FormControl(this.answer.answer, Validators.required)
+    })
+  }
+
+  dismiss() {
+    let data = { 'foo': 'bar' };
+    this.viewCtrl.dismiss(data);
+  }
+
+  onSubmit(value){
+    console.log("estoy en el submit de respuesta seguimiento");
+    let data = value;
+    console.log(data.answer);
+    
+    this.seguimientoservices.pushSeguimiento(data.answer,53,70,2)
+    .subscribe(
+      (data) => {this.data = data.data;},
+    );
+    this.dismiss();
+
   }
 
 }
