@@ -31,7 +31,10 @@
       <h3 >Usuario de enlace de:</h3>
       <h3 *ngFor="let tram of tramite">
       {{tram.unidadAdministrativa}}</h3>
-      <p *ngFor="let soli of solicitud">Fecha de Solicitud: {{soli.fecha_ingreso}}</p>
+      <div *ngFor="let soli of solicitud">
+        <p >Fecha de Solicitud: {{soli.fecha_ingreso}}</p>
+        <p>Estatus: <ion-badge color="dark" item-end>{{soli.status}}</ion-badge></p>
+      </div>
     </ion-item>
     <img src="assets/img/rsz_fondo_soles_grises.png"/>
 

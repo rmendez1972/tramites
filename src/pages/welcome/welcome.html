@@ -9,5 +9,19 @@
 <div align="center">Inicia Sesión con el email y contraseña de tu Trámite</div>
 <br>
 <br>
-<button ion-button block color="lightprimary" (click)="login()">Login</button>
+<ion-item>
+  <ion-icon name="logo-twitter" item-start></ion-icon>
+  Siguenos en Twitter
+  <ion-badge item-end>+4k seguidores</ion-badge>
+</ion-item>
+<ion-item>
+  <ion-icon name="logo-facebook" item-start></ion-icon>
+  Siguenos en Facebook
+  <ion-badge item-end>+24k Likes</ion-badge>
+</ion-item>
+<br>
+<button ion-button block large color="lightprimary" round icon-left (click)="login()">
+	<ion-icon name="log-in"></ion-icon>
+	Iniciar Sesión
+</button>
 </ion-content>

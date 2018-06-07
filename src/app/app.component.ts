@@ -22,7 +22,7 @@ export class MyApp {
 
 
 
-  pages: Array<{title: string, component: any, params: any}>;
+  pages: Array<{title: string, icon: string, component: any, params: any}>;
 
   constructor(
     platform: Platform,
@@ -42,6 +42,7 @@ export class MyApp {
     this.pages = [
       {
         title: 'Todos los Trámites',
+        icon: 'list-box',
         component: SeguimientoFeedPage,
         params: {
           query: 'all'
@@ -49,18 +50,14 @@ export class MyApp {
       },
       {
         title: 'Ultimo Trámite',
+        icon: 'list',
         component: SeguimientoFeedPage,
         params: {
           query: 'basic'
         }
-      },
-      {
-        title: 'Core',
-        component: SeguimientoFeedPage,
-        params: {
-          query: 'core'
-        }
       }
+
+
     ];
   }
 
