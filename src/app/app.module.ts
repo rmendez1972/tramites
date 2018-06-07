@@ -6,7 +6,7 @@ import { MyApp } from './app.component';
 
 import { Welcome } from '../pages/welcome/welcome';
 import { Login } from '../pages/login/login';
-import { LearnFeedPage } from '../pages/learn-feed/learn-feed';
+
 
 import { SeguimientoFeedPage } from '../pages/seguimiento-feed/seguimiento-feed';
 
@@ -34,8 +34,6 @@ import {ServiceUrl} from '../serviceUrl'
 
     Welcome,
     Login,
-    LearnFeedPage,
-
     SeguimientoFeedPage,
 
     LearnDetailsPage,
@@ -54,8 +52,6 @@ import {ServiceUrl} from '../serviceUrl'
 
     Welcome,
     Login,
-    LearnFeedPage,
-
     SeguimientoFeedPage,
 
     LearnDetailsPage,

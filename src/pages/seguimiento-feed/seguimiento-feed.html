@@ -28,23 +28,26 @@
       <ion-avatar item-start>
         <img src="assets/img/user_sedetus.png">
       </ion-avatar>
-      <h2 >Usuario de enlace de:</h2>
-      <h2 *ngFor="let tram of tramite">
-      {{tram.unidadAdministrativa}}</h2>
-      <p *ngFor="let soli of solicitud">{{soli.fecha_ingreso}}</p>
+      <h3 >Usuario de enlace de:</h3>
+      <h3 *ngFor="let tram of tramite">
+      {{tram.unidadAdministrativa}}</h3>
+      <p *ngFor="let soli of solicitud">Fecha de Solicitud: {{soli.fecha_ingreso}}</p>
     </ion-item>
     <img src="assets/img/rsz_fondo_soles_grises.png"/>
-    <div *ngFor="let tram of tramite">
-      <h2 class="category-title"> {{tram.nombre}}</h2>
+
+
+    <div   *ngFor="let tram of tramite">
+      <h2 class="category-title">Tramite: {{tram.nombre}}</h2>
     </div>
-    <div class="category-description" >
-       <h2 >{{seg.observaciones}}</h2>
+    <div >
+       <h3 class="category-description">Seguimiento: {{seg.observaciones}}</h3>
     </div>
     <div>
       <ion-row>
         <ion-col *ngFor="let tram of tramite">
           <ion-badge class="category-tag" item-right>{{ tram.unidadAdministrativa }}</ion-badge>
           <ion-badge class="category-tag" item-right>{{ tram.direccion }}</ion-badge>
+          <ion-badge class="category-tag" item-right>Fecha seguimiento: {{ seg.fecha }}</ion-badge>
         </ion-col>
       </ion-row>
     </div>
