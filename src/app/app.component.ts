@@ -3,7 +3,9 @@ import { Platform, MenuController, Nav, App, AlertController } from 'ionic-angul
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { Welcome } from '../pages/welcome/welcome';
 import { LearnFeedPage } from '../pages/learn-feed/learn-feed';
+
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,8 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make LearnFeedPage the root (or first) page
-  rootPage: any = LearnFeedPage;
+  rootPage: any = Welcome;
+
 
   pages: Array<{title: string, component: any, params: any}>;
 
@@ -64,6 +67,14 @@ export class MyApp {
     this.showAlert();
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component, page.params);
+  }
+
+  cerrarSesion() {
+    // close the menu when clicking a link from the menu
+    this.menu.close();
+
+    // navigate to the new page if it is not the current page
+    this.nav.setRoot(Welcome, '');
   }
 
 

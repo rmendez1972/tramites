@@ -1,11 +1,14 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+<ion-header >
+  <ion-navbar color="primary">
+
     <ion-title>
       <span>Detalles del seguimiento</span>
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showAlert()">
+        <ion-icon name="information-circle" ></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -97,9 +100,9 @@
   </div>
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar>
-    <button ion-button block (click)="createAnswerModal()" color="answer">
+<ion-footer >
+  <ion-toolbar color="primary">
+    <button ion-button block round (click)="createAnswerModal()" color="light">
       <b>Contéstanos este seguimiento? No seas tímido!</b>
     </button>
   </ion-toolbar>
