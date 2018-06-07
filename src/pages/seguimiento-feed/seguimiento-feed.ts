@@ -28,7 +28,10 @@ export class SeguimientoFeedPage {
   ionViewWillEnter() {
     this.seguimientoService.getFeedCategories(70,70)
     .subscribe(
-      (data) => {this.data = data.data;},
+      (data) => {
+        this.data = data.data;
+        console.log('datos recuperados '+this.data);
+      },
     );
     this.seguimientoService.getSolicitudes(70,70)
     .subscribe(
@@ -53,7 +56,7 @@ export class SeguimientoFeedPage {
 
     const alert = this.alertCtrl.create({
       title: 'Atento Aviso!',
-      subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de nuestra aplicación web en la dirección (url) http://qroo.gob.mx/sedetus desde tu laptop o computadora de escritorio',
+      subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de nuestra aplicación web en la dirección (url) <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a> desde tu laptop o computadora de escritorio',
       buttons: ['Ok']
     });
     alert.present();

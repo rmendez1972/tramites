@@ -55,6 +55,7 @@ export class RespuestaSeguimientoPage {
     this.viewCtrl.dismiss(data);
   }
 
+  //metodo para la insersion de la respuesta del enlace
   onSubmit(value){
     console.log("estoy en el submit de respuesta seguimiento");
     let data = value;

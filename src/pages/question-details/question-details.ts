@@ -131,4 +131,15 @@ export class QuestionDetailsPage {
     .then(res => this.getAnswers())
   }
 
+   // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
+  showAlert() {
+
+    const alert = this.alertCtrl.create({
+      title: 'Atento Aviso!',
+      subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de nuestra aplicación web en la dirección (url) http://qroo.gob.mx/sedetus desde tu laptop o computadora de escritorio',
+      buttons: ['Ok']
+    });
+    alert.present();
+  }
+
 }

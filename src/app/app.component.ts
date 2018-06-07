@@ -3,7 +3,11 @@ import { Platform, MenuController, Nav, App, AlertController } from 'ionic-angul
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
+import { Welcome } from '../pages/welcome/welcome';
 import { SeguimientoFeedPage } from '../pages/seguimiento-feed/seguimiento-feed';
+
+
 
 @Component({
   selector: 'app-root',
@@ -13,9 +17,12 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make LearnFeedPage the root (or first) page
-  rootPage: any = SeguimientoFeedPage;
 
-  pages: Array<{title: string, component: any, params: any}>;
+  rootPage: any = Welcome;
+
+
+
+  pages: Array<{title: string, icon: string, component: any, params: any}>;
 
   constructor(
     platform: Platform,
@@ -35,6 +42,7 @@ export class MyApp {
     this.pages = [
       {
         title: 'Todos los Trámites',
+        icon: 'list-box',
         component: SeguimientoFeedPage,
         params: {
           query: 'all'
@@ -42,18 +50,14 @@ export class MyApp {
       },
       {
         title: 'Ultimo Trámite',
+        icon: 'list',
         component: SeguimientoFeedPage,
         params: {
           query: 'basic'
         }
-      },
-      {
-        title: 'Core',
-        component: SeguimientoFeedPage,
-        params: {
-          query: 'core'
-        }
       }
+
+
     ];
   }
 
@@ -64,6 +68,14 @@ export class MyApp {
     this.showAlert();
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component, page.params);
+  }
+
+  cerrarSesion() {
+    // close the menu when clicking a link from the menu
+    this.menu.close();
+
+    // navigate to the new page if it is not the current page
+    this.nav.setRoot(Welcome, '');
   }
 
 

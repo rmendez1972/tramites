@@ -1,8 +1,6 @@
 <ion-header>
   <ion-navbar color="primary">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+
     <ion-title>
       <span>Trámites SEDETUS</span>
     </ion-title>
@@ -30,17 +28,17 @@
   <img src="assets/img/header.png"/>
   <ion-card-content>
     <ion-card-title>
-      {{tramite[0].nombre}}
+      Trámite: {{tramite[0].nombre}}
     </ion-card-title>
     <p>
-     {{ seguimientos[0].observaciones}}
+     Seguimientto:{{ seguimientos[0].observaciones}}
     </p>
   </ion-card-content>
 </ion-card>
 
   <div *ngIf="questions.length == 0">
     <h3 class="questions-call-out">
-      There are no questions at the time
+      No hay detalles del Seguimientto al momento
     </h3>
   </div>
 

@@ -3,7 +3,13 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 
+
+import { Welcome } from '../pages/welcome/welcome';
+import { Login } from '../pages/login/login';
+
+
 import { SeguimientoFeedPage } from '../pages/seguimiento-feed/seguimiento-feed';
+
 import { LearnDetailsPage } from '../pages/learn-details/learn-details';
 import { QuestionDetailsPage } from '../pages/question-details/question-details';
 import { ManageQuestionPage } from '../pages/manage-question/manage-question';
@@ -26,7 +32,11 @@ import {ServiceUrl} from '../serviceUrl'
 @NgModule({
   declarations: [
     MyApp,
+
+    Welcome,
+    Login,
     SeguimientoFeedPage,
+
     LearnDetailsPage,
     QuestionDetailsPage,
     ManageQuestionPage,
@@ -41,7 +51,11 @@ import {ServiceUrl} from '../serviceUrl'
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+
+    Welcome,
+    Login,
     SeguimientoFeedPage,
+
     LearnDetailsPage,
     QuestionDetailsPage,
     ManageQuestionPage,
