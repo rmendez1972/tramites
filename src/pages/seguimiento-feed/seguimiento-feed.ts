@@ -26,19 +26,19 @@ export class SeguimientoFeedPage {
   }
 
   ionViewWillEnter() {
-    this.seguimientoService.getFeedCategories(59,59)
+    this.seguimientoService.getFeedCategories(70,70)
     .subscribe(
       (data) => {this.data = data.data;},
     );
-    this.seguimientoService.getSolicitudes(59,59)
+    this.seguimientoService.getSolicitudes(70,70)
     .subscribe(
       (solicitud) => {this.solicitud = solicitud.solicitud;},
       );
-    this.seguimientoService.getTramite(59,59)
+    this.seguimientoService.getTramite(70,70)
     .subscribe(
       (tramite)=> {this.tramite =tramite.tramite;},
       );
-    this.seguimientoService.getSeguimientos(59,59)
+    this.seguimientoService.getSeguimientos(70,70)
     .subscribe(
       (seguimientos)=>{this.seguimientos = seguimientos.seguimientos;}
       )

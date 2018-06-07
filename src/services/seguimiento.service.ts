@@ -15,23 +15,25 @@ export class SeguimientoService {
 
   getFeedCategories(idSolicitud: number,idSolicitante:number){
     return this.http.get(this.seguimientosUrl+idSolicitud+"&id_solicitante="+idSolicitante)
-      .map((res) => res.json());
+      .map((res) => res.json(),(error)=>{console.log(error);});
   }
   getSolicitudes(idSolicitud: number,idSolicitante:number){
 
     return this.http.get(this.seguimientosUrl+idSolicitud+"&id_solicitante="+idSolicitante)
-      .map((res) => res.json());
+      .map((res) => res.json(),(error)=>{console.log(error);});
     //return this.http.get('http://localhost:8080/tramites/controladorseguimiento?operacion=listarjson&id_solicitud=59&id_solicitante=59')
     //;
   }
 
   getTramite(idSolicitud: number,idSolicitante:number){
     return this.http.get(this.seguimientosUrl+idSolicitud+"&id_solicitante="+idSolicitante)
-      .map((res) => res.json());
+      .map((res) => res.json(),(error)=>{console.log(error);});
   }
 
   getSeguimientos(idSolicitud: number,idSolicitante:number){
     return this.http.get(this.seguimientosUrl+idSolicitud+"&id_solicitante="+idSolicitante)
-      .map((res) => res.json());
+      .map((res) => res.json(),(error)=>{console.log(error);});
   }
+
+  
 }
