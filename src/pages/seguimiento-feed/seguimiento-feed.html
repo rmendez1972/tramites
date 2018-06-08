@@ -23,7 +23,7 @@
     <span class="query-explanation"> los Seguimientos</span>
   </h3>
 
-  <ion-card [style.background-color]="data.background" *ngFor="let seg of seguimientos"  (click)="openDetails({ solicitud: solicitud,tramite:tramite,seguimientos:seguimientos })">
+  <ion-card [style.background-color]="data.background" *ngFor="let seg of seguimientos"  (click)="openDetails({ solicitud: solicitud,tramite:tramite,seg:seg.observaciones })">
     <ion-item class="category-item" >
       <ion-avatar item-start>
         <img src="assets/img/user_sedetus.png">
@@ -33,7 +33,7 @@
       {{tram.unidadAdministrativa}}</h3>
       <div *ngFor="let soli of solicitud">
         <p >Fecha de Solicitud: {{soli.fecha_ingreso}}</p>
-        <p>Estatus: <ion-badge color="dark" item-end>{{soli.status}}</ion-badge></p>
+        <p>Estatus: <ion-badge color="dark" item-end>{{seg.estatus}}</ion-badge></p>
       </div>
     </ion-item>
     <img src="assets/img/rsz_fondo_soles_grises.png"/>
