@@ -8,11 +8,18 @@ import {SeguimientoService} from '../../services/seguimiento.service';
 import { CategoryModel } from '../../services/seguimiento.model';
 
 
+/**
+ * Generated class for the RespuestaSeguimientoPage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+
 @Component({
-  selector: 'manage-answer-page',
-  templateUrl: 'manage-answer.html'
+  selector: 'page-respuesta-seguimiento',
+  templateUrl: 'respuesta-seguimiento.html',
 })
-export class ManageAnswerPage {
+export class RespuestaSeguimientoPage {
 
   _mode : string;
   _question_id: string;
@@ -48,22 +55,19 @@ export class ManageAnswerPage {
     this.viewCtrl.dismiss(data);
   }
 
+  //metodo para la insersion de la respuesta del enlace
   onSubmit(value){
+    console.log("estoy en el submit de respuesta seguimiento");
     let data = value;
+    console.log(data.answer);
+    //valores de los parametros del metodo 
+    //pushSeguimiento(valor del text area, id_usuario, id_solicitud, id_status)
+    this.seguimientoservices.pushSeguimiento(data.answer,53,70,2)
+    .subscribe(
+      (data) => {this.data = data.data;},
+    );
+    this.dismiss();
 
-    data.questionId = this._question_id;
-    
-    if(this.answer.answer){
-      data.id = this.answer.id;
-      data.positiveVotes = this.answer.positiveVotes;
-      data.negativeVotes = this.answer.negativeVotes;
-      this.answerService.updateAnswer(data)
-      .then( res => this.dismiss())
-    }
-    else{
-      this.answerService.createAnswer(value)
-      .then( res => this.dismiss())
-    }
   }
 
 }

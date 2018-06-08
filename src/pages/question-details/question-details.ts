@@ -7,6 +7,7 @@ import { QuestionService } from '../../services/question.service'
 // import { QuestionPage } from '../question/question'
 // import { LearnDetailsPage } from '../learn-details/learn-details'
 import { ManageAnswerPage } from '../manage-answer/manage-answer';
+import { RespuestaSeguimientoPage } from '../respuesta-seguimiento/respuesta-seguimiento';
 
 @Component({
   selector: 'question-details-page',
@@ -33,7 +34,7 @@ export class QuestionDetailsPage {
       mode: 'Create',
       questionId: this.questionId
     };
-    let create_answer_modal = this.modalCtrl.create(ManageAnswerPage, { data: create_answer_data });
+    let create_answer_modal = this.modalCtrl.create(RespuestaSeguimientoPage, { data: create_answer_data });
     create_answer_modal.onDidDismiss(data => {
        this.getAnswers();
     });
