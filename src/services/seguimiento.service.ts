@@ -16,7 +16,7 @@ export class SeguimientoService {
     
   }
 
-  getFeedCategories(idSolicitud: number,idSolicitante:number){
+  getData(idSolicitud: number,idSolicitante:number){
     return this.http.get(this.seguimientosUrl+idSolicitud+"&id_solicitante="+idSolicitante)
       .map((res) => res.json(),(error)=>{console.log(error);});
   }
