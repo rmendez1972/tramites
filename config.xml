@@ -52,6 +52,9 @@
     <preference name="SplashScreenDelay" value="3000" />
     <allow-navigation href="http://localhost:8100" />
     <allow-navigation href="http://10.10.100.176:8100" />
+<<<<<<< HEAD
+    <engine name="ios" spec="4.4.0" />
+=======
     <engine name="android" spec="6.2.3" />
     <engine name="ios" spec="4.4.0" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
@@ -60,4 +63,5 @@
     <plugin name="cordova-plugin-splashscreen" spec="^4.1.0" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
+>>>>>>> 03cb04d637d23e8cd8b907c96c85e4589dad9ced
 </widget>

@@ -23,7 +23,9 @@
     <span class="query-explanation"> los Seguimientos</span>
   </h3>
 
-  <ion-card [style.background-color]="data.background" *ngFor="let seg of seguimientos"  (click)="openDetails({ solicitud: solicitud,tramite:tramite,seg:seg.observaciones })">
+
+  <ion-card [style.background-color]="data.background" *ngFor="let seg of seguimientos"  (click)="openDetails({ solicitud: solicitud,tramite:tramite,seg:seg })">
+
     <ion-item class="category-item" >
       <ion-avatar item-start>
         <img src="assets/img/user_sedetus.png">
