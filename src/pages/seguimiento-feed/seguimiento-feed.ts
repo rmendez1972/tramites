@@ -26,22 +26,22 @@ export class SeguimientoFeedPage {
   }
 
   ionViewWillEnter() {
-    this.seguimientoService.getFeedCategories(70,70)
+    this.seguimientoService.getFeedCategories(69,69)
     .subscribe(
       (data) => {
         this.data = data.data;
         console.log('datos recuperados '+this.data);
       },
     );
-    this.seguimientoService.getSolicitudes(70,70)
+    this.seguimientoService.getSolicitudes(69,69)
     .subscribe(
       (solicitud) => {this.solicitud = solicitud.solicitud;},
       );
-    this.seguimientoService.getTramite(70,70)
+    this.seguimientoService.getTramite(69,69)
     .subscribe(
       (tramite)=> {this.tramite =tramite.tramite;},
       );
-    this.seguimientoService.getSeguimientos(70,70)
+    this.seguimientoService.getSeguimientos(69,69)
     .subscribe(
       (seguimientos)=>{this.seguimientos = seguimientos.seguimientos;}
       )
