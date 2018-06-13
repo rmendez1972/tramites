@@ -12,13 +12,16 @@ public URLcambiapassword: String;
 public URLupload: String;
 public URLfilename: String;
 public URLpushseguimiento: String;
+public URLpushcomentario: String;//igh
 public URLTramite:String;
 
 constructor() {}
 
 
   		getUrl():String{
+
 	  			return this.URL='http://localhost:8080/Tramites/controladorseguimiento?operacion=listarjson&id_solicitud=';
+
 	  	}
 
 	  	getUrladjuntos():String{
@@ -55,6 +58,9 @@ constructor() {}
 
 		}
 
+		getUrlpushComentario():String{ //igh
+			return this.URLpushcomentario='http://localhost:8080/Tramites/controladorseguimiento?operacion=grabarjson&comentario=';
+		}
 		getTramite():String{
 			return this.URLTramite='http://localhost:8080/Tramites/controladorregistro?operacion=listarjson&id_usuario=';
 		}

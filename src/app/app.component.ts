@@ -69,7 +69,7 @@ export class MyApp {
     this.menu.close();
     this.showAlert();
     // navigate to the new page if it is not the current page
-    this.nav.setRoot(page.component, page.params);
+    //this.nav.setRoot(page.component, page.params);
   }
 
   cerrarSesion() {
