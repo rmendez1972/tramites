@@ -27,8 +27,9 @@ export class SeguimientoFeedPage {
 
   ionViewWillEnter() {
 
-
-    this.seguimientoService.getData(69,69)
+    var id_usuario=69;
+    var id_solicitante = 69;
+    this.seguimientoService.getData(id_usuario,id_solicitante)
 
     .subscribe(
       (data) => {
@@ -37,23 +38,28 @@ export class SeguimientoFeedPage {
       },
 
     );
-    this.seguimientoService.getSolicitudes(69,69)
+
+    this.seguimientoService.getSolicitudes(id_usuario,id_solicitante)
+
     .subscribe(
       (solicitud) => {this.solicitud = solicitud.solicitud;
       localStorage.setItem('solicitud',JSON.stringify(this.solicitud));},
 
       );
-    this.seguimientoService.getTramite(69,69)
+
+    this.seguimientoService.getTramite(id_usuario,id_solicitante)
+
     .subscribe(
       (tramite)=> {this.tramite =tramite.tramite;
         localStorage.setItem('tramite',JSON.stringify(this.tramite));},
       );
-    this.seguimientoService.getSeguimientos(69,69)
+
+    this.seguimientoService.getSeguimientos(id_usuario,id_solicitante)
+
     .subscribe(
       (seguimientos)=>{this.seguimientos = seguimientos.seguimientos;
       localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
-    }
-      )
+    })
   }
 
   openDetails(params) {

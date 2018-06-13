@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
 import { SeguimientoFeedPage } from '../seguimiento-feed/seguimiento-feed';
 import { User } from './user';
 import { AuthenticationService } from '../../services/authentication.service';
+
+import { TramiteFeedPage } from '../tramites-feed/tramites-feed';
+
 /**
  * Generated class for the Login page.
  *
@@ -30,6 +34,7 @@ export class Login {
 
   login(){
 
+
     this.authenticationService.login(this.model.email, this.model.password)
             .subscribe(
                 data => {
@@ -37,7 +42,7 @@ export class Login {
                     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
                     if (JSON.stringify(this.currentUser).length > 10) {
-                        this.navCtrl.push(SeguimientoFeedPage);
+                        this.navCtrl.push(TramiteFeedPage);
                         //this.alertService.success("Autenticado exitosamente...");
 
                     }else{
@@ -59,5 +64,6 @@ export class Login {
 
 
   }
+
 
 }

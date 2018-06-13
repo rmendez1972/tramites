@@ -12,6 +12,7 @@ public URLcambiapassword: String;
 public URLupload: String;
 public URLfilename: String;
 public URLpushseguimiento: String;
+public URLTramite:String;
 
 constructor() {}
 
@@ -48,7 +49,13 @@ constructor() {}
 	  			return this.URLupload='http://localhost:8080/Tramites/controladoradjunto?operacion=grabarfromApp&id_seguimiento=';
 		}
 
+
 		getUrlpushSeguimiento():String{
 			return this.URLpushseguimiento='http://localhost:8080/Tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
+
+		}
+
+		getTramite():String{
+			return this.URLTramite='http://localhost:8080/Tramites/controladorregistro?operacion=listarjson&id_usuario=';
 		}
 }
