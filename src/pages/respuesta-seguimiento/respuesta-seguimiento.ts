@@ -60,9 +60,9 @@ export class RespuestaSeguimientoPage {
     console.log("estoy en el submit de respuesta seguimiento");
     let data = value;
     console.log(data.answer);
-    //valores de los parametros del metodo 
+    //valores de los parametros del metodo
     //pushSeguimiento(valor del text area, id_usuario, id_solicitud, id_status)
-    this.seguimientoservices.pushSeguimiento(data.answer,53,70,2)
+    this.seguimientoservices.pushSeguimiento(data.answer,52,69,2)
     .subscribe(
       (data) => {this.data = data.data;},
     );

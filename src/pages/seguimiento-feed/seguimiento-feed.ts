@@ -27,7 +27,6 @@ export class SeguimientoFeedPage {
     public seguimientoService: SeguimientoService,
     public alertCtrl: AlertController
   ) {
-    console.log("perro :");
     let query_param = navParams.get('query');
     this._query = isPresent(query_param) ? query_param : 'all';
     let solicitud_param = navParams.get('sol');
@@ -38,24 +37,6 @@ export class SeguimientoFeedPage {
 
   
   ionViewWillEnter() {
-    this.solicitudes=[];
-
-    let id_solicitante= 0;
-    let id_solicitud= 0;
-
-    this.solicitudes =JSON.parse(localStorage.getItem('solicitudes'));
-
-    for (var i = 0; i < 1 ; i++) {
-      id_solicitante = this.solicitudes[i].id_solicitante;
-      id_solicitud = this.solicitudes[i].id_solicitud;
-    }
-
-    let solicitudFinal ={
-      id_solicitante:id_solicitante,
-      id_solicitud:id_solicitud,
-    };
-    console.log("local :"+solicitudFinal.id_solicitante+"local 2: "+solicitudFinal.id_solicitud );
-    console.log("navega :"+this.id_solicitud + "navega2 : "+this.id_solicitante);
     this.seguimientoService.getData(this.id_solicitud,this.id_solicitante)
     .subscribe(
       (data) => {
@@ -66,6 +47,7 @@ export class SeguimientoFeedPage {
     );
     
     this.seguimientoService.getSolicitudes(this.id_solicitud,this.id_solicitante)
+
     .subscribe(
       (solicitud) => {this.solicitud = solicitud.solicitud;
       localStorage.setItem('solicitud',JSON.stringify(this.solicitud));},
@@ -82,7 +64,6 @@ export class SeguimientoFeedPage {
       localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
     }
       )
-      
   }
 
   openDetails(params) {
@@ -94,7 +75,7 @@ export class SeguimientoFeedPage {
 
     const alert = this.alertCtrl.create({
       title: 'Atento Aviso!',
-      subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de nuestra aplicación web en la dirección (url) <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a> desde tu laptop o computadora de escritorio',
+      subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a> ',
       buttons: ['Ok']
     });
     alert.present();
