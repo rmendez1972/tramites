@@ -29,6 +29,8 @@ export class SeguimientoFeedPage {
     var id_solicitud=69;
     var id_solicitante = 69;
     this.seguimientoService.getData(id_solicitud,id_solicitante)
+
+
     .subscribe(
       (data) => {
         this.data = data.data;
@@ -36,23 +38,28 @@ export class SeguimientoFeedPage {
       },
 
     );
+
     this.seguimientoService.getSolicitudes(id_solicitud,id_solicitante)
+
     .subscribe(
       (solicitud) => {this.solicitud = solicitud.solicitud;
       localStorage.setItem('solicitud',JSON.stringify(this.solicitud));},
 
       );
+
     this.seguimientoService.getTramite(id_solicitud,id_solicitante)
+
     .subscribe(
       (tramite)=> {this.tramite =tramite.tramite;
         localStorage.setItem('tramite',JSON.stringify(this.tramite));},
       );
+
     this.seguimientoService.getSeguimientos(id_solicitud,id_solicitante)
+
     .subscribe(
       (seguimientos)=>{this.seguimientos = seguimientos.seguimientos;
       localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
-    }
-      )
+    })
   }
 
   openDetails(params) {
@@ -64,7 +71,7 @@ export class SeguimientoFeedPage {
 
     const alert = this.alertCtrl.create({
       title: 'Atento Aviso!',
-      subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de nuestra aplicación web en la dirección (url) <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a> desde tu laptop o computadora de escritorio',
+      subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a> ',
       buttons: ['Ok']
     });
     alert.present();
