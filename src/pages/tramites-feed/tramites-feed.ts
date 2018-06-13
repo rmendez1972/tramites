@@ -25,7 +25,7 @@ export class TramiteFeedPage {
   }
 
   ionViewWillEnter() {
-    var id_usuario=46;
+    var id_usuario=53;
     var id_grupo=2;
     var id_unidadadministrativa=6;
     var id_direccion=24;
