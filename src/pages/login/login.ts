@@ -50,10 +50,11 @@ export class Login {
                           console.log('grupo  '+this.currentUser[0].id_grupo);
                         }
                         if (this.currentUser[0].id_grupo==3){
-                          let id_solicitante =70;
-                          let id_solicitud = 70;
-                          let params = {"sol":{"id_solicitud":id_solicitud,"id_solicitante":id_solicitante}};
-                          this.navCtrl.push(SeguimientoFeedPage,params);
+                          let sol={
+                            id_solicitud: this.currentUser[0].id_solicitud,
+                            id_solicitante: this.currentUser[0].id_solicitante
+                          }
+                          this.navCtrl.push(SeguimientoFeedPage, {sol: sol});
                           console.log('grupo  '+this.currentUser[0].id_grupo);
                         }
 
