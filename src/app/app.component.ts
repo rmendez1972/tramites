@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 import { Welcome } from '../pages/welcome/welcome';
+import { AuthenticationService } from '../services/authentication.service';
 import { SeguimientoFeedPage } from '../pages/seguimiento-feed/seguimiento-feed';
 
 
@@ -30,7 +31,8 @@ export class MyApp {
     splashScreen: SplashScreen,
     public menu: MenuController,
     public app: App,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public authenticationservice: AuthenticationService
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -73,7 +75,7 @@ export class MyApp {
   cerrarSesion() {
     // close the menu when clicking a link from the menu
     this.menu.close();
-
+    this.authenticationservice.logout();
     // navigate to the new page if it is not the current page
     this.nav.setRoot(Welcome, '');
   }

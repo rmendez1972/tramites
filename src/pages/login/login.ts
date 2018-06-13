@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController  } from 'ionic-angular';
 
 import { SeguimientoFeedPage } from '../seguimiento-feed/seguimiento-feed';
 import { User } from './user';
@@ -25,11 +25,12 @@ export class Login {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private authenticationService: AuthenticationService,) { }
+    private authenticationService: AuthenticationService,
+    private alertCtrl: AlertController) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Login');
-    this.authenticationService.logout();
+    //this.authenticationService.logout();
   }
 
   login(){
@@ -42,13 +43,21 @@ export class Login {
                     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
                     if (JSON.stringify(this.currentUser).length > 10) {
-                        this.navCtrl.push(TramiteFeedPage);
-                        //this.alertService.success("Autenticado exitosamente...");
+
+                        this.showAlert('Autenticado Exitosamente');
+                        if (this.currentUser[0].id_grupo==2 || this.currentUser[0].id_grupo==1){
+                          this.navCtrl.push(TramiteFeedPage);
+                          console.log('grupo  '+this.currentUser[0].id_grupo);
+                        }
+                        if (this.currentUser[0].id_grupo==3){
+                          this.navCtrl.push(SeguimientoFeedPage);
+                          console.log('grupo  '+this.currentUser[0].id_grupo);
+                        }
 
                     }else{
 
-                        this.authenticationService.logout();
-                        //this.alertService.error("email y/o password erroneos, intenta de nuevo...",true);
+
+                        this.showAlert('usuario y/o contraseña equivocados, intneta de nuevo');
                         //this.loading = false;
                     }
 
@@ -66,4 +75,16 @@ export class Login {
   }
 
 
+
+
+  // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
+  showAlert(msg) {
+
+    const alert = this.alertCtrl.create({
+      title: 'Aviso',
+      subTitle: msg ,
+      buttons: ['Ok']
+    });
+    alert.present();
+  }
 }

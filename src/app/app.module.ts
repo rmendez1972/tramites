@@ -72,6 +72,7 @@ import {ServiceUrl} from '../serviceUrl'
     StatusBar,
     SplashScreen,
     AuthenticationService,
+
     QuestionService,
     AnswerService,
     SeguimientoService,

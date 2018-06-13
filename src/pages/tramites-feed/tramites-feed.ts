@@ -25,8 +25,8 @@ export class TramiteFeedPage {
   }
 
   ionViewWillEnter() {
-    var id_usuario=46;
-    var id_grupo=2;
+    var id_usuario=2;
+    var id_grupo=1;
     var id_unidadadministrativa=6;
     var id_direccion=24;
     this.tramiteService.getSolicitudes(id_usuario,id_grupo,id_unidadadministrativa,id_direccion)

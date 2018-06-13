@@ -1,5 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
+import { AlertController  } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 //import { MockBackend, MockConnection } from '@angular/http/testing';
 import { User } from '../pages/login/user';
@@ -10,7 +11,7 @@ import 'rxjs/add/operator/map'
 export class AuthenticationService {
     private loginUrl: string;
 
-    constructor(private http: Http, private url:ServiceUrl) { this.loginUrl=String(this.url.getUrllogin()); }
+    constructor(private http: Http, private url:ServiceUrl, private alertCtrl: AlertController) { this.loginUrl=String(this.url.getUrllogin()); }
 
     login(username: string, password: string) {
 
@@ -43,7 +44,7 @@ export class AuthenticationService {
 
 
                     localStorage.setItem('currentUser', JSON.stringify(user.user));
-                    this.logout();
+
                 }
 
 
@@ -54,5 +55,23 @@ export class AuthenticationService {
 
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('direccion');
+        localStorage.removeItem('solicitudes');
+        localStorage.removeItem('unidadadministrativa');
+        localStorage.removeItem('data');
+        localStorage.removeItem('solicitud');
+        localStorage.removeItem('tramite');
+        localStorage.removeItem('seguimiento');
+        this.showAlert('Cesiòn Cerrada, regresa pronto');
     }
+
+    showAlert(msg) {
+
+    const alert = this.alertCtrl.create({
+      title: 'Aviso',
+      subTitle: msg ,
+      buttons: ['Ok']
+    });
+    alert.present();
+  }
 }
