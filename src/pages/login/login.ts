@@ -64,10 +64,6 @@ export class Login {
                         this.showAlert('usuario y/o contraseña equivocados, intneta de nuevo');
                         //this.loading = false;
                     }
-
-
-
-
                 },
                 error => {
                     //this.alertService.error(error);

@@ -14,6 +14,9 @@ export class TramiteFeedPage {
   solicitudes= [];
   unidadAdministrativa= [];
   direccion = [];
+
+  private currentUser:any[];
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -25,10 +28,31 @@ export class TramiteFeedPage {
   }
 
   ionViewWillEnter() {
-    var id_usuario=52;
-    var id_grupo=2;
-    var id_unidadadministrativa=3;
-    var id_direccion=20;
+    this.currentUser =[];
+
+    let id_usuario=0;
+    let id_grupo=0;
+    let id_unidadadministrativa=0;
+    let id_direccion=0;
+
+    this.currentUser =JSON.parse(localStorage.getItem('currentUser'));
+
+    for (var i = 0; i < 1 ; i++) {
+
+      id_usuario=this.currentUser[i].id_usuario;
+      id_grupo=this.currentUser[i].id_grupo;
+      id_unidadadministrativa=this.currentUser[i].id_unidadadministrativa;
+      id_direccion=this.currentUser[i].id_direccion;
+    }
+
+    let solicitudFinal ={
+      id_usuario:id_usuario,
+      id_grupo:id_grupo,
+      id_unidadadministrativa:id_unidadadministrativa,
+      id_direccion:id_direccion
+    };
+
+
     this.tramiteService.getSolicitudes(id_usuario,id_grupo,id_unidadadministrativa,id_direccion)
     .subscribe(
       (solicitudes) => {

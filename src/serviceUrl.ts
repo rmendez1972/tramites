@@ -19,17 +19,16 @@ constructor() {}
 
 
   		getUrl():String{
-
-	  			return this.URL='http://localhost:8083/Tramites/controladorseguimiento?operacion=listarjson&id_solicitud=';
+	  			return this.URL='http://localhost:8083/tramites/controladorseguimiento?operacion=listarjson&id_solicitud=';
 
 	  	}
 
 	  	getUrladjuntos():String{
-	  			return this.URLadjuntos='http://localhost:8083/Tramites/controladoradjunto?operacion=listarjson&id_seguimiento=';
+	  			return this.URLadjuntos='http://localhost:8083/tramites/controladoradjunto?operacion=listarjson&id_seguimiento=';
 	  	}
 
 	  	getUrladjuntosdescarga():String{
-	  			return this.URLadjuntosdescarga='http://localhost:8083/Tramites/adjuntos/';
+	  			return this.URLadjuntosdescarga='http://localhost:8083/tramites/adjuntos/';
 	  	}
 
 		getUrladjuntosupload():String{
@@ -41,7 +40,7 @@ constructor() {}
 	  	}
 
 		getUrlCambiaPassword():String{
-	  			return this.URLcambiapassword='http://localhost:8083/Tramites/controladorregistro?operacion=apiSolicitanteCambioPassword&id_solicitante=';
+	  			return this.URLcambiapassword='http://localhost:8083/tramites/controladorregistro?operacion=apiSolicitanteCambioPassword&id_solicitante=';
 	  	}
 
 		getUrlupload():String{
@@ -49,19 +48,19 @@ constructor() {}
 	  	}
 
 		getUrlfilename():String{
-	  			return this.URLupload='http://localhost:8083/Tramites/controladoradjunto?operacion=grabarfromApp&id_seguimiento=';
+	  			return this.URLupload='http://localhost:8083/tramites/controladoradjunto?operacion=grabarfromApp&id_seguimiento=';
 		}
 
 
 		getUrlpushSeguimiento():String{
-			return this.URLpushseguimiento='http://localhost:8083/Tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
+			return this.URLpushseguimiento='http://localhost:8083/tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
 
 		}
 
 		getUrlpushComentario():String{ //igh
-			return this.URLpushcomentario='http://localhost:8083/Tramites/controladorseguimiento?operacion=grabarjson&comentario=';
+			return this.URLpushcomentario='http://localhost:8083/tramites/controladorseguimiento?operacion=grabarjson&comentario=';
 		}
 		getTramite():String{
-			return this.URLTramite='http://localhost:8083/Tramites/controladorregistro?operacion=listarjson&id_usuario=';
+			return this.URLTramite='http://localhost:8083/tramites/controladorregistro?operacion=listarjson&id_usuario=';
 		}
 }
