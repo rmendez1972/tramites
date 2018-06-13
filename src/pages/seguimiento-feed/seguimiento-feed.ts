@@ -26,8 +26,8 @@ export class SeguimientoFeedPage {
   }
 
   ionViewWillEnter() {
-    var id_solicitud=70;
-    var id_solicitante = 70;
+    var id_solicitud=69;
+    var id_solicitante = 69;
     this.seguimientoService.getData(id_solicitud,id_solicitante)
     .subscribe(
       (data) => {

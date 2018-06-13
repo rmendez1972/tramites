@@ -19,7 +19,7 @@ constructor() {}
 
 
   		getUrl():String{
-	  			return this.URL='http://localhost:8080/tramites/controladorseguimiento?operacion=listarjson&id_solicitud=';
+	  			return this.URL='http://localhost:8083/tramites/controladorseguimiento?operacion=listarjson&id_solicitud=';
 	  	}
 
 	  	getUrladjuntos():String{
