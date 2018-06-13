@@ -51,13 +51,13 @@ constructor() {}
 		}
 		  
 		getUrlpushSeguimiento():String{
-			return this.URLpushseguimiento='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
+			return this.URLpushseguimiento='http://localhost:8083/tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
 		}
 
 		getUrlpushComentario():String{ //igh
-			return this.URLpushcomentario='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarjson&comentario=';
+			return this.URLpushcomentario='http://localhost:8083/tramites/controladorseguimiento?operacion=grabarjson&comentario=';
 		}
 		getTramite():String{
-			return this.URLTramite='http://localhost:8080/tramites/controladorregistro?operacion=listarjson&id_usuario=';
+			return this.URLTramite='http://localhost:8083/tramites/controladorregistro?operacion=listarjson&id_usuario=';
 		}
 }
