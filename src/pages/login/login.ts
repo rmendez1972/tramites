@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { SeguimientoFeedPage } from '../seguimiento-feed/seguimiento-feed';
+import { TramiteFeedPage } from '../tramites-feed/tramites-feed';
 /**
  * Generated class for the Login page.
  *
@@ -23,7 +23,7 @@ export class Login {
 
   login(){
     //Api connections
-    this.navCtrl.push(SeguimientoFeedPage);
+    this.navCtrl.push(TramiteFeedPage);
     }
 
 }

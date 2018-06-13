@@ -9,6 +9,7 @@ import { Login } from '../pages/login/login';
 
 
 import { SeguimientoFeedPage } from '../pages/seguimiento-feed/seguimiento-feed';
+import { TramiteFeedPage } from '../pages/tramites-feed/tramites-feed';
 
 import { LearnDetailsPage } from '../pages/learn-details/learn-details';
 import { QuestionDetailsPage } from '../pages/question-details/question-details';
@@ -19,6 +20,8 @@ import { RespuestaSeguimientoPage } from '../pages/respuesta-seguimiento/respues
 import { QuestionService } from '../services/question.service';
 import { AnswerService } from '../services/answer.service';
 import { SeguimientoService } from '../services/seguimiento.service';
+
+import { TramiteService } from '../services/tramites.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -36,6 +39,7 @@ import {ServiceUrl} from '../serviceUrl'
     Welcome,
     Login,
     SeguimientoFeedPage,
+    TramiteFeedPage,
 
     LearnDetailsPage,
     QuestionDetailsPage,
@@ -55,6 +59,7 @@ import {ServiceUrl} from '../serviceUrl'
     Welcome,
     Login,
     SeguimientoFeedPage,
+    TramiteFeedPage,
 
     LearnDetailsPage,
     QuestionDetailsPage,
@@ -69,6 +74,7 @@ import {ServiceUrl} from '../serviceUrl'
     AnswerService,
     SeguimientoService,
     ServiceUrl,
+    TramiteService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

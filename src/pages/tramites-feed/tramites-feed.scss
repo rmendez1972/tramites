@@ -1,0 +1,90 @@
+learn-feed-page {
+	.search-query
+	{
+		font-size: 1.4rem;
+		margin: 12px;
+		margin-bottom: 30px;
+		color: $theme-color-3;
+		text-align: center;
+
+		.query-tag
+		{
+			border: 1px solid $theme-color-2;
+			color: $theme-color-2;
+			background: #FFF;
+		}
+
+		.query-explanation
+		{
+			font-weight: 300;
+		}
+	}
+
+
+	.category-concept-card
+	{
+
+		border-radius: 15px;
+		box-shadow: none;
+		margin-bottom: 20px;
+
+		ion-card {
+		   position: relative;
+		   text-align: center;
+		 }
+
+
+		.category-title
+		{
+			position: absolute;
+		    top: 15%;
+		    font-size: 1.5em;
+		    width: 100%;
+		    font-weight: bold;
+		    color: #0077ff;
+		}
+		h2,p{
+			color:#0077ff;
+		}
+
+		.category-item
+		{
+
+		    font-size: 0.3em;
+		    width: 100%;
+		    font-weight: bold;
+		    color:#0077ff;
+		    //background: transparent;
+		    //opacity: 0.6;
+		}
+		.bar-custom{
+			background-color: #0077ff;
+		}
+
+		.category-description
+		{
+			font-size: 1.0em;
+		    position: absolute;
+		    top: 35%;
+		    width: 100%;
+		    font-weight: bold;
+		    color: #0077ff;
+		}
+
+		.category-tag
+		{
+			font-size: 1.0em;
+		    position: relative;
+		    top: 2%;
+		    width: 100%;
+		    color: #0077ff;
+
+			border: 1px solid #0077ff;
+			background: transparent;
+
+
+			//margin-right: 4px;
+			opacity: 0.6;
+		}
+	}
+}

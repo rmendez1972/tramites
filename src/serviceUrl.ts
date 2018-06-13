@@ -13,6 +13,7 @@ public URLupload: String;
 public URLfilename: String;
 public URLpushseguimiento: String;
 public URLpushcomentario: String;//igh
+public URLTramite:String;
 
 constructor() {}
 
@@ -49,11 +50,14 @@ constructor() {}
 	  			return this.URLupload='http://189.221.153.178:8080/tramites/controladoradjunto?operacion=grabarfromApp&id_seguimiento=';
 		}
 		  
-		  getUrlpushSeguimiento():String{
+		getUrlpushSeguimiento():String{
 			return this.URLpushseguimiento='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
 		}
 
 		getUrlpushComentario():String{ //igh
 			return this.URLpushcomentario='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarjson&comentario=';
+		}
+		getTramite():String{
+			return this.URLTramite='http://localhost:8080/tramites/controladorregistro?operacion=listarjson&id_usuario=';
 		}
 }
