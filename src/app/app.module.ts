@@ -16,6 +16,7 @@ import { ManageQuestionPage } from '../pages/manage-question/manage-question';
 import { ManageAnswerPage } from '../pages/manage-answer/manage-answer';
 import { RespuestaSeguimientoPage } from '../pages/respuesta-seguimiento/respuesta-seguimiento';
 
+import { AuthenticationService } from '../services/authentication.service';
 import { QuestionService } from '../services/question.service';
 import { AnswerService } from '../services/answer.service';
 import { SeguimientoService } from '../services/seguimiento.service';
@@ -65,6 +66,7 @@ import {ServiceUrl} from '../serviceUrl'
   providers: [
     StatusBar,
     SplashScreen,
+    AuthenticationService,
     QuestionService,
     AnswerService,
     SeguimientoService,
