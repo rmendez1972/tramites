@@ -26,9 +26,9 @@ export class SeguimientoFeedPage {
   }
 
   ionViewWillEnter() {
-    var id_usuario=70;
+    var id_solicitud=70;
     var id_solicitante = 70;
-    this.seguimientoService.getData(id_usuario,id_solicitante)
+    this.seguimientoService.getData(id_solicitud,id_solicitante)
     .subscribe(
       (data) => {
         this.data = data.data;
@@ -36,18 +36,18 @@ export class SeguimientoFeedPage {
       },
 
     );
-    this.seguimientoService.getSolicitudes(id_usuario,id_solicitante)
+    this.seguimientoService.getSolicitudes(id_solicitud,id_solicitante)
     .subscribe(
       (solicitud) => {this.solicitud = solicitud.solicitud;
       localStorage.setItem('solicitud',JSON.stringify(this.solicitud));},
 
       );
-    this.seguimientoService.getTramite(id_usuario,id_solicitante)
+    this.seguimientoService.getTramite(id_solicitud,id_solicitante)
     .subscribe(
       (tramite)=> {this.tramite =tramite.tramite;
         localStorage.setItem('tramite',JSON.stringify(this.tramite));},
       );
-    this.seguimientoService.getSeguimientos(id_usuario,id_solicitante)
+    this.seguimientoService.getSeguimientos(id_solicitud,id_solicitante)
     .subscribe(
       (seguimientos)=>{this.seguimientos = seguimientos.seguimientos;
       localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
