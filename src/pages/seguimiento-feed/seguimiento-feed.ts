@@ -26,24 +26,30 @@ export class SeguimientoFeedPage {
   }
 
   ionViewWillEnter() {
-    this.seguimientoService.getFeedCategories(70,70)
+    this.seguimientoService.getData(70,70)
     .subscribe(
       (data) => {
         this.data = data.data;
-        console.log('datos recuperados '+this.data);
+        localStorage.setItem('data',JSON.stringify(this.data));
       },
+
     );
     this.seguimientoService.getSolicitudes(70,70)
     .subscribe(
-      (solicitud) => {this.solicitud = solicitud.solicitud;},
+      (solicitud) => {this.solicitud = solicitud.solicitud;
+      localStorage.setItem('solicitud',JSON.stringify(this.solicitud));},
+
       );
     this.seguimientoService.getTramite(70,70)
     .subscribe(
-      (tramite)=> {this.tramite =tramite.tramite;},
+      (tramite)=> {this.tramite =tramite.tramite;
+        localStorage.setItem('tramite',JSON.stringify(this.tramite));},
       );
     this.seguimientoService.getSeguimientos(70,70)
     .subscribe(
-      (seguimientos)=>{this.seguimientos = seguimientos.seguimientos;}
+      (seguimientos)=>{this.seguimientos = seguimientos.seguimientos;
+      localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
+    }
       )
   }
 

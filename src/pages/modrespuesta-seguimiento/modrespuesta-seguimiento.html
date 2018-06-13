@@ -20,7 +20,7 @@
       </ion-col>
       <ion-col no-padding col-12>
         <p class="vote-call-to-action">
-          Fue útil este seguimiento? Califícalo! DE MOD-RESPUESTA-SEGUIMIENTO
+          Fue útil este seguimiento? Califícalo!
         </p>
         <ion-row class="question-actions-row">
           <ion-col no-padding col-4>
@@ -48,21 +48,16 @@
     </ion-row>
   </div>
 
-  <div *ngIf="answers.length == 0">
+  <!--<div *ngIf="answers.length == 0">
     <h3 class="answers-call-out">
-      There are no answers to this question. Be the first one to answer!
+      No hay comentario de parte del ciudadano. Espere a un comentario!
     </h3>
-  </div>
+  </div>-->
 
-  <div *ngIf="answers.length > 0">
-    <h3 class="answers-call-out">
-      <span class="call-out-explanation">Encontramos </span>
-      <ion-badge class="call-out-tag">{{ answers.length }}</ion-badge>
-      <span> comentarios para este seguimiento!</span>
-    </h3>
+  
 
     <ion-list class="answers-list">
-      <ion-item class="answer-item" *ngFor="let answer of answers">
+      <!--<ion-item class="answer-item" *ngFor="let answer of answers">
         <ion-row>
           <ion-col class="votes-col" col-2>
             <button class="vote-button up-vote" ion-button clear small (click)= "addPositiveVote(answer)">
@@ -95,9 +90,34 @@
             </ion-row>
           </ion-col>
         </ion-row>
+      </ion-item>-->
+
+      <ion-item class="answer-item" *ngFor="let seg of seguimientos">
+        <ion-row>
+          <ion-col col-10>
+            <ion-row class="answer-details">
+              <ion-col col-12>
+                <p class="answer-text">{{ seg.observaciones }}</p> 
+              </ion-col>
+              <ion-col col-4 class="votes-details">
+
+              </ion-col>
+              <ion-col col-4 class="actions-details">
+                <button class="edit-button" ion-button small round clear icon-only color="dark" (click)="editAnswerModal(seg.id_seguimiento,seg.observaciones)">
+                  <ion-icon name="md-create"></ion-icon>
+                </button>
+                <button class="delete-button" ion-button small round clear icon-only color="danger" (click)="delete(seg.id_seguimiento)">
+                  <ion-icon name="ios-trash-outline"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
       </ion-item>
+
+
     </ion-list>
-  </div>
+  
 </ion-content>
 
 <ion-footer >

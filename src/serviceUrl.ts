@@ -12,6 +12,7 @@ public URLcambiapassword: String;
 public URLupload: String;
 public URLfilename: String;
 public URLpushseguimiento: String;
+public URLdeleteseguimiento: String;
 
 constructor() {}
 
@@ -47,8 +48,14 @@ constructor() {}
 		getUrlfilename():String{
 	  			return this.URLupload='http://localhost:8080/tramites/controladoradjunto?operacion=grabarfromApp&id_seguimiento=';
 		}
-		  
-		  getUrlpushSeguimiento():String{
+		
+		//MEGH
+		getUrlpushSeguimiento():String{
 			return this.URLpushseguimiento='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
+		}
+
+		//MEGH
+		getUrldeleteSeguimiento():String{
+			return this.URLdeleteseguimiento='http://localhost:8080/tramites/controladorseguimiento?operacion=borrarjson&id_seguimiento=';
 		}
 }

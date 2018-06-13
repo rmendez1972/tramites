@@ -5,6 +5,8 @@ import { AnswerService } from '../../services/answer.service';
 import { QuestionService } from '../../services/question.service';
 import { ManageAnswerPage } from '../manage-answer/manage-answer';
 import { RespuestaSeguimientoPage } from '../respuesta-seguimiento/respuesta-seguimiento';
+import { CategoryModel } from '../../services/seguimiento.model';
+import {SeguimientoService} from '../../services/seguimiento.service';
 
 
 /**
@@ -23,6 +25,12 @@ export class ModrespuestaSeguimientoPage {
   answers: Array<any> = [];
   question: any = new Question();
   questionId: any;
+  //private seguimiento: CategoryModel;
+  extraer:any={};
+  //private modelseguimiento:any={};
+  seguimientos:Array<CategoryModel> = new Array<CategoryModel>();
+  seg:Array<CategoryModel> = new Array<CategoryModel>();
+  actividad:Array<CategoryModel> = new Array<CategoryModel>();
 
   constructor(
     public navCtrl: NavController,
@@ -31,7 +39,8 @@ export class ModrespuestaSeguimientoPage {
     public answerService: AnswerService,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public segservices:SeguimientoService
   ) {}
 
   createAnswerModal() {
@@ -46,14 +55,18 @@ export class ModrespuestaSeguimientoPage {
     create_answer_modal.present();
   }
 
-  editAnswerModal(answer) {
+  editAnswerModal(id_seguimiento,observaciones) {
     console.log('Entrando a editAnswerModal');
+    console.log('id_seguimiento'+id_seguimiento );
+    console.log('observaciones'+observaciones);
+
+    
     let edit_answer_data = {
       mode: 'Edit',
-      answer: answer,
-      questionId: this.questionId
+      answer: observaciones,
+      questionId: id_seguimiento
     };
-    let edit_answer_modal = this.modalCtrl.create(ManageAnswerPage, { data: edit_answer_data });
+    let edit_answer_modal = this.modalCtrl.create(RespuestaSeguimientoPage, { data: edit_answer_data });
     edit_answer_modal.onDidDismiss(data => {
       this.getAnswers();
     });
@@ -61,9 +74,10 @@ export class ModrespuestaSeguimientoPage {
   }
 
   ionViewWillEnter() {
-   this.questionId = this.navParams.get('id');
-   this.getQuestion();
-   this.getAnswers();
+    
+    //se recuperan los valores del localstorage en el metodo de getAnswers
+    this.getAnswers();
+
   }
 
   getQuestion(){
@@ -79,20 +93,28 @@ export class ModrespuestaSeguimientoPage {
 
   getAnswers(){
     let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'Por favor espere...'
     });
     loading.present();
-    this.answerService.getAnswers(this.questionId)
-    .then(res => {
-      this.answers = res;
-      loading.dismiss();
-    })
+
+    this.seguimientos = JSON.parse(localStorage.getItem('seguimiento'));
+    loading.dismiss();
+
   }
 
-  delete(answerId){
+  delete(id_seguimiento){
+    
+    //recuperamos los datos del local storage de seguimiento
+    this.seg = JSON.parse(localStorage.getItem('seguimiento'));
+    //obtenemos la id_solicitud
+    for (var elemento in this.seg){
+      this.extraer.id_solicitud = this.seg[elemento].id_solicitud;
+    }
+    
+    //confirm que se presenta para confirmar la eliminacion
     let confirm = this.alertCtrl.create({
-      title: 'Delete answer',
-      message: 'Are you sure you want to delete this answer?',
+      title: 'Borrar Respuesta',
+      message: '¿Seguro que quiere borrar este comentario?',
       buttons: [
         {
           text: 'No',
@@ -101,10 +123,18 @@ export class ModrespuestaSeguimientoPage {
           }
         },
         {
-          text: 'Yes',
+          text: 'Si',
           handler: () => {
-            this.answerService.deleteAnswer(answerId)
-            .then(res => this.getAnswers())
+            this.segservices.deleteSeguimiento(id_seguimiento,this.extraer.id_solicitud).subscribe(
+              //obtenemos la lista con los valores actualizados de la lista de seguimientos
+              (seguimiento)=>{
+                this.seguimientos = seguimiento.seguimiento;
+                console.log(this.seguimientos);
+                //se almacenan en el localstorage
+              localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
+              } 
+            )
+            this.getAnswers();
           }
         }
       ]

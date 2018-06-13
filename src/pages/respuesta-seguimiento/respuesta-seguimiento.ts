@@ -27,6 +27,10 @@ export class RespuestaSeguimientoPage {
   answerForm: FormGroup;
   answer: Answer = new Answer();
   data : Array<CategoryModel> = new Array<CategoryModel>();
+  seguimientos:Array<CategoryModel> = new Array<CategoryModel>();
+  seg:Array<CategoryModel> = new Array<CategoryModel>();
+  extraer:any={};
+  id_seguimiento:string;
 
   constructor(
     public navParams: NavParams,
@@ -57,17 +61,42 @@ export class RespuestaSeguimientoPage {
 
   //metodo para la insersion de la respuesta del enlace
   onSubmit(value){
-    console.log("estoy en el submit de respuesta seguimiento");
+    //se recupera el valor del text area
     let data = value;
-    console.log(data.answer);
-    //valores de los parametros del metodo 
-    //pushSeguimiento(valor del text area, id_usuario, id_solicitud, id_status)
-    this.seguimientoservices.pushSeguimiento(data.answer,53,70,2)
-    .subscribe(
-      (data) => {this.data = data.data;},
-    );
-    this.dismiss();
+    //se recupera el id_seguimiento del seguimiento
+    this.id_seguimiento = this._question_id
 
+    //recuperando valores del localstorage
+
+    if(this.id_seguimiento){
+      console.log("metodo para actualizar");
+
+      this.seguimientoservices.updateSeguimiento(this.id_seguimiento,data.answer)
+
+    }else{
+      console.log("metodo para insertar");
+
+      //valores de los parametros del metodo 
+      //pushSeguimiento(valor del text area, id_usuario, id_solicitud, id_status)
+      this.seguimientoservices.pushSeguimiento(data.answer,53,70,2)
+      .subscribe(
+        (seguimiento)=>{
+          this.seguimientos = seguimiento.seguimiento;
+          console.log(this.seguimientos);
+          localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));        
+        });
+      this.dismiss();
+
+
+    }
+
+    /*
+    //recuperamos los datos del local storage de seguimiento
+    this.seg = JSON.parse(localStorage.getItem('seguimiento'));
+    //obtenemos el id_usuario
+    for (var elemento in this.seg){
+      this.extraer.id_solicitud = this.seg[elemento].id_solicitud;
+    }*/
   }
 
 }
