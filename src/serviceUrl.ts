@@ -13,12 +13,16 @@ public URLupload: String;
 public URLfilename: String;
 public URLpushseguimiento: String;
 public URLdeleteseguimiento: String;
+public URLpushcomentario: String;//igh
+public URLTramite:String;
 
 constructor() {}
 
 
   		getUrl():String{
+
 	  			return this.URL='http://localhost:8080/tramites/controladorseguimiento?operacion=listarjson&id_solicitud=';
+
 	  	}
 
 	  	getUrladjuntos():String{
@@ -30,7 +34,7 @@ constructor() {}
 	  	}
 
 		getUrladjuntosupload():String{
-	  			return this.URLadjuntosupload='http://189.221.153.178:3001/upload/';
+	  			return this.URLadjuntosupload='http://localhost:3001/upload/';
 	  	}
 
 	  	getUrllogin():String{
@@ -39,19 +43,30 @@ constructor() {}
 
 		getUrlCambiaPassword():String{
 	  			return this.URLcambiapassword='http://localhost:8080/tramites/controladorregistro?operacion=apiSolicitanteCambioPassword&id_solicitante=';
+	  			
 	  	}
 
+
 		getUrlupload():String{
-	  			return this.URLupload='http://189.221.153.178:3001/upload';
+	  			return this.URLupload='http://localhost:3001/upload';
 	  	}
 
 		getUrlfilename():String{
 	  			return this.URLupload='http://localhost:8080/tramites/controladoradjunto?operacion=grabarfromApp&id_seguimiento=';
 		}
-		
+
 		//MEGH
 		getUrlpushSeguimiento():String{
 			return this.URLpushseguimiento='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
+
+		}
+
+		getUrlpushComentario():String{ //igh
+			return this.URLpushcomentario='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarjson&comentario=';
+		}
+		
+		getTramite():String{
+			return this.URLTramite='http://localhost:8080/tramites/controladorregistro?operacion=listarjson&id_usuario=';
 		}
 
 		//MEGH

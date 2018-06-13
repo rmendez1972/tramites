@@ -1,0 +1,55 @@
+<ion-header >
+  <ion-navbar color="primary" hideBackButton="true">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <span>Trámites SEDETUS</span>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showAlert()">
+        <ion-icon name="information-circle" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content class="category-concept-card">
+  <h3 class="search-query">
+    <span>Mostrando: </span>
+    <ion-badge class="query-tag">{{ _query }}</ion-badge>
+    <span class="query-explanation"> los Seguimientos</span>
+  </h3>
+
+  <ion-card [style.background-color]="solicitudes.background" *ngFor="let sol of solicitudes"  (click)="openDetails({ sol:sol,direccion:direccion,unidadadministrativa:unidadadministrativa})">
+    <ion-item class="category-item" >
+      <ion-avatar item-start>
+        <img src="assets/img/user_sedetus.png">
+      </ion-avatar>
+      <h3 >Usuario de enlace de: </h3>
+      <h3 >{{sol.unidadadministrativa}}</h3>
+      <div >
+        <p >Fecha de Solicitud: {{sol.fecha_ingreso}}</p>
+        <p>Estatus: <ion-badge color="dark" item-end>{{sol.status}}</ion-badge></p>
+      </div>
+    </ion-item>
+    <img src="assets/img/rsz_fondo_soles_grises.png"/>
+    <div>
+      <h2 class="category-title">Solicitud: {{sol.tramite}} </h2>
+    </div>
+    <div >
+       <h3 class="category-description">Solicitante: {{sol.solicitante}}</h3>
+    </div>
+    <div>
+      <ion-row>
+        <ion-col >
+          <ion-badge class="category-tag" item-right>{{sol.unidadadministrativa}}</ion-badge>
+          <ion-badge class="category-tag" item-right > {{ direccion.nombre }}</ion-badge>
+          <ion-badge class="category-tag" item-right>Fecha seguimiento: {{ sol.fecha_ingreso}}</ion-badge>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-card>
+</ion-content>
