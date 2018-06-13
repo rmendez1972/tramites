@@ -12,6 +12,7 @@ public URLcambiapassword: String;
 public URLupload: String;
 public URLfilename: String;
 public URLpushseguimiento: String;
+public URLpushcomentario: String;//igh
 
 constructor() {}
 
@@ -50,5 +51,9 @@ constructor() {}
 		  
 		  getUrlpushSeguimiento():String{
 			return this.URLpushseguimiento='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
+		}
+
+		getUrlpushComentario():String{ //igh
+			return this.URLpushcomentario='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarjson&comentario=';
 		}
 }
