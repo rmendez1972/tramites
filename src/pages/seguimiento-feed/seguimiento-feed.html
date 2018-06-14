@@ -1,10 +1,10 @@
 <ion-header >
-  <ion-navbar color="primary" hideBackButton="false">
-      <!--
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon> 
+  <ion-navbar color="primary" hideBackButton="{{ ocultaBack }}">
+
+    <button [hidden]="muestraToggle" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
     </button>
-    -->
+
     <ion-title>
       <span>Trámites SEDETUS</span>
     </ion-title>
@@ -20,6 +20,7 @@
 
 <ion-content class="category-concept-card">
   <h3 class="search-query">
+
     <span>Mostrando: </span>
     <ion-badge class="query-tag">{{ _query }}</ion-badge>
     <span class="query-explanation"> los Seguimientos</span>
@@ -58,3 +59,11 @@
     </div>
   </ion-card>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <!-- <button ion-button round block (click)="createQuestionModal()" color="light">
+      <b>Crear nuevo comentario a este seguimiento?</b>
+    </button>-->
+  </ion-toolbar>
+</ion-footer>

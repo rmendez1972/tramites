@@ -20,7 +20,8 @@ export class MyApp {
   // make LearnFeedPage the root (or first) page
 
   rootPage: any = Welcome;
-
+  private currentUser:any;
+  private username:string;
 
 
   pages: Array<{title: string, icon: string, component: any, params: any}>;
@@ -40,6 +41,9 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.username=this.currentUser[0].username;
 
     this.pages = [
       {
@@ -62,6 +66,7 @@ export class MyApp {
 
     ];
   }
+
 
   //abrimos la pagina root y poblamos con cards todos los seguimientos del trámite
   openPage(page) {
@@ -88,6 +93,18 @@ export class MyApp {
     const alert = this.alertCtrl.create({
       title: 'Atento Aviso!',
       subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a> ',
+      buttons: ['Ok']
+    });
+    alert.present();
+  }
+
+  // muestro las credenciales del usuario autenticado
+  muestraUser() {
+    //cerramos el menu lateral
+    //this.menu.close();
+    const alert = this.alertCtrl.create({
+      title: 'Credenciales',
+      subTitle: 'Te has autenticado como el usario '+this.username,
       buttons: ['Ok']
     });
     alert.present();
