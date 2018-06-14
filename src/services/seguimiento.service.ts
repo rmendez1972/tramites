@@ -8,6 +8,7 @@ export class SeguimientoService {
   private seguimientosUrl: string;
   private pushseguimientoURL: string;
   private deleteseguimientoURL: string;
+  private updateseguimientoURL: string;
 
 	constructor(public http: Http,
     private url:ServiceUrl,
@@ -15,6 +16,7 @@ export class SeguimientoService {
     this.seguimientosUrl=String(this.url.getUrl());
     this.pushseguimientoURL=String(this.url.getUrlpushSeguimiento());
     this.deleteseguimientoURL=String(this.url.getUrldeleteSeguimiento());
+    this.updateseguimientoURL=String(this.url.getUrlupdateSeguimiento());
     
   }
 
@@ -53,9 +55,10 @@ export class SeguimientoService {
   }
 
   //metodo para actualizar el seguimiento de nivel enlace
-  updateSeguimiento(id_seguimiento:string, values){
-    console.log("id_seguimiento dentro del service"+id_seguimiento);
-    console.log("observaciones dentro del service"+values);
+  updateSeguimiento(id_seguimiento:string, values, id_solicitud:string, id_usuario:string, id_status:number,adjunto:string){
+    console.log("adjunto dentro del service"+adjunto);
+    return this.http.get(this.updateseguimientoURL+id_seguimiento+"&id_solicitud="+id_solicitud+'&observaciones='+values+'&id_usuario='+id_usuario+'&id_status='+id_status+'&adjunto='+adjunto)
+    .map((res) => res.json(),(error)=>{console.log(error);});
 
   }
 }

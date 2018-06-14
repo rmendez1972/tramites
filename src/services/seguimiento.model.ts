@@ -4,4 +4,5 @@ export class CategoryModel {
   tramite: string;
   id_status:number;
   id_solicitud:number;
+  id:number;
 }

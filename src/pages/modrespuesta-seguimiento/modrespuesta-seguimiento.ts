@@ -55,16 +55,15 @@ export class ModrespuestaSeguimientoPage {
     create_answer_modal.present();
   }
 
-  editAnswerModal(id_seguimiento,observaciones) {
-    console.log('Entrando a editAnswerModal');
-    console.log('id_seguimiento'+id_seguimiento );
+  editAnswerModal(id_seguimiento,observaciones,adjuntos) {
     console.log('observaciones'+observaciones);
-
+    console.log('adjuntos'+adjuntos);
     
     let edit_answer_data = {
       mode: 'Edit',
       answer: observaciones,
-      questionId: id_seguimiento
+      questionId: id_seguimiento,
+      adjuntos: adjuntos
     };
     let edit_answer_modal = this.modalCtrl.create(RespuestaSeguimientoPage, { data: edit_answer_data });
     edit_answer_modal.onDidDismiss(data => {
@@ -102,7 +101,7 @@ export class ModrespuestaSeguimientoPage {
 
   }
 
-  delete(id_seguimiento){
+  delete(id_seguimiento,adjuntos){
     
     //recuperamos los datos del local storage de seguimiento
     this.seg = JSON.parse(localStorage.getItem('seguimiento'));
@@ -110,36 +109,48 @@ export class ModrespuestaSeguimientoPage {
     for (var elemento in this.seg){
       this.extraer.id_solicitud = this.seg[elemento].id_solicitud;
     }
-    
-    //confirm que se presenta para confirmar la eliminacion
-    let confirm = this.alertCtrl.create({
-      title: 'Borrar Respuesta',
-      message: '¿Seguro que quiere borrar este comentario?',
-      buttons: [
-        {
-          text: 'No',
-          handler: () => {
-            console.log('No clicked');
+
+    if(adjuntos){
+      console.log("mostrando mensaje que no se puede borrar");
+      this.showMensaje('No puede borrar este registro ya que cuenta con un archivo adjunto');
+
+    }else{
+      console.log("entrando confirm para borrar");
+
+      //confirm que se presenta para confirmar la eliminacion
+      let confirm = this.alertCtrl.create({
+        title: 'Borrar Respuesta',
+        message: '¿Seguro que quiere borrar este comentario?',
+        buttons: [
+          {
+            text: 'No',
+            handler: () => {
+              console.log('No clicked');
+            }
+          },
+          {
+            text: 'Si',
+            handler: () => {
+              this.segservices.deleteSeguimiento(id_seguimiento,this.extraer.id_solicitud).subscribe(
+                //obtenemos la lista con los valores actualizados de la lista de seguimientos
+                (seguimiento)=>{
+                  this.seguimientos = seguimiento.seguimiento;
+                  console.log(this.seguimientos);
+                  //se almacenan en el localstorage
+                localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
+                } 
+              )
+              this.showMensaje('Se elimino el registro con exito');
+              this.getAnswers();
+            }
           }
-        },
-        {
-          text: 'Si',
-          handler: () => {
-            this.segservices.deleteSeguimiento(id_seguimiento,this.extraer.id_solicitud).subscribe(
-              //obtenemos la lista con los valores actualizados de la lista de seguimientos
-              (seguimiento)=>{
-                this.seguimientos = seguimiento.seguimiento;
-                console.log(this.seguimientos);
-                //se almacenan en el localstorage
-              localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
-              } 
-            )
-            this.getAnswers();
-          }
-        }
-      ]
-    });
-    confirm.present();
+        ]
+      });
+      confirm.present();
+      
+
+    }
+
   }
 
   upVoteQuestion(){
@@ -176,5 +187,15 @@ export class ModrespuestaSeguimientoPage {
     });
     alert.present();
   }
+
+    showMensaje(msg) {
+
+      const alert = this.alertCtrl.create({
+        title: 'Aviso',
+        subTitle: msg ,
+        buttons: ['Ok']
+      });
+      alert.present();
+    }
 
 }

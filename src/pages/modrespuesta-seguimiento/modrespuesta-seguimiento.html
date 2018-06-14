@@ -20,9 +20,9 @@
       </ion-col>
       <ion-col no-padding col-12>
         <p class="vote-call-to-action">
-          Fue útil este seguimiento? Califícalo!
+          Fue útil este seguimiento?
         </p>
-        <ion-row class="question-actions-row">
+        <!--<ion-row class="question-actions-row">
           <ion-col no-padding col-4>
             <button class="question-action-button up-vote" ion-button icon-left round block small color="dark" (click)= "upVoteQuestion()">
               <ion-icon name="arrow-up"></ion-icon>
@@ -43,12 +43,12 @@
               <div>Down-vote</div>
             </button>
           </ion-col>
-        </ion-row>
+        </ion-row>-->
       </ion-col>
     </ion-row>
   </div>
 
-  <!--<div *ngIf="answers.length == 0">
+  <!--<div *ngIf="seguimiento">
     <h3 class="answers-call-out">
       No hay comentario de parte del ciudadano. Espere a un comentario!
     </h3>
@@ -103,10 +103,10 @@
 
               </ion-col>
               <ion-col col-4 class="actions-details">
-                <button class="edit-button" ion-button small round clear icon-only color="dark" (click)="editAnswerModal(seg.id_seguimiento,seg.observaciones)">
+                <button class="edit-button" ion-button small round clear icon-only color="dark" (click)="editAnswerModal(seg.id_seguimiento,seg.observaciones,seg.adjunto)">
                   <ion-icon name="md-create"></ion-icon>
                 </button>
-                <button class="delete-button" ion-button small round clear icon-only color="danger" (click)="delete(seg.id_seguimiento)">
+                <button class="delete-button" ion-button small round clear icon-only color="danger" (click)="delete(seg.id_seguimiento,seg.adjunto)">
                   <ion-icon name="ios-trash-outline"></ion-icon>
                 </button>
               </ion-col>
@@ -123,7 +123,7 @@
 <ion-footer >
   <ion-toolbar color="primary">
     <button ion-button block round (click)="createAnswerModal()" color="light">
-      <b>Contéstanos este seguimiento? No seas tímido!</b>
+      <b>Contéstar al ciudadano</b>
     </button>
   </ion-toolbar>
 </ion-footer>

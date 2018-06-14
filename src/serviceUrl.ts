@@ -15,12 +15,12 @@ public URLpushseguimiento: String;
 public URLdeleteseguimiento: String;
 public URLpushcomentario: String;//igh
 public URLTramite:String;
+public URLupdateseguimiento: String;
 
 constructor() {}
 
 
   		getUrl():String{
-
 	  			return this.URL='http://localhost:8080/tramites/controladorseguimiento?operacion=listarjson&id_solicitud=';
 
 	  	}
@@ -72,5 +72,10 @@ constructor() {}
 		//MEGH
 		getUrldeleteSeguimiento():String{
 			return this.URLdeleteseguimiento='http://localhost:8080/tramites/controladorseguimiento?operacion=borrarjson&id_seguimiento=';
+		}
+
+		getUrlupdateSeguimiento():String{
+			return this.URLupdateseguimiento='http://localhost:8080/tramites/controladorseguimiento?operacion=actualizarjson&id_seguimiento=';
+
 		}
 }
