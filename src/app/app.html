@@ -2,8 +2,8 @@
   <ion-header>
     <ion-toolbar color="primary">
       <ion-buttons start>
-        <button ion-button icon-only>
-          <ion-icon name="contact"></ion-icon>
+        <button ion-button icon-only (click)="muestraUser()">
+          <ion-icon name="contact" ></ion-icon>
         </button>
       </ion-buttons>
       <ion-title>Menú Principal</ion-title>
@@ -21,6 +21,12 @@
 
 
     <ion-list inset>
+      <ion-list-header>
+
+          <ion-icon name="person" item-start></ion-icon>
+          Bienvenido, {{ username }}
+
+      </ion-list-header>
       <ion-list-header>
         Filtros
       </ion-list-header>

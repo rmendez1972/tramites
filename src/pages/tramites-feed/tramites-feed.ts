@@ -17,6 +17,7 @@ export class TramiteFeedPage {
 
   private currentUser:any[];
 
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -27,6 +28,8 @@ export class TramiteFeedPage {
     this._query = isPresent(query_param) ? query_param : 'all';
   }
 
+
+
   ionViewWillEnter() {
     this.currentUser =[];
 
@@ -36,6 +39,7 @@ export class TramiteFeedPage {
     let id_direccion=0;
 
     this.currentUser =JSON.parse(localStorage.getItem('currentUser'));
+
 
     for (var i = 0; i < 1 ; i++) {
 

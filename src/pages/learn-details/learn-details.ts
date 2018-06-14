@@ -7,6 +7,7 @@ import { AnswerService } from '../../services/answer.service';
 
 import { QuestionDetailsPage } from '../question-details/question-details';
 import { ManageQuestionPage } from '../manage-question/manage-question';
+import { ModrespuestaSeguimientoPage } from '../modrespuesta-seguimiento/modrespuesta-seguimiento';
 //import { ManageAnswerPage } from '../manage-answer/manage-answer';//igh
 
 @Component({
@@ -133,7 +134,7 @@ export class LearnDetailsPage {
   }
 
   openAnswers(question){
-    this.navCtrl.push(QuestionDetailsPage, {
+    this.navCtrl.push(ModrespuestaSeguimientoPage, {
       id: question.id
     });
   }

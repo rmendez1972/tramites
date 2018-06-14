@@ -16,6 +16,7 @@ import { QuestionDetailsPage } from '../pages/question-details/question-details'
 import { ManageQuestionPage } from '../pages/manage-question/manage-question';
 import { ManageAnswerPage } from '../pages/manage-answer/manage-answer';
 import { RespuestaSeguimientoPage } from '../pages/respuesta-seguimiento/respuesta-seguimiento';
+import { ModrespuestaSeguimientoPage } from '../pages/modrespuesta-seguimiento/modrespuesta-seguimiento';
 
 import { AuthenticationService } from '../services/authentication.service';
 import { QuestionService } from '../services/question.service';
@@ -46,7 +47,8 @@ import {ServiceUrl} from '../serviceUrl'
     QuestionDetailsPage,
     ManageQuestionPage,
     ManageAnswerPage,
-    RespuestaSeguimientoPage
+    RespuestaSeguimientoPage,
+    ModrespuestaSeguimientoPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ import {ServiceUrl} from '../serviceUrl'
     QuestionDetailsPage,
     ManageQuestionPage,
     ManageAnswerPage,
-    RespuestaSeguimientoPage
+    RespuestaSeguimientoPage,
+    ModrespuestaSeguimientoPage
   ],
   providers: [
     StatusBar,

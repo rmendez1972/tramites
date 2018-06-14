@@ -16,10 +16,14 @@ export class SeguimientoFeedPage {
   tramite:Array<CategoryModel> = new Array<CategoryModel>();
   seguimientos:Array<CategoryModel> = new Array<CategoryModel>();
 
+
   private seguimiento:any[];
   private solicitudes:any[];
+  private muestraToggle: boolean=false;
+  private ocultaBack: boolean=false;
   id_solicitud:any;
   id_solicitante:any;
+  currentUser:any;
 
   constructor(
     public navCtrl: NavController,
@@ -35,8 +39,9 @@ export class SeguimientoFeedPage {
 
   }
 
-  
+
   ionViewWillEnter() {
+    this.verificaSiciudadano();
     this.seguimientoService.getData(this.id_solicitud,this.id_solicitante)
     .subscribe(
       (data) => {
@@ -45,7 +50,7 @@ export class SeguimientoFeedPage {
       },
 
     );
-    
+
     this.seguimientoService.getSolicitudes(this.id_solicitud,this.id_solicitante)
 
     .subscribe(
@@ -75,10 +80,25 @@ export class SeguimientoFeedPage {
 
     const alert = this.alertCtrl.create({
       title: 'Atento Aviso!',
-      subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a> ',
+      subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te| invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a> ',
       buttons: ['Ok']
     });
     alert.present();
+  }
+
+  verificaSiciudadano(){
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    if (this.currentUser[0].id_grupo==3){
+      this.muestraToggle=false;
+      this.ocultaBack=true;
+    }
+    if (this.currentUser[0].id_grupo==1 || this.currentUser[0].id_grupo==2){
+
+      this.muestraToggle=true;
+      this.ocultaBack=false;
+    }
+
   }
 
 }
