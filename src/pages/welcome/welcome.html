@@ -1,28 +1,44 @@
+<ion-content id="welcome" class="cards-bg social-cards">
 
+  <ion-card  style="height: 95%">
+    <img src="assets/img/header.png" class="logo"/>
 
+    <ion-card-content >
+      <h1  align="center" > Bienvenido a la App de Seguimiento de Trámites de la SEDETUS </h1>
+      <div class="subtitulo" align="center">Inicia Sesión con el email y contraseña de tu Trámite</div>
+    </ion-card-content>
+    <ion-card-content >
+      <button ion-button block large color="lightprimary" round icon-left (click)="login()">
+        <ion-icon name="log-in"></ion-icon>Iniciar Sesión</button>
+    </ion-card-content>
 
-<ion-content padding id="welcome">
+    <ion-row >
+      <ion-col>
+        <button ion-button color="primary" clear icon-start>
+          <ion-icon name="logo-twitter"> </ion-icon>
+          Siguenos en Twitter
+        </button>
+      </ion-col>
+      
+      <ion-col align-self-center text-center>
+        <ion-badge item-end>+4k seguidores</ion-badge>
+      </ion-col>
+    </ion-row>
 
-<img src="assets/img/header.png" class="logo"/>
-<br>
-<h2 align="center"> Bienvenido a la App de Seguimiento de Trámites de la SEDETUS </h2>
-<div align="center">Inicia Sesión con el email y contraseña de tu Trámite</div>
-<br>
-<br>
+    <ion-row >
+      <ion-col>
+        <button ion-button color="primary" clear icon-start>
+          <ion-icon name="logo-facebook" ></ion-icon>
+          Siguenos en Facebook
+        </button>
+      </ion-col>
+      
+      <ion-col align-self-center text-center>
+        <ion-badge item-end>+24k Likes</ion-badge>
+      </ion-col>
+    </ion-row>
 
-<button ion-button block large color="lightprimary" round icon-left (click)="login()">
-	<ion-icon name="log-in"></ion-icon>
-	Iniciar Sesión
-</button>
-<br>
-<ion-item>
-  <ion-icon name="logo-twitter" item-start></ion-icon>
-  Siguenos en Twitter
-  <ion-badge item-end>+4k seguidores</ion-badge>
-</ion-item>
-<ion-item>
-  <ion-icon name="logo-facebook" item-start></ion-icon>
-  Siguenos en Facebook
-  <ion-badge item-end>+24k Likes</ion-badge>
-</ion-item>
+  </ion-card>
 </ion-content>
+
+
