@@ -5,4 +5,5 @@ export class CategoryModel {
   id_status:number;
   id_solicitud:number;
   id:number;
+  usuario:string;
 }

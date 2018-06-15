@@ -98,10 +98,12 @@
             <ion-row class="answer-details">
               <ion-col col-12>
                 <p class="answer-text">{{ seg.observaciones }}</p> 
+                <p class="answer-text">{{ seg.usuario }}</p> 
               </ion-col>
               <ion-col col-4 class="votes-details">
 
               </ion-col>
+              <div *ngIf="seg.usuario=='ENLACE' || seg.usuario=='ADMIN'">
               <ion-col col-4 class="actions-details">
                 <button class="edit-button" ion-button small round clear icon-only color="dark" (click)="editAnswerModal(seg.id_seguimiento,seg.observaciones,seg.adjunto)">
                   <ion-icon name="md-create"></ion-icon>
@@ -110,6 +112,7 @@
                   <ion-icon name="ios-trash-outline"></ion-icon>
                 </button>
               </ion-col>
+              </div>
             </ion-row>
           </ion-col>
         </ion-row>
