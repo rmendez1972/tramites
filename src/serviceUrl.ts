@@ -63,7 +63,7 @@ constructor() {}
 		getUrlpushComentario():String{ //igh
 			return this.URLpushcomentario='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarjson&comentario=';
 		}
-		
+
 		getTramite():String{
 			return this.URLTramite='http://localhost:8080/tramites/controladorregistro?operacion=listarjson&id_usuario=';
 		}
