@@ -21,16 +21,16 @@ constructor() {}
 
 
   		getUrl():String{
-	  			return this.URL='http://localhost:8080/Tramites/controladorseguimiento?operacion=listarjson&id_solicitud=';
+	  			return this.URL='http://localhost:8080/tramites/controladorseguimiento?operacion=listarjson&id_solicitud=';
 
 	  	}
 
 	  	getUrladjuntos():String{
-	  			return this.URLadjuntos='http://localhost:8080/Tramites/controladoradjunto?operacion=listarjson&id_seguimiento=';
+	  			return this.URLadjuntos='http://localhost:8080/tramites/controladoradjunto?operacion=listarjson&id_seguimiento=';
 	  	}
 
 	  	getUrladjuntosdescarga():String{
-	  			return this.URLadjuntosdescarga='http://localhost:8080/Tramites/adjuntos/';
+	  			return this.URLadjuntosdescarga='http://localhost:8080/tramites/adjuntos/';
 	  	}
 
 		getUrladjuntosupload():String{
@@ -38,16 +38,12 @@ constructor() {}
 	  	}
 
 	  	getUrllogin():String{
-	  			return this.URLlogin='http://localhost:8080/Tramites/controladorregistro?operacion=apilogin&username=';
+	  			return this.URLlogin='http://localhost:8080/tramites/controladorregistro?operacion=apilogin&username=';
 	  	}
 
 		getUrlCambiaPassword():String{
-<<<<<<< HEAD
 	  			return this.URLcambiapassword='http://localhost:8080/tramites/controladorregistro?operacion=apiSolicitanteCambioPassword&id_solicitante=';
 	  			
-=======
-	  			return this.URLcambiapassword='http://localhost:8080/Tramites/controladorregistro?operacion=apiSolicitanteCambioPassword&id_solicitante=';
->>>>>>> dea58f3de59011431965e25285015226f5fd09e7
 	  	}
 
 
@@ -56,21 +52,21 @@ constructor() {}
 	  	}
 
 		getUrlfilename():String{
-	  			return this.URLupload='http://localhost:8080/Tramites/controladoradjunto?operacion=grabarfromApp&id_seguimiento=';
+	  			return this.URLupload='http://localhost:8080/tramites/controladoradjunto?operacion=grabarfromApp&id_seguimiento=';
 		}
 
 		//MEGH
 		getUrlpushSeguimiento():String{
-			return this.URLpushseguimiento='http://localhost:8080/Tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
+			return this.URLpushseguimiento='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
 
 		}
 
 		getUrlpushComentario():String{ //igh
-			return this.URLpushcomentario='http://localhost:8080/Tramites/controladorseguimiento?operacion=grabarjson&comentario=';
+			return this.URLpushcomentario='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarjson&comentario=';
 		}
 		
 		getTramite():String{
-			return this.URLTramite='http://localhost:8080/Tramites/controladorregistro?operacion=listarjson&id_usuario=';
+			return this.URLTramite='http://localhost:8080/tramites/controladorregistro?operacion=listarjson&id_usuario=';
 		}
 
 		//MEGH
