@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, MenuController, Nav, App, AlertController } from 'ionic-angular';
+import { Platform, MenuController, Nav, App, AlertController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -33,6 +33,7 @@ export class MyApp {
     public menu: MenuController,
     public app: App,
     public alertCtrl: AlertController,
+    public events: Events,
     public authenticationservice: AuthenticationService
   ) {
     platform.ready().then(() => {
@@ -40,10 +41,13 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      this.events.subscribe("userloggedin", (user) => {
+        this.currentUser = user;
+        this.username=this.currentUser.firstname;
+        console.log('se disparo userloggedin');
+      });
     });
 
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-   //this.username=this.currentUser[0].username;
 
     this.pages = [
       {

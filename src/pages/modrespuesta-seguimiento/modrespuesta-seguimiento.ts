@@ -31,6 +31,8 @@ export class ModrespuestaSeguimientoPage {
   seguimientos:Array<CategoryModel> = new Array<CategoryModel>();
   seg:Array<CategoryModel> = new Array<CategoryModel>();
   actividad:Array<CategoryModel> = new Array<CategoryModel>();
+  segB:Array<CategoryModel> = new Array<CategoryModel>();
+  private muestrabot: boolean=false;
 
   constructor(
     public navCtrl: NavController,
@@ -76,6 +78,8 @@ export class ModrespuestaSeguimientoPage {
     
     //se recuperan los valores del localstorage en el metodo de getAnswers
     this.getAnswers();
+    
+    
 
   }
 
@@ -197,5 +201,6 @@ export class ModrespuestaSeguimientoPage {
       });
       alert.present();
     }
+
 
 }
