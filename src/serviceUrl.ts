@@ -26,11 +26,11 @@ constructor() {}
 	  	}
 
 	  	getUrladjuntos():String{
-	  			return this.URLadjuntos='http://localhost:8083/Tramites/controladoradjunto?operacion=listarjson&id_seguimiento=';
+	  			return this.URLadjuntos='http://localhost:8083/tramites/controladoradjunto?operacion=listarjson&id_seguimiento=';
 	  	}
 
 	  	getUrladjuntosdescarga():String{
-	  			return this.URLadjuntosdescarga='http://localhost:8083/Tramites/adjuntos/';
+	  			return this.URLadjuntosdescarga='http://localhost:8083/tramites/adjuntos/';
 	  	}
 
 		getUrladjuntosupload():String{
