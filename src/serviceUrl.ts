@@ -42,12 +42,9 @@ constructor() {}
 	  	}
 
 		getUrlCambiaPassword():String{
-<<<<<<< HEAD
-	  			return this.URLcambiapassword='http://localhost:8080/tramites/controladorregistro?operacion=apiSolicitanteCambioPassword&id_solicitante=';
-	  			
-=======
+
 	  			return this.URLcambiapassword='http://localhost:8080/Tramites/controladorregistro?operacion=apiSolicitanteCambioPassword&id_solicitante=';
->>>>>>> dea58f3de59011431965e25285015226f5fd09e7
+
 	  	}
 
 
@@ -68,7 +65,7 @@ constructor() {}
 		getUrlpushComentario():String{ //igh
 			return this.URLpushcomentario='http://localhost:8080/Tramites/controladorseguimiento?operacion=grabarjson&comentario=';
 		}
-		
+
 		getTramite():String{
 			return this.URLTramite='http://localhost:8080/Tramites/controladorregistro?operacion=listarjson&id_usuario=';
 		}

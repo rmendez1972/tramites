@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController,  Events   } from 'ionic-angular';
 
 import { SeguimientoFeedPage } from '../seguimiento-feed/seguimiento-feed';
 import { User } from './user';
@@ -26,6 +26,7 @@ export class Login {
     public navCtrl: NavController,
     public navParams: NavParams,
     private authenticationService: AuthenticationService,
+    public events: Events,
     private alertCtrl: AlertController) { }
 
   ionViewDidLoad() {
@@ -45,6 +46,10 @@ export class Login {
                     if (JSON.stringify(this.currentUser).length > 10) {
 
                         this.showAlert('Autenticado Exitosamente');
+
+                        this.events.publish("userloggedin", this.currentUser[0]);
+
+
                         if (this.currentUser[0].id_grupo==2 || this.currentUser[0].id_grupo==1){
                           this.navCtrl.push(TramiteFeedPage);
                           console.log('grupo  '+this.currentUser[0].id_grupo);
