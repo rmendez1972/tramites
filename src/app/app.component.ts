@@ -43,7 +43,7 @@ export class MyApp {
     });
 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.username=this.currentUser[0].username;
+   //this.username=this.currentUser[0].username;
 
     this.pages = [
       {
