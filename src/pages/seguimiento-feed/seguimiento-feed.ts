@@ -32,7 +32,7 @@ export class SeguimientoFeedPage {
     public alertCtrl: AlertController
   ) {
     let query_param = navParams.get('query');
-    this._query = isPresent(query_param) ? query_param : 'all';
+    this._query = isPresent(query_param) ? query_param : 'todos';
     let solicitud_param = navParams.get('sol');
     this.id_solicitud = solicitud_param.id_solicitud;
     this.id_solicitante = solicitud_param.id_solicitante;
