@@ -63,17 +63,21 @@ export class QuestionService {
     .toPromise()
   }
 
-  createQuestion(values){
+  /*createQuestion(values){
     let data = new Question();
     data.question = values.question;
     data.questionSlug = values.questionSlug
     return this.questionApi.create<Question>(data)
     .toPromise()
-  }
-
-  //igh
-  pushComentario(values, id_usuario:number,id_solicitud:number,id_status:number){
-    return this.http.get(this.pushcomentarioUrl+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
+    
+  }*/
+  
+  
+  
+  //igh. Graba un nuevo comentario.
+  pushComentario(observaciones:string, id_usuario:number,id_solicitud:number,id_status:number){
+    console.log(observaciones,id_usuario,id_solicitud,id_status);
+    return this.http.get(this.pushcomentarioUrl+observaciones+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
       .map((res) => res.json());
   }
 
