@@ -22,6 +22,7 @@ export class MyApp {
   rootPage: any = Welcome;
   private currentUser:any;
   private username:string;
+  private firstname:string;
 
 
   pages: Array<{title: string, icon: string, component: any, params: any}>;
@@ -37,38 +38,25 @@ export class MyApp {
     public authenticationservice: AuthenticationService
   ) {
     platform.ready().then(() => {
+
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+
       this.events.subscribe("userloggedin", (user) => {
         this.currentUser = user;
-        this.username=this.currentUser.firstname;
+        this.firstname=this.currentUser.firstname;
+        this.username=this.currentUser.username;
         console.log('se disparo userloggedin');
       });
+
+      this.events.subscribe("menubuiltin", (menu) => {
+        this.pages = menu;
+        console.log('se disparo menubuiltin');
+      });
+
     });
-
-
-    this.pages = [
-      {
-        title: 'Todos los Mensajes',
-        icon: 'list-box',
-        component: SeguimientoFeedPage,
-        params: {
-          query: 'all'
-        }
-      },
-      {
-        title: 'Ultimo Mensaje',
-        icon: 'list',
-        component: SeguimientoFeedPage,
-        params: {
-          query: 'basic'
-        }
-      }
-
-
-    ];
   }
 
 
