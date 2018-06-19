@@ -7,6 +7,7 @@ import { ManageAnswerPage } from '../manage-answer/manage-answer';
 import { RespuestaSeguimientoPage } from '../respuesta-seguimiento/respuesta-seguimiento';
 import { CategoryModel } from '../../services/seguimiento.model';
 import {SeguimientoService} from '../../services/seguimiento.service';
+import {EdicionSeguimientoPage} from '../edicion-seguimiento/edicion-seguimiento';
 
 
 /**
@@ -67,7 +68,7 @@ export class ModrespuestaSeguimientoPage {
       questionId: id_seguimiento,
       adjuntos: adjuntos
     };
-    let edit_answer_modal = this.modalCtrl.create(RespuestaSeguimientoPage, { data: edit_answer_data });
+    let edit_answer_modal = this.modalCtrl.create(EdicionSeguimientoPage, { data: edit_answer_data });
     edit_answer_modal.onDidDismiss(data => {
       this.getAnswers();
     });
