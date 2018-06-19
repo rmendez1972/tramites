@@ -43,7 +43,7 @@ constructor() {}
 
 		getUrlCambiaPassword():String{
 	  			return this.URLcambiapassword='http://localhost:8080/tramites/controladorregistro?operacion=apiSolicitanteCambioPassword&id_solicitante=';
-	  			
+
 	  	}
 
 
