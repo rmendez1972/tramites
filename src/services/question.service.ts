@@ -34,6 +34,7 @@ export class QuestionService {
   }
 
   getQuestionsBySlug(slug){
+       
     let filter: LoopBackFilter = {
       "include":{
         "relation": "answers"
@@ -42,6 +43,7 @@ export class QuestionService {
         "questionSlug": slug
       }
     }
+    console.log('Aqui estoy, regresando de firebase...'); 
     return this.questionApi.find<Question>(filter)
     .toPromise()
   }

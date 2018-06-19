@@ -9,17 +9,17 @@ import { CategoryModel } from '../../services/seguimiento.model';
 
 
 /**
- * Generated class for the RespuestaSeguimientoPage page.
+ * Generated class for the EdicionSeguimientoPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
 
 @Component({
-  selector: 'page-respuesta-seguimiento',
-  templateUrl: 'respuesta-seguimiento.html',
+  selector: 'page-edicion-seguimiento',
+  templateUrl: 'edicion-seguimiento.html',
 })
-export class RespuestaSeguimientoPage {
+export class EdicionSeguimientoPage {
 
   _mode : string;
   _question_id: string;
@@ -32,6 +32,7 @@ export class RespuestaSeguimientoPage {
   seg:Array<CategoryModel> = new Array<CategoryModel>();
   user:Array<CategoryModel> = new Array<CategoryModel>();
   sol:Array<CategoryModel> = new Array<CategoryModel>();
+  observaciones : Array<CategoryModel> = new Array<CategoryModel>();
   extraer:any={};
   id_seguimiento:string;
   adjunto:string;
@@ -52,7 +53,8 @@ export class RespuestaSeguimientoPage {
 
   ionViewWillLoad() {
     let data = this.navParams.get('data');
-    console.log("valor de data"+data);
+    console.log("valor de data"+data.answer);
+    this.observaciones = data.answer;
     if(data.answer){
       this.answer = data.answer;
     }
@@ -66,41 +68,39 @@ export class RespuestaSeguimientoPage {
     this.viewCtrl.dismiss(data);
   }
 
-  //metodo para la insersion de la respuesta del enlace
-  onSubmit(value){
-    //se recupera el valor del text area
-    let data = value;
-    //se recupera el id_seguimiento del seguimiento
-    this.id_seguimiento = this._question_id;
-    this.adjunto = this._adjuntos;
+//metodo para la insersion de la respuesta del enlace
+onSubmit(value){
+  //se recupera el valor del text area
+  let data = value;
+  //se recupera el id_seguimiento del seguimiento
+  this.id_seguimiento = this._question_id;
+  this.adjunto = this._adjuntos;
 
-    console.log("adjunto en el submit"+this.adjunto);
+  console.log("adjunto en el submit"+this.adjunto);
 
-    //recuperando valores del localstorage de usuario
-    this.user = JSON.parse(localStorage.getItem('currentUser'));
-    for (var u in this.user){
-      this.extraer.id_usuario = this.user[u].id;
-    }
-
-    //recuperando valores del localstorage de solicitud
-    this.sol = JSON.parse(localStorage.getItem('solicitud'));
-    for(var s in this.sol){
-      this.extraer.id_solicitud = this.sol[s].id_solicitud;
-    }     
-
-      //valores de los parametros del metodo 
-      //pushSeguimiento(valor del text area, id_usuario, id_solicitud, id_status)
-      this.seguimientoservices.pushSeguimiento(data.answer,this.extraer.id_usuario,this.extraer.id_solicitud,2)
-      .subscribe(
-        (seguimiento)=>{
-          this.seguimientos = seguimiento.seguimiento;
-          console.log(this.seguimientos);
-          localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));        
-        });
-      this.showMensaje('Se inserto el registro con exito');
-      this.dismiss();
-
+  //recuperando valores del localstorage de usuario
+  this.user = JSON.parse(localStorage.getItem('currentUser'));
+  for (var u in this.user){
+    this.extraer.id_usuario = this.user[u].id;
   }
+
+  //recuperando valores del localstorage de solicitud
+  this.sol = JSON.parse(localStorage.getItem('solicitud'));
+  for(var s in this.sol){
+    this.extraer.id_solicitud = this.sol[s].id_solicitud;
+  }
+    //llamado al service para la actualizacion
+    this.seguimientoservices.updateSeguimiento(this.id_seguimiento,data.answer,this.extraer.id_solicitud,this.extraer.id_usuario,2,this.adjunto)
+    .subscribe(
+      (seguimiento)=>{
+        this.seguimientos = seguimiento.seguimiento;
+        console.log(this.seguimientos);
+        localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));        
+      });
+    this.showMensaje('Se actualizo el registro con exito');
+    this.dismiss();
+
+}
 
 
   showMensaje(msg) {
@@ -112,5 +112,6 @@ export class RespuestaSeguimientoPage {
     });
     alert.present();
   }
+
 
 }
