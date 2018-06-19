@@ -43,6 +43,7 @@ export class SeguimientoService {
   }
   //metodo para insertar un nuevo seguimiento de parte del nivel enlace
   pushSeguimiento(values, id_usuario:number,id_solicitud:number,id_status:number){
+    console.log(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status);
     return this.http.get(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
       .map((res) => res.json());
   }
