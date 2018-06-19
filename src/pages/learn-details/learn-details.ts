@@ -21,6 +21,7 @@ export class LearnDetailsPage {
   questions: Array<any> = [];
   solicitud : any;
   tramite : any;
+  questionId:any;
 
   public seguimiento : any;
   seguimientos:any[];//igh
@@ -46,7 +47,8 @@ export class LearnDetailsPage {
   }
 
   createQuestionModal() {
-    console.log('Creando comentario');
+    console.log('Creando comentario..');
+
     let create_question_modal = this.modalCtrl.create(ManageQuestionPage, { slug: this.solicitud.slug });
     create_question_modal.onDidDismiss(data => {
       this.getQuestions();
