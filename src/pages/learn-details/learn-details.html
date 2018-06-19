@@ -20,31 +20,35 @@
     <h3>
       Trámite: {{tramite[0].nombre}}
     </h3>
-    <p>
+
+    <!--<p>
 
      Seguimiento:{{seguimiento.observaciones}}
 
-    </p>
+    </p>-->
   </ion-card-content>
 </ion-card>
 
-  <div *ngIf="questions.length == 0">
+  <!--<div *ngIf="questions.length== 0">
+    <div *ngIf="seguimientos.length == 0">
     <h3 class="questions-call-out">
       No hay detalles del Seguimiento al momento
     </h3>
-  </div>
+  </div>-->
 
-  <div *ngIf="questions.length > 0">
+    <!--<div *ngIf="questions.length > 0">-->
+    <div>
     <h3 class="questions-call-out">
-      <span>Recuperado todos mis comentarios a este Seguimiento del Trámites: </span>
-      <ion-badge class="call-out-tag">{{tramite[0].nombre}}</ion-badge>
+      <span>Recuperado todos mis comentarios a este Seguimiento del Trámite: </span>
+      <!--<ion-badge class="call-out-tag">{{tramite[0].nombre}}</ion-badge>-->
 
     </h3>
 
     <ion-list class="questions-list">
-      <ion-item class="question-item" *ngFor="let question of questions">
+      <!--<ion-item class="question-item" *ngFor="let question of questions">-->
+      <ion-item class="question-item" *ngFor="let question of seguimientos">
         <ion-row>
-          <ion-col class="votes-col" col-2>
+          <!--<ion-col class="votes-col" col-2>
             <button class="vote-button up-vote" ion-button clear small (click)= "addPositiveVote(question)">
               <ion-icon name="arrow-up"></ion-icon>
             </button>
@@ -52,13 +56,18 @@
             <button class="vote-button down-vote" ion-button clear small (click)= "addNegativeVote(question)">
               <ion-icon name="arrow-down"></ion-icon>
             </button>
-          </ion-col>
+          </ion-col>-->
           <ion-col col-10>
             <ion-row class="question-details">
               <ion-col col-12>
-                <h2 class="question-text" (click)="openAnswers(question)">{{ question.question }}</h2>
+                <div *ngIf="currentUser[0].id_grupo==2 || this.currentUser[0].id_grupo==1">
+                <h2 class="question-text" (click)="openAnswers(question)">{{ question.observaciones }}</h2>
+                </div>
+                <div *ngIf="currentUser[0].id_grupo==3">
+                <h2 class="question-text" >{{ question.observaciones }}</h2>
+              </div>
               </ion-col>
-              <ion-col col-4 class="votes-details">
+              <!--<ion-col col-4 class="votes-details">
                 <div class="details-wrapper">
                   <span class="total-votes">{{ question.positiveVotes + question.negativeVotes }}</span>
                   <span class="details-text">Votes</span>
@@ -69,17 +78,18 @@
                   <span class="total-answers">{{ question.answers.length }}</span>
                   <span class="details-text">{{ (question.answers.length > 1 || question.answers.length == 0) ? 'Answers' : 'Answer' }}</span>
                 </div>
-              </ion-col>
+              </ion-col>-->
+              <!--
               <ion-col col-4 class="actions-details">
-                <!--
+                
                   <button class="edit-button" ion-button small round clear icon-only color="dark" (click)="editQuestionModal(question)">
                       <ion-icon name="md-create"></ion-icon>
                     </button>
                 <button class="delete-button" ion-button small round clear icon-only color="danger" (click)="delete(question.id)">
                   <ion-icon name="ios-trash-outline"></ion-icon>
                 </button>
-              -->
-              </ion-col>
+              
+              </ion-col>-->
             </ion-row>
           </ion-col>
         </ion-row>
