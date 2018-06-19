@@ -17,6 +17,7 @@ import { ManageQuestionPage } from '../pages/manage-question/manage-question';
 import { ManageAnswerPage } from '../pages/manage-answer/manage-answer';
 import { RespuestaSeguimientoPage } from '../pages/respuesta-seguimiento/respuesta-seguimiento';
 import { ModrespuestaSeguimientoPage } from '../pages/modrespuesta-seguimiento/modrespuesta-seguimiento';
+import { EdicionSeguimientoPage } from '../pages/edicion-seguimiento/edicion-seguimiento';
 
 import { AuthenticationService } from '../services/authentication.service';
 import { QuestionService } from '../services/question.service';
@@ -48,7 +49,8 @@ import {ServiceUrl} from '../serviceUrl'
     ManageQuestionPage,
     ManageAnswerPage,
     RespuestaSeguimientoPage,
-    ModrespuestaSeguimientoPage
+    ModrespuestaSeguimientoPage,
+    EdicionSeguimientoPage
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ import {ServiceUrl} from '../serviceUrl'
     ManageQuestionPage,
     ManageAnswerPage,
     RespuestaSeguimientoPage,
-    ModrespuestaSeguimientoPage
+    ModrespuestaSeguimientoPage,
+    EdicionSeguimientoPage
   ],
   providers: [
     StatusBar,
