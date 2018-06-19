@@ -98,10 +98,13 @@
   </div>
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar color="primary">
-    <button ion-button round block (click)="createQuestionModal()" color="light">
-      <b>Crear nuevo comentario a este seguimiento?</b>
-    </button>
-  </ion-toolbar>
+<ion-footer >
+  <div >
+    <ion-toolbar color="primary">
+      <button ion-button round block (click)="createQuestionModal()" color="light" *ngIf="id_grupo==3">
+        <b>Crear nuevo comentario a este seguimiento?</b>
+      </button>
+    </ion-toolbar>
+  </div>
+  
 </ion-footer>

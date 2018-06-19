@@ -25,6 +25,7 @@ export class LearnDetailsPage {
 
   public seguimiento : any;
   seguimientos:any[];//igh
+  public id_grupo: number;
 
   constructor(
     public navCtrl: NavController,
@@ -61,8 +62,11 @@ export class LearnDetailsPage {
     this.seguimientos=[];//igh
     this.seguimientos =JSON.parse(localStorage.getItem('seguimiento'));//igh
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));//igh
-    this.getQuestions();
+    this.id_grupo=this.currentUser[0].id_grupo;
+    console.log('Grupin...'+this.id_grupo);
     console.log(this.seguimientos);
+    this.getQuestions();
+    
   }
 
   getQuestions(){
