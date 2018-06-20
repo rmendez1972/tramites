@@ -34,6 +34,8 @@ export class ModrespuestaSeguimientoPage {
   actividad:Array<CategoryModel> = new Array<CategoryModel>();
   segB:Array<CategoryModel> = new Array<CategoryModel>();
   private muestrabot: boolean=false;
+  private currentUser:any[];
+  private mid_usuario: number;
 
   constructor(
     public navCtrl: NavController,
@@ -76,7 +78,8 @@ export class ModrespuestaSeguimientoPage {
   }
 
   ionViewWillEnter() {
-
+    this.currentUser =JSON.parse(localStorage.getItem('currentUser'));
+    this.mid_usuario=this.currentUser[0].id;
     //se recuperan los valores del localstorage en el metodo de getAnswers
     this.getAnswers();
 

@@ -42,11 +42,11 @@
 
           <h3 class="answer-text">{{ seg.observaciones }}</h3>
           <p class="answer-text">{{ seg.usuario }}</p>
-          <ion-icon *ngIf="seg.id_usuario!=3"  name="arrow-back" item-end></ion-icon>
+          <ion-icon *ngIf="seg.id_usuario==mid_usuario"  name="arrow-back" item-end></ion-icon>
         </ion-item>
 
 
-        <ion-item-options *ngIf="seg.id_usuario!=3" side="right">
+        <ion-item-options *ngIf="seg.id_usuario==mid_usuario" side="right">
           <button class="edit-button" ion-button Medium round clear icon-only color="dark" (click)="editAnswerModal(seg.id_seguimiento,seg.observaciones,seg.adjunto)">
             <ion-icon name="md-create"></ion-icon>
           </button>
