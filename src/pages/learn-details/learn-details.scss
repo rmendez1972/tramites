@@ -145,7 +145,8 @@ learn-details-page {
 				color: $theme-color-3;
 				margin: 0px;
 				font-weight: 500;
-				font-size: 1.6rem;
+				//font-size: 1.6rem;
+				font-size: 1.3rem; //igh
 				line-height: 1.4;
 			  white-space: normal;
 			}
@@ -193,5 +194,23 @@ learn-details-page {
 			}
 		}
 
+	}
+	.ciudadano{ //igh
+		font-size: 1rem;
+		font-weight: normal;
+		font-style: italic;
+		color:#21A5C2;
+		
+	}
+
+	.usuario{ //igh
+		font-size: 1rem;
+		font-weight: normal;
+		font-style: italic;
+		color:#566573;
+		
+	}
+	h2:hover {
+		background-color: #F2F3F4  ;
 	}
 }

@@ -21,9 +21,11 @@ export class LearnDetailsPage {
   questions: Array<any> = [];
   solicitud : any;
   tramite : any;
+  questionId:any;
 
   public seguimiento : any;
   seguimientos:any[];//igh
+  public id_grupo: number;
 
   constructor(
     public navCtrl: NavController,
@@ -46,7 +48,8 @@ export class LearnDetailsPage {
   }
 
   createQuestionModal() {
-    console.log('Creando comentario');
+    console.log('Creando comentario..');
+
     let create_question_modal = this.modalCtrl.create(ManageQuestionPage, { slug: this.solicitud.slug });
     create_question_modal.onDidDismiss(data => {
       this.getQuestions();
@@ -59,8 +62,11 @@ export class LearnDetailsPage {
     this.seguimientos=[];//igh
     this.seguimientos =JSON.parse(localStorage.getItem('seguimiento'));//igh
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));//igh
-    this.getQuestions();
+    this.id_grupo=this.currentUser[0].id_grupo;
+    console.log('Grupin...'+this.id_grupo);
     console.log(this.seguimientos);
+    this.getQuestions();
+    
   }
 
   getQuestions(){
