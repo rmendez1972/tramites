@@ -18,7 +18,9 @@
   <img src="assets/img/header.png"/>
   <ion-card-content>
     <h3>
-      Trámite: {{tramite[0].nombre}}
+      Trámite: {{tramite[0].nombre}}<br>
+      <ion-badge color="dark" item-end>{{solicitud[0].status}}</ion-badge>
+    <!--</p>Estatus: {{solicitud[0].status}}-->
     </h3>
 
     <!--<p>
@@ -30,7 +32,7 @@
 </ion-card>
 
   <!--<div *ngIf="questions.length== 0">
-    <div *ngIf="seguimientos.length == 0">
+    <div *ngIf="seguimiento.length == 0">
     <h3 class="questions-call-out">
       No hay detalles del Seguimiento al momento
     </h3>
