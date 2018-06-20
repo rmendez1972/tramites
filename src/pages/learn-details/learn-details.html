@@ -57,7 +57,7 @@
               <ion-icon name="arrow-down"></ion-icon>
             </button>
           </ion-col>-->
-          <ion-col col-10>
+          <ion-col col-12>
             <ion-row class="question-details">
               <ion-col col-12>
 
@@ -120,9 +120,11 @@
 <ion-footer >
   <div >
     <ion-toolbar color="primary">
+      <div *ngIf="seguimiento.id_status==2">
       <button ion-button round block (click)="createQuestionModal()" color="light" *ngIf="id_grupo==3">
-        <b>Crear nuevo comentario a este seguimiento?</b>
+        <b>Crear nuevo comentario?</b>
       </button>
+    </div>
     </ion-toolbar>
   </div>
   
