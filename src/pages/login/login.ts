@@ -21,6 +21,7 @@ import { TramiteFeedPage } from '../tramites-feed/tramites-feed';
 export class Login {
   model: any = {};
   currentUser: User;
+  pages: Array<{title: string, icon: string, component: any, params: any}>;
 
   constructor(
     public navCtrl: NavController,
@@ -51,6 +52,28 @@ export class Login {
 
 
                         if (this.currentUser[0].id_grupo==2 || this.currentUser[0].id_grupo==1){
+
+                          this.pages = [
+                            {
+                              title: 'Todos los Trámites',
+                              icon: 'list-box',
+                              component: TramiteFeedPage,
+                              params: {
+                                query: 'all'
+                              }
+                            },
+                            {
+                              title: 'Ultimo Trámite',
+                              icon: 'list',
+                              component: TramiteFeedPage,
+                              params: {
+                                query: 'basic'
+                              }
+                            }
+                          ];
+
+                          this.events.publish("menubuiltin", this.pages);
+
                           this.navCtrl.push(TramiteFeedPage);
                           console.log('grupo  '+this.currentUser[0].id_grupo);
                         }
@@ -59,6 +82,28 @@ export class Login {
                             id_solicitud: this.currentUser[0].id_solicitud,
                             id_solicitante: this.currentUser[0].id_solicitante
                           }
+
+                          this.pages = [
+                            {
+                              title: 'Todos los Seguimientos',
+                              icon: 'list-box',
+                              component: SeguimientoFeedPage,
+                              params: {
+                                query: 'all'
+                              }
+                            },
+                            {
+                              title: 'Ultimo Seguimiento',
+                              icon: 'list',
+                              component: SeguimientoFeedPage,
+                              params: {
+                                query: 'basic'
+                              }
+                            }
+                          ];
+
+                          this.events.publish("menubuiltin", this.pages);
+
                           this.navCtrl.push(SeguimientoFeedPage, {sol: sol});
                           console.log('grupo  '+this.currentUser[0].id_grupo);
                         }
