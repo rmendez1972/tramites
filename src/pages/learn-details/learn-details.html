@@ -61,7 +61,7 @@
             <ion-row class="question-details">
               <ion-col col-12>
                 <div *ngIf="currentUser[0].id_grupo==2 || this.currentUser[0].id_grupo==1">
-                <h2 class="question-text" (click)="openAnswers(question)">{{ question.observaciones }}</h2>
+                <h2 class="question-text" (click)="openAnswers(question)" >{{ question.observaciones }}</h2>
                 </div>
                 <div *ngIf="currentUser[0].id_grupo==3">
                 <h2 class="question-text" >{{ question.observaciones }}</h2>
@@ -98,10 +98,13 @@
   </div>
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar color="primary">
-    <button ion-button round block (click)="createQuestionModal()" color="light">
-      <b>Crear nuevo comentario a este seguimiento?</b>
-    </button>
-  </ion-toolbar>
+<ion-footer >
+  <div >
+    <ion-toolbar color="primary">
+      <button ion-button round block (click)="createQuestionModal()" color="light" *ngIf="id_grupo==3">
+        <b>Crear nuevo comentario a este seguimiento?</b>
+      </button>
+    </ion-toolbar>
+  </div>
+  
 </ion-footer>

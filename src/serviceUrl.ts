@@ -45,6 +45,7 @@ constructor() {}
 		
 		getUrlCambiaPassword():String{
 	  			return this.URLcambiapassword='http://localhost:8080/tramites/controladorregistro?operacion=apiSolicitanteCambioPassword&id_solicitante=';
+
 	  	}
 
 
@@ -63,9 +64,8 @@ constructor() {}
 		}
 
 		getUrlpushComentario():String{ //igh
-			return this.URLpushcomentario='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarcomentariojson&comentario=';
-
-
+			
+			return this.URLpushcomentario='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarcomentariojson&observaciones=';
 
 		}
 

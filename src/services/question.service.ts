@@ -75,6 +75,7 @@ export class QuestionService {
   
   
   //igh. Graba un nuevo comentario.
+  
   pushComentario(observaciones:string, id_usuario:number,id_solicitud:number,id_status:number){
     console.log(observaciones,id_usuario,id_solicitud,id_status);
     return this.http.get(this.pushcomentarioUrl+observaciones+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
