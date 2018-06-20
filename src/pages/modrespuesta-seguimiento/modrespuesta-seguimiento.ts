@@ -61,7 +61,7 @@ export class ModrespuestaSeguimientoPage {
   editAnswerModal(id_seguimiento,observaciones,adjuntos) {
     console.log('observaciones'+observaciones);
     console.log('adjuntos'+adjuntos);
-    
+
     let edit_answer_data = {
       mode: 'Edit',
       answer: observaciones,
@@ -76,11 +76,11 @@ export class ModrespuestaSeguimientoPage {
   }
 
   ionViewWillEnter() {
-    
+
     //se recuperan los valores del localstorage en el metodo de getAnswers
     this.getAnswers();
-    
-    
+
+
 
   }
 
@@ -107,7 +107,7 @@ export class ModrespuestaSeguimientoPage {
   }
 
   delete(id_seguimiento,adjuntos){
-    
+
     //recuperamos los datos del local storage de seguimiento
     this.seg = JSON.parse(localStorage.getItem('seguimiento'));
     //obtenemos la id_solicitud
@@ -143,7 +143,7 @@ export class ModrespuestaSeguimientoPage {
                   console.log(this.seguimientos);
                   //se almacenan en el localstorage
                 localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
-                } 
+                }
               )
               this.showMensaje('Se elimino el registro con exito');
               this.getAnswers();
@@ -152,7 +152,7 @@ export class ModrespuestaSeguimientoPage {
         ]
       });
       confirm.present();
-      
+
 
     }
 
@@ -187,7 +187,7 @@ export class ModrespuestaSeguimientoPage {
 
     const alert = this.alertCtrl.create({
       title: 'Atento Aviso!',
-      subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de nuestra aplicación web en la dirección (url) http://qroo.gob.mx/sedetus desde tu laptop o computadora de escritorio',
+      subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a> ',
       buttons: ['Ok']
     });
     alert.present();

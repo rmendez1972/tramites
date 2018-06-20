@@ -55,7 +55,7 @@ export class Login {
 
                           this.pages = [
                             {
-                              title: 'Todos los Mensajes',
+                              title: 'Todos los Trámites',
                               icon: 'list-box',
                               component: TramiteFeedPage,
                               params: {
@@ -63,7 +63,7 @@ export class Login {
                               }
                             },
                             {
-                              title: 'Ultimo Mensaje',
+                              title: 'Ultimo Trámite',
                               icon: 'list',
                               component: TramiteFeedPage,
                               params: {

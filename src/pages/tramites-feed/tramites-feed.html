@@ -40,11 +40,9 @@
     </ion-item>
     <img src="assets/img/rsz_fondo_soles_grises.png"/>
     <div>
-      <h3 class="category-title" style="text-align:left">Solicitud: {{sol.tramite}}</h3>
+      <h2 class="category-title" >Solicitud: {{sol.tramite}}</h2>
     </div>
-    <div >
-       <h3 class="category-description" style="font-size:.9em; text-align:left">Solicitante: {{sol.solicitante}}</h3>
-    </div>
+
     <div>
       <ion-row>
         <ion-col >
@@ -63,13 +61,13 @@
   <ion-toolbar color="primary">
     <ion-segment [(ngModel)]="icons"  color="light" style="height: 37px;">
       <ion-segment-button value="camera" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;" >
-        <ion-icon  name="camera" ></ion-icon >
+        <ion-icon  name="list-box" ></ion-icon >
           <div style="font-size: 9px !important;">
             Todos los Trámites
           </div>
       </ion-segment-button>
       <ion-segment-button value="bookmark" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;">
-        <ion-icon name="bookmark"></ion-icon>
+        <ion-icon name="list"></ion-icon>
           <div style="font-size: 9px !important;">
             El último Trámite
           </div>

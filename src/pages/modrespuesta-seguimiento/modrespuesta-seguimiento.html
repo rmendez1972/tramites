@@ -22,28 +22,7 @@
         <p class="vote-call-to-action">
           Fue útil este seguimiento?
         </p>
-        <!--<ion-row class="question-actions-row">
-          <ion-col no-padding col-4>
-            <button class="question-action-button up-vote" ion-button icon-left round block small color="dark" (click)= "upVoteQuestion()">
-              <ion-icon name="arrow-up"></ion-icon>
-              <div>Up-vote</div>
-            </button>
-          </ion-col>
-          <ion-col no-padding col-3 class="score-col">
-            <div class="score-wrapper">
-              <span class="question-score" [ngClass]="{'good-score': (question.positiveVotes - question.negativeVotes) > 0, 'no-score': (question.positiveVotes - question.negativeVotes) == 0, 'bad-score': (question.positiveVotes - question.negativeVotes) < 0}">{{ question.positiveVotes - question.negativeVotes }}</span>
-              <button class="favourite-button" ion-button small round clear icon-only>
-                <ion-icon name="ios-star"></ion-icon>
-              </button>
-            </div>
-          </ion-col>
-          <ion-col no-padding col-4>
-            <button class="question-action-button down-vote" ion-button icon-left round block small color="dark" (click)= "downVoteQuestion()">
-              <ion-icon name="arrow-down"></ion-icon>
-              <div>Down-vote</div>
-            </button>
-          </ion-col>
-        </ion-row>-->
+        <
       </ion-col>
     </ion-row>
   </div>
@@ -54,79 +33,44 @@
     </h3>
   </div>-->
 
-  
 
-    <ion-list class="answers-list">
-      <!--<ion-item class="answer-item" *ngFor="let answer of answers">
-        <ion-row>
-          <ion-col class="votes-col" col-2>
-            <button class="vote-button up-vote" ion-button clear small (click)= "addPositiveVote(answer)">
-              <ion-icon name="arrow-up"></ion-icon>
-            </button>
-            <span class="answer-score" [ngClass]="{'good-score': (answer.positiveVotes - answer.negativeVotes) > 0, 'no-score': (answer.positiveVotes - answer.negativeVotes) == 0, 'bad-score': (answer.positiveVotes - answer.negativeVotes) < 0}">{{ answer.positiveVotes - answer.negativeVotes }}</span>
-            <button class="vote-button down-vote" ion-button clear small (click)= "addNegativeVote(answer)">
-              <ion-icon name="arrow-down"></ion-icon>
-            </button>
-          </ion-col>
-          <ion-col col-10>
-            <ion-row class="answer-details">
-              <ion-col col-12>
-                <p class="answer-text">{{ answer.answer }}</p>
-              </ion-col>
-              <ion-col col-4 class="votes-details">
-                <div class="details-wrapper">
-                  <span class="total-votes">{{ answer.positiveVotes + answer.negativeVotes }}</span>
-                  <span class="details-text">Votes</span>
-                </div>
-              </ion-col>
-              <ion-col col-4 class="actions-details">
-                <button class="edit-button" ion-button small round clear icon-only color="dark" (click)="editAnswerModal(answer)">
-                  <ion-icon name="md-create"></ion-icon>
-                </button>
-                <button class="delete-button" ion-button small round clear icon-only color="danger" (click)="delete(answer.id)">
-                  <ion-icon name="ios-trash-outline"></ion-icon>
-                </button>
-              </ion-col>
-            </ion-row>
-          </ion-col>
-        </ion-row>
-      </ion-item>-->
 
-      <ion-item class="answer-item" *ngFor="let seg of seguimientos">
-        <ion-row>
-          <ion-col col-10>
-            <ion-row class="answer-details">
-              <ion-col col-12>
-                <p class="answer-text">{{ seg.observaciones }}</p> 
-                <p class="answer-text">{{ seg.usuario }}</p> 
-              </ion-col>
-              <ion-col col-4 class="votes-details">
+    <ion-list inset>
+      <ion-item-sliding *ngFor="let seg of seguimientos">
+        <ion-item class="answer-item" >
 
-              </ion-col>
-              <div *ngIf="seg.usuario=='ENLACE' || seg.usuario=='ADMIN'">
-              <ion-col col-4 class="actions-details">
-                <button class="edit-button" ion-button small round clear icon-only color="dark" (click)="editAnswerModal(seg.id_seguimiento,seg.observaciones,seg.adjunto)">
-                  <ion-icon name="md-create"></ion-icon>
-                </button>
-                <button class="delete-button" ion-button small round clear icon-only color="danger" (click)="delete(seg.id_seguimiento,seg.adjunto)">
-                  <ion-icon name="ios-trash-outline"></ion-icon>
-                </button>
-              </ion-col>
-              </div>
-            </ion-row>
-          </ion-col>
-        </ion-row>
-      </ion-item>
+          <h3 class="answer-text">{{ seg.observaciones }}</h3>
+          <p class="answer-text">{{ seg.usuario }}</p>
+          <ion-icon *ngIf="seg.usuario=='ENLACE' || seg.usuario=='ADMIN'"  name="arrow-back" item-end></ion-icon>
+        </ion-item>
 
+        <ion-item-options *ngIf="seg.usuario=='ENLACE' || seg.usuario=='ADMIN'" side="right">
+          <button class="edit-button" ion-button Medium round clear icon-only color="dark" (click)="editAnswerModal(seg.id_seguimiento,seg.observaciones,seg.adjunto)">
+            <ion-icon name="md-create"></ion-icon>
+          </button>
+          <button class="delete-button" ion-button Medium round clear icon-only color="danger" (click)="delete(seg.id_seguimiento,seg.adjunto)">
+            <ion-icon name="ios-trash-outline"></ion-icon>
+
+          </button>
+        </ion-item-options>
+
+      </ion-item-sliding>
 
     </ion-list>
-  
+
 </ion-content>
 
 <ion-footer >
   <ion-toolbar color="primary">
-    <button ion-button block round (click)="createAnswerModal()" color="light">
-      <b>Contéstar al ciudadano</b>
-    </button>
+    <ion-segment [(ngModel)]="icons"  color="light" style="height: 37px;">
+      <ion-segment-button value="camera" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;"(click)="createAnswerModal()" >
+        <ion-icon  name="list-box" ></ion-icon >
+          <div style="font-size: 9px !important;">
+            Constestar al Ciudadano
+          </div>
+      </ion-segment-button>
+
+    </ion-segment>
   </ion-toolbar>
 </ion-footer>
+<!-- (click)="createAnswerModal()" -->
