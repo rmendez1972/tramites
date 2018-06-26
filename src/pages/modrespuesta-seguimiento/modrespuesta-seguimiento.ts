@@ -53,15 +53,14 @@ export class ModrespuestaSeguimientoPage {
     public modalCtrl: ModalController,
     public segservices:SeguimientoService
   ) {
-    /*
-    let solicitud_param = navParams.get('solicitud');
-    let tramite_param = navParams.get('tramite');
-    let seguimientos_param = navParams.get('seg');
+    
+    
+    let data = navParams.get('data');
 
-    //localStorage.setItem('solicitud',JSON.stringify(solicitud_param));
-    this.solicitud = isPresent(solicitud_param) ? solicitud_param : null;
-    this.tramite = isPresent(tramite_param) ? tramite_param : null;
-    this.seguimiento= isPresent(seguimientos_param) ? seguimientos_param : null;*/
+
+    this.seguimiento = isPresent(data) && isPresent(data.seguimientos) ? data.seguimientos : '';
+    this.tramite = isPresent(data) && isPresent(data.tramites) ? data.tramites : '';
+    this.solicitud = isPresent(data) && isPresent(data.solicitud) ? data.solicitud : '';
   }
 
   createAnswerModal() {
@@ -99,6 +98,9 @@ export class ModrespuestaSeguimientoPage {
     //se recuperan los valores del localstorage en el metodo de getAnswers
     this.getAnswers();
 
+    console.log("tramite:"+this.tramite);
+    console.log("solicitud:"+this.solicitud);
+    console.log("seguimiento"+this.seguimiento);
 
 
   }

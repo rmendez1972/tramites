@@ -26,6 +26,8 @@ export class LearnDetailsPage {
   public seguimiento : any;
   seguimientos:any[];//igh
   public id_grupo: number;
+ 
+ 
 
   constructor(
     public navCtrl: NavController,
@@ -131,10 +133,15 @@ export class LearnDetailsPage {
     .then(res => console.log(res))
   }
 
-  openAnswers(question){
-    this.navCtrl.push(ModrespuestaSeguimientoPage, {
-      id: question.id
-    });
+  openAnswers(seguimiento, tramite, solicitud){
+
+    let data_params = {
+      seguimientos:seguimiento,
+      tramites:tramite,
+      solicitud:solicitud
+    }
+ 
+    this.navCtrl.push(ModrespuestaSeguimientoPage, {data: data_params });
   }
 
    // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
