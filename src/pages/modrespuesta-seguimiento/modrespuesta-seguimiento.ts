@@ -3,7 +3,7 @@ import { NavController, LoadingController, AlertController, NavParams, ModalCont
 import { Question } from '../../../sdk';
 import { AnswerService } from '../../services/answer.service';
 import { QuestionService } from '../../services/question.service';
-import { ManageAnswerPage } from '../manage-answer/manage-answer';
+
 import { RespuestaSeguimientoPage } from '../respuesta-seguimiento/respuesta-seguimiento';
 import { CategoryModel } from '../../services/seguimiento.model';
 import {SeguimientoService} from '../../services/seguimiento.service';
