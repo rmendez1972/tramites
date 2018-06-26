@@ -57,16 +57,35 @@
               <ion-icon name="arrow-down"></ion-icon>
             </button>
           </ion-col>-->
-          <ion-col col-10>
+          <ion-col col-12>
             <ion-row class="question-details">
               <ion-col col-12>
-                <div *ngIf="currentUser[0].id_grupo==2 || this.currentUser[0].id_grupo==1">
-                <h2 class="question-text" (click)="openAnswers(question)" >{{ question.observaciones }}</h2>
+
+                <!--Activar el método openAnswer en caso que el usuario seguimiento o administrador-->
+                <div *ngIf="currentUser[0].id_grupo==2 || this.currentUser[0].id_grupo==1 else elseBlokCiudadano">
+                  <!--<h2 class="question-text" (click)="openAnswers(question)" >{{ question.observaciones }}</h2>-->
+                  <h2 *ngIf="question.usuario=='CIUDADANO'else elseBlockUsuario1" class="question-text" (click)="openAnswers(question)" ><span class="ciudadano">{{ question.usuario }}:<br></span>{{ question.observaciones }}></h2>
+                  <ng-template #elseBlockUsuario1>
+                      <h2 class="question-text" (click)="openAnswers(question)"><span class="usuario">{{ question.usuario }}:<br> </span>{{ question.observaciones }}</h2>
+                    </ng-template>
                 </div>
-                <div *ngIf="currentUser[0].id_grupo==3">
-                <h2 class="question-text" >{{ question.observaciones }}</h2>
-              </div>
+                
+                <!--Elimina el click, en caso de que el usuario sea el ciudadano-->
+                <!--<div *ngIf="currentUser[0].id_grupo==3">-->
+                <ng-template #elseBlokCiudadano>
+                  <div>  
+                    <h2 *ngIf="question.usuario=='CIUDADANO'else elseBlockUsuario" class="question-text" ><span class="ciudadano">{{ question.usuario }}:<br> </span>{{ question.observaciones }}</h2> 
+                    <!--<h2 class="question-text" ><span class="usuario">{{ question.usuario }}:<br> </span>{{ question.observaciones }}</h2>-->
+                    <ng-template #elseBlockUsuario>
+                      <h2 class="question-text" ><span class="usuario">{{ question.usuario }}:<br> </span>{{ question.observaciones }}</h2>
+                    </ng-template>
+                  </div>
+                </ng-template>    
+              <!--</div>-->
               </ion-col>
+              <!--<div *ngIf="show; else elseBlock">Text to show</div>
+              <ng-template #elseBlock>Alternate text while primary text is hidden</ng-template>
+              -->
               <!--<ion-col col-4 class="votes-details">
                 <div class="details-wrapper">
                   <span class="total-votes">{{ question.positiveVotes + question.negativeVotes }}</span>
@@ -101,9 +120,11 @@
 <ion-footer >
   <div >
     <ion-toolbar color="primary">
+      <div *ngIf="seguimiento.id_status==2">
       <button ion-button round block (click)="createQuestionModal()" color="light" *ngIf="id_grupo==3">
-        <b>Crear nuevo comentario a este seguimiento?</b>
+        <b>Crear nuevo comentario?</b>
       </button>
+    </div>
     </ion-toolbar>
   </div>
   

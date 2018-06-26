@@ -30,7 +30,8 @@ constructor() {}
 	  	}
 
 	  	getUrladjuntosdescarga():String{
-	  			return this.URLadjuntosdescarga='http://localhost:8080/tramites/adjuntos/';
+
+	  			return this.URLadjuntos='http://localhost:8080/Tramites/controladoradjunto?operacion=listarjson&id_seguimiento=';
 	  	}
 
 		getUrladjuntosupload():String{
@@ -38,13 +39,14 @@ constructor() {}
 	  	}
 
 	  	getUrllogin():String{
-
 	  			return this.URLlogin='http://localhost:8080/tramites/controladorregistro?operacion=apilogin&username=';
+
 	  	}
 
-		
+
 		getUrlCambiaPassword():String{
 	  			return this.URLcambiapassword='http://localhost:8080/tramites/controladorregistro?operacion=apiSolicitanteCambioPassword&id_solicitante=';
+
 
 	  	}
 
@@ -55,11 +57,12 @@ constructor() {}
 
 		getUrlfilename():String{
 	  			return this.URLupload='http://localhost:8080/tramites/controladoradjunto?operacion=grabarfromApp&id_seguimiento=';
+
 		}
 
 		//MEGH
 		getUrlpushSeguimiento():String{
-			return this.URLpushseguimiento='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
+			return this.URLpushseguimiento='http://localhost:8080/Tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
 
 		}
 
@@ -67,19 +70,22 @@ constructor() {}
 			
 			return this.URLpushcomentario='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarcomentariojson&observaciones=';
 
+
 		}
 
 		getTramite():String{
 			return this.URLTramite='http://localhost:8080/tramites/controladorregistro?operacion=listarjson&id_usuario=';
+
 		}
 
 		//MEGH
 		getUrldeleteSeguimiento():String{
 			return this.URLdeleteseguimiento='http://localhost:8080/tramites/controladorseguimiento?operacion=borrarjson&id_seguimiento=';
 		}
-
+			
 		getUrlupdateSeguimiento():String{
-			return this.URLupdateseguimiento='http://localhost:8080/tramites/controladorseguimiento?operacion=actualizarjson&id_seguimiento=';
+			return this.URLupdateseguimiento='http://localhost:8080/Tramites/controladorseguimiento?operacion=actualizarjson&id_seguimiento=';
+
 
 		}
 }
