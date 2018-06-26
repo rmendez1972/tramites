@@ -28,7 +28,7 @@
     </h3>
 
     <ion-list class="questions-list">
-      <ion-item class="question-item" *ngFor="let question of seguimientos">
+      <ion-item class="question-item" *ngFor="let seguimiento of seguimientos">
         <ion-row>
           <ion-col col-12>
             <ion-row class="question-details">
@@ -36,15 +36,15 @@
 
                 <!--Activar el método openAnswer para el usuario seguimiento o administrador-->
                 <div *ngIf="currentUser[0].id_grupo==2 || currentUser[0].id_grupo==1 else elseBlokCiudadano">
-                  <h2 *ngIf="question.usuario=='CIUDADANO'else elseBlockUsuario1" 
-                    class="question-text" (click)="openAnswers(question)" >
-                    <span class="ciudadano">{{ question.usuario }}:<br></span>
-                    {{ question.observaciones }}>
+                  <h2 *ngIf="seguimiento.usuario=='CIUDADANO'else elseBlockUsuario1" 
+                    class="question-text" (click)="openAnswers(seguimiento)" ><ion-icon name="people"></ion-icon>
+                    <span class="ciudadano">{{ seguimiento.usuario }}:<br></span>
+                    {{ seguimiento.observaciones }}>
                   </h2>
                   <ng-template #elseBlockUsuario1>
-                      <h2 class="question-text" (click)="openAnswers(question)">
-                        <span class="usuario">{{ question.usuario }}:<br> </span>
-                        {{ question.observaciones }}
+                      <h2 class="question-text" (click)="openAnswers(seguimiento)"><ion-icon name="person"></ion-icon>
+                        <span class="usuario">{{ seguimiento.usuario }}:<br> </span>
+                        {{ seguimiento.observaciones }}
                       </h2>
                   </ng-template>
                 </div>
@@ -52,13 +52,13 @@
                 <!--No se dispara el método openAnswers para el ciudadano-->
                 <ng-template #elseBlokCiudadano>
                   <div>  
-                    <h2 *ngIf="question.usuario=='CIUDADANO'else elseBlockUsuario" 
-                      class="question-text" ><span class="ciudadano">{{ question.usuario }}:<br> </span>
-                      {{ question.observaciones }}
+                    <h2 *ngIf="seguimiento.usuario=='CIUDADANO'else elseBlockUsuario" 
+                      class="question-text" ><ion-icon name="people"></ion-icon><span class="ciudadano">{{ seguimiento.usuario }}:<br> </span>
+                      {{ seguimiento.observaciones }}
                     </h2>
                     <ng-template #elseBlockUsuario>
-                      <h2 class="question-text" ><span class="usuario">{{ question.usuario }}:<br> </span>
-                        {{ question.observaciones }}
+                      <h2 class="question-text" ><ion-icon name="person"></ion-icon><span class="usuario">{{ seguimiento.usuario }}:<br> </span>
+                        {{ seguimiento.observaciones }}
                       </h2>
                     </ng-template>
                   </div>
