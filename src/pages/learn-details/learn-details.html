@@ -24,7 +24,7 @@
 
     <div>
     <h3 class="questions-call-out">
-      <span>Recuperado todos mis comentarios a este Seguimiento del Trámite: </span>
+      <span>Recuperado todos los eguimiento del Trámite: </span>
     </h3>
 
     <ion-list class="questions-list">
@@ -37,13 +37,14 @@
                 <!--Activar el método openAnswer para el usuario seguimiento o administrador-->
                 <div *ngIf="currentUser[0].id_grupo==2 || currentUser[0].id_grupo==1 else elseBlokCiudadano">
                   <h2 *ngIf="seguimiento.usuario=='CIUDADANO'else elseBlockUsuario1" 
-                    class="question-text" (click)="openAnswers(seguimiento)" ><ion-icon name="people"></ion-icon>
-                    <span class="ciudadano">{{ seguimiento.usuario }}:<br></span>
+                    class="question-text" (click)="openAnswers(seguimiento)" >
+                    <span class="ciudadano"><ion-icon name="people"></ion-icon>{{ seguimiento.usuario }} {{ seguimiento.fecha }}<br></span>
                     {{ seguimiento.observaciones }}>
                   </h2>
-                  <ng-template #elseBlockUsuario1>
-                      <h2 class="question-text" (click)="openAnswers(seguimiento)"><ion-icon name="person"></ion-icon>
-                        <span class="usuario">{{ seguimiento.usuario }}:<br> </span>
+                  <ng-template #elseBlockUsuario1><!--Si la respuesta es de un usuario no disparar el metodo openAnswer-->
+                      <h2 class="question-text"><ion-icon name="person"></ion-icon>
+                      <!--<h2 class="question-text" (click)="openAnswers(seguimiento)"><ion-icon name="person"></ion-icon>-->
+                        <span class="usuario"><ion-icon name="people"></ion-icon>{{ seguimiento.usuario }} {{ seguimiento.fecha }}<br></span>
                         {{ seguimiento.observaciones }}
                       </h2>
                   </ng-template>
@@ -53,11 +54,13 @@
                 <ng-template #elseBlokCiudadano>
                   <div>  
                     <h2 *ngIf="seguimiento.usuario=='CIUDADANO'else elseBlockUsuario" 
-                      class="question-text" ><ion-icon name="people"></ion-icon><span class="ciudadano">{{ seguimiento.usuario }}:<br> </span>
+                      class="question-text" >
+                      <span class="ciudadano"><ion-icon name="people"></ion-icon> {{ seguimiento.usuario }} {{ seguimiento.fecha }}<br></span> 
                       {{ seguimiento.observaciones }}
                     </h2>
                     <ng-template #elseBlockUsuario>
-                      <h2 class="question-text" ><ion-icon name="person"></ion-icon><span class="usuario">{{ seguimiento.usuario }}:<br> </span>
+                      <h2 class="question-text" >
+                        <span class="usuario"><ion-icon name="person"></ion-icon>{{ seguimiento.usuario }} {{ seguimiento.fecha }}<br> </span>
                         {{ seguimiento.observaciones }}
                       </h2>
                     </ng-template>

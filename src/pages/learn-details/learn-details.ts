@@ -81,6 +81,8 @@ export class LearnDetailsPage {
    //})
     loading.dismiss();
   }
+
+/*
   delete(questionId){
     let confirm = this.alertCtrl.create({
       title: 'Eliminar comentario',
@@ -108,28 +110,31 @@ export class LearnDetailsPage {
       ]
     });
     confirm.present();
-  }
+  }*/
 
+  /*
   addPositiveVote(question){
     let data = question;
     data.positiveVotes += 1;
     data.questionSlug = this.solicitud.slug;
     this.questionService.updateQuestion(data)
     .then(res => this.getQuestions())
-  }
+  }*/
 
+  /*
   addNegativeVote(question){
     let data = question;
     data.negativeVotes += 1;
     data.questionSlug = this.solicitud.slug;
     this.questionService.updateQuestion(data)
     .then(res => this.getQuestions())
-  }
+  }*/
 
+  /*
   countAnswers(questionId){
     return this.answerService.countAnswers(questionId)
     .then(res => console.log(res))
-  }
+  }*/
 
   openAnswers(question){
     this.navCtrl.push(ModrespuestaSeguimientoPage, {
