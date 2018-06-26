@@ -11,7 +11,7 @@ import { Login } from '../pages/login/login';
 import { SeguimientoFeedPage } from '../pages/seguimiento-feed/seguimiento-feed';
 import { TramiteFeedPage } from '../pages/tramites-feed/tramites-feed';
 
-import { LearnDetailsPage } from '../pages/learn-details/learn-details';
+import { SeguimientoTramitePage } from '../pages/seguimiento-tramite/seguimiento-tramite';
 import { QuestionDetailsPage } from '../pages/question-details/question-details';
 import { ManageQuestionPage } from '../pages/manage-question/manage-question';
 import { ManageAnswerPage } from '../pages/manage-answer/manage-answer';
@@ -44,7 +44,7 @@ import {ServiceUrl} from '../serviceUrl'
     SeguimientoFeedPage,
     TramiteFeedPage,
 
-    LearnDetailsPage,
+    SeguimientoTramitePage,
     QuestionDetailsPage,
     ManageQuestionPage,
     ManageAnswerPage,
@@ -66,7 +66,7 @@ import {ServiceUrl} from '../serviceUrl'
     SeguimientoFeedPage,
     TramiteFeedPage,
 
-    LearnDetailsPage,
+    SeguimientoTramitePage,
     QuestionDetailsPage,
     ManageQuestionPage,
     ManageAnswerPage,

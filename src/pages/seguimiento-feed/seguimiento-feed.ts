@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { isPresent } from 'ionic-angular/util/util';
-import { LearnDetailsPage } from '../learn-details/learn-details';
+import { SeguimientoTramitePage } from '../seguimiento-tramite/seguimiento-tramite';
 import { SeguimientoService } from '../../services/seguimiento.service';
 import { CategoryModel } from '../../services/seguimiento.model';
 
@@ -72,7 +72,7 @@ export class SeguimientoFeedPage {
   }
 
   openDetails(params) {
-    this.navCtrl.push(LearnDetailsPage, params);
+    this.navCtrl.push(SeguimientoTramitePage, params);
   }
 
   // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
