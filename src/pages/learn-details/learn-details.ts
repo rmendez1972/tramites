@@ -63,9 +63,9 @@ export class LearnDetailsPage {
     this.seguimientos =JSON.parse(localStorage.getItem('seguimiento'));//igh
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));//igh
     this.id_grupo=this.currentUser[0].id_grupo;
-    console.log('Grupin...'+this.id_grupo);
+    console.log('Grupo...'+this.id_grupo);
     console.log(this.seguimientos);
-    this.getQuestions();
+    //this.getQuestions();
     
   }
 
