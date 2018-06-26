@@ -13,35 +13,26 @@
 </ion-header>
 
 <ion-content>
-  <div class="question-details">
-    <ion-row class="details-content">
-      <ion-col no-padding col-12>
-        <h1 class="question-title">{{ question.question }}</h1>
-      </ion-col>
-      <ion-col no-padding col-12>
-        <p class="vote-call-to-action">
-          Fue útil este seguimiento?
-        </p>
-        <
-      </ion-col>
-    </ion-row>
-  </div>
-
-  <!--<div *ngIf="seguimiento">
-    <h3 class="answers-call-out">
-      No hay comentario de parte del ciudadano. Espere a un comentario!
-    </h3>
-  </div>-->
-
-
+  <ion-card>
+    <img src="assets/img/header.png"/>
+    <ion-card-content>
+      <h3>
+        <ion-icon name="document"></ion-icon>Trámite: nombre del tramite<br>
+        <ion-icon name="people"></ion-icon> Seguimiento: seguimiento<br>
+        <ion-badge color="dark" item-end>estatus de la solcitud</ion-badge>
+      </h3>
+    </ion-card-content>
+  </ion-card>
 
 
     <ion-list inset>
       <ion-item-sliding *ngFor="let seg of seguimientos">
         <ion-item class="answer-item" >
 
-          <h3 class="answer-text">{{ seg.observaciones }}</h3>
+          <p class="answer-text">{{ seg.fecha }}</p>
           <p class="answer-text">{{ seg.usuario }}</p>
+          <h3 class="answer-text">{{ seg.observaciones }}</h3>
+          
           <ion-icon *ngIf="seg.id_usuario==mid_usuario"  name="arrow-back" item-end></ion-icon>
         </ion-item>
 
