@@ -1,6 +1,5 @@
 <ion-header>
   <ion-navbar color="primary">
-
     <ion-title>
       <span>Trámites SEDETUS</span>
     </ion-title>
@@ -13,75 +12,44 @@
 </ion-header>
 
 <ion-content>
-
   <ion-card>
-  <img src="assets/img/header.png"/>
-  <ion-card-content>
-    <h3>
-      Trámite: {{tramite[0].nombre}}<br>
-      <ion-badge color="dark" item-end>{{solicitud[0].status}}</ion-badge>
-    <!--</p>Estatus: {{solicitud[0].status}}-->
-    </h3>
+    <img src="assets/img/header.png"/>
+    <ion-card-content>
+      <h3>
+        Trámite: {{tramite[0].nombre}}<br>
+        <ion-badge color="dark" item-end>{{solicitud[0].status}}</ion-badge>
+      </h3>
+    </ion-card-content>
+  </ion-card>
 
-    <!--<p>
-
-     Seguimiento:{{seguimiento.observaciones}}
-
-    </p>-->
-  </ion-card-content>
-</ion-card>
-
-  <!--<div *ngIf="questions.length== 0">
-    <div *ngIf="seguimiento.length == 0">
-    <h3 class="questions-call-out">
-      No hay detalles del Seguimiento al momento
-    </h3>
-  </div>-->
-
-    <!--<div *ngIf="questions.length > 0">-->
     <div>
     <h3 class="questions-call-out">
       <span>Recuperado todos mis comentarios a este Seguimiento del Trámite: </span>
-      <!--<ion-badge class="call-out-tag">{{tramite[0].nombre}}</ion-badge>-->
-
     </h3>
 
     <ion-list class="questions-list">
-      <!--<ion-item class="question-item" *ngFor="let question of questions">-->
       <ion-item class="question-item" *ngFor="let question of seguimientos">
         <ion-row>
-          <!--<ion-col class="votes-col" col-2>
-            <button class="vote-button up-vote" ion-button clear small (click)= "addPositiveVote(question)">
-              <ion-icon name="arrow-up"></ion-icon>
-            </button>
-            <span class="question-score" [ngClass]="{'good-score': (question.positiveVotes - question.negativeVotes) > 0, 'no-score': (question.positiveVotes - question.negativeVotes) == 0, 'bad-score': (question.positiveVotes - question.negativeVotes) < 0}">{{ question.positiveVotes - question.negativeVotes }}</span>
-            <button class="vote-button down-vote" ion-button clear small (click)= "addNegativeVote(question)">
-              <ion-icon name="arrow-down"></ion-icon>
-            </button>
-          </ion-col>-->
           <ion-col col-12>
             <ion-row class="question-details">
               <ion-col col-12>
 
                 <!--Activar el método openAnswer para el usuario seguimiento o administrador-->
                 <div *ngIf="currentUser[0].id_grupo==2 || currentUser[0].id_grupo==1 else elseBlokCiudadano">
-                  
                   <h2 *ngIf="question.usuario=='CIUDADANO'else elseBlockUsuario1" 
                     class="question-text" (click)="openAnswers(question)" >
                     <span class="ciudadano">{{ question.usuario }}:<br></span>
                     {{ question.observaciones }}>
                   </h2>
-
                   <ng-template #elseBlockUsuario1>
                       <h2 class="question-text" (click)="openAnswers(question)">
                         <span class="usuario">{{ question.usuario }}:<br> </span>
                         {{ question.observaciones }}
                       </h2>
-                    </ng-template>
-
+                  </ng-template>
                 </div>
                 
-                <!--No se dispara el método openAnswers-->
+                <!--No se dispara el método openAnswers para el ciudadano-->
                 <ng-template #elseBlokCiudadano>
                   <div>  
                     <h2 *ngIf="question.usuario=='CIUDADANO'else elseBlockUsuario" 
@@ -95,34 +63,7 @@
                     </ng-template>
                   </div>
                 </ng-template>    
-              <!--</div>-->
               </ion-col>
-              <!--<div *ngIf="show; else elseBlock">Text to show</div>
-              <ng-template #elseBlock>Alternate text while primary text is hidden</ng-template>
-              -->
-              <!--<ion-col col-4 class="votes-details">
-                <div class="details-wrapper">
-                  <span class="total-votes">{{ question.positiveVotes + question.negativeVotes }}</span>
-                  <span class="details-text">Votes</span>
-                </div>
-              </ion-col>
-              <ion-col col-4 class="answers-details" (click)="openAnswers(question)">
-                <div class="details-wrapper">
-                  <span class="total-answers">{{ question.answers.length }}</span>
-                  <span class="details-text">{{ (question.answers.length > 1 || question.answers.length == 0) ? 'Answers' : 'Answer' }}</span>
-                </div>
-              </ion-col>-->
-              <!--
-              <ion-col col-4 class="actions-details">
-                
-                  <button class="edit-button" ion-button small round clear icon-only color="dark" (click)="editQuestionModal(question)">
-                      <ion-icon name="md-create"></ion-icon>
-                    </button>
-                <button class="delete-button" ion-button small round clear icon-only color="danger" (click)="delete(question.id)">
-                  <ion-icon name="ios-trash-outline"></ion-icon>
-                </button>
-              
-              </ion-col>-->
             </ion-row>
           </ion-col>
         </ion-row>
@@ -130,7 +71,6 @@
     </ion-list>
   </div>
 </ion-content>
-
 
 <ion-footer >
   <ion-toolbar color="primary">
@@ -141,7 +81,6 @@
             Agregar comentario.
           </div>
       </ion-segment-button>
-
     </ion-segment>
   </ion-toolbar>
 </ion-footer>
