@@ -8,6 +8,7 @@ import { RespuestaSeguimientoPage } from '../respuesta-seguimiento/respuesta-seg
 import { CategoryModel } from '../../services/seguimiento.model';
 import {SeguimientoService} from '../../services/seguimiento.service';
 import {EdicionSeguimientoPage} from '../edicion-seguimiento/edicion-seguimiento';
+import { isPresent } from 'ionic-angular/util/util';
 
 
 /**
@@ -37,6 +38,11 @@ export class ModrespuestaSeguimientoPage {
   private currentUser:any[];
   private mid_usuario: number;
 
+  solicitud : any;
+  tramite : any;
+
+  public seguimiento : any;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -46,11 +52,20 @@ export class ModrespuestaSeguimientoPage {
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
     public segservices:SeguimientoService
-  ) {}
+  ) {
+    
+    
+    let data = navParams.get('data');
+
+
+    this.seguimiento = isPresent(data) && isPresent(data.seguimientos) ? data.seguimientos : '';
+    this.tramite = isPresent(data) && isPresent(data.tramites) ? data.tramites : '';
+    this.solicitud = isPresent(data) && isPresent(data.solicitud) ? data.solicitud : '';
+  }
 
   createAnswerModal() {
     let create_answer_data = {
-      mode: 'Create',
+      mode: 'Agregar',
       questionId: this.questionId
     };
     let create_answer_modal = this.modalCtrl.create(RespuestaSeguimientoPage, { data: create_answer_data });
@@ -65,7 +80,7 @@ export class ModrespuestaSeguimientoPage {
     console.log('adjuntos'+adjuntos);
 
     let edit_answer_data = {
-      mode: 'Edit',
+      mode: 'Editar',
       answer: observaciones,
       questionId: id_seguimiento,
       adjuntos: adjuntos
@@ -83,6 +98,9 @@ export class ModrespuestaSeguimientoPage {
     //se recuperan los valores del localstorage en el metodo de getAnswers
     this.getAnswers();
 
+    console.log("tramite:"+this.tramite);
+    console.log("solicitud:"+this.solicitud);
+    console.log("seguimiento"+this.seguimiento);
 
 
   }
@@ -161,29 +179,6 @@ export class ModrespuestaSeguimientoPage {
 
   }
 
-  upVoteQuestion(){
-    this.question.positiveVotes += 1;
-    this.questionService.updateQuestion(this.question)
-    .then(res => console.log(res))
-  }
-
-  downVoteQuestion(){
-    this.question.negativeVotes += 1;
-    this.questionService.updateQuestion(this.question)
-    .then(res => console.log(res))
-  }
-
-  addPositiveVote(answer){
-    answer.positiveVotes += 1;
-    this.answerService.updateAnswer(answer)
-    .then(res => this.getAnswers())
-  }
-
-  addNegativeVote(answer){
-    answer.negativeVotes += 1;
-    this.answerService.updateAnswer(answer)
-    .then(res => this.getAnswers())
-  }
 
    // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
   showAlert() {

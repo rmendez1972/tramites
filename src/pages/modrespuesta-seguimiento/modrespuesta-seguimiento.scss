@@ -240,11 +240,14 @@ page-modrespuesta-seguimiento {
 			{
 				color: $theme-color-3;
 				margin: 0px;
-				font-size: 1.4rem;
+				//font-size: 1.4rem;
+				font-size: 1.3rem;
 				line-height: 1.4;
         white-space: normal;
 
 			}
+
+
 
 			.actions-details
 			{
@@ -287,8 +290,26 @@ page-modrespuesta-seguimiento {
 					font-size: 1.6rem;
 				}
 			}
+
 		}
 
-  }
+		.observacion
+		{
+			color: black;
+			margin: 0px;
+			//font-size: 1.4rem;
+			font-size: 1.3rem;
+			line-height: 1.4;
+			white-space: normal;
+			
+		}
+
+	}
+	h3{
+		text-align: center;
+	}
+
+
+
 
 }
