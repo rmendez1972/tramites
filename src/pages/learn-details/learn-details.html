@@ -37,7 +37,7 @@
                 <!--Activar el método openAnswer para el usuario seguimiento o administrador-->
                 <div *ngIf="currentUser[0].id_grupo==2 || currentUser[0].id_grupo==1 else elseBlokCiudadano">
                   <h2 *ngIf="seguimiento.usuario=='CIUDADANO'else elseBlockUsuario1" 
-                    class="question-text" (click)="openAnswers(seguimiento)" >
+                    class="question-text" (click)="openAnswers(seguimiento.observaciones,tramite[0].nombre,solicitud[0].status)" >
                     <span class="ciudadano"><ion-icon name="people"></ion-icon>{{ seguimiento.usuario }} {{ seguimiento.fecha }}<br></span>
                     {{ seguimiento.observaciones }}>
                   </h2>
