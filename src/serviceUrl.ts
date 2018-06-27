@@ -14,6 +14,7 @@ public URLfilename: String;
 public URLpushseguimiento: String;
 public URLpushcomentario: String;//igh
 public URLTramite:String;
+public URLStatus:String;
 
 constructor() {}
 
@@ -63,8 +64,11 @@ constructor() {}
 			return this.URLpushcomentario='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarjson&comentario=';
 		}
 		getTramite():String{
-
-
 			return this.URLTramite='http://localhost:8080/tramites/controladorregistro?operacion=listarjson&id_usuario=';
+		}
+
+
+		getStatus():String{
+			return this.URLStatus='http://localhost:8080/tramites/controladorregistro?operacion=statusjson';
 		}
 }

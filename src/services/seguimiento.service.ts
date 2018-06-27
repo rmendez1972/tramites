@@ -8,11 +8,15 @@ export class SeguimientoService {
   private seguimientosUrl: string;
   private pushseguimientoURL: string;
 
+  private statusURL: string;
+
 	constructor(public http: Http,
     private url:ServiceUrl,
     ){
     this.seguimientosUrl=String(this.url.getUrl());
     this.pushseguimientoURL=String(this.url.getUrlpushSeguimiento());
+
+    this.statusURL=String(this.url.getStatus());
     
   }
 
@@ -40,6 +44,11 @@ export class SeguimientoService {
 
   pushSeguimiento(values, id_usuario:number,id_solicitud:number,id_status:number){
     return this.http.get(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
+      .map((res) => res.json());
+  }
+
+  getStatus(){
+    return this.http.get(this.statusURL)
       .map((res) => res.json());
   }
 }

@@ -14,6 +14,7 @@ export class TramiteFeedPage {
   solicitudes= [];
   unidadAdministrativa= [];
   direccion = [];
+  status= [];
 
   private currentUser:any[];
 
@@ -72,6 +73,14 @@ export class TramiteFeedPage {
       (direccion)=>{
         this.direccion= direccion.direccion;
         localStorage.setItem('direccion',JSON.stringify(this.direccion));
+      },
+    );
+
+    this.tramiteService.getStatus()
+    .subscribe(
+      (status)=>{
+        this.status= status.status;
+        localStorage.setItem('status',JSON.stringify(this.status));
       },
     );
   }
