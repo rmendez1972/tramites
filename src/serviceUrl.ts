@@ -58,30 +58,23 @@ constructor() {}
 		getUrlpushSeguimiento():String{
 			return this.URLpushseguimiento='http://localhost:8080/Tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
 
-
 		}
 
 		getUrlpushComentario():String{ //igh
-			
 			return this.URLpushcomentario='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarcomentariojson&observaciones=';
-
-
 		}
 
 		getTramite():String{
 			return this.URLTramite='http://localhost:8080/tramites/controladorregistro?operacion=listarjson&id_usuario=';
-
 		}
 
 		//MEGH
 		getUrldeleteSeguimiento():String{
 			return this.URLdeleteseguimiento='http://localhost:8080/tramites/controladorseguimiento?operacion=borrarjson&id_seguimiento=';
-
 		}
 			
 		getUrlupdateSeguimiento():String{
 			return this.URLupdateseguimiento='http://localhost:8083/tramites/controladorseguimiento?operacion=actualizarjson&id_seguimiento=';
-
 
 		}
 }
