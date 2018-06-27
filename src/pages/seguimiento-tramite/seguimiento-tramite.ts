@@ -26,8 +26,8 @@ export class SeguimientoTramitePage {
   public seguimiento : any;
   seguimientos:any[];//igh
   public id_grupo: number;
- 
- 
+
+
 
   constructor(
     public navCtrl: NavController,
@@ -51,24 +51,34 @@ export class SeguimientoTramitePage {
 
   createQuestionModal() {
     console.log('Creando comentario..');
+    if (this.solicitud[0].status=='TRAMITE'){
 
-    let create_question_modal = this.modalCtrl.create(ManageQuestionPage, { slug: this.solicitud.slug });
-    create_question_modal.onDidDismiss(data => {
+      let create_question_modal = this.modalCtrl.create(ManageQuestionPage, { slug: this.solicitud.slug });
+      create_question_modal.onDidDismiss(data => {
       this.getQuestions();
     });
     create_question_modal.present();
+
+    }
+    else {
+
+      let subtitle= 'No es posible generar comentario. El estatus de su trámite es: '+this.solicitud[0].status;
+      this.showAlert(subtitle);
+
+    }
+
   }
 
 
   ionViewWillEnter() {
-    this.seguimientos=[];//igh
+    this.seguimientos=[];//ig
     this.seguimientos =JSON.parse(localStorage.getItem('seguimiento'));//igh
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));//igh
     this.id_grupo=this.currentUser[0].id_grupo;
     console.log('Grupo...'+this.id_grupo);
     console.log(this.seguimientos);
     //this.getQuestions();
-    
+
   }
 
   getQuestions(){
@@ -92,16 +102,16 @@ export class SeguimientoTramitePage {
       tramites:tramite,
       solicitud:solicitud
     }
- 
+
     this.navCtrl.push(ModrespuestaSeguimientoPage, {data: data_params });
   }
 
    // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
-  showAlert() {
+  showAlert(subtitle:string='En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a>') {
 
     const alert = this.alertCtrl.create({
       title: 'Atento Aviso!',
-      subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a> ',
+      subTitle: subtitle,
       buttons: ['Ok']
     });
     alert.present();

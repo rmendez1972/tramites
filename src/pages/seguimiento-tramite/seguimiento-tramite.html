@@ -42,9 +42,9 @@
                     {{ seguimiento.observaciones }}>
                   </h2>
                   <ng-template #elseBlockUsuario1><!--Si la respuesta es de un usuario no disparar el metodo openAnswer-->
-                      <h2 class="question-text"><ion-icon name="person"></ion-icon>
+                      <h2 class="question-text">
                       <!--<h2 class="question-text" (click)="openAnswers(seguimiento)"><ion-icon name="person"></ion-icon>-->
-                        <span class="usuario"><ion-icon name="people"></ion-icon>{{ seguimiento.usuario }} {{ seguimiento.fecha }}<br></span>
+                        <span class="usuario"><ion-icon name="person"></ion-icon>{{ seguimiento.usuario }} {{ seguimiento.fecha }}<br></span>
                         {{ seguimiento.observaciones }}
                       </h2>
                   </ng-template>
@@ -77,7 +77,8 @@
 
 <ion-footer >
   <ion-toolbar color="primary">
-    <ion-segment [(ngModel)]="icons"  color="light" style="height: 37px;" *ngIf="solicitud[0].status=='TRAMITE' && id_grupo==3">
+    <!--<ion-segment [(ngModel)]="icons"  color="light" style="height: 37px;" *ngIf="solicitud[0].status=='TRAMITE' && id_grupo==3">-->
+    <ion-segment [(ngModel)]="icons"  color="light" style="height: 37px;" *ngIf="id_grupo==3">
       <ion-segment-button value="camera" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;"(click)="createQuestionModal()" >
         <ion-icon  name="list-box" ></ion-icon >
           <div style="font-size: 10px !important;">
