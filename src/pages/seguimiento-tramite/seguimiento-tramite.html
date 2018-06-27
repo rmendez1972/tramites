@@ -24,7 +24,7 @@
 
     <div>
     <h3 class="questions-call-out">
-      <span>Recuperado todos los eguimiento del Trámite: </span>
+      <span>Recuperado todos los seguimientos del Trámite: </span>
     </h3>
 
     <ion-list class="questions-list">
@@ -36,7 +36,7 @@
 
                 <!--Activar el método openAnswer para el usuario seguimiento o administrador-->
                 <div *ngIf="currentUser[0].id_grupo==2 || currentUser[0].id_grupo==1 else elseBlokCiudadano">
-                  <h2 *ngIf="seguimiento.usuario=='CIUDADANO'else elseBlockUsuario1" 
+                  <h2 *ngIf="seguimiento.usuario=='CIUDADANO'else elseBlockUsuario1"
                     class="question-text" (click)="openAnswers(seguimiento.observaciones,tramite[0].nombre,solicitud[0].status)" >
                     <span class="ciudadano"><ion-icon name="people"></ion-icon>{{ seguimiento.usuario }} {{ seguimiento.fecha }}<br></span>
                     {{ seguimiento.observaciones }}>
@@ -49,13 +49,13 @@
                       </h2>
                   </ng-template>
                 </div>
-                
+
                 <!--No se dispara el método openAnswers para el ciudadano-->
                 <ng-template #elseBlokCiudadano>
-                  <div>  
-                    <h2 *ngIf="seguimiento.usuario=='CIUDADANO'else elseBlockUsuario" 
+                  <div>
+                    <h2 *ngIf="seguimiento.usuario=='CIUDADANO'else elseBlockUsuario"
                       class="question-text" >
-                      <span class="ciudadano"><ion-icon name="people"></ion-icon> {{ seguimiento.usuario }} {{ seguimiento.fecha }}<br></span> 
+                      <span class="ciudadano"><ion-icon name="people"></ion-icon> {{ seguimiento.usuario }} {{ seguimiento.fecha }}<br></span>
                       {{ seguimiento.observaciones }}
                     </h2>
                     <ng-template #elseBlockUsuario>
@@ -65,7 +65,7 @@
                       </h2>
                     </ng-template>
                   </div>
-                </ng-template>    
+                </ng-template>
               </ion-col>
             </ion-row>
           </ion-col>
@@ -99,5 +99,5 @@
     </div>
     </ion-toolbar>
   </div>
-  
+
 </ion-footer>-->
