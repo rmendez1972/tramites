@@ -51,12 +51,26 @@ export class SeguimientoTramitePage {
 
   createQuestionModal() {
     console.log('Creando comentario..');
+    if (this.solicitud[0].status=='TRAMITE'){
 
-    let create_question_modal = this.modalCtrl.create(ManageQuestionPage, { slug: this.solicitud.slug });
+      let create_question_modal = this.modalCtrl.create(ManageQuestionPage, { slug: this.solicitud.slug });
     create_question_modal.onDidDismiss(data => {
       this.getQuestions();
     });
     create_question_modal.present();
+
+    }
+    else {
+      const alert = this.alertCtrl.create({
+        title: 'Atento Aviso!',
+        //subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a> ',
+        subTitle: 'No es posible generar comentario. El estatus de su trámite es: '+this.solicitud[0].status,
+        buttons: ['Ok']
+      });
+      alert.present();
+
+    }
+    
   }
 
 

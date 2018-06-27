@@ -9,6 +9,7 @@ export class SeguimientoService {
   private pushseguimientoURL: string;
   private deleteseguimientoURL: string;
   private updateseguimientoURL: string;
+  private statusUrl: string;
 
 	constructor(public http: Http,
     private url:ServiceUrl,
@@ -17,6 +18,7 @@ export class SeguimientoService {
     this.pushseguimientoURL=String(this.url.getUrlpushSeguimiento());
     this.deleteseguimientoURL=String(this.url.getUrldeleteSeguimiento());
     this.updateseguimientoURL=String(this.url.getUrlupdateSeguimiento());
+    this.statusUrl =String(this.url.getStatus());
     
   }
 
@@ -61,5 +63,10 @@ export class SeguimientoService {
     return this.http.get(this.updateseguimientoURL+id_seguimiento+"&id_solicitud="+id_solicitud+'&observaciones='+values+'&id_usuario='+id_usuario+'&id_status='+id_status+'&adjunto='+adjunto)
     .map((res) => res.json(),(error)=>{console.log(error);});
 
+  }
+  //
+  getStatus(){
+    return this.http.get(this.statusUrl)
+    .map((res) => res.json(),(error)=>{console.log(error);});
   }
 }
