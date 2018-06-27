@@ -1,29 +1,28 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      <span>Crea tu Comentario aquí</span>
+      <span>{{ _mode }} Tú respuesta</span>
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
         <span ion-text showWhen="ios">Cancelar</span>
-        <ion-icon name="close-circle" showWhen="android, windows"></ion-icon>
+        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="modal-content">
-  <form [formGroup]="questionForm" class="modal-form" (ngSubmit)="onSubmitx(questionForm.value)" >
-  
+  <form [formGroup]="answerForm" class="modal-form" (ngSubmit)="onSubmit(answerForm.value)" >
     <ion-row>
       <ion-col offset-1 col-10>
         <ion-item class="textarea-item">
-          <ion-label floating>Escribe tu comentario aquí</ion-label>
-          <ion-textarea formControlName="question" rows="5"></ion-textarea>
+          
+          <ion-textarea formControlName="answer" rows="5" [ngModel]="observaciones" (ngModelChange)="observaciones = $event" ></ion-textarea>
         </ion-item>
       </ion-col>
       <ion-col offset-1 col-10>
-        <button ion-button block round type="submit" [disabled]="!questionForm.valid" color="default">
+        <button ion-button block type="submit" [disabled]="!answerForm.valid" color="answer">
           <b>Grabar</b>
         </button>
       </ion-col>

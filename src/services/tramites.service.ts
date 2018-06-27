@@ -12,8 +12,7 @@ export class TramiteService {
     private url:ServiceUrl,
     ){
     this.tramiteUrl=String(this.url.getTramite());
-
-    this.statusUrl=String(this.url.getStatus());
+    this.statusUrl =String(this.url.getStatus());
     
   }
   
@@ -32,9 +31,8 @@ export class TramiteService {
     return this.http.get(this.tramiteUrl+id_usuario+"&id_grupo="+id_grupo+'&id_unidadadministrativa='+id_unidadadministrativa+'&id_direccion='+id_direccion)
       .map((res) => res.json(),(error)=>{console.log(error);});
   }
-
   getStatus(){
     return this.http.get(this.statusUrl)
-      .map((res) => res.json(),(error)=>{console.log(error);});
+    .map((res) => res.json(),(error)=>{console.log(error);});
   }
 }

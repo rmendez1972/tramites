@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, MenuController, Nav, App, AlertController } from 'ionic-angular';
+import { Platform, MenuController, Nav, App, AlertController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -20,7 +20,9 @@ export class MyApp {
   // make LearnFeedPage the root (or first) page
 
   rootPage: any = Welcome;
-
+  private currentUser:any;
+  private username:string;
+  private firstname:string;
 
 
   pages: Array<{title: string, icon: string, component: any, params: any}>;
@@ -32,36 +34,31 @@ export class MyApp {
     public menu: MenuController,
     public app: App,
     public alertCtrl: AlertController,
+    public events: Events,
     public authenticationservice: AuthenticationService
   ) {
     platform.ready().then(() => {
+
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+
+      this.events.subscribe("userloggedin", (user) => {
+        this.currentUser = user;
+        this.firstname=this.currentUser.firstname;
+        this.username=this.currentUser.username;
+        console.log('se disparo userloggedin');
+      });
+
+      this.events.subscribe("menubuiltin", (menu) => {
+        this.pages = menu;
+        console.log('se disparo menubuiltin');
+      });
+
     });
-
-    this.pages = [
-      {
-        title: 'Todos los Mensajes',
-        icon: 'list-box',
-        component: SeguimientoFeedPage,
-        params: {
-          query: 'all'
-        }
-      },
-      {
-        title: 'Ultimo Mensaje',
-        icon: 'list',
-        component: SeguimientoFeedPage,
-        params: {
-          query: 'basic'
-        }
-      }
-
-
-    ];
   }
+
 
   //abrimos la pagina root y poblamos con cards todos los seguimientos del trámite
   openPage(page) {
@@ -88,6 +85,18 @@ export class MyApp {
     const alert = this.alertCtrl.create({
       title: 'Atento Aviso!',
       subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a> ',
+      buttons: ['Ok']
+    });
+    alert.present();
+  }
+
+  // muestro las credenciales del usuario autenticado
+  muestraUser() {
+    //cerramos el menu lateral
+    //this.menu.close();
+    const alert = this.alertCtrl.create({
+      title: 'Credenciales',
+      subTitle: 'Te has autenticado como el usario '+this.username,
       buttons: ['Ok']
     });
     alert.present();

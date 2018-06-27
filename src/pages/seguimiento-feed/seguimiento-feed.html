@@ -1,10 +1,10 @@
 <ion-header >
-  <ion-navbar color="primary" hideBackButton="false">
-      <!--
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon> 
+  <ion-navbar color="primary" hideBackButton="{{ ocultaBack }}">
+
+    <button [hidden]="muestraToggle" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
     </button>
-    -->
+
     <ion-title>
       <span>Trámites SEDETUS</span>
     </ion-title>
@@ -20,6 +20,7 @@
 
 <ion-content class="category-concept-card">
   <h3 class="search-query">
+
     <span>Mostrando: </span>
     <ion-badge class="query-tag">{{ _query }}</ion-badge>
     <span class="query-explanation"> los Seguimientos</span>
@@ -45,7 +46,7 @@
       <h2 class="category-title">Tramite: {{tram.nombre}}</h2>
     </div>
     <div >
-       <h3 class="category-description">Seguimiento: {{seg.observaciones}}</h3>
+       <h3  class="category-description">Seguimiento: {{seg.observaciones}}</h3>
     </div>
     <div>
       <ion-row>
@@ -55,6 +56,34 @@
           <ion-badge class="category-tag" item-right>Fecha seguimiento: {{ seg.fecha }}</ion-badge>
         </ion-col>
       </ion-row>
+      <!--igh
+        <ion-toolbar color="primary">
+          <button ion-button round block (click)="createQuestionModal()" color="light">
+            <b>Nuevo comentario a este seguimiento?</b>
+          </button>
+        </ion-toolbar>-->
+
     </div>
   </ion-card>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+
+    <ion-segment [(ngModel)]="icons"  color="light" style="height: 37px;">
+      <ion-segment-button value="camera" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;" >
+        <ion-icon  name="list-box" ></ion-icon >
+          <div style="font-size: 9px !important;">
+            Todos los Seguimientos
+          </div>
+      </ion-segment-button>
+      <ion-segment-button value="bookmark" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;">
+        <ion-icon name="list"></ion-icon>
+          <div style="font-size: 9px !important;">
+            El último Seguimiento
+          </div>
+      </ion-segment-button>
+    </ion-segment>
+
+  </ion-toolbar>
+</ion-footer>

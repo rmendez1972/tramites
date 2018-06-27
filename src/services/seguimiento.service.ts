@@ -7,6 +7,9 @@ import { ServiceUrl } from '../serviceUrl';
 export class SeguimientoService {
   private seguimientosUrl: string;
   private pushseguimientoURL: string;
+  private deleteseguimientoURL: string;
+  private updateseguimientoURL: string;
+  private statusUrl: string;
 
   private statusURL: string;
 
@@ -15,8 +18,10 @@ export class SeguimientoService {
     ){
     this.seguimientosUrl=String(this.url.getUrl());
     this.pushseguimientoURL=String(this.url.getUrlpushSeguimiento());
+    this.deleteseguimientoURL=String(this.url.getUrldeleteSeguimiento());
+    this.updateseguimientoURL=String(this.url.getUrlupdateSeguimiento());
+    this.statusUrl =String(this.url.getStatus());
 
-    this.statusURL=String(this.url.getStatus());
     
   }
 
@@ -41,14 +46,31 @@ export class SeguimientoService {
     return this.http.get(this.seguimientosUrl+idSolicitud+"&id_solicitante="+idSolicitante)
       .map((res) => res.json(),(error)=>{console.log(error);});
   }
-
+  //metodo para insertar un nuevo seguimiento de parte del nivel enlace
   pushSeguimiento(values, id_usuario:number,id_solicitud:number,id_status:number){
+    console.log(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status);
     return this.http.get(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
       .map((res) => res.json());
   }
 
+
+  //metodo para eliminar un seguimiento de nivel enlace
+  deleteSeguimiento(id_seguimiento:number, id_solicitud:number){
+    return this.http.get(this.deleteseguimientoURL+id_seguimiento+"&id_solicitud="+id_solicitud)
+    .map((res) => res.json(),(error)=>{console.log(error);});
+   
+  }
+
+  //metodo para actualizar el seguimiento de nivel enlace
+  updateSeguimiento(id_seguimiento:string, values, id_solicitud:string, id_usuario:string, id_status:number,adjunto:string){
+    console.log("adjunto dentro del service"+adjunto);
+    return this.http.get(this.updateseguimientoURL+id_seguimiento+"&id_solicitud="+id_solicitud+'&observaciones='+values+'&id_usuario='+id_usuario+'&id_status='+id_status+'&adjunto='+adjunto)
+    .map((res) => res.json(),(error)=>{console.log(error);});
+
+  }
+  //
   getStatus(){
-    return this.http.get(this.statusURL)
-      .map((res) => res.json());
+    return this.http.get(this.statusUrl)
+    .map((res) => res.json(),(error)=>{console.log(error);});
   }
 }

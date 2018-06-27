@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { isPresent } from 'ionic-angular/util/util';
-import { LearnDetailsPage } from '../learn-details/learn-details';
+import { SeguimientoTramitePage } from '../seguimiento-tramite/seguimiento-tramite';
 import { SeguimientoService } from '../../services/seguimiento.service';
 import { CategoryModel } from '../../services/seguimiento.model';
 
@@ -16,11 +16,15 @@ export class SeguimientoFeedPage {
   tramite:Array<CategoryModel> = new Array<CategoryModel>();
   seguimientos:Array<CategoryModel> = new Array<CategoryModel>();
 
+
   private seguimiento:any[];
   private solicitudes:any[];
+  private muestraToggle: boolean=false;
+  private ocultaBack: boolean=false;
   id_solicitud:any;
   id_solicitante:any;
-  status:any[];
+  currentUser:any;
+  private status:any[];
 
   constructor(
     public navCtrl: NavController,
@@ -29,15 +33,16 @@ export class SeguimientoFeedPage {
     public alertCtrl: AlertController
   ) {
     let query_param = navParams.get('query');
-    this._query = isPresent(query_param) ? query_param : 'all';
+    this._query = isPresent(query_param) ? query_param : 'todos';
     let solicitud_param = navParams.get('sol');
     this.id_solicitud = solicitud_param.id_solicitud;
     this.id_solicitante = solicitud_param.id_solicitante;
 
   }
 
-  
+
   ionViewWillEnter() {
+    this.verificaSiciudadano();
     this.seguimientoService.getData(this.id_solicitud,this.id_solicitante)
     .subscribe(
       (data) => {
@@ -46,7 +51,7 @@ export class SeguimientoFeedPage {
       },
 
     );
-    
+
     this.seguimientoService.getSolicitudes(this.id_solicitud,this.id_solicitante)
 
     .subscribe(
@@ -71,11 +76,10 @@ export class SeguimientoFeedPage {
       localStorage.setItem('status',JSON.stringify(this.status));
     }
       );
-
   }
 
   openDetails(params) {
-    this.navCtrl.push(LearnDetailsPage, params);
+    this.navCtrl.push(SeguimientoTramitePage, params);
   }
 
   // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
@@ -87,6 +91,21 @@ export class SeguimientoFeedPage {
       buttons: ['Ok']
     });
     alert.present();
+  }
+
+  verificaSiciudadano(){
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    if (this.currentUser[0].id_grupo==3){
+      this.muestraToggle=false;
+      this.ocultaBack=true;
+    }
+    if (this.currentUser[0].id_grupo==1 || this.currentUser[0].id_grupo==2){
+
+      this.muestraToggle=true;
+      this.ocultaBack=false;
+    }
+
   }
 
 }
