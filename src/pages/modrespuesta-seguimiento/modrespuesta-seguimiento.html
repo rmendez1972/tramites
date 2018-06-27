@@ -17,8 +17,8 @@
     <img src="assets/img/header.png"/>
     <ion-card-content>
       <h3>
-        Trámite: {{tramite}}<br>
-        Seguimiento: {{seguimiento}}<br>
+        <ion-icon name="document"></ion-icon>Trámite: {{tramite}}<br>
+        <ion-icon name="people"></ion-icon>Seguimiento: {{seguimiento}}<br>
         <ion-badge color="dark" item-end>{{solicitud}}</ion-badge>
       </h3>
     </ion-card-content>
@@ -29,8 +29,7 @@
       <ion-item-sliding *ngFor="let seg of seguimientos">
         <ion-item class="answer-item" >
 
-          <p class="answer-text">{{ seg.fecha }}</p>
-          <p class="answer-text">{{ seg.usuario }}</p>
+          <p class="answer-text">{{ seg.usuario }}  {{ seg.fecha }}</p>
           <p class="observacion">{{ seg.observaciones }}</p>
           
           <ion-icon *ngIf="seg.id_usuario==mid_usuario"  name="arrow-back" item-end></ion-icon>
