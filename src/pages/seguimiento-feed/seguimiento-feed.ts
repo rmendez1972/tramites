@@ -65,10 +65,15 @@ export class SeguimientoFeedPage {
       );
     this.seguimientoService.getSeguimientos(this.id_solicitud,this.id_solicitante)
     .subscribe(
-      (seguimientos)=>{this.seguimientos = seguimientos.seguimientos;
-      localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
-    }
-      )
+      (seguimientos)=>{
+        this.seguimientos = seguimientos.seguimientos;
+        localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
+        if (this.seguimientos.length==0){
+          let subtitle='No hay seguimientos que mostrar hasta este moemnto.';
+          this.showAlert(subtitle);
+        }
+      }
+    )
   }
 
   openDetails(params) {
