@@ -210,7 +210,16 @@ seguimiento-tramite-page {
 		color:#566573;
 		
 	}
-	h2:hover {
-		background-color: #F2F3F4  ;
+	.fechahora{ //igh
+		width: 100%;
+		font-size: 1.2rem;
+		text-align: right !important;
+		font-weight: normal;
+		//font-style: italic;
+		color:#566573;		
+	}
+
+	.question-details:hover {
+		background-color: #DFE1E3  ;
 	}
 }
