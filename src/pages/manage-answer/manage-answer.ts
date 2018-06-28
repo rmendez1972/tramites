@@ -52,7 +52,7 @@ export class ManageAnswerPage {
     let data = value;
 
     data.questionId = this._question_id;
-    
+
     if(this.answer.answer){
       data.id = this.answer.id;
       data.positiveVotes = this.answer.positiveVotes;

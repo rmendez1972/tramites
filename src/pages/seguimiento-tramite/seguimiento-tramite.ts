@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController, ModalController } from 'ionic-angular';
 import { isPresent } from 'ionic-angular/util/util';
+//import { SeguimientoService} from '../services/seguimiento.service'
+//import { QuestionService } from '../../services/question.service';
+//import { AnswerService } from '../../services/answer.service';
 
-import { QuestionService } from '../../services/question.service';
-import { AnswerService } from '../../services/answer.service';
+//import { QuestionDetailsPage } from '../question-details/question-details';
 
-import { QuestionDetailsPage } from '../question-details/question-details';
-import { ManageQuestionPage } from '../manage-question/manage-question';
+import { PreguntaSeguimientoPage } from '../pregunta-seguimiento/pregunta-seguimiento';
+//import { ManageQuestionPage } from '../manage-question/manage-question';
 import { ModrespuestaSeguimientoPage } from '../modrespuesta-seguimiento/modrespuesta-seguimiento';
 import { User } from '../login/user';//igh
+import { SeguimientoService } from '../../services/seguimiento.service';
 
 
 @Component({
@@ -16,8 +19,8 @@ import { User } from '../login/user';//igh
   templateUrl: 'seguimiento-tramite.html'
 })
 export class SeguimientoTramitePage {
+  seguimientoService:SeguimientoService;
   currentUser: User;//igh
-
   questions: Array<any> = [];
   solicitud : any;
   tramite : any;
@@ -26,14 +29,14 @@ export class SeguimientoTramitePage {
   public seguimiento : any;
   seguimientos:any[];//igh
   public id_grupo: number;
- 
- 
+
+
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public questionService: QuestionService,
-    public answerService: AnswerService,
+    //public questionService: QuestionService,
+    //public answerService: AnswerService,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
@@ -48,29 +51,25 @@ export class SeguimientoTramitePage {
     this.tramite = isPresent(tramite_param) ? tramite_param : null;
     this.seguimiento= isPresent(seguimientos_param) ? seguimientos_param : null;
   }
-
+  //Método para crear una pregunta/comentario por parte del ciudadano
   createQuestionModal() {
     console.log('Creando comentario..');
-    if (this.solicitud[0].status=='TRAMITE'){
+    if (this.solicitud[0].status=='TRAMITE'){//Se va apoder crear siempre cuandor el estatus sea TRAMITE
 
-      let create_question_modal = this.modalCtrl.create(ManageQuestionPage, { slug: this.solicitud.slug });
-    create_question_modal.onDidDismiss(data => {
+      let create_question_modal = this.modalCtrl.create(PreguntaSeguimientoPage, { slug: this.solicitud.slug });
+      create_question_modal.onDidDismiss(data => {
       this.getQuestions();
     });
     create_question_modal.present();
 
     }
-    else {
-      const alert = this.alertCtrl.create({
-        title: 'Atento Aviso!',
-        //subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a> ',
-        subTitle: 'No es posible generar comentario. El estatus de su trámite es: '+this.solicitud[0].status,
-        buttons: ['Ok']
-      });
-      alert.present();
+    else {//Si el estatus no es trámite alertar al usuario de que no es posible crear un comentario
+
+      let subtitle= 'No es posible generar comentario. El estatus de su trámite es: '+this.solicitud[0].status;
+      this.showAlert(subtitle);
 
     }
-    
+
   }
 
 
@@ -82,14 +81,16 @@ export class SeguimientoTramitePage {
     console.log('Grupo...'+this.id_grupo);
     console.log(this.seguimientos);
     //this.getQuestions();
-    
+
   }
 
-  getQuestions(){
+  getQuestions(){//Obtiene todos los seguimientos del tramite
     let loading = this.loadingCtrl.create({
       content: 'Recuperando Datos del Servidor de SEDETUS...'
     });
     loading.present();
+    this.seguimientos =JSON.parse(localStorage.getItem('seguimiento'));
+    //this.seguimientoService.getSeguimientos(this.solicitud.slug)
     //this.questionService.getQuestionsBySlug(this.solicitud.slug)
     //.then(res => {
     // this.questions = res;
@@ -99,23 +100,23 @@ export class SeguimientoTramitePage {
   }
 
 
-  openAnswers(seguimiento, tramite, solicitud){
+  listarParaEdicion(seguimiento, tramite, solicitud){//Enlista los seguimientos para su edición o eliminación
 
     let data_params = {
       seguimientos:seguimiento,
       tramites:tramite,
       solicitud:solicitud
     }
- 
+
     this.navCtrl.push(ModrespuestaSeguimientoPage, {data: data_params });
   }
 
    // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
-  showAlert() {
+  showAlert(subtitle:string='En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a>') {
 
     const alert = this.alertCtrl.create({
       title: 'Atento Aviso!',
-      subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a> ',
+      subTitle: subtitle,
       buttons: ['Ok']
     });
     alert.present();

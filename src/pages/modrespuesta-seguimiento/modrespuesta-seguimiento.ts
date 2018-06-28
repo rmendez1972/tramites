@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController, NavParams, ModalController } from 'ionic-angular';
 import { Question } from '../../../sdk';
 import { AnswerService } from '../../services/answer.service';
-import { QuestionService } from '../../services/question.service';
-import { ManageAnswerPage } from '../manage-answer/manage-answer';
+//import { QuestionService } from '../../services/question.service';
+
 import { RespuestaSeguimientoPage } from '../respuesta-seguimiento/respuesta-seguimiento';
 import { CategoryModel } from '../../services/seguimiento.model';
 import {SeguimientoService} from '../../services/seguimiento.service';
@@ -46,7 +46,7 @@ export class ModrespuestaSeguimientoPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public questionService: QuestionService,
+    //public questionService: QuestionService,
     public answerService: AnswerService,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
@@ -104,7 +104,7 @@ export class ModrespuestaSeguimientoPage {
     console.log("cargando pagina con el did enter");
 
   }
-
+/*
   getQuestion(){
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
@@ -114,7 +114,7 @@ export class ModrespuestaSeguimientoPage {
       this.question = res[0];
       loading.dismiss();
     })
-  }
+  }*/
 
   getAnswers(){
     let loading = this.loadingCtrl.create({
