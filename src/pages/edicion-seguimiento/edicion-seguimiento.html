@@ -17,12 +17,12 @@
     <ion-row>
       <ion-col offset-1 col-10>
         <ion-item class="textarea-item">
-          
+
           <ion-textarea formControlName="answer" rows="5" [ngModel]="observaciones" (ngModelChange)="observaciones = $event" ></ion-textarea>
         </ion-item>
       </ion-col>
       <ion-col offset-1 col-10>
-        <button ion-button block type="submit" [disabled]="!answerForm.valid" color="answer">
+        <button ion-button block  round type="submit" [disabled]="!answerForm.valid" color="default">
           <b>Grabar</b>
         </button>
       </ion-col>

@@ -24,10 +24,13 @@ constructor() {}
   		getUrl():String{
 
 
+
 	  			return this.URL='http://localhost:8083/tramites/controladorseguimiento?operacion=listarjson&id_solicitud=';
+
 	  	}
 
 	  	getUrladjuntos():String{
+
 
 	  			return this.URLadjuntos='http://localhost:8083/tramites/controladoradjunto?operacion=listarjson&id_seguimiento=';
 	  	}
@@ -40,13 +43,15 @@ constructor() {}
 	  	}
 
 		getUrladjuntosupload():String{
-	  			return this.URLadjuntosupload='http://localhost:3001/upload/';
+	  			return this.URLadjuntosupload='http://189.221.153.178:3001/upload/';
 	  	}
 
 	  	getUrllogin():String{
 
 
+
 	  			return this.URLlogin='http://localhost:8083/tramites/controladorregistro?operacion=apilogin&username=';
+
 
 	  	}
 
@@ -54,19 +59,23 @@ constructor() {}
 		getUrlCambiaPassword():String{
 
 
+
 	  			return this.URLcambiapassword='http://localhost:8083/tramites/controladorregistro?operacion=apiSolicitanteCambioPassword&id_solicitante=';
+
 
 	  	}
 
 
 		getUrlupload():String{
-	  			return this.URLupload='http://localhost:3001/upload';
+	  			return this.URLupload='http://189.221.153.178:3001/upload';
 	  	}
 
 		getUrlfilename():String{
 
 
+
 	  			return this.URLupload='http://localhost:8083/tramites/controladoradjunto?operacion=grabarfromApp&id_seguimiento=';
+
 
 
 		}
@@ -75,7 +84,9 @@ constructor() {}
 		getUrlpushSeguimiento():String{
 
 
+
 			return this.URLpushseguimiento='http://localhost:8083/tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
+
 
 
 		}
@@ -83,19 +94,25 @@ constructor() {}
 		getUrlpushComentario():String{ //igh
 
 
+
 			return this.URLpushcomentario='http://localhost:8083/tramites/controladorseguimiento?operacion=grabarcomentariojson&observaciones=';
+
+
 
 
 		}
 
 		getTramite():String{
 
+
 			return this.URLTramite='http://localhost:8083/tramites/controladorregistro?operacion=listarjson&id_usuario=';
+
 
 		}
 
 		//MEGH
 		getUrldeleteSeguimiento():String{
+
 
 
 			return this.URLdeleteseguimiento='http://localhost:8083/tramites/controladorseguimiento?operacion=borrarjson&id_seguimiento=';
@@ -108,6 +125,7 @@ constructor() {}
 		}
 
 		getStatus():String{
+
 			return this.URLstatus='http://localhost:8083/tramites/controladorregistro?operacion=statusjson';
 		}
 }
