@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavParams, ViewController,AlertController } from 'ionic-angular';
 import { Validators, FormGroup, FormControl} from '@angular/forms';
 import { isPresent } from 'ionic-angular/util/util';
-import { QuestionService } from '../../services/question.service';
+//import { QuestionService } from '../../services/question.service';
 import { CategoryModel } from '../../services/seguimiento.model'; //igh
 import {SeguimientoService} from '../../services/seguimiento.service';//igh
 import { Answer } from '../../../sdk';//igh
@@ -10,10 +10,10 @@ import { Question } from '../../../sdk';//igh
 
 
 @Component({
-  selector: 'manage-question-page',
-  templateUrl: 'manage-question.html'
+  selector: 'pregunta-seguimiento-page',
+  templateUrl: 'pregunta-seguimiento.html'
 })
-export class ManageQuestionPage {
+export class PreguntaSeguimientoPage {
 
   _detail_slug : string;
   questionSlug: string;
@@ -45,7 +45,7 @@ export class ManageQuestionPage {
   constructor(
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    public questionservices: QuestionService,
+    //public questionservices: QuestionService,
     public alertCtrl: AlertController,
     public seguimientoservices: SeguimientoService,
   ) {
@@ -103,13 +103,14 @@ export class ManageQuestionPage {
       this.extraer.id_usuario=3;//El id 3 es fijo y pertenece al usuario "Ciudadano", revisar el modelo
       console.log(this.extraer.id_usuario,this.extraer.id_solicitud,this.extraer.id_status);
       console.log('Valor del mensaje'+data.question);
-      //this.seguimientoservices.pushSeguimiento(data.question,this.extraer.id_usuario,this.extraer.id_solicitud,this.extraer.id_status)
-      this.questionservices.pushComentario(data.question,this.extraer.id_usuario,this.extraer.id_solicitud,this.extraer.id_status)
+      this.seguimientoservices.pushSeguimiento(data.question,this.extraer.id_usuario,this.extraer.id_solicitud,this.extraer.id_status)
+      //this.seguimientoservices.pushComentario(data.question,this.extraer.id_usuario,this.extraer.id_solicitud,this.extraer.id_status)
+      //this.questionservices.pushComentario(data.question,this.extraer.id_usuario,this.extraer.id_solicitud,this.extraer.id_status)
       .subscribe(
         (seguimiento)=>{
           this.seguimientos = seguimiento.seguimiento;
           console.log(this.seguimientos);
-          localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));        
+          localStorage.setItem('PreguntaRegistrada',JSON.stringify(this.seguimientos));        
         });
       this.showMensaje('Se inserto el registro con exito');
       this.dismiss();
