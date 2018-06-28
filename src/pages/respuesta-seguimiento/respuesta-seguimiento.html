@@ -22,6 +22,14 @@
         </ion-item>
       </ion-col>
       <ion-col offset-1 col-10>
+        <ion-item>
+          <ion-label>Estatus del Tramite</ion-label><br>
+          <ion-select formControlName="valstatus" submitText="Ok" cancelText="Cancelar">
+            <ion-option *ngFor="let sta of status" [value]="sta.id_status">{{sta.nombre}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col offset-1 col-10>
         <button ion-button block type="submit" [disabled]="!answerForm.valid" color="answer">
           <b>Grabar</b>
         </button>

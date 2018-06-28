@@ -76,8 +76,7 @@ export class ModrespuestaSeguimientoPage {
   }
 
   editAnswerModal(id_seguimiento,observaciones,adjuntos) {
-    console.log('observaciones'+observaciones);
-    console.log('adjuntos'+adjuntos);
+    
 
     let edit_answer_data = {
       mode: 'Editar',
@@ -97,11 +96,12 @@ export class ModrespuestaSeguimientoPage {
     this.mid_usuario=this.currentUser[0].id;
     //se recuperan los valores del localstorage en el metodo de getAnswers
     this.getAnswers();
+    console.log("cargando pagina con el will enter");
 
-    console.log("tramite:"+this.tramite);
-    console.log("solicitud:"+this.solicitud);
-    console.log("seguimiento"+this.seguimiento);
+  }
 
+  ionViewDidEnter(){
+    console.log("cargando pagina con el did enter");
 
   }
 

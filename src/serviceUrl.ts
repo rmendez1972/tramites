@@ -76,11 +76,8 @@ constructor() {}
 
 		getUrlpushComentario():String{ //igh
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 172659119b09b2ec715f79cbf3cd8af8119b5a6c
 			return this.URLpushcomentario='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarcomentariojson&observaciones=';
 
 		}
