@@ -62,7 +62,8 @@ export class AuthenticationService {
         localStorage.removeItem('solicitud');
         localStorage.removeItem('tramite');
         localStorage.removeItem('seguimiento');
-        this.showAlert('Cesiòn Cerrada, regresa pronto');
+        localStorage.removeItem('status');
+        this.showAlert('Sesion Cerrada, regresa pronto');
     }
 
     showAlert(msg) {

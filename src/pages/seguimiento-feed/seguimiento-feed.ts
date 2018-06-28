@@ -24,6 +24,7 @@ export class SeguimientoFeedPage {
   id_solicitud:any;
   id_solicitante:any;
   currentUser:any;
+  private status:any[];
 
   constructor(
     public navCtrl: NavController,
@@ -65,6 +66,7 @@ export class SeguimientoFeedPage {
       );
     this.seguimientoService.getSeguimientos(this.id_solicitud,this.id_solicitante)
     .subscribe(
+
       (seguimientos)=>{
         this.seguimientos = seguimientos.seguimientos;
         localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
@@ -73,7 +75,17 @@ export class SeguimientoFeedPage {
           this.showAlert(subtitle);
         }
       }
-    )
+    );
+
+    this.seguimientoService.getStatus()
+    .subscribe(
+      (status)=>{
+        this.status = status.status;
+        localStorage.setItem('status',JSON.stringify(this.status));
+
+      }
+    );
+
   }
 
   openDetails(params) {
