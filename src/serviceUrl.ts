@@ -16,6 +16,7 @@ public URLdeleteseguimiento: String;
 public URLpushcomentario: String;//igh
 public URLTramite:String;
 public URLupdateseguimiento: String;
+public URLstatus:String;
 
 constructor() {}
 
@@ -23,17 +24,10 @@ constructor() {}
   		getUrl():String{
 
 
-
 	  			return this.URL='http://localhost:8080/Tramites/controladorseguimiento?operacion=listarjson&id_solicitud=';
-
-
-
-
 	  	}
 
 	  	getUrladjuntos():String{
-
-
 
 	  			return this.URLadjuntos='http://localhost:8080/Tramites/controladoradjunto?operacion=listarjson&id_seguimiento=';
 	  	}
@@ -52,10 +46,7 @@ constructor() {}
 	  	getUrllogin():String{
 
 
-
 	  			return this.URLlogin='http://localhost:8080/Tramites/controladorregistro?operacion=apilogin&username=';
-
-
 
 	  	}
 
@@ -63,10 +54,7 @@ constructor() {}
 		getUrlCambiaPassword():String{
 
 
-
 	  			return this.URLcambiapassword='http://localhost:8080/Tramites/controladorregistro?operacion=apiSolicitanteCambioPassword&id_solicitante=';
-
-
 
 	  	}
 
@@ -78,9 +66,7 @@ constructor() {}
 		getUrlfilename():String{
 
 
-
 	  			return this.URLupload='http://localhost:8080/Tramites/controladoradjunto?operacion=grabarfromApp&id_seguimiento=';
-
 
 
 		}
@@ -89,9 +75,7 @@ constructor() {}
 		getUrlpushSeguimiento():String{
 
 
-
 			return this.URLpushseguimiento='http://localhost:8080/Tramites/controladorseguimiento?operacion=grabarjson&observaciones=';
-
 
 
 		}
@@ -99,27 +83,19 @@ constructor() {}
 		getUrlpushComentario():String{ //igh
 
 
-
-
-
 			return this.URLpushcomentario='http://localhost:8080/Tramites/controladorseguimiento?operacion=grabarcomentariojson&observaciones=';
-
 
 
 		}
 
 		getTramite():String{
 
-
 			return this.URLTramite='http://localhost:8080/Tramites/controladorregistro?operacion=listarjson&id_usuario=';
-
-
 
 		}
 
 		//MEGH
 		getUrldeleteSeguimiento():String{
-
 
 
 			return this.URLdeleteseguimiento='http://localhost:8080/Tramites/controladorseguimiento?operacion=borrarjson&id_seguimiento=';
@@ -129,6 +105,9 @@ constructor() {}
 			return this.URLupdateseguimiento='http://localhost:8080/Tramites/controladorseguimiento?operacion=actualizarjson&id_seguimiento=';
 
 
+		}
 
+		getStatus():String{
+			return this.URLstatus='http://localhost:8080/Tramites/controladorregistro?operacion=statusjson';
 		}
 }
