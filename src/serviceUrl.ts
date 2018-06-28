@@ -16,6 +16,7 @@ public URLdeleteseguimiento: String;
 public URLpushcomentario: String;//igh
 public URLTramite:String;
 public URLupdateseguimiento: String;
+public URLstatus:String;
 
 constructor() {}
 
@@ -75,8 +76,11 @@ constructor() {}
 
 		getUrlpushComentario():String{ //igh
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 172659119b09b2ec715f79cbf3cd8af8119b5a6c
 			return this.URLpushcomentario='http://localhost:8080/tramites/controladorseguimiento?operacion=grabarcomentariojson&observaciones=';
 
 		}
@@ -96,5 +100,9 @@ constructor() {}
 			return this.URLupdateseguimiento='http://localhost:8080/tramites/controladorseguimiento?operacion=actualizarjson&id_seguimiento=';
 
 
+		}
+
+		getStatus():String{
+			return this.URLstatus='http://localhost:8080/tramites/controladorregistro?operacion=statusjson';
 		}
 }

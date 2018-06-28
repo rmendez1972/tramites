@@ -9,6 +9,9 @@ export class SeguimientoService {
   private pushseguimientoURL: string;
   private deleteseguimientoURL: string;
   private updateseguimientoURL: string;
+  private statusUrl: string;
+
+  private statusURL: string;
 
 	constructor(public http: Http,
     private url:ServiceUrl,
@@ -17,6 +20,8 @@ export class SeguimientoService {
     this.pushseguimientoURL=String(this.url.getUrlpushSeguimiento());
     this.deleteseguimientoURL=String(this.url.getUrldeleteSeguimiento());
     this.updateseguimientoURL=String(this.url.getUrlupdateSeguimiento());
+    this.statusUrl =String(this.url.getStatus());
+
     
   }
 
@@ -43,9 +48,11 @@ export class SeguimientoService {
   }
   //metodo para insertar un nuevo seguimiento de parte del nivel enlace
   pushSeguimiento(values, id_usuario:number,id_solicitud:number,id_status:number){
+    console.log(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status);
     return this.http.get(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
       .map((res) => res.json());
   }
+
 
   //metodo para eliminar un seguimiento de nivel enlace
   deleteSeguimiento(id_seguimiento:number, id_solicitud:number){
@@ -60,5 +67,10 @@ export class SeguimientoService {
     return this.http.get(this.updateseguimientoURL+id_seguimiento+"&id_solicitud="+id_solicitud+'&observaciones='+values+'&id_usuario='+id_usuario+'&id_status='+id_status+'&adjunto='+adjunto)
     .map((res) => res.json(),(error)=>{console.log(error);});
 
+  }
+  //
+  getStatus(){
+    return this.http.get(this.statusUrl)
+    .map((res) => res.json(),(error)=>{console.log(error);});
   }
 }

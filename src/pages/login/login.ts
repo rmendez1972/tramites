@@ -111,7 +111,7 @@ export class Login {
                     }else{
 
 
-                        this.showAlert('usuario y/o contraseña equivocados, intneta de nuevo');
+                        this.showAlert('usuario y/o contraseña equivocados, intenta de nuevo');
                         //this.loading = false;
                     }
                 },
