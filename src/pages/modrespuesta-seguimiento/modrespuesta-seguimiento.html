@@ -29,9 +29,23 @@
       <ion-item-sliding *ngFor="let seg of seguimientos">
         <ion-item class="answer-item" >
 
-          <p class="answer-text">{{ seg.usuario }}  {{ seg.fecha }}</p>
-          <p class="observacion">{{ seg.observaciones }}</p>
-          
+          <p *ngIf="seg.usuario=='CIUDADANO'else elseBlockUsuario1">
+
+            <span class="ciudadano"><ion-icon name="people"></ion-icon>{{ seg.usuario }}  {{ seg.fecha }}</span><br>
+            <span class="observacion">{{ seg.observaciones }}</span>
+         
+            
+          </p>
+          <ng-template #elseBlockUsuario1>
+            <p>
+
+              <span class="usuario"><ion-icon name="person"></ion-icon>{{ seg.usuario }}  {{ seg.fecha }}</span><br>
+              <span class="observacion">{{ seg.observaciones }}</span>
+           
+              
+            </p>
+          </ng-template>
+
           <ion-icon *ngIf="seg.id_usuario==mid_usuario"  name="arrow-back" item-end></ion-icon>
         </ion-item>
 
