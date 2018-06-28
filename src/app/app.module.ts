@@ -11,16 +11,17 @@ import { Login } from '../pages/login/login';
 import { SeguimientoFeedPage } from '../pages/seguimiento-feed/seguimiento-feed';
 import { TramiteFeedPage } from '../pages/tramites-feed/tramites-feed';
 
-import { SeguimientoTramitePage } from '../pages/seguimiento-tramite/seguimiento-tramite';
-import { QuestionDetailsPage } from '../pages/question-details/question-details';
-import { ManageQuestionPage } from '../pages/manage-question/manage-question';
+import { SeguimientoTramitePage } from '../pages/seguimiento-tramite/seguimiento-tramite';//igh clase que enlista los seguimiento de un tramite
+import { PreguntaSeguimientoPage } from '../pages/pregunta-seguimiento/pregunta-seguimiento';//igh  clase para realizar pregunta o comentario a un tramite
+//import { QuestionDetailsPage } from '../pages/question-details/question-details';igh pendiente de borrar
+//import { ManageQuestionPage } from '../pages/manage-question/manage-question'; igh pendiente de borrar
 import { ManageAnswerPage } from '../pages/manage-answer/manage-answer';
 import { RespuestaSeguimientoPage } from '../pages/respuesta-seguimiento/respuesta-seguimiento';
 import { ModrespuestaSeguimientoPage } from '../pages/modrespuesta-seguimiento/modrespuesta-seguimiento';
 import { EdicionSeguimientoPage } from '../pages/edicion-seguimiento/edicion-seguimiento';
 
 import { AuthenticationService } from '../services/authentication.service';
-import { QuestionService } from '../services/question.service';
+//import { QuestionService } from '../services/question.service';
 import { AnswerService } from '../services/answer.service';
 import { SeguimientoService } from '../services/seguimiento.service';
 
@@ -44,9 +45,10 @@ import {ServiceUrl} from '../serviceUrl'
     SeguimientoFeedPage,
     TramiteFeedPage,
 
-    SeguimientoTramitePage,
-    QuestionDetailsPage,
-    ManageQuestionPage,
+    SeguimientoTramitePage,//igh enlista los seguimientos de un tramite
+    PreguntaSeguimientoPage,//igh realiza una pregunta acera de un tramite
+    //QuestionDetailsPage,
+    //ManageQuestionPage,
     ManageAnswerPage,
     RespuestaSeguimientoPage,
     ModrespuestaSeguimientoPage,
@@ -66,9 +68,10 @@ import {ServiceUrl} from '../serviceUrl'
     SeguimientoFeedPage,
     TramiteFeedPage,
 
-    SeguimientoTramitePage,
-    QuestionDetailsPage,
-    ManageQuestionPage,
+    SeguimientoTramitePage,//igh enlista los seguimientos de un tramite
+    PreguntaSeguimientoPage,//igh realiza una pregunta acera de un tramite
+    //QuestionDetailsPage,
+    //ManageQuestionPage,
     ManageAnswerPage,
     RespuestaSeguimientoPage,
     ModrespuestaSeguimientoPage,
@@ -79,7 +82,7 @@ import {ServiceUrl} from '../serviceUrl'
     SplashScreen,
     AuthenticationService,
 
-    QuestionService,
+    //QuestionService,
     AnswerService,
     SeguimientoService,
     ServiceUrl,

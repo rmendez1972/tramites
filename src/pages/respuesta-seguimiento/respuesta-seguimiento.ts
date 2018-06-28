@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams, ViewController, AlertController } from 'ionic-angular';
+import { NavParams, ViewController, AlertController, NavController} from 'ionic-angular';
 import { isPresent } from 'ionic-angular/util/util';
 import { Validators, FormGroup, FormControl} from '@angular/forms';
 import { AnswerService } from '../../services/answer.service';
@@ -32,11 +32,13 @@ export class RespuestaSeguimientoPage {
   seg:Array<CategoryModel> = new Array<CategoryModel>();
   user:Array<CategoryModel> = new Array<CategoryModel>();
   sol:Array<CategoryModel> = new Array<CategoryModel>();
+  status:Array<CategoryModel> = new Array<CategoryModel>();
   extraer:any={};
   id_seguimiento:string;
   adjunto:string;
 
   constructor(
+    public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
     public answerService: AnswerService,
@@ -52,12 +54,17 @@ export class RespuestaSeguimientoPage {
 
   ionViewWillLoad() {
     let data = this.navParams.get('data');
-    console.log("valor de data"+data);
+    
+    //recuperar datos del localstorage de status
+    this.status = JSON.parse(localStorage.getItem('status'));
+
     if(data.answer){
       this.answer = data.answer;
     }
+    //validaciones que se le hace al formulario
     this.answerForm = new FormGroup({
-      answer: new FormControl(this.answer.answer, Validators.required)
+      answer: new FormControl(this.answer.answer, Validators.required),
+      valstatus: new FormControl('',Validators.required)
     })
   }
 
@@ -68,14 +75,14 @@ export class RespuestaSeguimientoPage {
 
   //metodo para la insersion de la respuesta del enlace
   onSubmit(value){
-    //se recupera el valor del text area
+    //se recupera el valor del Formulario
     let data = value;
+
     //se recupera el id_seguimiento del seguimiento
     this.id_seguimiento = this._question_id;
     this.adjunto = this._adjuntos;
-
-    console.log("adjunto en el submit"+this.adjunto);
-
+    
+    
     //recuperando valores del localstorage de usuario
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     for (var u in this.user){
@@ -90,16 +97,17 @@ export class RespuestaSeguimientoPage {
 
       //valores de los parametros del metodo 
       //pushSeguimiento(valor del text area, id_usuario, id_solicitud, id_status)
-      this.seguimientoservices.pushSeguimiento(data.answer,this.extraer.id_usuario,this.extraer.id_solicitud,2)
+      this.seguimientoservices.pushSeguimiento(data.answer,this.extraer.id_usuario,this.extraer.id_solicitud,data.valstatus)
       .subscribe(
         (seguimiento)=>{
           this.seguimientos = seguimiento.seguimiento;
           console.log(this.seguimientos);
           localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));        
         });
+      //this.seguimientoservices.getSolicitudes(this.extraer.id_solicitud,)
       this.showMensaje('Se inserto el registro con exito');
       this.dismiss();
-
+        
   }
 
 

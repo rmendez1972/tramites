@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController, NavParams, ModalController } from 'ionic-angular';
 import { Question } from '../../../sdk';
 import { AnswerService } from '../../services/answer.service';
-import { QuestionService } from '../../services/question.service';
+//import { QuestionService } from '../../services/question.service';
 
 import { RespuestaSeguimientoPage } from '../respuesta-seguimiento/respuesta-seguimiento';
 import { CategoryModel } from '../../services/seguimiento.model';
@@ -46,7 +46,7 @@ export class ModrespuestaSeguimientoPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public questionService: QuestionService,
+    //public questionService: QuestionService,
     public answerService: AnswerService,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
@@ -76,8 +76,7 @@ export class ModrespuestaSeguimientoPage {
   }
 
   editAnswerModal(id_seguimiento,observaciones,adjuntos) {
-    console.log('observaciones'+observaciones);
-    console.log('adjuntos'+adjuntos);
+    
 
     let edit_answer_data = {
       mode: 'Editar',
@@ -97,14 +96,15 @@ export class ModrespuestaSeguimientoPage {
     this.mid_usuario=this.currentUser[0].id;
     //se recuperan los valores del localstorage en el metodo de getAnswers
     this.getAnswers();
-
-    console.log("tramite:"+this.tramite);
-    console.log("solicitud:"+this.solicitud);
-    console.log("seguimiento"+this.seguimiento);
-
+    console.log("cargando pagina con el will enter");
 
   }
 
+  ionViewDidEnter(){
+    console.log("cargando pagina con el did enter");
+
+  }
+/*
   getQuestion(){
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
@@ -114,7 +114,7 @@ export class ModrespuestaSeguimientoPage {
       this.question = res[0];
       loading.dismiss();
     })
-  }
+  }*/
 
   getAnswers(){
     let loading = this.loadingCtrl.create({
