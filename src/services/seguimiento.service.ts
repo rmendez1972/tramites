@@ -9,13 +9,10 @@ export class SeguimientoService {
   private pushseguimientoURL: string;
   private deleteseguimientoURL: string;
   private updateseguimientoURL: string;
-<<<<<<< HEAD
   private pushcomentarioUrl: string;//igh
-=======
   private statusUrl: string;
 
   private statusURL: string;
->>>>>>> 848e076f5cba5a7ab5a67fe8e2c3308e16d8c648
 
 	constructor(public http: Http,
     private url:ServiceUrl,
@@ -24,12 +21,8 @@ export class SeguimientoService {
     this.pushseguimientoURL=String(this.url.getUrlpushSeguimiento());
     this.deleteseguimientoURL=String(this.url.getUrldeleteSeguimiento());
     this.updateseguimientoURL=String(this.url.getUrlupdateSeguimiento());
-<<<<<<< HEAD
-    this.pushcomentarioUrl=String(this.url.getUrlpushComentario());//igh
-=======
     this.statusUrl =String(this.url.getStatus());
 
->>>>>>> 848e076f5cba5a7ab5a67fe8e2c3308e16d8c648
     
   }
 
@@ -56,11 +49,8 @@ export class SeguimientoService {
   }
   //metodo para insertar un nuevo seguimiento de parte del nivel enlace
   pushSeguimiento(values, id_usuario:number,id_solicitud:number,id_status:number){
-<<<<<<< HEAD
     console.log('Dentro del service del simio2');
-=======
     console.log(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status);
->>>>>>> 848e076f5cba5a7ab5a67fe8e2c3308e16d8c648
     return this.http.get(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
       .map((res) => res.json());
   }
@@ -80,18 +70,15 @@ export class SeguimientoService {
     .map((res) => res.json(),(error)=>{console.log(error);});
 
   }
-<<<<<<< HEAD
   //igh metodo para insertar comentario como ciudadano
   pushComentario(observaciones:string, id_usuario:number,id_solicitud:number,id_status:number){
     
     console.log(observaciones,id_usuario,id_solicitud,id_status);
     return this.http.get(this.pushcomentarioUrl+observaciones+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
       .map((res) => res.json());
-=======
-  //
+  }
   getStatus(){
     return this.http.get(this.statusUrl)
     .map((res) => res.json(),(error)=>{console.log(error);});
->>>>>>> 848e076f5cba5a7ab5a67fe8e2c3308e16d8c648
   }
 }
