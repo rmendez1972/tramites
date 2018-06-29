@@ -66,7 +66,6 @@ export class SeguimientoService {
 
   //metodo para actualizar el seguimiento de nivel enlace
   updateSeguimiento(id_seguimiento:string, values, id_solicitud:string, id_usuario:string, id_status:number,adjunto:string){
-    console.log("adjunto dentro del service"+adjunto);
     return this.http.get(this.updateseguimientoURL+id_seguimiento+"&id_solicitud="+id_solicitud+'&observaciones='+values+'&id_usuario='+id_usuario+'&id_status='+id_status+'&adjunto='+adjunto)
     .map((res) => res.json(),(error)=>{console.log(error);});
 
