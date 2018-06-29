@@ -113,6 +113,12 @@ export class SeguimientoTramitePage {
     this.navCtrl.push(ModrespuestaSeguimientoPage, {data: data_params });
   }
 
+
+  verAdjuntos(){//Metod para mostrar los adjuntos
+    let subtitle= 'Ver adjuntos. Pendiente por realizar';
+    this.showAlert(subtitle);
+  }
+
    // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
   showAlert(subtitle:string='En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a>') {
 

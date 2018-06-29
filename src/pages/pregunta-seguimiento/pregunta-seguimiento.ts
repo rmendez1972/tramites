@@ -95,7 +95,7 @@ export class PreguntaSeguimientoPage {
       this.extraer.id_usuario=3;//El id 3 es fijo y pertenece al usuario "Ciudadano", revisar el modelo
       console.log(this.extraer.id_usuario,this.extraer.id_solicitud,this.extraer.id_status);
       console.log('Valor del mensaje'+data.question);
-      this.seguimientoservices.pushSeguimiento(data.question,this.extraer.id_usuario,this.extraer.id_solicitud,this.extraer.id_status)
+      this.seguimientoservices.pushComentario(data.question,this.extraer.id_usuario,this.extraer.id_solicitud,this.extraer.id_status)
       
       .subscribe(
         (seguimiento)=>{

@@ -9,7 +9,7 @@ export class SeguimientoService {
   private pushseguimientoURL: string;
   private deleteseguimientoURL: string;
   private updateseguimientoURL: string;
-  private pushcomentarioUrl: string;//igh
+  private pushcomentarioURL: string;//igh
   private statusUrl: string;
 
   private statusURL: string;
@@ -19,6 +19,7 @@ export class SeguimientoService {
     ){
     this.seguimientosUrl=String(this.url.getUrl());
     this.pushseguimientoURL=String(this.url.getUrlpushSeguimiento());
+    this.pushcomentarioURL=String(this.url.getUrlpushComentario());
     this.deleteseguimientoURL=String(this.url.getUrldeleteSeguimiento());
     this.updateseguimientoURL=String(this.url.getUrlupdateSeguimiento());
     this.statusUrl =String(this.url.getStatus());
@@ -49,7 +50,7 @@ export class SeguimientoService {
   }
   //metodo para insertar un nuevo seguimiento de parte del nivel enlace
   pushSeguimiento(values, id_usuario:number,id_solicitud:number,id_status:number){
-    console.log('Dentro del service del simio2');
+    
     console.log(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status);
     return this.http.get(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
       .map((res) => res.json());
@@ -72,9 +73,9 @@ export class SeguimientoService {
   }
   //igh metodo para insertar comentario como ciudadano
   pushComentario(observaciones:string, id_usuario:number,id_solicitud:number,id_status:number){
-    
+    console.log('Dentro del service del simio2');
     console.log(observaciones,id_usuario,id_solicitud,id_status);
-    return this.http.get(this.pushcomentarioUrl+observaciones+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
+    return this.http.get(this.pushcomentarioURL+observaciones+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
       .map((res) => res.json());
   }
   getStatus(){
