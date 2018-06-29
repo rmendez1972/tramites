@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController, NavParams, ModalController } from 'ionic-angular';
 import { Question } from '../../../sdk';
 import { AnswerService } from '../../services/answer.service';
-//import { QuestionService } from '../../services/question.service';
 
 import { RespuestaSeguimientoPage } from '../respuesta-seguimiento/respuesta-seguimiento';
 import { CategoryModel } from '../../services/seguimiento.model';
@@ -34,6 +33,7 @@ export class ModrespuestaSeguimientoPage {
   seg:Array<CategoryModel> = new Array<CategoryModel>();
   actividad:Array<CategoryModel> = new Array<CategoryModel>();
   segB:Array<CategoryModel> = new Array<CategoryModel>();
+  sol:Array<CategoryModel> = new Array<CategoryModel>();
   private muestrabot: boolean=false;
   private currentUser:any[];
   private mid_usuario: number;
@@ -46,12 +46,12 @@ export class ModrespuestaSeguimientoPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    //public questionService: QuestionService,
     public answerService: AnswerService,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
-    public segservices:SeguimientoService
+    public segservices:SeguimientoService,
+    public seguimientoservices: SeguimientoService,
   ) {
     
     
@@ -62,33 +62,52 @@ export class ModrespuestaSeguimientoPage {
     this.tramite = isPresent(data) && isPresent(data.tramites) ? data.tramites : '';
     this.solicitud = isPresent(data) && isPresent(data.solicitud) ? data.solicitud : '';
   }
-
+  //metodo para insertar
   createAnswerModal() {
-    let create_answer_data = {
-      mode: 'Agregar',
-      questionId: this.questionId
-    };
-    let create_answer_modal = this.modalCtrl.create(RespuestaSeguimientoPage, { data: create_answer_data });
-    create_answer_modal.onDidDismiss(data => {
-       this.getAnswers();
-    });
-    create_answer_modal.present();
+    //comparando si el estatus del tramite es "TRAMITE" para continuar la accion
+    if(this.extraer.estatus=='TRAMITE'){
+      //creando modal para insertar
+      let create_answer_data = {
+        mode: 'Agregar',
+        questionId: this.questionId
+      };
+      let create_answer_modal = this.modalCtrl.create(RespuestaSeguimientoPage, { data: create_answer_data });
+      create_answer_modal.onDidDismiss(data => {
+         this.getAnswers();
+      });
+      create_answer_modal.present();
+
+    }else{
+
+      this.showMensaje('No es posible generar comentario. El estatus del trámite es: '+this.extraer.estatus);
+
+    }
+
+
   }
+  //metodo para editar
+  editAnswerModal(id_seguimiento,observaciones,adjuntos,status) {
+    //comparando si el estatus del tramite es "TRAMITE" para continuar la accion
+    if(this.extraer.estatus=='TRAMITE'){
+      //creando modal para editar
+      let edit_answer_data = {
+        mode: 'Editar',
+        answer: observaciones,
+        questionId: id_seguimiento,
+        adjuntos: adjuntos,
+        status: status
+      };
+      let edit_answer_modal = this.modalCtrl.create(EdicionSeguimientoPage, { data: edit_answer_data });
+      edit_answer_modal.onDidDismiss(data => {
+        this.getAnswers();
+      });
+      edit_answer_modal.present();
 
-  editAnswerModal(id_seguimiento,observaciones,adjuntos) {
-    
+    }else{
 
-    let edit_answer_data = {
-      mode: 'Editar',
-      answer: observaciones,
-      questionId: id_seguimiento,
-      adjuntos: adjuntos
-    };
-    let edit_answer_modal = this.modalCtrl.create(EdicionSeguimientoPage, { data: edit_answer_data });
-    edit_answer_modal.onDidDismiss(data => {
-      this.getAnswers();
-    });
-    edit_answer_modal.present();
+      this.showMensaje('No es posible editar el comentario. El estatus del trámite es: '+this.extraer.estatus);
+
+    }
   }
 
   ionViewWillEnter() {
@@ -96,38 +115,40 @@ export class ModrespuestaSeguimientoPage {
     this.mid_usuario=this.currentUser[0].id;
     //se recuperan los valores del localstorage en el metodo de getAnswers
     this.getAnswers();
-    console.log("cargando pagina con el will enter");
+  
+    //recuperando valores del localstorage de solicitud
+    this.sol = JSON.parse(localStorage.getItem('solicitud'));
+    //for para recuperar el valor del estatus
+    for(var s in this.sol){
+      this.extraer.estatus = this.sol[s].status;
+    }
+    console.log(this.sol);
+    console.log("status del tramite"+this.extraer.estatus);
 
   }
 
   ionViewDidEnter(){
-    console.log("cargando pagina con el did enter");
+    
 
   }
-/*
-  getQuestion(){
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-    this.questionService.getQuestion(this.questionId)
-    .then(res => {
-      this.question = res[0];
-      loading.dismiss();
-    })
-  }*/
 
+  //metodo en donde se buscan los seguimientos y la solicitud que estan guardados en el localStorage
   getAnswers(){
     let loading = this.loadingCtrl.create({
       content: 'Por favor espere...'
     });
     loading.present();
 
+    //recuperando valores del localstorage de seguimiento
     this.seguimientos = JSON.parse(localStorage.getItem('seguimiento'));
+    
     loading.dismiss();
 
   }
-
+  //metodo para eliminar
   delete(id_seguimiento,adjuntos){
+    //comparando si el estatus del tramite es "TRAMITE" para continuar la accion
+    if(this.extraer.estatus=='TRAMITE'){
 
     //recuperamos los datos del local storage de seguimiento
     this.seg = JSON.parse(localStorage.getItem('seguimiento'));
@@ -135,7 +156,7 @@ export class ModrespuestaSeguimientoPage {
     for (var elemento in this.seg){
       this.extraer.id_solicitud = this.seg[elemento].id_solicitud;
     }
-
+    //comparando si este seguimiento tiene un archivo adjunto. Si lo tiene, no se puede borrar
     if(adjuntos){
       console.log("mostrando mensaje que no se puede borrar");
       this.showMensaje('No puede borrar este registro ya que cuenta con un archivo adjunto');
@@ -173,7 +194,12 @@ export class ModrespuestaSeguimientoPage {
         ]
       });
       confirm.present();
+    //fin else del la comparacion del adjunto
+    }
 
+    }else{
+
+      this.showMensaje('No es posible borraar el comentario. El estatus del trámite es: '+this.extraer.estatus);
 
     }
 

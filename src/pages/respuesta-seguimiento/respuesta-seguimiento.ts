@@ -36,6 +36,7 @@ export class RespuestaSeguimientoPage {
   extraer:any={};
   id_seguimiento:string;
   adjunto:string;
+  solicitud:Array<CategoryModel> = new Array<CategoryModel>();
 
   constructor(
     public navCtrl: NavController,
@@ -93,7 +94,9 @@ export class RespuestaSeguimientoPage {
     this.sol = JSON.parse(localStorage.getItem('solicitud'));
     for(var s in this.sol){
       this.extraer.id_solicitud = this.sol[s].id_solicitud;
-    }     
+      this.extraer.id_solicitante = this.sol[s].id_solicitante;
+    }
+    
 
       //valores de los parametros del metodo 
       //pushSeguimiento(valor del text area, id_usuario, id_solicitud, id_status)
@@ -101,10 +104,13 @@ export class RespuestaSeguimientoPage {
       .subscribe(
         (seguimiento)=>{
           this.seguimientos = seguimiento.seguimiento;
+          this.solicitud = seguimiento.sol;
           console.log(this.seguimientos);
-          localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));        
-        });
-      //this.seguimientoservices.getSolicitudes(this.extraer.id_solicitud,)
+          console.log(this.solicitud);
+          localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
+          localStorage.setItem('solicitud',JSON.stringify(this.solicitud)); 
+        }
+      );
       this.showMensaje('Se inserto el registro con exito');
       this.dismiss();
         

@@ -16,10 +16,10 @@
   <ion-card>
     <img src="assets/img/header.png"/>
     <ion-card-content>
-      <h3>
-        Trámite: {{tramite}}<br>
-        Seguimiento: {{seguimiento}}<br>
-        <ion-badge color="dark" item-end>Estatus: {{solicitud}}</ion-badge>
+      <h3 style="text-align: left">
+        <strong>Trámite:</strong> {{tramite}}<br>
+        <strong>Seguimiento:</strong> {{seguimiento}}<br>
+        <ion-badge color="dark" item-end>Estatus: {{extraer.estatus}}</ion-badge>
       </h3>
     </ion-card-content>
   </ion-card>
@@ -31,7 +31,7 @@
 
           <p *ngIf="seg.usuario=='CIUDADANO'else elseBlockUsuario1">
 
-            <span class="ciudadano"><ion-icon name="people"></ion-icon>{{ seg.usuario }}  {{ seg.fecha }}</span><br>
+            <span class="ciudadano"><ion-icon name="people"></ion-icon>{{ seg.usuario }}</span><br>
             <span class="observacion">{{ seg.observaciones }}</span>
          
             
@@ -39,19 +39,19 @@
           <ng-template #elseBlockUsuario1>
             <p>
 
-              <span class="usuario"><ion-icon name="person"></ion-icon>{{ seg.usuario }}  {{ seg.fecha }}</span><br>
+              <span class="usuario"><ion-icon name="person"></ion-icon>{{ seg.usuario }}</span><br>
               <span class="observacion">{{ seg.observaciones }}</span>
            
               
             </p>
           </ng-template>
-
+          <div class="fechahora">{{ seg.fecha }}</div>
           <ion-icon *ngIf="seg.id_usuario==mid_usuario"  name="arrow-back" item-end></ion-icon>
         </ion-item>
 
 
         <ion-item-options *ngIf="seg.id_usuario==mid_usuario" side="right">
-          <button class="edit-button" ion-button Medium round clear icon-only color="dark" (click)="editAnswerModal(seg.id_seguimiento,seg.observaciones,seg.adjunto)">
+          <button class="edit-button" ion-button Medium round clear icon-only color="dark" (click)="editAnswerModal(seg.id_seguimiento,seg.observaciones,seg.adjunto,seg.id_status)">
             <ion-icon name="md-create"></ion-icon>
           </button>
           <button class="delete-button" ion-button Medium round clear icon-only color="danger" (click)="delete(seg.id_seguimiento,seg.adjunto)">

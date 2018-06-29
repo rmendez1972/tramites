@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      <span>{{ _mode }} Tú respuesta</span>
+      <span>{{ _mode }}{{ _idstatus }} Tú respuesta</span>
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -19,6 +19,14 @@
         <ion-item class="textarea-item">
           
           <ion-textarea formControlName="answer" rows="5" [ngModel]="observaciones" (ngModelChange)="observaciones = $event" ></ion-textarea>
+        </ion-item>
+      </ion-col>
+      <ion-col offset-1 col-10>
+        <ion-item>
+          <ion-label>Estatus del Tramite</ion-label><br>
+          <ion-select formControlName="valstatus" submitText="Ok" cancelText="Cancelar">
+            <ion-option *ngFor="let sta of status" [value]="sta.id_status" >{{sta.nombre}}</ion-option>
+          </ion-select>
         </ion-item>
       </ion-col>
       <ion-col offset-1 col-10>
