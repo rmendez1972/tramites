@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController, ModalController, RefresherContent } from 'ionic-angular';
 import { isPresent } from 'ionic-angular/util/util';
 //import { SeguimientoService} from '../services/seguimiento.service'
 //import { QuestionService } from '../../services/question.service';
@@ -51,17 +51,20 @@ export class SeguimientoTramitePage {
     this.tramite = isPresent(tramite_param) ? tramite_param : null;
     this.seguimiento= isPresent(seguimientos_param) ? seguimientos_param : null;
   }
+
   //Método para crear una pregunta/comentario por parte del ciudadano
   createQuestionModal() {
     console.log('Creando comentario..');
     if (this.solicitud[0].status=='TRAMITE'){//Se va apoder crear siempre cuandor el estatus sea TRAMITE
 
-      let create_question_modal = this.modalCtrl.create(PreguntaSeguimientoPage, { slug: this.solicitud.slug });
+      let create_question_modal = this.modalCtrl.create(PreguntaSeguimientoPage, { data: this.solicitud.data });
       create_question_modal.onDidDismiss(data => {
       this.getQuestions();
+      
+      
     });
     create_question_modal.present();
-
+    
     }
     else {//Si el estatus no es trámite alertar al usuario de que no es posible crear un comentario
 
@@ -72,20 +75,19 @@ export class SeguimientoTramitePage {
 
   }
 
-
   ionViewWillEnter() {
     this.seguimientos=[];//igh
     this.seguimientos =JSON.parse(localStorage.getItem('seguimiento'));//igh
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));//igh
     this.id_grupo=this.currentUser[0].id_grupo;
-    console.log('Grupo...'+this.id_grupo);
-    console.log(this.seguimientos);
+    //console.log('Grupo...'+this.id_grupo);
+    //console.log(this.seguimientos);
     //this.getQuestions();
 
   }
 
   getQuestions(){//Obtiene todos los seguimientos del tramite
-    let loading = this.loadingCtrl.create({
+      let loading = this.loadingCtrl.create({
       content: 'Recuperando Datos del Servidor de SEDETUS...'
     });
     loading.present();

@@ -13,12 +13,12 @@
 </ion-header>
 
 <ion-content class="modal-content">
-  <form [formGroup]="questionForm" class="modal-form" (ngSubmit)="onSubmitx(questionForm.value)" >
+  <form [formGroup]="questionForm" class="modal-form" (ngSubmit)="onSubmit(questionForm.value)" >
   
     <ion-row>
       <ion-col offset-1 col-10>
         <ion-item class="textarea-item">
-          <ion-label floating>Escribe tu comentario aquí</ion-label>
+          <ion-label floating>Ciudadano escribe tu comentario aquí</ion-label>
           <ion-textarea formControlName="question" rows="5"></ion-textarea>
         </ion-item>
       </ion-col>
