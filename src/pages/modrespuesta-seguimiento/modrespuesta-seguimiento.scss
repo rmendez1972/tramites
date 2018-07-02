@@ -303,7 +303,7 @@ page-modrespuesta-seguimiento {
 	}
 
 	.ciudadano{ //igh
-		//font-size: 1rem;
+		font-size: 1.2rem;
 		font-weight: normal;
 		font-style: italic;
 		color:#21A5C2;
@@ -311,7 +311,7 @@ page-modrespuesta-seguimiento {
 	}
 
 	.usuario{ //igh
-		//font-size: 1rem;
+		font-size: 1.2rem;
 		font-weight: normal;
 		font-style: italic;
 		color:#566573;
@@ -327,6 +327,14 @@ page-modrespuesta-seguimiento {
 		line-height: 1.4;
 		white-space: normal;
 		
+	}
+	.fechahora{ //igh
+		width: 100%;
+		font-size: 1.2rem;
+		text-align: right !important;
+		font-weight: normal;
+		//font-style: italic;
+		color:#566573;		
 	}
 
 

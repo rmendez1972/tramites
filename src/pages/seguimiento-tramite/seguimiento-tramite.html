@@ -17,64 +17,75 @@
     <img src="assets/img/header.png"/>
     <ion-card-content>
       <h3 style="text-align: left">
-        <strong>Trámite:</strong> {{tramite[0].nombre}}<br><strong>Estatus:</strong>
-        <ion-badge color="dark" item-end>{{solicitud[0].status}}</ion-badge>
+
+        <strong>Solicitud:</strong> {{solicitud[0].id_solicitud}}.
+        <strong> Fecha ingreso: </strong>{{solicitud[0].fecha_ingreso}}.<br>
+        <strong>Trámite:</strong> {{tramite[0].nombre}}<br>
+        <strong>Estatus:</strong><ion-badge color="dark" item-end>{{solicitud[0].status}}</ion-badge>
+
       </h3>
     </ion-card-content>
   </ion-card>
 
-    <div>
+
     <h3 class="questions-call-out">
       Recuperado todos los seguimientos del Trámite:
     </h3>
 
-    <ion-list class="questions-list">
-      <ion-item class="question-item" *ngFor="let seguimiento of seguimientos">
-        <ion-row>
-          <ion-col col-12>
-            <ion-row class="question-details">
-              <ion-col col-12>
+    <ion-list inset>
+      <ion-item-sliding *ngFor="let seguimiento of seguimientos">
+        <ion-item class="question-details" >
 
-                <!--Activar el método openAnswer para el usuario seguimiento o administrador-->
-                <div *ngIf="currentUser[0].id_grupo==2 || currentUser[0].id_grupo==1 else elseBlokCiudadano">
-                  <h2 *ngIf="seguimiento.usuario=='CIUDADANO'else elseBlockUsuario1"
-                    class="question-text" (click)="listarParaEdicion(seguimiento.observaciones,tramite[0].nombre,solicitud[0].status)" >
-                    <span class="ciudadano"><ion-icon name="people" style="font-size: 1.6em"></ion-icon>{{ seguimiento.usuario }}:<br></span>
-                    {{ seguimiento.observaciones }}
-                  </h2>
-                  <ng-template #elseBlockUsuario1><!--Si la respuesta es de un usuario no disparar el metodo openAnswer-->
-                      <h2 class="question-text">
-                      <!--<h2 class="question-text" (click)="openAnswers(seguimiento)"><ion-icon name="person"></ion-icon>-->
-                        <span class="usuario"><ion-icon name="person" style="font-size: 1.6em"></ion-icon>{{ seguimiento.usuario }}:<br></span>
-                        {{ seguimiento.observaciones }}
-                      </h2>
-                  </ng-template>
-                </div>
+          <div *ngIf="currentUser[0].id_grupo==2 || currentUser[0].id_grupo==1 else elseBlokCiudadano">
+            <h2 *ngIf="seguimiento.usuario=='CIUDADANO'else elseBlockUsuario1"
+              class="question-text" (click)="listarParaEdicion(seguimiento.observaciones,tramite[0].nombre,solicitud[0].status)" >
+              <span class="ciudadano"><ion-icon name="people" style="font-size: 1.6em"></ion-icon> {{ seguimiento.usuario }}:<br></span>
+              <span class="observacion">{{ seguimiento.observaciones }}</span>
+            </h2>
+            <ng-template #elseBlockUsuario1><!--Si la respuesta es de un usuario no disparar el metodo openAnswer-->
+              <h2 class="question-text">
+                <!--<h2 class="question-text" (click)="openAnswers(seguimiento)"><ion-icon name="person"></ion-icon>-->
+                <span class="usuario"><ion-icon name="person" style="font-size: 1.6em"></ion-icon> {{ seguimiento.usuario }}:<br></span>
+                <span class="observacion">{{ seguimiento.observaciones }}</span>
+              </h2>
+            </ng-template>
+          </div>
 
-                <!--No se dispara el método openAnswers para el ciudadano-->
-                <ng-template #elseBlokCiudadano>
-                  <div>
-                    <h2 *ngIf="seguimiento.usuario=='CIUDADANO'else elseBlockUsuario"
-                      class="question-text" >
-                      <span class="ciudadano"><ion-icon name="people" style="font-size: 1.6em"></ion-icon> {{ seguimiento.usuario }}: <br></span>
-                      {{ seguimiento.observaciones }}
-                    </h2>
-                    <ng-template #elseBlockUsuario>
-                      <h2 class="question-text" >
-                        <span class="usuario"><ion-icon name="person" style="font-size: 1.6em"></ion-icon>{{ seguimiento.usuario }}: <br> </span>
-                        {{ seguimiento.observaciones }}
-                      </h2>
-                    </ng-template>
-                  </div>
-                </ng-template>
-                <div class="fechahora">{{ seguimiento.fecha }}</div>
-              </ion-col>
-            </ion-row>
-          </ion-col>
-        </ion-row>
-      </ion-item>
+          <!--No se dispara el método openAnswers para el ciudadano-->
+          <ng-template #elseBlokCiudadano>
+
+            <div>
+              <p *ngIf="seguimiento.usuario=='CIUDADANO'else elseBlockUsuario"
+                class="question-text" >
+                <span class="ciudadano"><ion-icon name="people" style="font-size: 1.6em"></ion-icon> {{ seguimiento.usuario }}:<br></span>
+               <span class="observacion">{{ seguimiento.observaciones }}</span>
+              </p>
+            </div>
+
+          </ng-template>
+
+          <ng-template #elseBlockUsuario>
+            <div>
+              <p class="question-text" >
+                <span class="usuario"><ion-icon name="person" style="font-size: 1.6em"></ion-icon> {{ seguimiento.usuario }}: <br></span>
+                <span class="observacion">{{ seguimiento.observaciones }}</span>
+              </p>
+            </div>
+          </ng-template>
+
+          <div class="fechahora">{{ seguimiento.fecha }}</div>
+          <ion-icon *ngIf="seguimiento.adjunto && seguimiento.usuario=='CIUDADANO'"  name="arrow-back" item-end></ion-icon>
+        </ion-item>
+
+        <ion-item-options *ngIf="seguimiento.adjunto && seguimiento.usuario=='CIUDADANO'" side="right">
+          <button class="edit-button" ion-button Medium round clear icon-only color="dark" (click)="verAdjuntos()">
+            <ion-icon name="md-attach"></ion-icon>
+          </button>
+        </ion-item-options>
+
+      </ion-item-sliding>
+
     </ion-list>
-  </div>
 </ion-content>
 
 <ion-footer >
@@ -91,16 +102,4 @@
   </ion-toolbar>
 </ion-footer>
 
-<!--
-<ion-footer >
-  <div >
-    <ion-toolbar color="primary">
-      <div *ngIf="solicitud[0].status=='TRAMITE' && id_grupo==3">
-      <button ion-button round block (click)="createQuestionModal()" color="light">
-        <b>Crear nuevo comentario?</b>
-      </button>
-    </div>
-    </ion-toolbar>
-  </div>
 
-</ion-footer>-->
