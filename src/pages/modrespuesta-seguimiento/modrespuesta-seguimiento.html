@@ -1,8 +1,9 @@
 <ion-header >
   <ion-navbar color="primary">
 
+    <img  width="120" height="40" style="margin: 1px; padding: 1px;" src="assets/img/header.png" >
     <ion-title>
-      <span>Detalles del seguimiento</span>
+      <span style="font-size: 13px; margin: 1px; padding: 1px;">Trámites SEDETUS</span>
     </ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="showAlert()">
@@ -33,16 +34,16 @@
 
             <span class="ciudadano"><ion-icon name="people"></ion-icon>{{ seg.usuario }}  {{ seg.fecha }}</span><br>
             <span class="observacion">{{ seg.observaciones }}</span>
-         
-            
+
+
           </p>
           <ng-template #elseBlockUsuario1>
             <p>
 
               <span class="usuario"><ion-icon name="person"></ion-icon>{{ seg.usuario }}  {{ seg.fecha }}</span><br>
               <span class="observacion">{{ seg.observaciones }}</span>
-           
-              
+
+
             </p>
           </ng-template>
 

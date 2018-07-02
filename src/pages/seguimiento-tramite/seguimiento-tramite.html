@@ -1,7 +1,8 @@
 <ion-header>
   <ion-navbar color="primary">
+    <img  width="120" height="40" style="margin: 1px; padding: 1px;" src="assets/img/header.png" >
     <ion-title>
-      <span>Trámites SEDETUS</span>
+      <span style="font-size: 13px; margin: 1px; padding: 1px;">Trámites SEDETUS</span>
     </ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="showAlert()">
@@ -16,7 +17,7 @@
     <img src="assets/img/header.png"/>
     <ion-card-content>
       <h3 style="text-align: left">
-        <strong>Trámite:</strong> {{tramite[0].nombre}}<br><strong>Estatus:</strong> 
+        <strong>Trámite:</strong> {{tramite[0].nombre}}<br><strong>Estatus:</strong>
         <ion-badge color="dark" item-end>{{solicitud[0].status}}</ion-badge>
       </h3>
     </ion-card-content>
