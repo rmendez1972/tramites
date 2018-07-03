@@ -196,7 +196,7 @@ seguimiento-tramite-page {
 
 	}
 	.ciudadano{ //igh
-		//font-size: 1rem;
+		font-size: 1.3rem;
 		font-weight: normal;
 		font-style: italic;
 		color:#21A5C2;
@@ -204,7 +204,7 @@ seguimiento-tramite-page {
 	}
 
 	.usuario{ //igh
-		//font-size: 1rem;
+		font-size: 1.3rem;
 		font-weight: normal;
 		font-style: italic;
 		color:#566573;
@@ -221,5 +221,18 @@ seguimiento-tramite-page {
 
 	.question-details:hover {
 		background-color: #DFE1E3  ;
+	}
+
+	.observacion
+	{
+		color: black;
+		margin: 0px;
+		//font-size: 1.4rem;
+		font-size: 1.3rem;
+		line-height: 1.4;
+		white-space: normal;
+		width: 100%;
+		font-weight: bold;
+		
 	}
 }

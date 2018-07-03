@@ -25,6 +25,7 @@ export class EdicionSeguimientoPage {
   _question_id: string;
   _answer_id: string;
   _adjuntos: string;
+  _idstatus: string;
   answerForm: FormGroup;
   answer: Answer = new Answer();
   data : Array<CategoryModel> = new Array<CategoryModel>();
@@ -36,6 +37,8 @@ export class EdicionSeguimientoPage {
   extraer:any={};
   id_seguimiento:string;
   adjunto:string;
+  status:Array<CategoryModel> = new Array<CategoryModel>();
+  solicitud:Array<CategoryModel> = new Array<CategoryModel>();
 
   constructor(
     public navParams: NavParams,
@@ -49,17 +52,23 @@ export class EdicionSeguimientoPage {
     this._question_id = isPresent(data) && isPresent(data.questionId) ? data.questionId : '';
     this._answer_id = isPresent(data) && isPresent(data.answerId) ? data.answerId : '';
     this._adjuntos = isPresent(data) && isPresent(data.adjuntos) ? data.adjuntos : '';
+    this._idstatus = isPresent(data) && isPresent(data.status) ? data.status : '';
   }
 
   ionViewWillLoad() {
     let data = this.navParams.get('data');
-    console.log("valor de data"+data.answer);
+    //recuperar datos del localstorage de status para desplegar en el select
+    this.status = JSON.parse(localStorage.getItem('status'));
+    //las observaciones para bindiarlo a la vista
     this.observaciones = data.answer;
+    console.log("estatus del seguimiento"+this._idstatus);
+
     if(data.answer){
       this.answer = data.answer;
     }
     this.answerForm = new FormGroup({
-      answer: new FormControl(this.answer.answer, Validators.required)
+      answer: new FormControl(this.answer.answer, Validators.required),
+      valstatus: new FormControl('',Validators.required)
     })
   }
 
@@ -90,12 +99,15 @@ onSubmit(value){
     this.extraer.id_solicitud = this.sol[s].id_solicitud;
   }
     //llamado al service para la actualizacion
-    this.seguimientoservices.updateSeguimiento(this.id_seguimiento,data.answer,this.extraer.id_solicitud,this.extraer.id_usuario,2,this.adjunto)
+    this.seguimientoservices.updateSeguimiento(this.id_seguimiento,data.answer,this.extraer.id_solicitud,this.extraer.id_usuario,data.valstatus,this.adjunto)
     .subscribe(
       (seguimiento)=>{
         this.seguimientos = seguimiento.seguimiento;
+        this.solicitud = seguimiento.sol;
         console.log(this.seguimientos);
-        localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));        
+        console.log(this.solicitud);
+        localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));    
+        localStorage.setItem('solicitud',JSON.stringify(this.solicitud));     
       });
     this.showMensaje('Se actualizo el registro con exito');
     this.dismiss();

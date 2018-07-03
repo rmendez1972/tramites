@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      <span>{{ _mode }} Tú respuesta</span>
+      <span>{{ _mode }} Tú respuesta al Ciudadano</span>
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -17,7 +17,7 @@
     <ion-row>
       <ion-col offset-1 col-10>
         <ion-item class="textarea-item">
-          <ion-label floating>Escribe tu respuesta al seguimiento por favor</ion-label>
+          <ion-label floating>Respondele al Cludadano aqui</ion-label>
           <ion-textarea formControlName="answer" rows="5"></ion-textarea>
         </ion-item>
       </ion-col>
@@ -30,7 +30,7 @@
         </ion-item>
       </ion-col>
       <ion-col offset-1 col-10>
-        <button ion-button block type="submit" [disabled]="!answerForm.valid" color="answer">
+        <button ion-button block round type="submit" [disabled]="!answerForm.valid" color="default">
           <b>Grabar</b>
         </button>
       </ion-col>

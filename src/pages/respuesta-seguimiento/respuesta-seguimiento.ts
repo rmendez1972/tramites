@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {App, NavParams, ViewController, AlertController, NavController,LoadingController} from 'ionic-angular';
+import { NavParams, ViewController, AlertController, NavController} from 'ionic-angular';
 import { isPresent } from 'ionic-angular/util/util';
 import { Validators, FormGroup, FormControl} from '@angular/forms';
 import { AnswerService } from '../../services/answer.service';
@@ -36,6 +36,7 @@ export class RespuestaSeguimientoPage {
   extraer:any={};
   id_seguimiento:string;
   adjunto:string;
+  solicitud:Array<CategoryModel> = new Array<CategoryModel>();
 
   constructor(
     public navCtrl: NavController,
@@ -44,8 +45,6 @@ export class RespuestaSeguimientoPage {
     public answerService: AnswerService,
     public alertCtrl: AlertController,
     public seguimientoservices: SeguimientoService,
-    public loadingCtrl: LoadingController,
-    public appCtrl: App,
   ) {
     let data = navParams.get('data');
     this._mode = isPresent(data) && isPresent(data.mode) ? data.mode : '';
@@ -68,12 +67,11 @@ export class RespuestaSeguimientoPage {
       answer: new FormControl(this.answer.answer, Validators.required),
       valstatus: new FormControl('',Validators.required)
     })
-
-
   }
 
   dismiss() {
-    this.viewCtrl.dismiss();
+    let data = { 'foo': 'bar' };
+    this.viewCtrl.dismiss(data);
   }
 
   //metodo para la insersion de la respuesta del enlace
@@ -96,7 +94,9 @@ export class RespuestaSeguimientoPage {
     this.sol = JSON.parse(localStorage.getItem('solicitud'));
     for(var s in this.sol){
       this.extraer.id_solicitud = this.sol[s].id_solicitud;
-    }     
+      this.extraer.id_solicitante = this.sol[s].id_solicitante;
+    }
+    
 
       //valores de los parametros del metodo 
       //pushSeguimiento(valor del text area, id_usuario, id_solicitud, id_status)
@@ -104,20 +104,17 @@ export class RespuestaSeguimientoPage {
       .subscribe(
         (seguimiento)=>{
           this.seguimientos = seguimiento.seguimiento;
+          this.solicitud = seguimiento.sol;
           console.log(this.seguimientos);
-          localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));      
-          this.ionViewWillLoad(); 
-        });
-      //this.seguimientoservices.getSolicitudes(this.extraer.id_solicitud,)
+          console.log(this.solicitud);
+          localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
+          localStorage.setItem('solicitud',JSON.stringify(this.solicitud)); 
+        }
+      );
       this.showMensaje('Se inserto el registro con exito');
-      this.ionViewWillLoad(); 
-      //modal.present();
-      this.appCtrl.getRootNav().setRoot('ModrespuestaSeguimientoPage');
-      //window.location.reload();
       this.dismiss();
+        
   }
-
-
 
 
   showMensaje(msg) {
