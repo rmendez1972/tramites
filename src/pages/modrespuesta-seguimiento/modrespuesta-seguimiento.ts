@@ -73,6 +73,7 @@ export class ModrespuestaSeguimientoPage {
        this.getAnswers();
     });
     create_answer_modal.present();
+    
   }
 
   editAnswerModal(id_seguimiento,observaciones,adjuntos) {
@@ -124,7 +125,6 @@ export class ModrespuestaSeguimientoPage {
 
     this.seguimientos = JSON.parse(localStorage.getItem('seguimiento'));
     loading.dismiss();
-
   }
 
   delete(id_seguimiento,adjuntos){
