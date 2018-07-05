@@ -43,7 +43,7 @@ constructor() {}
 	  	}
 
 		getUrladjuntosupload():String{
-	  			return this.URLadjuntosupload='http://189.221.153.178:3001/upload/';
+	  			return this.URLadjuntosupload='http://localhost:3001/upload/';
 	  	}
 
 	  	getUrllogin():String{
@@ -67,7 +67,7 @@ constructor() {}
 
 
 		getUrlupload():String{
-	  			return this.URLupload='http://189.221.153.178:3001/upload';
+	  			return this.URLupload='http://localhost:3001/upload';
 	  	}
 
 		getUrlfilename():String{

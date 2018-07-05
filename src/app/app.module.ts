@@ -18,6 +18,7 @@ import { PreguntaSeguimientoPage } from '../pages/pregunta-seguimiento/pregunta-
 import { ManageAnswerPage } from '../pages/manage-answer/manage-answer';
 import { RespuestaSeguimientoPage } from '../pages/respuesta-seguimiento/respuesta-seguimiento';
 import { ModrespuestaSeguimientoPage } from '../pages/modrespuesta-seguimiento/modrespuesta-seguimiento';
+import { AdjuntosSeguimientoPage } from '../pages/adjuntos-seguimiento/adjuntos-seguimiento';
 import { EdicionSeguimientoPage } from '../pages/edicion-seguimiento/edicion-seguimiento';
 
 import { AuthenticationService } from '../services/authentication.service';
@@ -52,6 +53,7 @@ import {ServiceUrl} from '../serviceUrl'
     ManageAnswerPage,
     RespuestaSeguimientoPage,
     ModrespuestaSeguimientoPage,
+    AdjuntosSeguimientoPage,
     EdicionSeguimientoPage
   ],
   imports: [
@@ -75,6 +77,7 @@ import {ServiceUrl} from '../serviceUrl'
     ManageAnswerPage,
     RespuestaSeguimientoPage,
     ModrespuestaSeguimientoPage,
+    AdjuntosSeguimientoPage,
     EdicionSeguimientoPage
   ],
   providers: [
