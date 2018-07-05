@@ -18,6 +18,7 @@ export class SeguimientoFeedPage {
 
 
   private seguimiento:any[];
+
   private solicitudes:any[];
   private muestraToggle: boolean=false;
   private ocultaBack: boolean=false;
@@ -87,6 +88,8 @@ export class SeguimientoFeedPage {
     );
 
   }
+
+
 
   openDetails(params) {
     this.navCtrl.push(SeguimientoTramitePage, params);

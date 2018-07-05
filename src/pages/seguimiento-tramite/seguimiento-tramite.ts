@@ -113,7 +113,8 @@ export class SeguimientoTramitePage {
     //let subtitle= 'Ver adjuntos. Pendiente por realizar';
     //this.showAlert(subtitle);
     let params = {
-      seguimiento:seguimiento,
+      seguimientoObservaciones:seguimiento.observaciones,
+      seguimientoId:seguimiento.id_seguimiento,
       tramite:tramite,
       solicitud:solicitud
     }
