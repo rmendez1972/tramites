@@ -1,7 +1,8 @@
 <ion-header>
   <ion-navbar color="primary">
+    <!-- <img  width="120" height="40" style="margin: 1px; padding: 1px;" src="assets/img/header.png" > -->
     <ion-title>
-      <span>Trámites SEDETUS</span>
+      <span style="font-size: 13px; margin: 1px; padding: 1px;">Trámites SEDETUS</span>
     </ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="showAlert()">
@@ -16,22 +17,24 @@
     <img src="assets/img/header.png"/>
     <ion-card-content>
       <h3 style="text-align: left">
-        <strong>Solicitud:</strong> {{solicitud[0].id_solicitud}}.
-        <strong> Fecha ingreso: </strong>{{solicitud[0].fecha_ingreso}}.<br> 
+
+        <strong>Folio #:</strong> {{solicitud[0].id_solicitud}}.
+        <strong> Fecha ingreso: </strong>{{solicitud[0].fecha_ingreso}}.<br>
         <strong>Trámite:</strong> {{tramite[0].nombre}}<br>
         <strong>Estatus:</strong><ion-badge color="dark" item-end>{{solicitud[0].status}}</ion-badge>
+
       </h3>
     </ion-card-content>
   </ion-card>
 
-   
+
     <h3 class="questions-call-out">
       Recuperado todos los seguimientos del Trámite:
     </h3>
-  
+
     <ion-list inset>
-      <ion-item-sliding *ngFor="let seguimiento of seguimientos">
-        <ion-item class="question-details" >
+      <ion-item-sliding >
+        <ion-item class="question-details" *ngFor="let seguimiento of seguimientos">
 
           <div *ngIf="currentUser[0].id_grupo==2 || currentUser[0].id_grupo==1 else elseBlokCiudadano">
             <h2 *ngIf="seguimiento.usuario=='CIUDADANO'else elseBlockUsuario1"
@@ -56,7 +59,7 @@
                 class="question-text" >
                 <span class="ciudadano"><ion-icon name="people" style="font-size: 1.6em"></ion-icon> {{ seguimiento.usuario }}:<br></span>
                <span class="observacion">{{ seguimiento.observaciones }}</span>
-              </p>              
+              </p>
             </div>
 
           </ng-template>
@@ -71,15 +74,15 @@
           </ng-template>
 
           <div class="fechahora">{{ seguimiento.fecha }}</div>
-          <ion-icon *ngIf="seguimiento.adjunto && seguimiento.usuario=='CIUDADANO'"  name="arrow-back" item-end></ion-icon>
+          <ion-icon *ngIf="seguimiento.adjunto && currentUser[0].id_grupo==3" style="font-size: 2.5rem; color:#566573;" name="md-attach"  (click)="verAdjuntos(seguimiento,tramite[0].nombre,solicitud)" item-end></ion-icon>
         </ion-item>
 
-        <ion-item-options *ngIf="seguimiento.adjunto && seguimiento.usuario=='CIUDADANO'" side="right">
-          <button class="edit-button" ion-button Medium round clear icon-only color="dark" (click)="verAdjuntos()">
+        <!-- <ion-item-options *ngIf="seguimiento.adjunto && currentUser[0].id_grupo==3" side="right">
+          <button class="edit-button" ion-button Medium round clear icon-only color="dark" (click)="verAdjuntos(seguimiento,tramite[0].nombre,solicitud[0].status)">
             <ion-icon name="md-attach"></ion-icon>
           </button>
-        </ion-item-options>
-       
+        </ion-item-options> -->
+
       </ion-item-sliding>
 
     </ion-list>
@@ -98,5 +101,5 @@
     </ion-segment>
   </ion-toolbar>
 </ion-footer>
-  
-    
+
+

@@ -5,8 +5,9 @@
       <ion-icon name="menu"></ion-icon>
     </button>
 
+    <!-- <img  width="120" height="40" style="margin: 1px; padding: 1px;" src="assets/img/header.png" > -->
     <ion-title>
-      <span>Trámites SEDETUS</span>
+      <span style="font-size: 13px; margin: 1px; padding: 1px;">Trámites SEDETUS</span>
     </ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="showAlert()">
@@ -25,23 +26,25 @@
     <ion-badge class="query-tag">{{ _query }}</ion-badge>
     <span class="query-explanation"> los Seguimientos</span>
   </h3>
-
-  <ion-scroll scrollX="true"  style="white-space: nowrap; height: 1150px;">
+  <p>
+    <ion-badge color="dark" style="font-size: 12px; text-align: center; margin-left: 30px;">Deslizar a la izquierda para ver los seguimientos<ion-icon name="skip-backward" style="padding: 5px;"></ion-icon></ion-badge>
+  </p>
+  <ion-scroll scrollX="true"  style="white-space: nowrap; height: 1250px;">
     <ion-card  [style.background-color]="data.background" style="border-radius: 10px; display: inline-block"   *ngFor="let seg of seguimientos"  (click)="openDetails({ solicitud: solicitud,tramite:tramite,seg:seg })">
 
       <ion-item class="category-item" >
         <ion-avatar item-start>
           <img src="assets/img/user_sedetus.png">
         </ion-avatar>
-        <h3 style="color: #000000">Usuario de enlace de:</h3>
-        <h3 style="color: #000000" *ngFor="let tram of tramite">
+        <h3 style="color: #000000;font-weight: bold;">Usuario de enlace de:</h3>
+        <h3 style="color: #000000; font-size: 10px" *ngFor="let tram of tramite">
         {{tram.unidadAdministrativa}}</h3>
         <div *ngFor="let soli of solicitud">
-          <p style="color: #000000"><ion-icon name="calendar" style="font-size: 30px; color: #696969;"></ion-icon>  Fecha de Solicitud: {{soli.fecha_ingreso}}</p>
+          <p style="color: #000000; font-weight: bold;"><ion-icon name="calendar" style="font-size: 25px; color: #696969;padding: 5px;"></ion-icon>  Fecha de Solicitud: <small>{{soli.fecha_ingreso}}</small></p>
           <p style="color: #000000">Estatus: <ion-badge color="dark" item-end>{{seg.estatus}}</ion-badge></p>
         </div>
       </ion-item>
-      <img style="opacity: 0.4;" src="assets/img/rsz_fondo_soles_grises.png"/>
+      <img  src="assets/img/card_seguimientos.png" style="opacity: 0.7;"/>
       <div   *ngFor="let tram of tramite">
         <h2 class="category-title">Tramite: {{tram.nombre}}</h2>
       </div>
