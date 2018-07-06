@@ -122,8 +122,8 @@ export class ModrespuestaSeguimientoPage {
     for(var s in this.sol){
       this.extraer.estatus = this.sol[s].status;
     }
-    console.log(this.sol);
-    console.log("status del tramite"+this.extraer.estatus);
+    //console.log(this.sol);
+    //console.log("status del tramite"+this.extraer.estatus);
 
   }
 

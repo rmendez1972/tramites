@@ -61,7 +61,7 @@ export class EdicionSeguimientoPage {
     this.status = JSON.parse(localStorage.getItem('status'));
     //las observaciones para bindiarlo a la vista
     this.observaciones = data.answer;
-    console.log("estatus del seguimiento"+this._idstatus);
+    console.log("id_status:v"+this._idstatus);
 
     if(data.answer){
       this.answer = data.answer;
