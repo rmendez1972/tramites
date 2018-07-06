@@ -23,7 +23,7 @@ export class PreguntaSeguimientoPage {
   id_solicitud:number;
   id_status:number;
 
-  //igh  
+  //igh
   //_mode : string;
   //_question_id: string;
   //_answer_id: string;
@@ -60,7 +60,7 @@ export class PreguntaSeguimientoPage {
     //this._adjuntos = isPresent(data) && isPresent(data.adjuntos) ? data.adjuntos : '';
 
     this.seguimientos =JSON.parse(localStorage.getItem('seguimiento'));//igh
-    this.id_usuario=3;
+    this.id_usuario=30;
     this.id_solicitud=this.seguimientos[0].id_solicitud;
     this.id_status=this.seguimientos[0].id_status
 
@@ -90,18 +90,18 @@ export class PreguntaSeguimientoPage {
     }
     for(var esta in this.sol){
       this.extraer.id_status = this.sol[esta].id_status;
-    }  
+    }
       //pushSeguimiento(valor del text area, id_usuario, id_solicitud, id_status)
-      this.extraer.id_usuario=3;//El id 3 es fijo y pertenece al usuario "Ciudadano", revisar el modelo
+      this.extraer.id_usuario=30;//El id 3 es fijo y pertenece al usuario "Ciudadano", revisar el modelo
       console.log(this.extraer.id_usuario,this.extraer.id_solicitud,this.extraer.id_status);
       console.log('Valor del mensaje'+data.question);
       this.seguimientoservices.pushComentario(data.question,this.extraer.id_usuario,this.extraer.id_solicitud,this.extraer.id_status)
-      
+
       .subscribe(
         (seguimiento)=>{
           this.seguimientos = seguimiento.seguimiento;
-          console.log(this.seguimientos);
-          localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));        
+          console.log('IMPRIMIENDO SEGUIMIENTOS'+this.seguimientos);
+          localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
         });
       this.showMensaje('Se inserto el registro con exito');
       this.dismiss();

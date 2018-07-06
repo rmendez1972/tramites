@@ -52,6 +52,8 @@ export class SeguimientoService {
   }
 
   getAdjuntos(idSeguimiento: number){
+    console.log('valor de idSeguimiento antes de URL '+idSeguimiento);
+    console.log('url para conseguir adjuntos '+this.adjuntosUrl+idSeguimiento);
     return this.http.get(this.adjuntosUrl+idSeguimiento)
       .map((res) => res.json(),(error)=>{console.log(error);});
   }
