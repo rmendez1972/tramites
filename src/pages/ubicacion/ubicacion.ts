@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController,Platform  } from 'ionic-angular';
 import { isPresent } from 'ionic-angular/util/util';
 
 import {
@@ -21,13 +21,16 @@ export class Ubicar {
   map: GoogleMap;
 
   constructor(
+    public platform: Platform,
     public alertCtrl: AlertController,
 
   ) {
 
   }
   ionViewDidLoad(){
+    this.platform.ready().then(() => {
     this.loadMap();
+  });
   };
   
 
