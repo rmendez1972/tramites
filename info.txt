@@ -1,3 +1,9 @@
+Node version: v6.8.0
+
+Cordova version: 8.0.0
+
+Config.xml file: 
+
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ionicframework.qaexampleionicapp228368" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Trámites</name>
@@ -59,6 +65,36 @@
     <plugin name="cordova-plugin-googlemaps" spec="^2.3.6">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyC8XRq5g7SHVIpYIrEDAJg8dyHvMNSIfeA" />
     </plugin>
-    <engine name="android" spec="^7.0.0" />
-    <engine name="browser" spec="~5.0.3" />
+    <engine name="android" spec="6.2.3" />
 </widget>
+
+
+Plugins: 
+
+cordova-plugin-console,cordova-plugin-device,cordova-plugin-googlemaps,cordova-plugin-splashscreen,cordova-plugin-statusbar,cordova-plugin-whitelist,ionic-plugin-keyboard
+
+Android platform:
+
+**************************************************************************
+The "android" command is deprecated.
+For manual SDK, AVD, and project management, please use Android Studio.
+For command-line tools, use tools\bin\sdkmanager.bat
+and tools\bin\avdmanager.bat
+**************************************************************************
+
+Invoking "C:\Users\SEDETUS\AppData\Local\Android\Sdk\tools\bin\avdmanager" list target
+
+Loading local repository...                                                     [=========                              ] 25% Loading local repository...       [=========                              ] 25% Fetch remote repository...        [=========                              ] 25% Fetch remote repository...        [=========                              ] 25% Fetch remote repository...        [=======================================] 100% Fetch remote repository...       Available Android targets:
+----------
+id: 1 or "android-25"
+     Name: Android API 25
+     Type: Platform
+     API level: 25
+     Revision: 3
+----------
+id: 2 or "android-28"
+     Name: Android API 28
+     Type: Platform
+     API level: 28
+     Revision: 4
+

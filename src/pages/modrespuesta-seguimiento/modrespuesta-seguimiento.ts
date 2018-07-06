@@ -129,6 +129,7 @@ export class ModrespuestaSeguimientoPage {
 
 
 
+
     console.log(this.sol);
     console.log("status del tramite"+this.extraer.estatus);
     let tramite = JSON.parse(localStorage.getItem('tramite'));
@@ -136,6 +137,7 @@ export class ModrespuestaSeguimientoPage {
     for(var t in tramite) {
       this.tramite = tramite[t];
     }
+
 
   }
 

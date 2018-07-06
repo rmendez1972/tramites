@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, MenuController, Nav, App, AlertController, Events } from 'ionic-angular';
+import { Platform, MenuController, Nav, App, AlertController, Events} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -7,6 +7,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Welcome } from '../pages/welcome/welcome';
 import { AuthenticationService } from '../services/authentication.service';
 import { SeguimientoFeedPage } from '../pages/seguimiento-feed/seguimiento-feed';
+
+import { Ubicar } from '../pages/ubicacion/ubicacion';
 
 
 
@@ -35,7 +37,8 @@ export class MyApp {
     public app: App,
     public alertCtrl: AlertController,
     public events: Events,
-    public authenticationservice: AuthenticationService
+    public authenticationservice: AuthenticationService,
+    public ubicarPage: Ubicar,
   ) {
     platform.ready().then(() => {
 
@@ -89,6 +92,10 @@ export class MyApp {
     });
     alert.present();
   }
+  ubicar(){
+    this.menu.close();
+    this.nav.push(Ubicar);
+  };
 
   // muestro las credenciales del usuario autenticado
   muestraUser() {
