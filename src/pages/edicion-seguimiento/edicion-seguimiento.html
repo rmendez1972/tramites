@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <span>{{ _mode }} Tú respuesta</span>
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text showWhen="ios">Cancelar</span>
+        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="modal-content">
+  <form [formGroup]="answerForm" class="modal-form" (ngSubmit)="onSubmit(answerForm.value)" >
+    <ion-row>
+      <ion-col offset-1 col-10>
+        <ion-item class="textarea-item">
+
+          <ion-textarea formControlName="answer" rows="5" [ngModel]="observaciones" (ngModelChange)="observaciones = $event" ></ion-textarea>
+        </ion-item>
+      </ion-col>
+      <ion-col offset-1 col-10>
+        <ion-item>
+          <ion-label>Estatus del Tramite</ion-label><br>
+          <ion-select formControlName="valstatus" [(ngModel)]="_idstatus">
+            <ion-option *ngFor="let sta of status" [value]="sta.id_status" [attr.selected]="(sta.id_status == _idstatus) ? true : null">{{sta.nombre}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col offset-1 col-10>
+        <button ion-button block type="submit" [disabled]="!answerForm.valid" color="answer">
+          <b>Grabar</b>
+        </button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

@@ -14,8 +14,10 @@ export class TramiteFeedPage {
   solicitudes= [];
   unidadAdministrativa= [];
   direccion = [];
+  status =[];
 
   private currentUser:any[];
+
 
   constructor(
     public navCtrl: NavController,
@@ -27,6 +29,8 @@ export class TramiteFeedPage {
     this._query = isPresent(query_param) ? query_param : 'all';
   }
 
+
+
   ionViewWillEnter() {
     this.currentUser =[];
 
@@ -36,6 +40,7 @@ export class TramiteFeedPage {
     let id_direccion=0;
 
     this.currentUser =JSON.parse(localStorage.getItem('currentUser'));
+
 
     for (var i = 0; i < 1 ; i++) {
 
@@ -74,6 +79,13 @@ export class TramiteFeedPage {
         localStorage.setItem('direccion',JSON.stringify(this.direccion));
       },
     );
+    this.tramiteService.getStatus()
+    .subscribe(
+      (status)=>{
+        this.status= status.status;
+        localStorage.setItem('status',JSON.stringify(this.status));
+      },
+    );
   }
 
   openDetails(params) {
@@ -81,11 +93,11 @@ export class TramiteFeedPage {
   }
 
   // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
-  showAlert() {
+  showAlert(subtitle:string='En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a>') {
 
     const alert = this.alertCtrl.create({
       title: 'Atento Aviso!',
-      subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de nuestra aplicación web en la dirección (url) <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a> desde tu laptop o computadora de escritorio',
+      subTitle: subtitle,
       buttons: ['Ok']
     });
     alert.present();

@@ -1,12 +1,13 @@
 <ion-header >
-  <ion-navbar color="primary" hideBackButton="false">
-      <!--
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon> 
+  <ion-navbar color="primary" hideBackButton="{{ ocultaBack }}">
+
+    <button [hidden]="muestraToggle" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
     </button>
-    -->
+
+    <!-- <img  width="120" height="40" style="margin: 1px; padding: 1px;" src="assets/img/header.png" > -->
     <ion-title>
-      <span>Trámites SEDETUS</span>
+      <span style="font-size: 13px; margin: 1px; padding: 1px;">Trámites SEDETUS</span>
     </ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="showAlert()">
@@ -20,41 +21,74 @@
 
 <ion-content class="category-concept-card">
   <h3 class="search-query">
+
     <span>Mostrando: </span>
     <ion-badge class="query-tag">{{ _query }}</ion-badge>
     <span class="query-explanation"> los Seguimientos</span>
   </h3>
+  <p>
+    <ion-badge color="dark" style="font-size: 12px; text-align: center; margin-left: 30px;">Deslizar a la izquierda para ver los seguimientos<ion-icon name="skip-backward" style="padding: 5px;"></ion-icon></ion-badge>
+  </p>
+  <ion-scroll scrollX="true"  style="white-space: nowrap; height: 1250px;">
+    <ion-card  [style.background-color]="data.background" style="border-radius: 10px; display: inline-block"   *ngFor="let seg of seguimientos"  (click)="openDetails({ solicitud: solicitud,tramite:tramite,seg:seg })">
 
-
-  <ion-card [style.background-color]="data.background" *ngFor="let seg of seguimientos"  (click)="openDetails({ solicitud: solicitud,tramite:tramite,seg:seg })">
-
-    <ion-item class="category-item" >
-      <ion-avatar item-start>
-        <img src="assets/img/user_sedetus.png">
-      </ion-avatar>
-      <h3 >Usuario de enlace de:</h3>
-      <h3 *ngFor="let tram of tramite">
-      {{tram.unidadAdministrativa}}</h3>
-      <div *ngFor="let soli of solicitud">
-        <p >Fecha de Solicitud: {{soli.fecha_ingreso}}</p>
-        <p>Estatus: <ion-badge color="dark" item-end>{{seg.estatus}}</ion-badge></p>
+      <ion-item class="category-item" >
+        <ion-avatar item-start>
+          <img src="assets/img/user_sedetus.png">
+        </ion-avatar>
+        <h3 style="color: #000000;font-weight: bold;">Usuario de enlace de:</h3>
+        <h3 style="color: #000000; font-size: 10px" *ngFor="let tram of tramite">
+        {{tram.unidadAdministrativa}}</h3>
+        <div *ngFor="let soli of solicitud">
+          <p style="color: #000000; font-weight: bold;"><ion-icon name="calendar" style="font-size: 25px; color: #696969;padding: 5px;"></ion-icon>  Fecha de Solicitud: <small>{{soli.fecha_ingreso}}</small></p>
+          <p style="color: #000000">Estatus: <ion-badge color="dark" item-end>{{seg.estatus}}</ion-badge></p>
+        </div>
+      </ion-item>
+      <img  src="assets/img/card_seguimientos.png" style="opacity: 0.7;"/>
+      <div   *ngFor="let tram of tramite">
+        <h2 class="category-title">Tramite: {{tram.nombre}}</h2>
       </div>
-    </ion-item>
-    <img src="assets/img/rsz_fondo_soles_grises.png"/>
-    <div   *ngFor="let tram of tramite">
-      <h2 class="category-title">Tramite: {{tram.nombre}}</h2>
-    </div>
-    <div >
-       <h3 class="category-description">Seguimiento: {{seg.observaciones}}</h3>
-    </div>
-    <div>
-      <ion-row>
-        <ion-col *ngFor="let tram of tramite">
-          <ion-badge class="category-tag" item-right>{{ tram.unidadAdministrativa }}</ion-badge>
-          <ion-badge class="category-tag" item-right>{{ tram.direccion }}</ion-badge>
-          <ion-badge class="category-tag" item-right>Fecha seguimiento: {{ seg.fecha }}</ion-badge>
-        </ion-col>
-      </ion-row>
-    </div>
-  </ion-card>
+      <div >
+         <h3  class="category-description" style="color: #2a2a2a; font-weight: normal;">Seguimiento: {{seg.observaciones}}</h3>
+      </div>
+      <div>
+        <ion-row>
+          <ion-col *ngFor="let tram of tramite">
+            <ion-badge class="category-tag" item-right>{{ tram.unidadAdministrativa }}</ion-badge>
+            <ion-badge class="category-tag" item-right>{{ tram.direccion }}</ion-badge>
+            <ion-badge class="category-tag" item-right>Fecha seguimiento: {{ seg.fecha }}</ion-badge>
+          </ion-col>
+        </ion-row>
+        <!--igh
+          <ion-toolbar color="primary">
+            <button ion-button round block (click)="createQuestionModal()" color="light">
+              <b>Nuevo comentario a este seguimiento?</b>
+            </button>
+          </ion-toolbar>-->
+
+      </div>
+    </ion-card>
+
+  </ion-scroll>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+
+    <ion-segment [(ngModel)]="icons"  color="light" style="height: 37px;">
+      <ion-segment-button value="camera" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;" >
+        <ion-icon  name="list-box" ></ion-icon >
+          <div style="font-size: 9px !important;">
+            Todos los Seguimientos
+          </div>
+      </ion-segment-button>
+      <ion-segment-button value="bookmark" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;">
+        <ion-icon name="list"></ion-icon>
+          <div style="font-size: 9px !important;">
+            El último Seguimiento
+          </div>
+      </ion-segment-button>
+    </ion-segment>
+
+  </ion-toolbar>
+</ion-footer>

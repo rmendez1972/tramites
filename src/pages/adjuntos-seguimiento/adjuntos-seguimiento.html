@@ -1,0 +1,77 @@
+<ion-header >
+  <ion-navbar color="primary">
+
+    <!-- <img  width="120" height="40" style="margin: 1px; padding: 1px;" src="assets/img/header.png" > -->
+    <ion-title>
+      <span style="font-size: 13px; margin: 1px; padding: 1px;">Trámites SEDETUS</span>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showAlert()">
+        <ion-icon name="information-circle" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img src="assets/img/header.png"/>
+    <ion-card-content>
+      <h3 style="text-align: left">
+        <strong>Folio #:</strong> {{solicitud[0].id_solicitud}}.
+        <strong> Fecha ingreso: </strong>{{solicitud[0].fecha_ingreso}}.<br>
+        <strong>Trámite:</strong> {{tramite}}<br>
+        <strong>Seguimiento:</strong> {{seguimientoObservaciones}}<br>
+
+        <strong>Estatus: </strong><ion-badge color="dark" item-end>{{extraer.estatus}}</ion-badge>
+      </h3>
+    </ion-card-content>
+  </ion-card>
+
+   <h3 class="search-query">
+
+    <span>Mostrando </span>
+    <ion-badge class="query-tag">todos</ion-badge>
+    <span class="query-explanation"> los Adjuntos</span>
+  </h3>
+
+
+    <ion-list inset>
+      <ion-item-sliding *ngFor="let adjunto of adjuntos">
+        <a ion-item class="usuario" href="http://189.221.153.178:8080/tramites/adjuntos/{{ adjunto.nombre }}" >
+
+          {{ adjunto.nombre }}<ion-icon name="cloud-download" item-end></ion-icon>
+
+
+        </a>>
+
+
+        <ion-item-options *ngIf="seg.id_usuario==mid_usuario" side="right">
+          <button class="edit-button" ion-button Medium round clear icon-only color="dark" (click)="editAnswerModal(seg.id_seguimiento,seg.observaciones,seg.adjunto,seg.id_status)">
+            <ion-icon name="md-create"></ion-icon>
+          </button>
+          <button class="delete-button" ion-button Medium round clear icon-only color="danger" (click)="delete(seg.id_seguimiento,seg.adjunto)">
+            <ion-icon name="ios-trash-outline"></ion-icon>
+
+          </button>
+        </ion-item-options>
+
+      </ion-item-sliding>
+
+    </ion-list>
+
+</ion-content>
+
+<ion-footer >
+  <ion-toolbar color="primary">
+    <!-- <ion-segment [(ngModel)]="icons"  color="light" style="height: 37px;">
+      <ion-segment-button value="camera" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;"(click)="createAnswerModal()" >
+        <ion-icon  name="list-box" ></ion-icon >
+          <div style="font-size: 9px !important;">
+            Constestar al Ciudadano
+          </div>
+      </ion-segment-button>
+
+    </ion-segment> -->
+  </ion-toolbar>
+</ion-footer>

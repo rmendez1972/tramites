@@ -2,8 +2,8 @@
   <ion-header>
     <ion-toolbar color="primary">
       <ion-buttons start>
-        <button ion-button icon-only>
-          <ion-icon name="contact"></ion-icon>
+        <button ion-button icon-only (click)="muestraUser()">
+          <ion-icon name="contact" ></ion-icon>
         </button>
       </ion-buttons>
       <ion-title>Menú Principal</ion-title>
@@ -17,10 +17,16 @@
 
   <ion-content class="menu-content">
 
-      <img src="assets/img/header.png"/>
+      <img src="assets/img/header_welcome.png"/>
 
 
     <ion-list inset>
+      <ion-list-header>
+
+          <ion-icon name="person" item-start></ion-icon>
+          Bienvenido, {{ firstname }}
+
+      </ion-list-header>
       <ion-list-header>
         Filtros
       </ion-list-header>
@@ -38,6 +44,10 @@
       <button ion-item   (click)="showAlert()">
         <ion-icon name="eye" item-start></ion-icon>
         Para adjuntar archivos
+      </button>
+      <button ion-item   (click)="ubicar()">
+        <ion-icon name="locate" item-start></ion-icon>
+        Ubicanos
       </button>
       <button ion-item   (click)="cerrarSesion()">
         <ion-icon name="log-out" item-start></ion-icon>

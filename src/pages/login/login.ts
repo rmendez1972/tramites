@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController,  Events   } from 'ionic-angular';
 
 import { SeguimientoFeedPage } from '../seguimiento-feed/seguimiento-feed';
 import { User } from './user';
@@ -21,11 +21,13 @@ import { TramiteFeedPage } from '../tramites-feed/tramites-feed';
 export class Login {
   model: any = {};
   currentUser: User;
+  pages: Array<{title: string, icon: string, component: any, params: any}>;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private authenticationService: AuthenticationService,
+    public events: Events,
     private alertCtrl: AlertController) { }
 
   ionViewDidLoad() {
@@ -45,7 +47,33 @@ export class Login {
                     if (JSON.stringify(this.currentUser).length > 10) {
 
                         this.showAlert('Autenticado Exitosamente');
+
+                        this.events.publish("userloggedin", this.currentUser[0]);
+
+
                         if (this.currentUser[0].id_grupo==2 || this.currentUser[0].id_grupo==1){
+
+                          this.pages = [
+                            {
+                              title: 'Todos los Trámites',
+                              icon: 'list-box',
+                              component: TramiteFeedPage,
+                              params: {
+                                query: 'all'
+                              }
+                            },
+                            {
+                              title: 'Ultimo Trámite',
+                              icon: 'list',
+                              component: TramiteFeedPage,
+                              params: {
+                                query: 'basic'
+                              }
+                            }
+                          ];
+
+                          this.events.publish("menubuiltin", this.pages);
+
                           this.navCtrl.push(TramiteFeedPage);
                           console.log('grupo  '+this.currentUser[0].id_grupo);
                         }
@@ -54,6 +82,28 @@ export class Login {
                             id_solicitud: this.currentUser[0].id_solicitud,
                             id_solicitante: this.currentUser[0].id_solicitante
                           }
+
+                          this.pages = [
+                            {
+                              title: 'Todos los Seguimientos',
+                              icon: 'list-box',
+                              component: SeguimientoFeedPage,
+                              params: {
+                                query: 'all'
+                              }
+                            },
+                            {
+                              title: 'Ultimo Seguimiento',
+                              icon: 'list',
+                              component: SeguimientoFeedPage,
+                              params: {
+                                query: 'basic'
+                              }
+                            }
+                          ];
+
+                          this.events.publish("menubuiltin", this.pages);
+
                           this.navCtrl.push(SeguimientoFeedPage, {sol: sol});
                           console.log('grupo  '+this.currentUser[0].id_grupo);
                         }
@@ -61,7 +111,7 @@ export class Login {
                     }else{
 
 
-                        this.showAlert('usuario y/o contraseña equivocados, intneta de nuevo');
+                        this.showAlert('usuario y/o contraseña equivocados, intenta de nuevo');
                         //this.loading = false;
                     }
                 },

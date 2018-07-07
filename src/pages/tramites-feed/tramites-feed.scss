@@ -10,7 +10,7 @@ learn-feed-page {
 		.query-tag
 		{
 			border: 1px solid $theme-color-2;
-			color: $theme-color-2;
+			color: #459cc1;
 			background: #FFF;
 		}
 
@@ -37,14 +37,15 @@ learn-feed-page {
 		.category-title
 		{
 			position: absolute;
-		    top: 15%;
-		    font-size: 1.5em;
+		    top: 35%;
+			//font-size: 1.5em;
+			font-size: .9em;
 		    width: 100%;
 		    font-weight: bold;
-		    color: #0077ff;
+		    color: #459cc1;
 		}
 		h2,p{
-			color:#0077ff;
+			color:#459cc1;
 		}
 
 		.category-item
@@ -53,7 +54,7 @@ learn-feed-page {
 		    font-size: 0.3em;
 		    width: 100%;
 		    font-weight: bold;
-		    color:#0077ff;
+		    //color:#459cc1;
 		    //background: transparent;
 		    //opacity: 0.6;
 		}
@@ -65,10 +66,10 @@ learn-feed-page {
 		{
 			font-size: 1.0em;
 		    position: absolute;
-		    top: 35%;
+		    top: 49%;
 		    width: 100%;
 		    font-weight: bold;
-		    color: #0077ff;
+		    color: #459cc1;
 		}
 
 		.category-tag
@@ -77,7 +78,7 @@ learn-feed-page {
 		    position: relative;
 		    top: 2%;
 		    width: 100%;
-		    color: #0077ff;
+		    color: #459cc1;
 
 			border: 1px solid #0077ff;
 			background: transparent;
