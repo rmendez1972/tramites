@@ -19,7 +19,7 @@ constructor() {}
 
 
   		getUrl():String{
-	  			return this.URL='http://localhost:8080/tramites/controladorseguimiento?operacion=listarjson&id_solicitud=';
+	  			return this.URL='http://189.221.153.178:8080/tramites/controladorseguimiento?operacion=listarjson&id_solicitud=';
 
 	  	}
 
@@ -36,7 +36,7 @@ constructor() {}
 	  	}
 
 	  	getUrllogin():String{
-	  			return this.URLlogin='http://localhost:8080/tramites/controladorregistro?operacion=apilogin&username=';
+	  			return this.URLlogin='http://189.221.153.178:8080/tramites/controladorregistro?operacion=apilogin&username=';
 	  	}
 
 		getUrlCambiaPassword():String{

@@ -1,24 +1,19 @@
 <ion-header >
   <ion-navbar color="primary">
-
-    <ion-title>
-      <span>Inicio de Sesión</span>
-    </ion-title>
-
+    <ion-title>Inicio de Sesión</ion-title>
   </ion-navbar>
 </ion-header>
 
-
-<ion-content padding>
+<ion-content>
 <ion-list>
-
   <ion-item>
-    <ion-label floating>Email</ion-label>
-    <ion-input type="text" value="" [(ngModel)]="model.email"></ion-input>
+    <ion-label highlight-color="balanced" floating>Email</ion-label>
+    <ion-input type="text" value="" required [(ngModel)]="model.email"></ion-input>
+
   </ion-item>
 
   <ion-item>
-    <ion-label floating>Password</ion-label>
+    <ion-label color="primary" floating>Password</ion-label>
     <ion-input type="password" [(ngModel)]="model.password"></ion-input>
   </ion-item>
 
