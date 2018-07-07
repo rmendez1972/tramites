@@ -7,9 +7,6 @@ import {
   GoogleMap,
   GoogleMapsEvent,
   GoogleMapOptions,
-  CameraPosition,
-  MarkerOptions,
-  Marker
 } from '@ionic-native/google-maps';
 
 @Component({
@@ -27,10 +24,8 @@ export class Ubicar {
   ) {
 
   }
-  ionViewDidLoad(){
-    this.platform.ready().then(() => {
+  ionViewWillEnter(){
     this.loadMap();
-  });
   };
   
 
