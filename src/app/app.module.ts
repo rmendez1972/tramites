@@ -39,6 +39,7 @@ import { SDKBrowserModule } from '../../sdk/index';
 import {ServiceUrl} from '../serviceUrl'
 
 import { GoogleMaps } from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     TramiteService,
     Ubicar,
     GoogleMaps,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
