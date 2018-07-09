@@ -20,55 +20,117 @@
 
   <div id="map_canvas" style="width:100%; height: 400px;"></div>
   <ion-fab right top>
-      <button ion-fab (click)="refreshMap()">
-        <ion-icon name="pin"></ion-icon>
-      </button>
-    </ion-fab>
-  <ion-scroll scrollX="true"  style="white-space: nowrap; height: 1250px;">
-    <ion-card>
-    
-    <ion-item>
-      <ion-icon ios="ios-map" md="md-map" item-start large></ion-icon>
-      <h2>Sede:</h2>
-      <p>Chetumal, Quintana Roo, México</p>
-    </ion-item>
+    <button ion-fab (click)="refreshMap()">
+      <ion-icon name="pin"></ion-icon>
+    </button>
+  </ion-fab>
+  
+  <ion-scroll scrollX="true"  style="white-space: nowrap; height: 300px;">
+    <ion-card style="display: inline-block" >
 
-    <ion-item>
-      <ion-icon ios="ios-locate" md="md-locate" item-start large ></ion-icon>
-      <h2>Direccion:</h2>
-      <p>Av Álvaro Obregón 474, Centro</p>
-      <p>77000 Chetumal, Q.R</p>
-    </ion-item>
+      <ion-item>
+        <ion-icon ios="ios-map" md="md-map" item-start large></ion-icon>
+        <h2>Sede:</h2>
+        <p>Chetumal, Quintana Roo</p>
+        <p>México</p>
+      </ion-item>
 
-    <ion-item>
-      <ion-icon ios="ios-call" md="md-call" item-start large (click)="callJoint(9838350500)" ></ion-icon>
-      <h2>Telefono: </h2>
-      <p>01 (983) 835 0500, 835 0650 </p>
-    </ion-item>
-  </ion-card>
+      <ion-item>
+        <ion-icon ios="ios-locate" md="md-locate" item-start large ></ion-icon>
+        <h2>Direccion:</h2>
+        <p>Av Álvaro Obregón 474, Centro</p>
+        <p>Centro</p>
+        <p>77000 Chetumal, Q.R</p>
+        <p></p>
+        <p></p>
+      </ion-item>
 
-  <ion-card>
-    
-    <ion-item>
-      <ion-icon ios="ios-map" md="md-map" item-start large></ion-icon>
-      <h2>Sede:</h2>
-      <p>Chetumal, Quintana Roo, México</p>
-    </ion-item>
+      <ion-item>
+        <ion-icon ios="ios-call" md="md-call" item-start large (click)="callJoint(9838350500)" ></ion-icon>
+        <h2>Telefono: </h2>
+        <p>01 (983) 835 0500, 835 0650 </p>
+      </ion-item>
+    </ion-card>
 
-    <ion-item>
-      <ion-icon ios="ios-locate" md="md-locate" item-start large ></ion-icon>
-      <h2>Direccion:</h2>
-      <p>Av Álvaro Obregón 474, Centro</p>
-      <p>77000 Chetumal, Q.R</p>
-    </ion-item>
+    <ion-card style="display: inline-block" >
 
-    <ion-item>
-      <ion-icon ios="ios-call" md="md-call" item-start large (click)="callJoint(9838350500)" ></ion-icon>
-      <h2>Telefono: </h2>
-      <p>01 (983) 835 0500, 835 0650 </p>
-    </ion-item>
-  </ion-card>
-<ion-footer>
+      <ion-item>
+        <ion-icon ios="ios-map" md="md-map" item-start large></ion-icon>
+        <h2>Sede:</h2>
+        <p>Cancun Becal,Quintana Roo</p>
+        <p>México</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon ios="ios-locate" md="md-locate" item-start large ></ion-icon>
+        <h2>Direccion:</h2>
+        <p>Super Mza. 59</p>
+        <p>Becal 22</p>
+        <p>Unidad Morelos</p>
+        <p>77515, Cancún, Q.R.</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon ios="ios-call" md="md-call" item-start large (click)="callJoint(9981931670)" ></ion-icon>
+        <h2>Telefono: </h2>
+        <p>01 (998) 1931670 </p>
+      </ion-item>
+    </ion-card>
+
+    <ion-card style="display: inline-block " >
+
+      <ion-item>
+        <ion-icon ios="ios-map" md="md-map" item-start large></ion-icon>
+        <h2>Sede:</h2>
+        <p>Plaza Vivendi, Cancún,Quintana Roo</p>
+        <p>Quintana Roo, México</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon ios="ios-locate" md="md-locate" item-start large ></ion-icon>
+        <h2>Direccion:</h2>
+        <p>Super MZA 8, Mza 1 lote 4 y 5</p>
+        <p>Oficinas 5A y 5B Primer Piso</p>
+        <p>Esq. Bonampak y Nichupte</p>
+        <p>77599, Cancún, Q.R</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon ios="ios-call" md="md-call" item-start large (click)="callJoint(9988899983)" ></ion-icon>
+        <h2>Telefono: </h2>
+        <p>01 (998) 8899983</p>
+      </ion-item>
+    </ion-card>
+
+    <ion-card style="display: inline-block " >
+
+      <ion-item>
+        <ion-icon ios="ios-map" md="md-map" item-start large></ion-icon>
+        <h2>Sede:</h2>
+        <p>San Miguel de Cozumel, Quintana Roo</p>
+        <p>Quintana Roo, México</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon ios="ios-locate" md="md-locate" item-start large ></ion-icon>
+        <h2>Direccion:</h2>
+        <p>Av Lic Benito Juárez 921</p>
+        <p>Adolfo López Mateos</p>
+        <p>San Miguel de Cozumel, Q.R.</p>
+        <p></p>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon ios="ios-call" md="md-call" item-start large (click)="callJoint(9871208500)" ></ion-icon>
+        <h2>Telefono: </h2>
+        <p>01 (987) 120 8500 </p>
+      </ion-item>
+    </ion-card>
+
+
+  </ion-scroll>
+</ion-content>
+<ion-footer >
   <ion-toolbar color="primary">
 
   </ion-toolbar>

@@ -26,10 +26,38 @@ export class Ubicar {
         latitude: 18.49926214,
         longitude: -88.31169829,
       },
-      title:'SEDETUS',
-      icon: 'blue',
+      title:'SEDETUS CHETUMAL',
+      icon: 'assets/icon/embassy.png',
       animation: 'DROP',
     },
+    {
+      position:{
+        latitude: 21.1608994,
+        longitude: -86.8515999,
+      },
+      title:'SEDETUS CANCUN 1',
+      icon: 'assets/icon/government.png',
+      animation: 'DROP',
+    },
+    {
+      position:{
+        latitude: 21.1438652,
+        longitude: -86.8223822,
+      },
+      title:'SEDETUS CANCUN PLAZA VIVENDI',
+      icon: 'assets/icon/government1.png',
+      animation: 'DROP',
+    },
+    {
+      position:{
+        latitude: 20.4320275,
+        longitude: -87.0143395,
+      },
+      title:'SEDETUS COZUMEL',
+      icon: 'assets/icon/government-buildings.png',
+      animation: 'DROP',
+    },
+
   ];
 
   constructor(
@@ -75,7 +103,7 @@ export class Ubicar {
     // create CameraPosition
     let position: CameraPosition<LatLng> = {
       target: new LatLng(this.myPosition.latitude, this.myPosition.longitude),
-      zoom: 17,
+      zoom: 15,
       tilt: 30
     };
 
