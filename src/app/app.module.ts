@@ -20,7 +20,7 @@ import { RespuestaSeguimientoPage } from '../pages/respuesta-seguimiento/respues
 import { ModrespuestaSeguimientoPage } from '../pages/modrespuesta-seguimiento/modrespuesta-seguimiento';
 import { AdjuntosSeguimientoPage } from '../pages/adjuntos-seguimiento/adjuntos-seguimiento';
 import { EdicionSeguimientoPage } from '../pages/edicion-seguimiento/edicion-seguimiento';
-//import { Ubicar } from '../pages/ubicacion/ubicacion';
+import { Ubicar } from '../pages/ubicacion/ubicacion';
 
 
 import { AuthenticationService } from '../services/authentication.service';
@@ -61,7 +61,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     ModrespuestaSeguimientoPage,
     AdjuntosSeguimientoPage,
     EdicionSeguimientoPage,
-    //Ubicar,
+    Ubicar,
   ],
   imports: [
     BrowserModule,
@@ -86,7 +86,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     ModrespuestaSeguimientoPage,
     AdjuntosSeguimientoPage,
     EdicionSeguimientoPage,
-    //Ubicar,
+    Ubicar,
   ],
   providers: [
     StatusBar,

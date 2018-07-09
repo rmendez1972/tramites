@@ -30,7 +30,7 @@ export class Ubicar {
       animation: 'DROP',
     },
   ];
- 
+
   constructor(
     private geolocation: Geolocation,
     private googleMaps: GoogleMaps,
@@ -42,6 +42,7 @@ export class Ubicar {
   }
 
   getCurrentPosition(){
+    console.log('dentro de getCurrentPosition');
     this.geolocation.getCurrentPosition()
     .then(position => {
       this.myPosition = {
@@ -60,7 +61,15 @@ export class Ubicar {
     let element: HTMLElement = document.getElementById('map_canvas');
 
     this.map = this.googleMaps.create(element);
-
+    this.map.setOptions({
+        controls: {
+          compass: true,
+          myLocationButton: true,
+          indoorPicker: true,
+          streetviewcontrol:true,
+          zoom: true
+        }
+    });
     // create CameraPosition
     let position: CameraPosition<LatLng> = {
       target: new LatLng(this.myPosition.latitude, this.myPosition.longitude),
@@ -86,7 +95,7 @@ export class Ubicar {
       this.markers.forEach(marker=>{
         this.addMarker(marker);
       });
-      
+
     });
   }
 
@@ -97,6 +106,17 @@ export class Ubicar {
       icon: options.icon
     };
     this.map.addMarker(markerOptions);
+  }
+
+  refreshMap(){
+    let position: CameraPosition<LatLng> = {
+      target: new LatLng(this.markers[0].position.latitude, this.markers[0].position.longitude),
+      zoom: 17,
+      tilt: 30
+    };
+    this.map.moveCamera(position);
+
+    console.log("refresh");
   }
 
   // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos

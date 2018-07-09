@@ -8,7 +8,7 @@ import { Welcome } from '../pages/welcome/welcome';
 import { AuthenticationService } from '../services/authentication.service';
 import { SeguimientoFeedPage } from '../pages/seguimiento-feed/seguimiento-feed';
 
-//import { Ubicar } from '../pages/ubicacion/ubicacion';
+import { Ubicar } from '../pages/ubicacion/ubicacion';
 
 
 
@@ -92,10 +92,10 @@ export class MyApp {
     });
     alert.present();
   }
-  /*ubicar(){
+  ubicar(){
     this.menu.close();
     this.nav.push(Ubicar);
-  };*/
+  };
 
   // muestro las credenciales del usuario autenticado
   muestraUser() {
