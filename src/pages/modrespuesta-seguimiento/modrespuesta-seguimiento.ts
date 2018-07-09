@@ -162,7 +162,7 @@ export class ModrespuestaSeguimientoPage {
   //metodo para eliminar
   delete(id_seguimiento,adjuntos){
     //comparando si el estatus del tramite es "TRAMITE" para continuar la accion
-    if(this.extraer.estatus=='TRAMITE'){
+    if(this.solicitud.id_status==2){
 
     //recuperamos los datos del local storage de seguimiento
     this.seg = JSON.parse(localStorage.getItem('seguimiento'));

@@ -20,7 +20,7 @@ import { RespuestaSeguimientoPage } from '../pages/respuesta-seguimiento/respues
 import { ModrespuestaSeguimientoPage } from '../pages/modrespuesta-seguimiento/modrespuesta-seguimiento';
 import { AdjuntosSeguimientoPage } from '../pages/adjuntos-seguimiento/adjuntos-seguimiento';
 import { EdicionSeguimientoPage } from '../pages/edicion-seguimiento/edicion-seguimiento';
-import { Ubicar } from '../pages/ubicacion/ubicacion';
+//import { Ubicar } from '../pages/ubicacion/ubicacion';
 
 
 import { AuthenticationService } from '../services/authentication.service';
@@ -38,7 +38,7 @@ import { SDKBrowserModule } from '../../sdk/index';
 
 import {ServiceUrl} from '../serviceUrl'
 
-import { GoogleMaps } from '@ionic-native/google-maps';
+//import { GoogleMaps } from '@ionic-native/google-maps';
 
 @NgModule({
   declarations: [
@@ -58,7 +58,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     ModrespuestaSeguimientoPage,
     AdjuntosSeguimientoPage,
     EdicionSeguimientoPage,
-    Ubicar,
+    //Ubicar,
   ],
   imports: [
     BrowserModule,
@@ -83,7 +83,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     ModrespuestaSeguimientoPage,
     AdjuntosSeguimientoPage,
     EdicionSeguimientoPage,
-    Ubicar,
+    //Ubicar,
   ],
   providers: [
     StatusBar,
@@ -95,8 +95,8 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     SeguimientoService,
     ServiceUrl,
     TramiteService,
-    Ubicar,
-    GoogleMaps,
+    //Ubicar,
+    //GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
