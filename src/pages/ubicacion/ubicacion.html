@@ -19,6 +19,29 @@
 <ion-content padding>
 
   <div id="map_canvas" style="width:100%; height: 400px;"></div>
+  <ion-scroll scrollX="true"  style="white-space: nowrap; height: 1250px;">
+    <ion-card>
+    
+    <ion-item>
+      <ion-icon ios="ios-map" md="md-map" item-start large></ion-icon>
+      <h2>Sede:</h2>
+      <p>Chetumal, Quintana Roo, México</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon ios="ios-locate" md="md-locate" item-start large ></ion-icon>
+      <h2>Direccion:</h2>
+      <p>Av Álvaro Obregón 474, Centro</p>
+      <p>77000 Chetumal, Q.R</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon ios="ios-call" md="md-call" item-start large (click)="callJoint(9838350500)" ></ion-icon>
+      <h2>Telefono: </h2>
+      <p>01 (983) 835 0500, 835 0650 </p>
+    </ion-item>
+  </ion-card>
+
   <ion-card>
     
     <ion-item>
@@ -40,6 +63,30 @@
       <p>01 (983) 835 0500, 835 0650 </p>
     </ion-item>
   </ion-card>
+
+  <ion-card>
+    
+    <ion-item>
+      <ion-icon ios="ios-map" md="md-map" item-start large></ion-icon>
+      <h2>Sede:</h2>
+      <p>Chetumal, Quintana Roo, México</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon ios="ios-locate" md="md-locate" item-start large ></ion-icon>
+      <h2>Direccion:</h2>
+      <p>Av Álvaro Obregón 474, Centro</p>
+      <p>77000 Chetumal, Q.R</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon ios="ios-call" md="md-call" item-start large (click)="callJoint(9838350500)" ></ion-icon>
+      <h2>Telefono: </h2>
+      <p>01 (983) 835 0500, 835 0650 </p>
+    </ion-item>
+  </ion-card>
+
+  </ion-scroll>
 </ion-content>
 
 <ion-footer>
