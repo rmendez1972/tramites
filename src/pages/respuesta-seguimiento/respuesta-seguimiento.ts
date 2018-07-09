@@ -55,7 +55,7 @@ export class RespuestaSeguimientoPage {
 
   ionViewWillLoad() {
     let data = this.navParams.get('data');
-    
+
     //recuperar datos del localstorage de status
     this.status = JSON.parse(localStorage.getItem('status'));
 
@@ -82,8 +82,8 @@ export class RespuestaSeguimientoPage {
     //se recupera el id_seguimiento del seguimiento
     this.id_seguimiento = this._question_id;
     this.adjunto = this._adjuntos;
-    
-    
+
+
     //recuperando valores del localstorage de usuario
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     for (var u in this.user){
@@ -94,12 +94,16 @@ export class RespuestaSeguimientoPage {
     this.sol = JSON.parse(localStorage.getItem('solicitud'));
     for(var s in this.sol){
       this.extraer.id_solicitud = this.sol[s].id_solicitud;
-      this.extraer.id_solicitante = this.sol[s].id_solicitante;
+      //this.extraer.id_solicitante = this.sol[s].id_solicitante;
     }
-    
 
-      //valores de los parametros del metodo 
+
+      //valores de los parametros del metodo
       //pushSeguimiento(valor del text area, id_usuario, id_solicitud, id_status)
+      console.log('VALOR DE ANSWER '+data.answer);
+      console.log('VALOR DE extraer.id_usuario '+this.extraer.id_usuario);
+      console.log('VALOR DE extraer.id_solicitud'+this.extraer.id_solicitud);
+      console.log('VALOR DE valstatus '+data.valstatus);
       this.seguimientoservices.pushSeguimiento(data.answer,this.extraer.id_usuario,this.extraer.id_solicitud,data.valstatus)
       .subscribe(
         (seguimiento)=>{
@@ -108,12 +112,12 @@ export class RespuestaSeguimientoPage {
           console.log(this.seguimientos);
           console.log(this.solicitud);
           localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
-          localStorage.setItem('solicitud',JSON.stringify(this.solicitud)); 
+          localStorage.setItem('solicitud',JSON.stringify(this.solicitud));
         }
       );
       this.showMensaje('Se inserto el registro con exito');
       this.dismiss();
-        
+
   }
 
 

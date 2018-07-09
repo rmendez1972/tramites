@@ -38,7 +38,7 @@ export class MyApp {
     public alertCtrl: AlertController,
     public events: Events,
     public authenticationservice: AuthenticationService,
-    public ubicarPage: Ubicar,
+    //public ubicarPage: Ubicar,
   ) {
     platform.ready().then(() => {
 

@@ -38,7 +38,7 @@
 
           <div *ngIf="currentUser[0].id_grupo==2 || currentUser[0].id_grupo==1 else elseBlokCiudadano">
             <h2 *ngIf="seguimiento.usuario=='CIUDADANO'else elseBlockUsuario1"
-              class="question-text" (click)="listarParaEdicion(seguimiento.observaciones,tramite[0].nombre,solicitud[0].status)" >
+              class="question-text" (click)="listarParaEdicion(seguimiento)" >
               <span class="ciudadano"><ion-icon name="people" style="font-size: 1.6em"></ion-icon> {{ seguimiento.usuario }}:<br></span>
               <span class="observacion">{{ seguimiento.observaciones }}</span>
             </h2>

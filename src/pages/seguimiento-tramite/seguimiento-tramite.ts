@@ -55,7 +55,7 @@ export class SeguimientoTramitePage {
   createQuestionModal() {
     console.log('Creando comentario..');
     if (this.solicitud[0].status=='TRAMITE'){//Se va apoder crear siempre cuandor el estatus sea TRAMITE
-      let create_question_modal = this.modalCtrl.create(PreguntaSeguimientoPage, { data: this.solicitud.data });
+      let create_question_modal = this.modalCtrl.create(PreguntaSeguimientoPage, { data: this.solicitud[0].observaciones });
       create_question_modal.onDidDismiss(data => {
       this.getQuestions();
 
@@ -98,14 +98,9 @@ export class SeguimientoTramitePage {
   }
 
 
-  listarParaEdicion(seguimiento, tramite, solicitud){//Enlista los seguimientos para su edición o eliminación
-    let data_params = {
-      seguimientos:seguimiento,
-      tramites:tramite,
-      solicitud:solicitud
-    }
+  listarParaEdicion(seguimiento: any){//Enlista los seguimientos para su edición o eliminación
 
-    this.navCtrl.push(ModrespuestaSeguimientoPage, {data: data_params });
+    this.navCtrl.push(ModrespuestaSeguimientoPage, {seguimiento: seguimiento });
   }
 
 
@@ -114,7 +109,7 @@ export class SeguimientoTramitePage {
     //this.showAlert(subtitle);
     let params = {
       seguimientoObservaciones:seguimiento.observaciones,
-      seguimientoId:seguimiento.id_seguimiento,
+      seguimientoId_seguimiento:seguimiento.id_seguimiento,
       tramite:tramite,
       solicitud:solicitud
     }

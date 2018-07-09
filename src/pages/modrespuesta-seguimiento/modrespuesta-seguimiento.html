@@ -18,9 +18,9 @@
     <img src="assets/img/header.png"/>
     <ion-card-content>
       <h3 style="text-align: left">
-        <strong>Trámite:</strong> {{tramite}}<br>
-        <strong>Seguimiento:</strong> {{seguimiento}}<br>
-        <ion-badge color="dark" item-end>Estatus: {{extraer.estatus}}</ion-badge>
+        <strong>Trámite:</strong> {{tramite.nombre}}<br>
+        <strong>Seguimiento:</strong> {{seguimiento.observaciones}}<br>
+        <ion-badge color="dark" item-end>Estatus: {{solicitud.status}}</ion-badge>
       </h3>
     </ion-card-content>
   </ion-card>
@@ -52,7 +52,7 @@
 
 
         <ion-item-options *ngIf="seg.id_usuario==mid_usuario" side="right">
-          <button class="edit-button" ion-button Medium round clear icon-only color="dark" (click)="editAnswerModal(seg.id_seguimiento,seg.observaciones,seg.adjunto,seg.id_status)">
+          <button class="edit-button" ion-button Medium round clear icon-only color="dark" (click)="editAnswerModal(seg)">
             <ion-icon name="md-create"></ion-icon>
           </button>
           <button class="delete-button" ion-button Medium round clear icon-only color="danger" (click)="delete(seg.id_seguimiento,seg.adjunto)">

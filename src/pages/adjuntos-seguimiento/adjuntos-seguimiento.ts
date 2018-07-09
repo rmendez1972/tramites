@@ -42,7 +42,7 @@ export class AdjuntosSeguimientoPage {
   tramite : any;
 
   public seguimientoObservaciones : any;
-  public seguimientoId : any;
+  public seguimientoId_seguimiento : any;
   private adjuntos:any[];
 
   constructor(
@@ -61,14 +61,15 @@ export class AdjuntosSeguimientoPage {
 
 
     this.seguimientoObservaciones = isPresent(data) && isPresent(data.seguimientoObservaciones) ? data.seguimientoObservaciones : '';
-    this.seguimientoId = isPresent(data) && isPresent(data.seguimientoId) ? data.seguimientoId : '';
+    this.seguimientoId_seguimiento = isPresent(data) && isPresent(data.seguimientoId_seguimiento) ? data.seguimientoId_seguimiento : '';
     this.tramite = isPresent(data) && isPresent(data.tramite) ? data.tramite : '';
     this.solicitud = isPresent(data) && isPresent(data.solicitud) ? data.solicitud : '';
-    console.log('solicitud en el constructor '+this.solicitud);
+
   }
 
 
   obtenerAdjuntos(id_seguimiento){
+
     this.seguimientoservices.getAdjuntos(id_seguimiento)
     .subscribe(
 
@@ -134,11 +135,11 @@ export class AdjuntosSeguimientoPage {
   }
 
   ionViewWillEnter() {
-    this.obtenerAdjuntos(this.seguimientoId);
+    this.obtenerAdjuntos(this.seguimientoId_seguimiento);
     this.currentUser =JSON.parse(localStorage.getItem('currentUser'));
     this.mid_usuario=this.currentUser[0].id;
     //se recuperan los valores del localstorage en el metodo de getAnswers
-    this.obtenerAdjuntos(this.seguimientoId);
+
 
     //recuperando valores del localstorage de solicitud
     this.sol = JSON.parse(localStorage.getItem('solicitud'));
