@@ -24,6 +24,7 @@
     "@ionic-native/status-bar": "3.12.1",
     "@ionic/storage": "2.0.1",
     "body-parser": "^1.17.2",
+    "bower": "^1.8.4",
     "compression": "^1.7.0",
     "cordova-android": "^7.0.0",
     "cordova-browser": "~5.0.3",
@@ -66,20 +67,22 @@
   ],
   "description": "Build a complete mobile app with Ionic 3",
   "cordova": {
-    "plugins": {
-      "cordova-plugin-console": {},
-      "cordova-plugin-device": {},
-      "cordova-plugin-splashscreen": {},
-      "cordova-plugin-statusbar": {},
-      "cordova-plugin-whitelist": {},
-      "ionic-plugin-keyboard": {},
-      "cordova-plugin-googlemaps": {
-        "API_KEY_FOR_ANDROID": "AIzaSyC8XRq5g7SHVIpYIrEDAJg8dyHvMNSIfeA"
-      }
-    },
     "platforms": [
       "android",
       "browser"
-    ]
+    ],
+    "plugins": {
+      "ionic-plugin-keyboard": {},
+      "cordova-plugin-console": {},
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-googlemaps": {
+        "API_KEY_FOR_ANDROID": "AIzaSyC8XRq5g7SHVIpYIrEDAJg8dyHvMNSIfeA",
+        "API_KEY_FOR_IOS": "AIzaSyC8XRq5g7SHVIpYIrEDAJg8dyHvMNSIfeA"
+      },
+      "cordova-plugin-statusbar": {}
+    }
   }
 }

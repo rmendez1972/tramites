@@ -92,7 +92,6 @@ constructor() {}
 		}
 
 		getUrlpushComentario():String{ //igh
-
 			return this.URLpushcomentario='http://189.221.153.178:8080/tramites/controladorseguimiento?operacion=grabarcomentariojson&observaciones=';
 
 
