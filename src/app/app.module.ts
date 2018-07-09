@@ -40,6 +40,7 @@ import {ServiceUrl} from '../serviceUrl'
 
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
+import { CallNumber } from '@ionic-native/call-number';
 
 @NgModule({
   declarations: [
@@ -99,6 +100,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     Ubicar,
     GoogleMaps,
     Geolocation,
+    CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

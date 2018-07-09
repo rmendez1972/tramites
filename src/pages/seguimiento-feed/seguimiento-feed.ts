@@ -72,7 +72,7 @@ export class SeguimientoFeedPage {
         this.seguimientos = seguimientos.seguimientos;
         localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
         if (this.seguimientos.length==0){
-          let subtitle='No hay seguimientos que mostrar hasta este moemnto.';
+          let subtitle='No hay seguimientos que mostrar hasta este momento.';
           this.showAlert(subtitle);
         }
       }

@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import {  NavParams, AlertController  } from 'ionic-angular';
 import { isPresent } from 'ionic-angular/util/util';
 import { Geolocation } from '@ionic-native/geolocation';
+import { CallNumber } from '@ionic-native/call-number';
 import {
  GoogleMaps,
  GoogleMap,
  GoogleMapsEvent,
  LatLng,
  CameraPosition,
- MarkerOptions
+ MarkerOptions,
+ GoogleMapOptions
 } from '@ionic-native/google-maps';
 
 @Component({
@@ -25,16 +27,45 @@ export class Ubicar {
         latitude: 18.49926214,
         longitude: -88.31169829,
       },
-      title:'SEDETUS',
-      icon: 'blue',
+      title:'SEDETUS CHETUMAL',
+      icon: 'assets/icon/government.png',
       animation: 'DROP',
     },
+    {
+      position:{
+        latitude: 21.1608688,
+        longitude: -86.8516804,
+      },
+      title:'SEDETUS CANCUN',
+      icon: 'assets/icon/government-buildings.png',
+      animation: 'DROP',
+    },
+    {
+      position:{
+        latitude: 21.143846,
+        longitude: -86.821805,
+      },
+      title:'SEDETUS CANCUN',
+      icon: 'assets/icon/government1.png',
+      animation: 'DROP',
+    },
+    {
+      position:{
+        latitude: 20.5055727,
+        longitude: -86.942274,
+      },
+      title:'SEDETUS COZUMEL',
+      icon: 'assets/icon/embassy.png',
+      animation: 'DROP',
+    },
+
   ];
  
   constructor(
     private geolocation: Geolocation,
     private googleMaps: GoogleMaps,
     public alertCtrl: AlertController,
+    private callNumber: CallNumber,
   ) {}
 
   ionViewDidLoad(){
@@ -55,17 +86,28 @@ export class Ubicar {
     })
   }
 
+
+
   loadMap(){
+    let mapOptions: GoogleMapOptions = {
+         controls: {
+           'myLocationButton': true,
+           'compass': true,
+           'indoorPicker': true,
+           'zoom': true,   
+           'streetViewControl':true,
+           'mapTypeControl':true,    
+         }, 
+       };
     // create a new map by passing HTMLElement
     let element: HTMLElement = document.getElementById('map_canvas');
-
-    this.map = this.googleMaps.create(element);
+    this.map = this.googleMaps.create(element,mapOptions);
 
     // create CameraPosition
     let position: CameraPosition<LatLng> = {
       target: new LatLng(this.myPosition.latitude, this.myPosition.longitude),
-      zoom: 17,
-      tilt: 30
+      zoom: 13,
+      tilt: 10
     };
 
     this.map.one(GoogleMapsEvent.MAP_READY).then(()=>{
@@ -77,7 +119,7 @@ export class Ubicar {
       let markerOptions: MarkerOptions = {
         position: this.myPosition,
         title: "Mi Ubicacion",
-        icon: 'blue',
+        icon: 'assets/icon/user.png',
         animation: 'DROP',
       };
 
@@ -98,6 +140,15 @@ export class Ubicar {
     };
     this.map.addMarker(markerOptions);
   }
+
+  //Call phone
+  callJoint(telephoneNumber) {
+    this.callNumber.callNumber(telephoneNumber, true)
+    .then(res => console.log('Launched dialer!', res))
+    .catch(err => console.log('Error launching dialer', err));
+  };
+
+
 
   // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
   showAlert(subtitle:string='En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a>') {
