@@ -176,4 +176,14 @@ export class Ubicar {
     alert.present();
   };
 
+   refreshMap(){
+     let position: CameraPosition<LatLng> = {
+       target: new LatLng(this.markers[0].position.latitude, this.markers[0].position.longitude),
+       zoom: 17,
+       tilt: 30
+     };
+     this.map.moveCamera(position);
+     console.log("refresh");
+   };
+
 }
