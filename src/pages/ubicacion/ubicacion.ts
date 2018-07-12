@@ -11,6 +11,7 @@ import {
  MarkerOptions,
 } from '@ionic-native/google-maps';
 
+declare var google;
 @Component({
   selector: 'ubicacion',
   templateUrl: 'ubicacion.html'
@@ -19,8 +20,11 @@ import {
 
 export class Ubicar {
 
-  map: GoogleMap;
+  map: any;
+  directionsService: any = null;
+  directionsDisplay: any = null;
   myPosition: any = {};
+  bounds: any = null;
   markers: any[] = [
     {
       position:{
@@ -66,32 +70,47 @@ export class Ubicar {
     private geolocation: Geolocation,
     public alertCtrl: AlertController,
     private callNumber: CallNumber,
-  ) {};
 
-  ionViewDidLoad(){
+  ) {
+
+  };
+
+  ionViewWillEnter(){
     this.loadMap();
   };
 
   loadMap(){
     let element: HTMLElement = document.getElementById('map_canvas');
 
-    this.map = this.googleMaps.create(element);
-    this.map.setOptions({
+    this.map = GoogleMaps.create(element);
+    this.map.setOptions(
+    {
+
         controls: {
           compass: true,
           myLocation: true,
           myLocationButton: true,
           indoorPicker: true,
           streetviewcontrol:true,
-          zoom: true
-        }
-    });
+          zoom: true,
+          mapToolbar: true
+        },
+        styles: [], 
+        gestures: {
+          scroll: true,
+          tilt: true,
+          zoom: true,
+          rotate: true
+      },
+        building: true,
+      }
+      );
 
     // create CameraPosition
     let position: CameraPosition<LatLng> = {
       target: new LatLng(this.myPosition.latitude, this.myPosition.longitude),
       zoom: 15,
-      tilt: 30
+      tilt: 10
     };
 
 
@@ -114,7 +133,9 @@ export class Ubicar {
     let markerOptions: MarkerOptions = {
       position: new LatLng(options.position.latitude, options.position.longitude),
       title: options.title,
-      icon: options.icon
+      icon: options.icon,
+      zoom: 15,
+      tilt: 10,
     };
     this.map.addMarker(markerOptions);
   };
@@ -128,19 +149,31 @@ export class Ubicar {
       this.map.addMarker({
         title: 'Mi Ubicacion',
         icon: 'assets/icon/user.png',
-        animation: 'DROP',
-        position: response.latLng
+        animation: 'BOUNCE',
+        position: response.latLng,
       });
     })
     .catch(error =>{
       console.log(error);
     });
   };
+  
   //Llamadas
   callJoint(telephoneNumber) {
     this.callNumber.callNumber(telephoneNumber, true)
     .then(res => console.log('Launched dialer!', res))
     .catch(err => console.log('Error launching dialer', err));
+  };
+
+  // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
+  showAlert(subtitle:string='En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a>') {
+
+    const alert = this.alertCtrl.create({
+      title: 'Atento Aviso!',
+      subTitle: subtitle,
+      buttons: ['Ok']
+    });
+    alert.present();
   };
 
 }
