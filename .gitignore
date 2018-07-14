@@ -44,3 +44,5 @@ UserInterfaceState.xcuserstate
 .gradle/4.8.1
 .gradle/
 package-lock.json
+sdk/
+sdk

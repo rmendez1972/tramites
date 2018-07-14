@@ -185,50 +185,15 @@ export class Ubicar {
      this.map.moveCamera(position);
      console.log("refresh");
    };
-
-   refreshUbicacion(id){
-     if (id == 1) {
-       let position: CameraPosition<LatLng> = {
-         target: new LatLng(this.markers[0].position.latitude, this.markers[0].position.longitude),
-         zoom: 17,
-         tilt: 30
-       };
-       this.map.moveCamera(position);
-       console.log("refresh ubication 1");
-     }
-     else if (id ==2) {
-       let position: CameraPosition<LatLng> = {
-         target: new LatLng(this.markers[1].position.latitude, this.markers[1].position.longitude),
-         zoom: 17,
-         tilt: 30
-       };
-       this.map.moveCamera(position);
-       console.log("refresh ubication 2");
-     }
-     else if (id ==3) {
-       // code...
-       let position: CameraPosition<LatLng> = {
-         target: new LatLng(this.markers[2].position.latitude, this.markers[2].position.longitude),
-         zoom: 17,
-         tilt: 30
-       };
-       this.map.moveCamera(position);
-       console.log("refresh ubication 3");
-     }
-     else if (id ==4) {
-       // code...
-       let position: CameraPosition<LatLng> = {
-         target: new LatLng(this.markers[3].position.latitude, this.markers[3].position.longitude),
-         zoom: 17,
-         tilt: 30
-       };
-       this.map.moveCamera(position);
-       console.log("refresh ubication 4");
-     }
-     else{
-       console.log("Error :(");
-       this.showErorMap();
-     }
+   
+  refreshUbicacion(pos){
+    let position: CameraPosition<LatLng> = {
+      target: new LatLng(this.markers[pos].position.latitude, this.markers[pos].position.longitude),
+      zoom: 17,
+      tilt: 30
+    };
+    this.map.moveCamera(position);
+    console.log("refresh ubication " +pos); 
    };
 
    showErorMap(subtitle:string='Punto en el mapa invalido') {
