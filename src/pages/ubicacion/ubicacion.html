@@ -18,7 +18,12 @@
 
 <ion-content padding>
 
-  <div id="map_canvas" style="width:100%; height: 400px;"></div>  
+  <div id="map_canvas" style="width:100%; height: 400px;"></div> 
+  <ion-fab right top>
+    <button ion-fab (click)="refreshMap()">
+      <ion-icon name="pin"></ion-icon>
+    </button>
+  </ion-fab> 
   <ion-scroll scrollX="true"  style="white-space: nowrap; height: 300px;">
     <ion-card style="display: inline-block" >
 
@@ -30,7 +35,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-icon ios="ios-locate" md="md-locate" item-start large ></ion-icon>
+        <ion-icon ios="ios-locate" md="md-locate" item-start large (click)="refreshUbicacion(0)" ></ion-icon>
         <h2>Direccion:</h2>
         <p>Av Álvaro Obregón 474</p>
         <p>Centro</p>
@@ -56,7 +61,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-icon ios="ios-locate" md="md-locate" item-start large ></ion-icon>
+        <ion-icon ios="ios-locate" md="md-locate" item-start large (click)="refreshUbicacion(1)" ></ion-icon>
         <h2>Direccion:</h2>
         <p>Super Mza. 59</p>
         <p>Becal 22</p>
@@ -81,7 +86,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-icon ios="ios-locate" md="md-locate" item-start large ></ion-icon>
+        <ion-icon ios="ios-locate" md="md-locate" item-start large (click)="refreshUbicacion(2)" ></ion-icon>
         <h2>Direccion:</h2>
         <p>Super Mza 8, Mza 1 lote 4 y 5</p>
         <p>Oficinas 5A y 5B Primer Piso</p>
@@ -106,7 +111,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-icon ios="ios-locate" md="md-locate" item-start large ></ion-icon>
+        <ion-icon ios="ios-locate" md="md-locate" item-start large (click)="refreshUbicacion(3)" ></ion-icon>
         <h2>Direccion:</h2>
         <p>Av Lic Benito Juárez 921</p>
         <p>Adolfo López Mateos</p>
