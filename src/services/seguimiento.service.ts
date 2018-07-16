@@ -80,7 +80,7 @@ export class SeguimientoService {
 
   }
   //igh metodo para insertar comentario como ciudadano
-  pushComentario(observaciones:string, id_usuario:number,id_solicitud:number,id_status:number){
+  pushComentario(observaciones, id_usuario:number,id_solicitud:number,id_status:number){
     console.log('Dentro del service del simio2');
     console.log(observaciones,id_usuario,id_solicitud,id_status);
     return this.http.get(this.pushcomentarioURL+observaciones+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)

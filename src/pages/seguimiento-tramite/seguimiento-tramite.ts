@@ -34,8 +34,6 @@ export class SeguimientoTramitePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    //public questionService: QuestionService,
-    //public answerService: AnswerService,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
@@ -55,7 +53,8 @@ export class SeguimientoTramitePage {
   createQuestionModal() {
     console.log('Creando comentario..');
     if (this.solicitud[0].status=='TRAMITE'){//Se va apoder crear siempre cuandor el estatus sea TRAMITE
-      let create_question_modal = this.modalCtrl.create(PreguntaSeguimientoPage, { data: this.solicitud[0].observaciones });
+      //let create_question_modal = this.modalCtrl.create(PreguntaSeguimientoPage, { data: this.solicitud[0].observaciones });
+      let create_question_modal = this.modalCtrl.create(PreguntaSeguimientoPage);
       create_question_modal.onDidDismiss(data => {
       this.getQuestions();
 
@@ -77,9 +76,6 @@ export class SeguimientoTramitePage {
     this.seguimientos =JSON.parse(localStorage.getItem('seguimiento'));//igh
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));//igh
     this.id_grupo=this.currentUser[0].id_grupo;
-    //console.log('Grupo...'+this.id_grupo);
-    //console.log(this.seguimientos);
-    //this.getQuestions();
   }
 
   getQuestions(){//Obtiene todos los seguimientos del tramite
@@ -88,12 +84,6 @@ export class SeguimientoTramitePage {
     });
     loading.present();
     this.seguimientos =JSON.parse(localStorage.getItem('seguimiento'));
-    //this.seguimientoService.getSeguimientos(this.solicitud.slug)
-    //this.questionService.getQuestionsBySlug(this.solicitud.slug)
-    //.then(res => {
-    // this.questions = res;
-    //loading.dismiss();
-   //})
     loading.dismiss();
   }
 
@@ -105,8 +95,6 @@ export class SeguimientoTramitePage {
 
 
   verAdjuntos(seguimiento, tramite, solicitud){//Metod para mostrar los adjuntos
-    //let subtitle= 'Ver adjuntos. Pendiente por realizar';
-    //this.showAlert(subtitle);
     let params = {
       seguimientoObservaciones:seguimiento.observaciones,
       seguimientoId_seguimiento:seguimiento.id_seguimiento,
