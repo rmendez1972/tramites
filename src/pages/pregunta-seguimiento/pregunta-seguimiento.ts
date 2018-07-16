@@ -25,10 +25,10 @@ export class PreguntaSeguimientoPage {
     public viewCtrl: ViewController,
     public alertCtrl: AlertController,
     public seguimientoservices: SeguimientoService,
-  ) {   
+  ) {
 
     this.seguimientos =JSON.parse(localStorage.getItem('seguimiento'));
-    this.id_usuario=3;//El id 3 es fijo y pertenece al usuario "Ciudadano", revisar el modelo
+    this.id_usuario=30;//El id 3 es fijo y pertenece al usuario "Ciudadano", revisar el modelo
     this.id_solicitud=this.seguimientos[0].id_solicitud;
     this.id_status=this.seguimientos[0].id_status
   }
@@ -45,9 +45,9 @@ export class PreguntaSeguimientoPage {
   }
 
   //Método para la insersión de un comentario del ciudadano
-  onSubmit(value){    
+  onSubmit(value){
     let data = value;//se recupera el valor del text area
-    console.log('Text area: '+data.question+' '+ this.id_usuario,this.id_solicitud,this.id_status);     
+    console.log('Text area: '+data.question+' '+ this.id_usuario,this.id_solicitud,this.id_status);
     this.seguimientoservices.pushComentario(data.question,this.id_usuario,this.id_solicitud,this.id_status)
 
     .subscribe(
