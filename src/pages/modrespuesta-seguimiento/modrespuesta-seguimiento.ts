@@ -28,6 +28,7 @@ export class ModrespuestaSeguimientoPage {
   questionId: any;
   //private seguimiento: CategoryModel;
   extraer:any={};
+  tramite:any={};
   //private modelseguimiento:any={};
   seguimientos:Array<CategoryModel> = new Array<CategoryModel>();
   seg:Array<CategoryModel> = new Array<CategoryModel>();
@@ -38,8 +39,8 @@ export class ModrespuestaSeguimientoPage {
   private currentUser:any[];
   private mid_usuario: number;
 
-  solicitud : any;
-  tramite : any;
+  solicitud : any={};
+  //tramite : any;
 
   public seguimiento : any;
 
@@ -53,19 +54,18 @@ export class ModrespuestaSeguimientoPage {
     public segservices:SeguimientoService,
     public seguimientoservices: SeguimientoService,
   ) {
-    
-    
-    let data = navParams.get('data');
 
 
-    this.seguimiento = isPresent(data) && isPresent(data.seguimientos) ? data.seguimientos : '';
-    this.tramite = isPresent(data) && isPresent(data.tramites) ? data.tramites : '';
-    this.solicitud = isPresent(data) && isPresent(data.solicitud) ? data.solicitud : '';
-  }
+    let seguimiento = navParams.get('seguimiento');
+
+
+    this.seguimiento = isPresent(seguimiento)  ? seguimiento : '';
+
+     }
   //metodo para insertar
   createAnswerModal() {
     //comparando si el estatus del tramite es "TRAMITE" para continuar la accion
-    if(this.extraer.estatus=='TRAMITE'){
+    if(this.solicitud.id_status==2){
       //creando modal para insertar
       let create_answer_data = {
         mode: 'Agregar',
@@ -86,9 +86,13 @@ export class ModrespuestaSeguimientoPage {
 
   }
   //metodo para editar
-  editAnswerModal(id_seguimiento,observaciones,adjuntos,status) {
+  editAnswerModal(seguimiento: any) {
+    let id_seguimiento = seguimiento.id_seguimiento;
+    let observaciones = seguimiento.observaciones;
+    let adjuntos = seguimiento.adjunto;
+    let status = seguimiento.id_status;
     //comparando si el estatus del tramite es "TRAMITE" para continuar la accion
-    if(this.extraer.estatus=='TRAMITE'){
+    if(this.solicitud.id_status==2){
       //creando modal para editar
       let edit_answer_data = {
         mode: 'Editar',
@@ -115,20 +119,30 @@ export class ModrespuestaSeguimientoPage {
     this.mid_usuario=this.currentUser[0].id;
     //se recuperan los valores del localstorage en el metodo de getAnswers
     this.getAnswers();
-  
+
     //recuperando valores del localstorage de solicitud
-    this.sol = JSON.parse(localStorage.getItem('solicitud'));
+    let solicitud = JSON.parse(localStorage.getItem('solicitud'));
     //for para recuperar el valor del estatus
-    for(var s in this.sol){
-      this.extraer.estatus = this.sol[s].status;
+    for(var s in solicitud){
+      this.solicitud = solicitud[s];
     }
+
+
+
+
     console.log(this.sol);
     console.log("status del tramite"+this.extraer.estatus);
+    let tramite = JSON.parse(localStorage.getItem('tramite'));
+    //for para recuperar el valor del estatus
+    for(var t in tramite) {
+      this.tramite = tramite[t];
+    }
+
 
   }
 
   ionViewDidEnter(){
-    
+
 
   }
 
@@ -141,14 +155,14 @@ export class ModrespuestaSeguimientoPage {
 
     //recuperando valores del localstorage de seguimiento
     this.seguimientos = JSON.parse(localStorage.getItem('seguimiento'));
-    
+
     loading.dismiss();
 
   }
   //metodo para eliminar
   delete(id_seguimiento,adjuntos){
     //comparando si el estatus del tramite es "TRAMITE" para continuar la accion
-    if(this.extraer.estatus=='TRAMITE'){
+    if(this.solicitud.id_status==2){
 
     //recuperamos los datos del local storage de seguimiento
     this.seg = JSON.parse(localStorage.getItem('seguimiento'));

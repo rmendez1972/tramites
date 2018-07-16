@@ -1,7 +1,7 @@
 <ion-header >
   <ion-navbar color="primary">
 
-    <img  width="120" height="40" style="margin: 1px; padding: 1px;" src="assets/img/header.png" >
+    <!-- <img  width="120" height="40" style="margin: 1px; padding: 1px;" src="assets/img/header.png" > -->
     <ion-title>
       <span style="font-size: 13px; margin: 1px; padding: 1px;">Trámites SEDETUS</span>
     </ion-title>
@@ -18,37 +18,32 @@
     <img src="assets/img/header.png"/>
     <ion-card-content>
       <h3 style="text-align: left">
+        <strong>Folio #:</strong> {{solicitud[0].id_solicitud}}.
+        <strong> Fecha ingreso: </strong>{{solicitud[0].fecha_ingreso}}.<br>
         <strong>Trámite:</strong> {{tramite}}<br>
-        <strong>Seguimiento:</strong> {{seguimiento}}<br>
-        <ion-badge color="dark" item-end>Estatus: {{extraer.estatus}}</ion-badge>
+        <strong>Seguimiento:</strong> {{seguimientoObservaciones}}<br>
+
+        <strong>Estatus: </strong><ion-badge color="dark" item-end>{{extraer.estatus}}</ion-badge>
       </h3>
     </ion-card-content>
   </ion-card>
 
+   <h3 class="search-query">
 
-    <!-- <ion-list inset>
-      <ion-item-sliding *ngFor="let seg of seguimientos">
-        <ion-item class="answer-item" >
-
-          <p *ngIf="seg.usuario=='CIUDADANO'else elseBlockUsuario1">
-
-            <span class="ciudadano"><ion-icon name="people"></ion-icon>{{ seg.usuario }}</span><br>
-            <span class="observacion">{{ seg.observaciones }}</span>
+    <span>Mostrando </span>
+    <ion-badge class="query-tag">todos</ion-badge>
+    <span class="query-explanation"> los Adjuntos</span>
+  </h3>
 
 
-          </p>
-          <ng-template #elseBlockUsuario1>
-            <p>
+    <ion-list inset>
+      <ion-item-sliding *ngFor="let adjunto of adjuntos">
+        <a ion-item class="usuario" href="http://189.221.153.178:8080/tramites/adjuntos/{{ adjunto.nombre }}" >
 
-              <span class="usuario"><ion-icon name="person"></ion-icon>{{ seg.usuario }}</span><br>
-              <span class="observacion">{{ seg.observaciones }}</span>
+          {{ adjunto.nombre }}<ion-icon name="cloud-download" item-end></ion-icon>
 
 
-            </p>
-          </ng-template>
-          <div class="fechahora">{{ seg.fecha }}</div>
-          <ion-icon *ngIf="seg.id_usuario==mid_usuario"  name="arrow-back" item-end></ion-icon>
-        </ion-item>
+        </a>>
 
 
         <ion-item-options *ngIf="seg.id_usuario==mid_usuario" side="right">
@@ -63,20 +58,12 @@
 
       </ion-item-sliding>
 
-    </ion-list>-->
+    </ion-list>
 
 </ion-content>
 
 <ion-footer >
   <ion-toolbar color="primary">
-    <ion-segment [(ngModel)]="icons"  color="light" style="height: 37px;">
-      <ion-segment-button value="camera" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;"(click)="createAnswerModal()" >
-        <ion-icon  name="list-box" ></ion-icon >
-          <div style="font-size: 9px !important;">
-            Constestar al Ciudadano
-          </div>
-      </ion-segment-button>
 
-    </ion-segment>
   </ion-toolbar>
 </ion-footer>

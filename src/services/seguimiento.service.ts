@@ -6,6 +6,7 @@ import { ServiceUrl } from '../serviceUrl';
 @Injectable()
 export class SeguimientoService {
   private seguimientosUrl: string;
+  private adjuntosUrl: string;
   private pushseguimientoURL: string;
   private deleteseguimientoURL: string;
   private updateseguimientoURL: string;
@@ -18,13 +19,14 @@ export class SeguimientoService {
     private url:ServiceUrl,
     ){
     this.seguimientosUrl=String(this.url.getUrl());
+    this.adjuntosUrl=String(this.url.getUrladjuntos());
     this.pushseguimientoURL=String(this.url.getUrlpushSeguimiento());
     this.pushcomentarioURL=String(this.url.getUrlpushComentario());
     this.deleteseguimientoURL=String(this.url.getUrldeleteSeguimiento());
     this.updateseguimientoURL=String(this.url.getUrlupdateSeguimiento());
     this.statusUrl =String(this.url.getStatus());
 
-    
+
   }
 
   getData(idSolicitud: number,idSolicitante:number){
@@ -48,9 +50,16 @@ export class SeguimientoService {
     return this.http.get(this.seguimientosUrl+idSolicitud+"&id_solicitante="+idSolicitante)
       .map((res) => res.json(),(error)=>{console.log(error);});
   }
+
+  getAdjuntos(idSeguimiento: number){
+    console.log('valor de idSeguimiento antes de URL '+idSeguimiento);
+    console.log('url para conseguir adjuntos '+this.adjuntosUrl+idSeguimiento);
+    return this.http.get(this.adjuntosUrl+idSeguimiento)
+      .map((res) => res.json(),(error)=>{console.log(error);});
+  }
   //metodo para insertar un nuevo seguimiento de parte del nivel enlace
   pushSeguimiento(values, id_usuario:number,id_solicitud:number,id_status:number){
-    
+
     console.log(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status);
     return this.http.get(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
       .map((res) => res.json());
@@ -61,7 +70,7 @@ export class SeguimientoService {
   deleteSeguimiento(id_seguimiento:number, id_solicitud:number){
     return this.http.get(this.deleteseguimientoURL+id_seguimiento+"&id_solicitud="+id_solicitud)
     .map((res) => res.json(),(error)=>{console.log(error);});
-   
+
   }
 
   //metodo para actualizar el seguimiento de nivel enlace

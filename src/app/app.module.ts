@@ -20,6 +20,8 @@ import { RespuestaSeguimientoPage } from '../pages/respuesta-seguimiento/respues
 import { ModrespuestaSeguimientoPage } from '../pages/modrespuesta-seguimiento/modrespuesta-seguimiento';
 import { AdjuntosSeguimientoPage } from '../pages/adjuntos-seguimiento/adjuntos-seguimiento';
 import { EdicionSeguimientoPage } from '../pages/edicion-seguimiento/edicion-seguimiento';
+import { Ubicar } from '../pages/ubicacion/ubicacion';
+
 
 import { AuthenticationService } from '../services/authentication.service';
 //import { QuestionService } from '../services/question.service';
@@ -35,6 +37,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SDKBrowserModule } from '../../sdk/index';
 
 import {ServiceUrl} from '../serviceUrl'
+
+
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation';
+import { CallNumber } from '@ionic-native/call-number';
 
 
 @NgModule({
@@ -54,7 +61,8 @@ import {ServiceUrl} from '../serviceUrl'
     RespuestaSeguimientoPage,
     ModrespuestaSeguimientoPage,
     AdjuntosSeguimientoPage,
-    EdicionSeguimientoPage
+    EdicionSeguimientoPage,
+    Ubicar,
   ],
   imports: [
     BrowserModule,
@@ -78,7 +86,8 @@ import {ServiceUrl} from '../serviceUrl'
     RespuestaSeguimientoPage,
     ModrespuestaSeguimientoPage,
     AdjuntosSeguimientoPage,
-    EdicionSeguimientoPage
+    EdicionSeguimientoPage,
+    Ubicar,
   ],
   providers: [
     StatusBar,
@@ -90,6 +99,10 @@ import {ServiceUrl} from '../serviceUrl'
     SeguimientoService,
     ServiceUrl,
     TramiteService,
+    Ubicar,
+    GoogleMaps,
+    Geolocation,
+    CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

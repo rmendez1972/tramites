@@ -41,7 +41,9 @@ export class AdjuntosSeguimientoPage {
   solicitud : any;
   tramite : any;
 
-  public seguimiento : any;
+  public seguimientoObservaciones : any;
+  public seguimientoId_seguimiento : any;
+  private adjuntos:any[];
 
   constructor(
     public navCtrl: NavController,
@@ -58,10 +60,32 @@ export class AdjuntosSeguimientoPage {
     let data = navParams.get('data');
 
 
-    this.seguimiento = isPresent(data) && isPresent(data.seguimiento) ? data.seguimiento : '';
+    this.seguimientoObservaciones = isPresent(data) && isPresent(data.seguimientoObservaciones) ? data.seguimientoObservaciones : '';
+    this.seguimientoId_seguimiento = isPresent(data) && isPresent(data.seguimientoId_seguimiento) ? data.seguimientoId_seguimiento : '';
     this.tramite = isPresent(data) && isPresent(data.tramite) ? data.tramite : '';
     this.solicitud = isPresent(data) && isPresent(data.solicitud) ? data.solicitud : '';
+
   }
+
+
+  obtenerAdjuntos(id_seguimiento){
+
+    this.seguimientoservices.getAdjuntos(id_seguimiento)
+    .subscribe(
+
+      (adjuntos)=>{
+
+        this.adjuntos = adjuntos.data;
+        localStorage.setItem('adjuntos',JSON.stringify(this.adjuntos));
+        if (this.adjuntos.length==0){
+          let subtitle='No hay archivos adjuntos que mostrar para este seguimientos.';
+          this.showAlert(subtitle);
+        }
+      }
+    );
+  }
+
+
   //metodo para insertar
   createAnswerModal() {
     //comparando si el estatus del tramite es "TRAMITE" para continuar la accion
@@ -111,10 +135,11 @@ export class AdjuntosSeguimientoPage {
   }
 
   ionViewWillEnter() {
+    this.obtenerAdjuntos(this.seguimientoId_seguimiento);
     this.currentUser =JSON.parse(localStorage.getItem('currentUser'));
     this.mid_usuario=this.currentUser[0].id;
     //se recuperan los valores del localstorage en el metodo de getAnswers
-    this.getAnswers();
+
 
     //recuperando valores del localstorage de solicitud
     this.sol = JSON.parse(localStorage.getItem('solicitud'));
@@ -207,11 +232,11 @@ export class AdjuntosSeguimientoPage {
 
 
    // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
-  showAlert() {
+  showAlert(subtitle:string='En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a>') {
 
     const alert = this.alertCtrl.create({
       title: 'Atento Aviso!',
-      subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a> ',
+      subTitle: subtitle,
       buttons: ['Ok']
     });
     alert.present();
