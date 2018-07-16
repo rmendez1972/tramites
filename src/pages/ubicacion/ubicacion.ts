@@ -1,10 +1,8 @@
 import { CallNumber } from '@ionic-native/call-number';
 import { Component } from '@angular/core';
 import {  AlertController } from 'ionic-angular';
-import { Geolocation} from '@ionic-native/geolocation';
 import {
  GoogleMaps,
- GoogleMap,
  GoogleMapsEvent,
  LatLng,
  CameraPosition,
@@ -67,7 +65,6 @@ export class Ubicar {
 
   constructor(
     private googleMaps: GoogleMaps,
-    private geolocation: Geolocation,
     public alertCtrl: AlertController,
     private callNumber: CallNumber,
 
@@ -176,15 +173,6 @@ export class Ubicar {
     alert.present();
   };
 
-   refreshMap(){
-     let position: CameraPosition<LatLng> = {
-       target: new LatLng(this.markers[0].position.latitude, this.markers[0].position.longitude),
-       zoom: 17,
-       tilt: 30
-     };
-     this.map.moveCamera(position);
-     console.log("refresh");
-   };
    
   refreshUbicacion(pos){
     let position: CameraPosition<LatLng> = {
@@ -195,16 +183,6 @@ export class Ubicar {
     this.map.moveCamera(position);
     console.log("refresh ubication " +pos); 
    };
-
-   showErorMap(subtitle:string='Punto en el mapa invalido') {
-
-    const alert = this.alertCtrl.create({
-      title: 'Error de puntos en el mapa :(!',
-      subTitle: subtitle,
-      buttons: ['Ok']
-    });
-    alert.present();
-  };
 
 
 }
