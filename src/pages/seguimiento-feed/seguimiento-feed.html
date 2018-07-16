@@ -29,7 +29,7 @@
   <p>
     <ion-badge color="dark" style="font-size: 12px; text-align: center; margin-left: 30px;">Deslizar a la izquierda para ver los seguimientos<ion-icon name="skip-backward" style="padding: 5px;"></ion-icon></ion-badge>
   </p>
-  <ion-scroll scrollX="true"  style="white-space: nowrap; height: 1250px;">
+  <ion-scroll scrollX="true"  style="white-space: nowrap; height: 600px;">
     <ion-card  [style.background-color]="data.background" style="border-radius: 10px; display: inline-block"   *ngFor="let seg of seguimientos"  (click)="openDetails({ solicitud: solicitud,tramite:tramite,seg:seg })">
 
       <ion-item class="category-item" >
@@ -76,13 +76,13 @@
   <ion-toolbar color="primary">
 
     <ion-segment [(ngModel)]="icons"  color="light" style="height: 37px;">
-      <ion-segment-button value="camera" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;" >
+      <ion-segment-button value="camera" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;" (click)="todosSeg()">
         <ion-icon  name="list-box" ></ion-icon >
           <div style="font-size: 9px !important;">
             Todos los Seguimientos
           </div>
       </ion-segment-button>
-      <ion-segment-button value="bookmark" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;">
+      <ion-segment-button value="bookmark" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;" (click)="ultimoSeg()">
         <ion-icon name="list"></ion-icon>
           <div style="font-size: 9px !important;">
             El último Seguimiento

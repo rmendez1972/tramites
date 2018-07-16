@@ -62,16 +62,16 @@
 <ion-footer >
   <ion-toolbar color="primary">
     <ion-segment [(ngModel)]="icons"  color="light" style="height: 37px;">
-      <ion-segment-button value="camera" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;" >
+      <ion-segment-button value="camera" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;" (click)="todosSol()">
         <ion-icon  name="list-box" ></ion-icon >
           <div style="font-size: 9px !important;">
-            Todos los Trámites
+            Todos las Solicitudes
           </div>
       </ion-segment-button>
-      <ion-segment-button value="bookmark" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;">
+      <ion-segment-button value="bookmark" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;" (click)="ultimoSol()">
         <ion-icon name="list"></ion-icon>
           <div style="font-size: 9px !important;">
-            El último Trámite
+            Ultima Solicitud
           </div>
       </ion-segment-button>
     </ion-segment>

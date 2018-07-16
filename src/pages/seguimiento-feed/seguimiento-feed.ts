@@ -14,7 +14,8 @@ export class SeguimientoFeedPage {
   data : Array<CategoryModel> = new Array<CategoryModel>();
   solicitud:Array<CategoryModel> = new Array<CategoryModel>();
   tramite:Array<CategoryModel> = new Array<CategoryModel>();
-  seguimientos:Array<CategoryModel> = new Array<CategoryModel>();
+  seguimientos=[];
+  todoslosSeguimientos=[];
 
 
   private seguimiento:any[];
@@ -26,6 +27,7 @@ export class SeguimientoFeedPage {
   id_solicitante:any;
   currentUser:any;
   private status:any[];
+  private metodo:string;
 
   constructor(
     public navCtrl: NavController,
@@ -35,15 +37,26 @@ export class SeguimientoFeedPage {
   ) {
     let query_param = navParams.get('query');
     this._query = isPresent(query_param) ? query_param : 'todos';
+
+    let page = navParams.get('page');
+    console.log ('valor PAGE '+page);
+    this.metodo = isPresent(page) ? page.params.metodo : 'todosSeg';
+    console.log ('valor de metodo '+this.metodo);
+
     let solicitud_param = navParams.get('sol');
+    console.log('valor de SOL '+solicitud_param);
     this.id_solicitud = solicitud_param.id_solicitud;
     this.id_solicitante = solicitud_param.id_solicitante;
+
+
 
   }
 
 
   ionViewWillEnter() {
     this.verificaSiciudadano();
+
+
     this.seguimientoService.getData(this.id_solicitud,this.id_solicitante)
     .subscribe(
       (data) => {
@@ -70,6 +83,7 @@ export class SeguimientoFeedPage {
 
       (seguimientos)=>{
         this.seguimientos = seguimientos.seguimientos;
+        this.todoslosSeguimientos = seguimientos.seguimientos;
         localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
         if (this.seguimientos.length==0){
           let subtitle='No hay seguimientos que mostrar hasta este momento.';
@@ -87,6 +101,33 @@ export class SeguimientoFeedPage {
       }
     );
 
+
+
+  }
+
+
+  ionViewDidEnter(){
+    if (this.metodo=='todosSeg'){
+      this.todosSeg();
+    }else{
+      this.ultimoSeg();
+    }
+  }
+
+  ultimoSeg(){
+    this.seguimientos=[];
+
+    this.todoslosSeguimientos=JSON.parse(localStorage.getItem('seguimiento'));
+    console.log('el ultimo seguimiento es '+this.todoslosSeguimientos[0]);
+    this.seguimientos.push(this.todoslosSeguimientos[0]);
+    console.log('estoy en el ultimo seguimiento y la longitud es'+this.seguimientos.length);
+  }
+
+  todosSeg(){
+    this.seguimientos=[];
+    this.todoslosSeguimientos=JSON.parse(localStorage.getItem('seguimiento'));
+    this.seguimientos=this.todoslosSeguimientos;
+    console.log('todos los seguimiento');
   }
 
 

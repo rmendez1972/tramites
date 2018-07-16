@@ -12,6 +12,7 @@ import { TramiteService } from '../../services/tramites.service';
 export class TramiteFeedPage {
   _query : string = 'all';
   solicitudes= [];
+  todoslosSolicitudes= [];
   unidadAdministrativa= [];
   direccion = [];
   status =[];
@@ -62,6 +63,7 @@ export class TramiteFeedPage {
     .subscribe(
       (solicitudes) => {
         this.solicitudes = solicitudes.solicitudes;
+        this.todoslosSolicitudes = solicitudes.solicitudes;
         localStorage.setItem('solicitudes',JSON.stringify(this.solicitudes));
       },
     );
@@ -86,6 +88,23 @@ export class TramiteFeedPage {
         localStorage.setItem('status',JSON.stringify(this.status));
       },
     );
+  }
+
+
+  ultimoSol(){
+    this.solicitudes=[];
+
+    this.todoslosSolicitudes=JSON.parse(localStorage.getItem('solicitudes'));
+    console.log('el ultimo seguimiento es '+this.todoslosSolicitudes[0]);
+    this.solicitudes.push(this.todoslosSolicitudes[0]);
+    console.log('estoy en el ultimo solicitud y la longitud es'+this.solicitudes.length);
+  }
+
+  todosSol(){
+    this.solicitudes=[];
+    this.todoslosSolicitudes=JSON.parse(localStorage.getItem('solicitudes'));
+    this.solicitudes=this.todoslosSolicitudes;
+    console.log('todos los solicitudes');
   }
 
   openDetails(params) {

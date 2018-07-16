@@ -89,7 +89,10 @@ export class Login {
                               icon: 'list-box',
                               component: SeguimientoFeedPage,
                               params: {
-                                query: 'all'
+                                query: 'all',
+                                metodo: 'todosSeg',
+                                id_solicitud: this.currentUser[0].id_solicitud,
+                                id_solicitante: this.currentUser[0].id_solicitante
                               }
                             },
                             {
@@ -97,7 +100,10 @@ export class Login {
                               icon: 'list',
                               component: SeguimientoFeedPage,
                               params: {
-                                query: 'basic'
+                                query: 'basic',
+                                metodo: 'ultimoSeg',
+                                id_solicitud: this.currentUser[0].id_solicitud,
+                                id_solicitante: this.currentUser[0].id_solicitante
                               }
                             }
                           ];

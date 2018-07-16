@@ -66,11 +66,15 @@ export class MyApp {
 
   //abrimos la pagina root y poblamos con cards todos los seguimientos del trámite
   openPage(page) {
+    let sol={
+      id_solicitud: page.params.id_solicitud,
+      id_solicitante: page.params.id_solicitante
+    }
     // close the menu when clicking a link from the menu
     this.menu.close();
     this.showAlert();
     // navigate to the new page if it is not the current page
-    this.nav.setRoot(page.component, page.params);
+    this.nav.setRoot(page.component, {sol: sol, page: page});
   }
 
   cerrarSesion() {
