@@ -114,7 +114,7 @@ export class Ubicar {
   * Este Metodo es para iniciar el mapa
   * @author: Angel Lara
   * @param {void } 
-  * @return {void}  loadMap
+  * @return {void}
   */
   loadMap(){
     /**
