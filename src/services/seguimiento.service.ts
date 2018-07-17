@@ -59,22 +59,49 @@ export class SeguimientoService {
     return this.http.get(this.adjuntosUrl+idSeguimiento)
       .map((res) => res.json(),(error)=>{console.log(error);});
   }
-  //llamado al back end para insertar un nuevo seguimiento de parte del nivel enlace
-  pushSeguimiento(values, id_usuario:number,id_solicitud:number,id_status:number){
-    return this.http.get(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
+
+  /**
+  *  pushSeguimiento()  llamado al backend para insertar un seguimiento
+  *  
+  *  @param {Object}  observaciones
+  *  @param {Number}  id_usuario
+  *  @param {Number}  id_solicitud
+  *  @param {Number}  id_status
+  *
+  *  @return {Json}   res
+  */
+  pushSeguimiento(observaciones, id_usuario:number,id_solicitud:number,id_status:number){
+    return this.http.get(this.pushseguimientoURL+observaciones+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
       .map((res) => res.json());
   }
 
 
-  //llamado al back end para eliminar un seguimiento de nivel enlace
+  /**
+  *  deleteSeguimiento()  llamado al backend para eliminar un seguimiento
+  *  
+  *  @param {Number}  id_seguimiento
+  *  @param {Number}  id_solicitud
+  *
+  *  @return {Json}   res
+  */
   deleteSeguimiento(id_seguimiento:number, id_solicitud:number){
     return this.http.get(this.deleteseguimientoURL+id_seguimiento+"&id_solicitud="+id_solicitud)
     .map((res) => res.json(),(error)=>{console.log(error);});
 
   }
 
-  //llamado al back end para actualizar el seguimiento de nivel enlace
-  updateSeguimiento(id_seguimiento:string, values, id_solicitud:string, id_usuario:string, id_status:number,adjunto:string){
+  /** 
+  *  updateSeguimiento()  llamado al backend para actualizar un seguimiento
+  *  
+  *  @param {Number}  id_seguimiento
+  *  @param {Object}  values
+  *  @param {Number}  id_solicitud
+  *  @param {Number}  id_status
+  *  @param {Number}  adjunto
+  *
+  *  @return {Json}   res
+  */
+  updateSeguimiento(id_seguimiento:number, values, id_solicitud:number, id_usuario:number, id_status:number,adjunto:number){
     return this.http.get(this.updateseguimientoURL+id_seguimiento+"&id_solicitud="+id_solicitud+'&observaciones='+values+'&id_usuario='+id_usuario+'&id_status='+id_status+'&adjunto='+adjunto)
     .map((res) => res.json(),(error)=>{console.log(error);});
 

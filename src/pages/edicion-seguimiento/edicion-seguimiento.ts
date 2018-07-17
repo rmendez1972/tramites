@@ -9,10 +9,9 @@ import { CategoryModel } from '../../services/seguimiento.model';
 
 
 /**
- * Generated class for the EdicionSeguimientoPage page.
+ * 
+ *  Clase que realiza la Modificación de un seguimiento.
  *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
  */
 
 @Component({
@@ -22,8 +21,8 @@ import { CategoryModel } from '../../services/seguimiento.model';
 export class EdicionSeguimientoPage {
   //declaracion de variables
   _mode : string;
-  _idSeguimiento: string;
-  _adjuntos: string;
+  _idSeguimiento: number;
+  _adjuntos: number;
   _idstatus: string;
   answerForm: FormGroup;
   answer: Answer = new Answer();
@@ -33,8 +32,8 @@ export class EdicionSeguimientoPage {
   sol:Array<CategoryModel> = new Array<CategoryModel>();
   observaciones : Array<CategoryModel> = new Array<CategoryModel>();
   extraer:any={};
-  id_seguimiento:string;
-  adjunto:string;
+  id_seguimiento:number;
+  adjunto:number;
   status:Array<CategoryModel> = new Array<CategoryModel>();
   solicitud:Array<CategoryModel> = new Array<CategoryModel>();
 
@@ -74,7 +73,12 @@ export class EdicionSeguimientoPage {
     this.viewCtrl.dismiss(data);
   }
 
-//metodo para la insersion de la respuesta del enlace
+/**
+* onSubmit() metodo para actualizar un seguimiento
+*
+*  @param {Object} value
+*  @return {Void}
+*/
 onSubmit(value){
   
   //se recupera el valor del text area
@@ -95,9 +99,6 @@ onSubmit(value){
   for(var s in this.sol){
     this.extraer.id_solicitud = this.sol[s].id_solicitud;
   }
-    /*llamado al service para la actualizacion del seguimiento
-      valores de los parametros del metodo
-      pushSeguimiento(valor del text area, id_usuario, id_solicitud, id_status)*/
     this.seguimientoservices.updateSeguimiento(this.id_seguimiento,data.answer,this.extraer.id_solicitud,this.extraer.id_usuario,data.valstatus,this.adjunto)
     .subscribe(
       (seguimiento)=>{
@@ -112,7 +113,12 @@ onSubmit(value){
 
 }
 
-  //metodo para mostrar un mensaje en la pantalla cuando se requiera
+  /**
+  * showMensaje() metodo para mostrar un mensaje en la pantalla cuando se requiera
+  *
+  *  @param {Object} msg
+  *  @return {Void}
+  */
   showMensaje(msg) {
 
     const alert = this.alertCtrl.create({
