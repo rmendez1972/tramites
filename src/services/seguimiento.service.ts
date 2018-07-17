@@ -71,23 +71,21 @@ export class SeguimientoService {
     return this.http.get(this.adjuntosUrl+idSeguimiento)
       .map((res) => res.json(),(error)=>{console.log(error);});
   }
-  //metodo para insertar un nuevo seguimiento de parte del nivel enlace
+  //llamado al back end para insertar un nuevo seguimiento de parte del nivel enlace
   pushSeguimiento(values, id_usuario:number,id_solicitud:number,id_status:number){
-
-    console.log(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status);
     return this.http.get(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
       .map((res) => res.json());
   }
 
 
-  //metodo para eliminar un seguimiento de nivel enlace
+  //llamado al back end para eliminar un seguimiento de nivel enlace
   deleteSeguimiento(id_seguimiento:number, id_solicitud:number){
     return this.http.get(this.deleteseguimientoURL+id_seguimiento+"&id_solicitud="+id_solicitud)
     .map((res) => res.json(),(error)=>{console.log(error);});
 
   }
 
-  //metodo para actualizar el seguimiento de nivel enlace
+  //llamado al back end para actualizar el seguimiento de nivel enlace
   updateSeguimiento(id_seguimiento:string, values, id_solicitud:string, id_usuario:string, id_status:number,adjunto:string){
     return this.http.get(this.updateseguimientoURL+id_seguimiento+"&id_solicitud="+id_solicitud+'&observaciones='+values+'&id_usuario='+id_usuario+'&id_status='+id_status+'&adjunto='+adjunto)
     .map((res) => res.json(),(error)=>{console.log(error);});
