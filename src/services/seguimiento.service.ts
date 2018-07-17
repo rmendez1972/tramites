@@ -4,6 +4,18 @@ import { Http } from '@angular/http';
 import { ServiceUrl } from '../serviceUrl';
 
 @Injectable()
+/**
+
+ * Esta clase se usa para conectar con el Back End y obtener los datos a usar.
+
+ * @author: Angel Lara
+
+
+
+ 
+ */
+
+
 export class SeguimientoService {
   private seguimientosUrl: string;
   private adjuntosUrl: string;
