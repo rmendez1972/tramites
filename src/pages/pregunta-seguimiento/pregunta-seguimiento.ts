@@ -1,5 +1,3 @@
-/*Clase para que el ciudadano realice una pregunta o comentario,
-respecto a un trámite*/
 import { Component } from '@angular/core';
 import { ViewController,AlertController } from 'ionic-angular';
 import { Validators, FormGroup, FormControl} from '@angular/forms';
@@ -42,22 +40,28 @@ export class PreguntaSeguimientoPage {
     this.viewCtrl.dismiss(data);
   }
 
-  //Método para la insersión de un comentario del ciudadano
+  /**
+   * 
+   * @param value
+   * 
+   */
   onSubmit(value){
-    let data = value;//se recupera el valor del text area de la vista
-    //console.log('Text area: '+data.question+' '+ this.id_usuario,this.id_solicitud,this.id_status);
+    let data = value;
     this.seguimientoservices.pushComentario(data.question,this.id_usuario,this.id_solicitud,this.id_status)
 
     .subscribe(
       (seguimiento)=>{
         this.seguimientos = seguimiento.seguimiento;
-        //console.log('IMPRIMIENDO SEGUIMIENTOS'+this.seguimientos);
         localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
       });
     this.showMensaje('Se inserto el registro con exito');
     this.dismiss();
   }
 
+  /**
+   * 
+   * @param msg 
+   */
   showMensaje(msg) {
     const alert = this.alertCtrl.create({
       title: 'Aviso',

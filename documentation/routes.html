@@ -7,14 +7,14 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/laravel.css">
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/laravel.css">
     </head>
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">building-a-complete-mobile-app-with-ionic-3 documentation</a>
+            <a href="./" class="navbar-brand">building-a-complete-mobile-app-with-ionic-3 documentation</a>
             <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
         </div>
 
@@ -559,488 +559,30 @@
 </nav>
                </div>
                <!-- START CONTENT -->
-               <div class="content component">
+               <div class="content routes">
                    <div class="content-data">
 
 
 
 
+
+
+
+
+
+
+
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li>Welcome</li>
+    <li>Routes</li>
 </ol>
 
-<ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
-        </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
-        </li>
-        <li >
-            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
-        </li>
-        <li >
-            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
-        </li>
-</ul>
+<div id="body-routes"></div>
 
-<div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
-    <h3>File</h3>
-</p>
-<p class="comment">
-    <code>src/pages/welcome/welcome.ts</code>
-</p>
+<script src="js/libs/d3.v3.min.js"></script>
+<script src="js/libs/innersvg.js"></script>
 
-    <p class="comment">
-        <h3>Description</h3>
-    </p>
-    <p class="comment">
-        <p>Generated class for the Welcome page.</p>
-<p>See <a href="http://ionicframework.com/docs/components/#navigation">http://ionicframework.com/docs/components/#navigation</a> for more info
-on Ionic pages and navigation.</p>
-
-    </p>
-
-
-
-
-<section>
-    <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
-        <tbody>
-
-
-
-
-
-
-
-
-
-
-
-            <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>page-welcome</code></td>
-            </tr>
-
-
-
-
-            <tr>
-                <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>welcome.html</code></td>
-            </tr>
-
-
-        </tbody>
-    </table>
-</section>
-
-    <section>
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#navCtrl">navCtrl</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#navParams">navParams</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#ionViewDidLoad">ionViewDidLoad</a>
-                            </li>
-                            <li>
-                                <a href="#login">login</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-
-
-
-
-
-        </tbody>
-    </table>
-</section>
-
-    <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(navCtrl: NavController, navParams: NavParams)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/pages/welcome/welcome.ts:17</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>navCtrl</td>
-                                                  
-                                                        <td>
-                                                                    <code>NavController</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            no
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>navParams</td>
-                                                  
-                                                        <td>
-                                                                    <code>NavParams</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            no
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
-
-
-
-
-
-    <section>
-    
-        <h3 id="methods">
-            Methods
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="ionViewDidLoad"></a>
-                        <span class="name">
-                            <b>
-                            ionViewDidLoad
-                            </b>
-                            <a href="#ionViewDidLoad"><span class="fa fa-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>ionViewDidLoad()</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/pages/welcome/welcome.ts:22</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="login"></a>
-                        <span class="name">
-                            <b>
-                            login
-                            </b>
-                            <a href="#login"><span class="fa fa-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>login()</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/pages/welcome/welcome.ts:26</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
-
-    <section>
-    
-        <h3 id="inputs">
-            Properties
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="navCtrl"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Public</span>
-                            navCtrl
-                            </b>
-                            <a href="#navCtrl"><span class="fa fa-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <span class="modifier-icon fa fa-reset"></span><code>navCtrl:     <code>NavController</code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>NavController</code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/pages/welcome/welcome.ts:19</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="navParams"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Public</span>
-                            navParams
-                            </b>
-                            <a href="#navParams"><span class="fa fa-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <span class="modifier-icon fa fa-reset"></span><code>navParams:     <code>NavParams</code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>NavParams</code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/pages/welcome/welcome.ts:19</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-</section>
-
-</div>
-
-
-    <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
-import { IonicPage, NavController, NavParams } from &#x27;ionic-angular&#x27;;
-
-import { Login } from &#x27;../login/login&#x27;;
-//import { Signup } from &#x27;../signup/signup&#x27;;
-/**
- * Generated class for the Welcome page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
-@Component({
-  selector: &#x27;page-welcome&#x27;,
-  templateUrl: &#x27;welcome.html&#x27;,
-})
-export class Welcome {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log(&#x27;ionViewDidLoad Welcome&#x27;);
-  }
-
-  login(){
-   this.navCtrl.push(Login);
-  }
-
-  /*signup(){
-   this.navCtrl.push(Signup, {}, {animate:false});
-  }*/
-
-}
-</code></pre>
-    </div>
-
-    <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;ion-content id&#x3D;&quot;welcome&quot; class&#x3D;&quot;cards-bg social-cards&quot;&gt;
-
-  &lt;ion-card  style&#x3D;&quot;height: 95%&quot;&gt;
-    &lt;img src&#x3D;&quot;assets/img/header_welcome.png&quot; class&#x3D;&quot;logo&quot;/&gt;
-
-    &lt;ion-card-content &gt;
-      &lt;h1&gt; Bienvenido a la App de Seguimiento de Trámites de la SEDETUS &lt;/h1&gt;
-      &lt;div  align&#x3D;&quot;center&quot;&gt;Inicia Sesión con el email y contraseña de tu Trámite&lt;/div&gt;
-    &lt;/ion-card-content&gt;
-    &lt;ion-card-content &gt;
-      &lt;button ion-button block large color&#x3D;&quot;lightprimary&quot; round icon-left (click)&#x3D;&quot;login()&quot;&gt;
-        &lt;ion-icon name&#x3D;&quot;log-in&quot;&gt;&lt;/ion-icon&gt;Iniciar Sesión&lt;/button&gt;
-    &lt;/ion-card-content&gt;
-
-    &lt;ion-row &gt;
-      &lt;ion-col&gt;
-        &lt;button ion-button color&#x3D;&quot;primary&quot; clear icon-start&gt;
-          &lt;ion-icon name&#x3D;&quot;logo-twitter&quot;&gt; &lt;/ion-icon&gt;
-          Siguenos en Twitter
-        &lt;/button&gt;
-      &lt;/ion-col&gt;
-
-      &lt;ion-col align-self-center text-center&gt;
-        &lt;ion-badge item-end&gt;+4k seguidores&lt;/ion-badge&gt;
-      &lt;/ion-col&gt;
-    &lt;/ion-row&gt;
-
-    &lt;ion-row &gt;
-      &lt;ion-col&gt;
-        &lt;button ion-button color&#x3D;&quot;primary&quot; clear icon-start&gt;
-          &lt;ion-icon name&#x3D;&quot;logo-facebook&quot; &gt;&lt;/ion-icon&gt;
-          Siguenos en Facebook
-        &lt;/button&gt;
-      &lt;/ion-col&gt;
-
-      &lt;ion-col align-self-center text-center&gt;
-        &lt;ion-badge item-end&gt;+24k Likes&lt;/ion-badge&gt;
-      &lt;/ion-col&gt;
-    &lt;/ion-row&gt;
-
-  &lt;/ion-card&gt;
-&lt;/ion-content&gt;
-
-
-</code></pre>
-    </div>
-
-    <div class="tab-pane fade " id="c-tree">
-        <div id="tree-container"></div>
-        <div class="tree-legend">
-            <div class="title">
-                <b>Legend</b>
-            </div>
-            <div>
-                <div class="color htmlelement"></div><span>Html element</span>
-            </div>
-            <div>
-                <div class="color component"></div><span>Component</span>
-            </div>
-            <div>
-                <div class="color directive"></div><span>Html element with directive</span>
-            </div>
-        </div>
-    </div>
-
-    
-</div>
-
-<script src="../js/libs/vis.min.js"></script>
-<script src="../js/libs/htmlparser.js"></script>
-<script src="../js/libs/deep-iterator.js"></script>
-<script>
-        var COMPONENT_TEMPLATE = '<div><ion-content id="welcome" class="cards-bg social-cards">  <ion-card  style="height: 95%">    <img src="assets/img/header_welcome.png" class="logo"/>    <ion-card-content >      <h1> Bienvenido a la App de Seguimiento de Trámites de la SEDETUS </h1>      <div  align="center">Inicia Sesión con el email y contraseña de tu Trámite</div>    </ion-card-content>    <ion-card-content >      <button ion-button block large color="lightprimary" round icon-left (click)="login()">        <ion-icon name="log-in"></ion-icon>Iniciar Sesión</button>    </ion-card-content>    <ion-row >      <ion-col>        <button ion-button color="primary" clear icon-start>          <ion-icon name="logo-twitter"> </ion-icon>          Siguenos en Twitter        </button>      </ion-col>      <ion-col align-self-center text-center>        <ion-badge item-end>+4k seguidores</ion-badge>      </ion-col>    </ion-row>    <ion-row >      <ion-col>        <button ion-button color="primary" clear icon-start>          <ion-icon name="logo-facebook" ></ion-icon>          Siguenos en Facebook        </button>      </ion-col>      <ion-col align-self-center text-center>        <ion-badge item-end>+24k Likes</ion-badge>      </ion-col>    </ion-row>  </ion-card></ion-content></div>'
-    var COMPONENTS = [{'name': 'AdjuntosSeguimientoPage', 'selector': 'adjuntos-seguimiento'},{'name': 'EdicionSeguimientoPage', 'selector': 'page-edicion-seguimiento'},{'name': 'Login', 'selector': 'page-login'},{'name': 'ManageAnswerPage', 'selector': 'manage-answer-page'},{'name': 'ModrespuestaSeguimientoPage', 'selector': 'page-modrespuesta-seguimiento'},{'name': 'MyApp', 'selector': 'app-root'},{'name': 'PreguntaSeguimientoPage', 'selector': 'pregunta-seguimiento-page'},{'name': 'RespuestaSeguimientoPage', 'selector': 'page-respuesta-seguimiento'},{'name': 'SeguimientoFeedPage', 'selector': 'learn-feed-page'},{'name': 'SeguimientoTramitePage', 'selector': 'seguimiento-tramite-page'},{'name': 'TramiteFeedPage', 'selector': 'learn-feed-page'},{'name': 'Ubicar', 'selector': 'ubicacion'},{'name': 'Welcome', 'selector': 'page-welcome'}];
-    var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'Welcome'};
-</script>
-<script src="../js/tree.js"></script>
-
-
-
-
-
-
-
+<script src="js/routes/routes_index.js"></script>
+<script src="js/routes.js"></script>
 
 
 
@@ -1059,30 +601,30 @@ export class Welcome {
            </div>
        </div>
 
-       <script src="../js/libs/bootstrap-native.js"></script>
+       <script src="./js/libs/bootstrap-native.js"></script>
 
-       <script src="../js/libs/es6-shim.min.js"></script>
-       <script src="../js/libs/EventDispatcher.js"></script>
-       <script src="../js/libs/promise.min.js"></script>
-       <script src="../js/libs/zepto.min.js"></script>
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
 
-       <script src="../js/compodoc.js"></script>
+       <script src="./js/compodoc.js"></script>
 
         <script>
-            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'Welcome.html';
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'routes';
+            var COMPODOC_CURRENT_PAGE_URL = 'routes.html';
         </script>
 
-       <script src="../js/search/search.js"></script>
-       <script src="../js/search/lunr.min.js"></script>
-       <script src="../js/search/search-lunr.js"></script>
+       <script src="./js/search/search.js"></script>
+       <script src="./js/search/lunr.min.js"></script>
+       <script src="./js/search/search-lunr.js"></script>
 
-       <script src="../js/tabs.js"></script>
-       <script src="../js/menu.js"></script>
-       <script src="../js/libs/prism.js"></script>
-       <script src="../js/sourceCode.js"></script>
-       <script src="../js/search/search_index.js"></script>
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+       <script src="./js/search/search_index.js"></script>
 
 
     </body>

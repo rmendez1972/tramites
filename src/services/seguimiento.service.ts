@@ -79,7 +79,14 @@ export class SeguimientoService {
     .map((res) => res.json(),(error)=>{console.log(error);});
 
   }
-  //igh metodo para insertar comentario como ciudadano
+  
+  /**
+   * 
+   * @param observaciones 
+   * @param id_usuario 
+   * @param id_solicitud 
+   * @param id_status 
+   */
   pushComentario(observaciones, id_usuario:number,id_solicitud:number,id_status:number){
     return this.http.get(this.pushcomentarioURL+observaciones+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
       .map((res) => res.json());

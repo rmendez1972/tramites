@@ -1,4 +1,8 @@
-/*Clase para enlistar todos los seguimientos de un trámite*/
+/**
+ * 
+ *Clase para enlistar todos los seguimientos de un trámite
+ *
+ */
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController, ModalController, RefresherContent } from 'ionic-angular';
 import { isPresent } from 'ionic-angular/util/util';
