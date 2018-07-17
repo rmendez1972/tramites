@@ -126,12 +126,7 @@ export class ModrespuestaSeguimientoPage {
     for(var s in solicitud){
       this.solicitud = solicitud[s];
     }
-
-
-
-
-    console.log(this.sol);
-    console.log("status del tramite"+this.extraer.estatus);
+    //recuperando del localstorage
     let tramite = JSON.parse(localStorage.getItem('tramite'));
     //for para recuperar el valor del estatus
     for(var t in tramite) {
@@ -172,7 +167,6 @@ export class ModrespuestaSeguimientoPage {
     }
     //comparando si este seguimiento tiene un archivo adjunto. Si lo tiene, no se puede borrar
     if(adjuntos){
-      console.log("mostrando mensaje que no se puede borrar");
       this.showMensaje('No puede borrar este registro ya que cuenta con un archivo adjunto');
 
     }else{
@@ -219,18 +213,7 @@ export class ModrespuestaSeguimientoPage {
 
   }
 
-
-   // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
-  showAlert() {
-
-    const alert = this.alertCtrl.create({
-      title: 'Atento Aviso!',
-      subTitle: 'En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a> ',
-      buttons: ['Ok']
-    });
-    alert.present();
-  }
-
+    //metodo para mostrar un mensaje en la pantalla cuando se requiera
     showMensaje(msg) {
 
       const alert = this.alertCtrl.create({
