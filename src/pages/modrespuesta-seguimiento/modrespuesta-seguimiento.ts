@@ -26,16 +26,14 @@ export class ModrespuestaSeguimientoPage {
   answers: Array<any> = [];
   question: any = new Question();
   questionId: any;
-  //private seguimiento: CategoryModel;
   extraer:any={};
   tramite:any={};
-  //private modelseguimiento:any={};
   seguimientos:Array<CategoryModel> = new Array<CategoryModel>();
   seg:Array<CategoryModel> = new Array<CategoryModel>();
   actividad:Array<CategoryModel> = new Array<CategoryModel>();
   segB:Array<CategoryModel> = new Array<CategoryModel>();
   sol:Array<CategoryModel> = new Array<CategoryModel>();
-  private muestrabot: boolean=false;
+  //private muestrabot: boolean=false;
   private currentUser:any[];
   private mid_usuario: number;
 
@@ -66,11 +64,12 @@ export class ModrespuestaSeguimientoPage {
   createAnswerModal() {
     //comparando si el estatus del tramite es "TRAMITE" para continuar la accion
     if(this.solicitud.id_status==2){
-      //creando modal para insertar
+      //creando un objeto con sus respectivas propiedades
       let create_answer_data = {
         mode: 'Agregar',
         questionId: this.questionId
       };
+      //creando modal
       let create_answer_modal = this.modalCtrl.create(RespuestaSeguimientoPage, { data: create_answer_data });
       create_answer_modal.onDidDismiss(data => {
          this.getAnswers();
@@ -87,13 +86,14 @@ export class ModrespuestaSeguimientoPage {
   }
   //metodo para editar
   editAnswerModal(seguimiento: any) {
+    //declarando variables e inicializando con los valores que recibimos en el objeto "seguimientos"
     let id_seguimiento = seguimiento.id_seguimiento;
     let observaciones = seguimiento.observaciones;
     let adjuntos = seguimiento.adjunto;
     let status = seguimiento.id_status;
     //comparando si el estatus del tramite es "TRAMITE" para continuar la accion
     if(this.solicitud.id_status==2){
-      //creando modal para editar
+      //creando objeto con sus respectivas propiedades
       let edit_answer_data = {
         mode: 'Editar',
         answer: observaciones,
@@ -101,6 +101,7 @@ export class ModrespuestaSeguimientoPage {
         adjuntos: adjuntos,
         status: status
       };
+      //creando modal
       let edit_answer_modal = this.modalCtrl.create(EdicionSeguimientoPage, { data: edit_answer_data });
       edit_answer_modal.onDidDismiss(data => {
         this.getAnswers();
@@ -115,7 +116,9 @@ export class ModrespuestaSeguimientoPage {
   }
 
   ionViewWillEnter() {
+    //recuperando valores del localstorage de currentUser
     this.currentUser =JSON.parse(localStorage.getItem('currentUser'));
+    //recuperando el id_usuario
     this.mid_usuario=this.currentUser[0].id;
     //se recuperan los valores del localstorage en el metodo de getAnswers
     this.getAnswers();
@@ -126,7 +129,7 @@ export class ModrespuestaSeguimientoPage {
     for(var s in solicitud){
       this.solicitud = solicitud[s];
     }
-    //recuperando del localstorage
+    //recuperando del localstorage de tramites
     let tramite = JSON.parse(localStorage.getItem('tramite'));
     //for para recuperar el valor del estatus
     for(var t in tramite) {
@@ -141,7 +144,7 @@ export class ModrespuestaSeguimientoPage {
 
   }
 
-  //metodo en donde se buscan los seguimientos y la solicitud que estan guardados en el localStorage
+  //metodo en donde se buscan los seguimientos que estan guardados en el localStorage
   getAnswers(){
     let loading = this.loadingCtrl.create({
       content: 'Por favor espere...'
@@ -170,7 +173,6 @@ export class ModrespuestaSeguimientoPage {
       this.showMensaje('No puede borrar este registro ya que cuenta con un archivo adjunto');
 
     }else{
-      console.log("entrando confirm para borrar");
 
       //confirm que se presenta para confirmar la eliminacion
       let confirm = this.alertCtrl.create({
@@ -186,16 +188,18 @@ export class ModrespuestaSeguimientoPage {
           {
             text: 'Si',
             handler: () => {
+              //conectamos al service para el llamado al backend
               this.segservices.deleteSeguimiento(id_seguimiento,this.extraer.id_solicitud).subscribe(
                 //obtenemos la lista con los valores actualizados de la lista de seguimientos
                 (seguimiento)=>{
                   this.seguimientos = seguimiento.seguimiento;
-                  console.log(this.seguimientos);
-                  //se almacenan en el localstorage
+                //se almacenan en el localstorage
                 localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
                 }
               )
+              //mostramos mensaje en pantalla
               this.showMensaje('Se elimino el registro con exito');
+              //llamamos al metodo para que recupere valores del localstorage
               this.getAnswers();
             }
           }
