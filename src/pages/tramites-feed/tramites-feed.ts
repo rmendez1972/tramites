@@ -19,18 +19,16 @@ export class TramiteFeedPage {
 
   private currentUser:any[];
 
-
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public tramiteService: TramiteService,
     public alertCtrl: AlertController
-  ) {
+  ) 
+  {
     let query_param = navParams.get('query');
     this._query = isPresent(query_param) ? query_param : 'all';
   }
-
-
 
   ionViewWillEnter() {
     this.currentUser =[];
@@ -44,7 +42,6 @@ export class TramiteFeedPage {
 
 
     for (var i = 0; i < 1 ; i++) {
-
       id_usuario=this.currentUser[i].id;
       id_grupo=this.currentUser[i].id_grupo;
       id_unidadadministrativa=this.currentUser[i].id_unidadadministrativa;
@@ -58,7 +55,7 @@ export class TramiteFeedPage {
       id_direccion:id_direccion
     };
 
-
+    //Obteniendo y almacenando en el local storage los datos del solicitante
     this.tramiteService.getSolicitudes(solicitudFinal.id_usuario,solicitudFinal.id_grupo,solicitudFinal.id_unidadadministrativa,solicitudFinal.id_direccion)
     .subscribe(
       (solicitudes) => {
@@ -67,6 +64,7 @@ export class TramiteFeedPage {
         localStorage.setItem('solicitudes',JSON.stringify(this.solicitudes));
       },
     );
+    //Obteniendo y almacenando en el local storage los datos de la unidad administrativa
     this.tramiteService.getUnidadAdministrativa(solicitudFinal.id_usuario,solicitudFinal.id_grupo,solicitudFinal.id_unidadadministrativa,solicitudFinal.id_direccion)
     .subscribe(
       (unidadadministrativa)=>{
@@ -74,6 +72,7 @@ export class TramiteFeedPage {
         localStorage.setItem('unidadadministrativa',JSON.stringify(this.unidadAdministrativa));
       },
     );
+    //Obteniendo y almacenando en el local storage los datos de la direccion
     this.tramiteService.getDireccion(solicitudFinal.id_usuario,solicitudFinal.id_grupo,solicitudFinal.id_unidadadministrativa,solicitudFinal.id_direccion)
     .subscribe(
       (direccion)=>{
@@ -81,6 +80,7 @@ export class TramiteFeedPage {
         localStorage.setItem('direccion',JSON.stringify(this.direccion));
       },
     );
+    //Obteniendo y almacenando en el local storage los datos de los status
     this.tramiteService.getStatus()
     .subscribe(
       (status)=>{
@@ -93,27 +93,25 @@ export class TramiteFeedPage {
 
   ultimoSol(){
     this.solicitudes=[];
-
     this.todoslosSolicitudes=JSON.parse(localStorage.getItem('solicitudes'));
-    console.log('el ultimo seguimiento es '+this.todoslosSolicitudes[0]);
+    //console.log('el ultimo seguimiento es '+this.todoslosSolicitudes[0]);
     this.solicitudes.push(this.todoslosSolicitudes[0]);
-    console.log('estoy en el ultimo solicitud y la longitud es'+this.solicitudes.length);
+    //console.log('estoy en el ultimo solicitud y la longitud es'+this.solicitudes.length);
   }
 
   todosSol(){
     this.solicitudes=[];
     this.todoslosSolicitudes=JSON.parse(localStorage.getItem('solicitudes'));
     this.solicitudes=this.todoslosSolicitudes;
-    console.log('todos los solicitudes');
+    //console.log('todos los solicitudes');
   }
-
+  //Enviando datos a SeguimientoFeedPage
   openDetails(params) {
     this.navCtrl.push(SeguimientoFeedPage, params);
   }
 
   // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
   showAlert(subtitle:string='En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a>') {
-
     const alert = this.alertCtrl.create({
       title: 'Atento Aviso!',
       subTitle: subtitle,
