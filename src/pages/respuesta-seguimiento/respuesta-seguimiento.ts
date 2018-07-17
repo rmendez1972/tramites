@@ -20,16 +20,12 @@ import { CategoryModel } from '../../services/seguimiento.model';
   templateUrl: 'respuesta-seguimiento.html',
 })
 export class RespuestaSeguimientoPage {
-
+  //declaracion de variables
   _mode : string;
-  _question_id: string;
-  _answer_id: string;
-  _adjuntos: string;
   answerForm: FormGroup;
   answer: Answer = new Answer();
   data : Array<CategoryModel> = new Array<CategoryModel>();
   seguimientos:Array<CategoryModel> = new Array<CategoryModel>();
-  seg:Array<CategoryModel> = new Array<CategoryModel>();
   user:Array<CategoryModel> = new Array<CategoryModel>();
   sol:Array<CategoryModel> = new Array<CategoryModel>();
   status:Array<CategoryModel> = new Array<CategoryModel>();
@@ -48,9 +44,7 @@ export class RespuestaSeguimientoPage {
   ) {
     let data = navParams.get('data');
     this._mode = isPresent(data) && isPresent(data.mode) ? data.mode : '';
-    this._question_id = isPresent(data) && isPresent(data.questionId) ? data.questionId : '';
-    this._answer_id = isPresent(data) && isPresent(data.answerId) ? data.answerId : '';
-    this._adjuntos = isPresent(data) && isPresent(data.adjuntos) ? data.adjuntos : '';
+   
   }
 
   ionViewWillLoad() {
@@ -58,11 +52,11 @@ export class RespuestaSeguimientoPage {
 
     //recuperar datos del localstorage de status
     this.status = JSON.parse(localStorage.getItem('status'));
-
+    //condicion para verificar si en el "textArea" existe un valor
     if(data.answer){
       this.answer = data.answer;
     }
-    //validaciones que se le hace al formulario
+    //de lo contrario se crea un formulario de la clase FORMGROUP
     this.answerForm = new FormGroup({
       answer: new FormControl(this.answer.answer, Validators.required),
       valstatus: new FormControl('',Validators.required)
@@ -79,10 +73,6 @@ export class RespuestaSeguimientoPage {
     //se recupera el valor del Formulario
     let data = value;
 
-    //se recupera el id_seguimiento del seguimiento
-    this.id_seguimiento = this._question_id;
-    this.adjunto = this._adjuntos;
-
 
     //recuperando valores del localstorage de usuario
     this.user = JSON.parse(localStorage.getItem('currentUser'));
@@ -94,23 +84,17 @@ export class RespuestaSeguimientoPage {
     this.sol = JSON.parse(localStorage.getItem('solicitud'));
     for(var s in this.sol){
       this.extraer.id_solicitud = this.sol[s].id_solicitud;
-      //this.extraer.id_solicitante = this.sol[s].id_solicitante;
     }
 
-
-      //valores de los parametros del metodo
-      //pushSeguimiento(valor del text area, id_usuario, id_solicitud, id_status)
-      console.log('VALOR DE ANSWER '+data.answer);
-      console.log('VALOR DE extraer.id_usuario '+this.extraer.id_usuario);
-      console.log('VALOR DE extraer.id_solicitud'+this.extraer.id_solicitud);
-      console.log('VALOR DE valstatus '+data.valstatus);
+      /*llamado al service para la insercion del seguimiento
+      valores de los parametros del metodo
+      pushSeguimiento(valor del text area, id_usuario, id_solicitud, id_status)*/
       this.seguimientoservices.pushSeguimiento(data.answer,this.extraer.id_usuario,this.extraer.id_solicitud,data.valstatus)
       .subscribe(
         (seguimiento)=>{
           this.seguimientos = seguimiento.seguimiento;
           this.solicitud = seguimiento.sol;
-          console.log(this.seguimientos);
-          console.log(this.solicitud);
+          //los valores que recibimos del service los guardamos en el localStorage
           localStorage.setItem('seguimiento',JSON.stringify(this.seguimientos));
           localStorage.setItem('solicitud',JSON.stringify(this.solicitud));
         }
@@ -120,7 +104,7 @@ export class RespuestaSeguimientoPage {
 
   }
 
-
+  //metodo para mostrar un mensaje en la pantalla cuando se requiera
   showMensaje(msg) {
 
     const alert = this.alertCtrl.create({
