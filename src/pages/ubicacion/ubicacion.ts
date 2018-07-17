@@ -9,9 +9,17 @@ import { GoogleMaps,GoogleMapsEvent, LatLng, CameraPosition, MarkerOptions} from
   templateUrl: 'ubicacion.html'
 }
 )
-
+/**
+* class Ubicar()
+* Esta clase se usa para conectar con el Back End y obtener los datos a usar.
+* @author: Angel Lara
+* @return {export} export class 
+*/
 
 export class Ubicar {
+  /**
+  * Variables locales
+  */
   map: any;
   myPosition: any = {};
   //Declarando las posiciones de las oficinas
@@ -62,8 +70,13 @@ export class Ubicar {
   ionViewWillEnter(){
     this.loadMap();
   };
-
-  //Metodo para iniciar el mapa
+  /**
+  * loadMap()
+  * Este Metodo es para iniciar el mapa
+  * @author: Angel Lara
+  * @param {void } 
+  * @return {void} 
+  */
   loadMap(){
     //Creando variable de tipo html para el mapa
     let element: HTMLElement = document.getElementById('map_canvas');
@@ -91,8 +104,9 @@ export class Ubicar {
       },
       building: true,
     });
-
-    // create CameraPosition
+    /**
+    * create CameraPosition
+    */
     let position: CameraPosition<LatLng> = {
       target: new LatLng(this.myPosition.latitude, this.myPosition.longitude),
       zoom: 15,
@@ -114,8 +128,14 @@ export class Ubicar {
 
   };
 
-  //Metodo para agregar marcadores al mapa
-  addMarker(options){
+  /**
+  *addMarker()
+  * Este Metodo para agregar marcadores al mapa
+  * @author: Angel Lara
+  * @param {any} options
+  * @return {void} 
+  */
+  addMarker(options:any){
     let markerOptions: MarkerOptions = {
       position: new LatLng(options.position.latitude, options.position.longitude),
       title: options.title,
@@ -125,7 +145,14 @@ export class Ubicar {
     };
     this.map.addMarker(markerOptions);
   };
-  //Metodo para obtener posocion del usuario
+  /**
+  * getPosition()
+  * Este Metodo para obtener posicion del usuario
+  * @author: Angel Lara
+  * @param {void} void
+  * @param {catch} error
+  * @return {void} 
+  */
   getPosition(): void{
     this.map.getMyLocation()
     .then(response => {
@@ -144,8 +171,16 @@ export class Ubicar {
     });
   };
   
-  //Metodo para realizar Llamadas
-  callJoint(telephoneNumber) {
+  /**
+  * callJoint()
+  * Este Metodo para realizar Llamadas
+  * @author: Angel Lara
+  * @param {string} telephoneNumber
+  * @param {catch} res
+  * @param {catch} error
+  * @return {void} 
+  */
+  callJoint(telephoneNumber:string) {
     this.callNumber.callNumber(telephoneNumber, true)
     .then(res => console.log('Launched dialer!', res))
     .catch(err => console.log('Error launching dialer', err));
@@ -161,16 +196,20 @@ export class Ubicar {
     });
     alert.present();
   };
-
-  //Metodo para ubicar las oficinas de la dependencia desde los Card's
-  refreshUbicacion(pos){
+  /**
+  * refreshUbicacion()
+  * Metodo para ubicar las oficinas de la dependencia desde los Card's
+  * @author: Angel Lara
+  * @param {number} pos
+  * @return {void} 
+  */
+  refreshUbicacion(pos:number){
     let position: CameraPosition<LatLng> = {
       target: new LatLng(this.markers[pos].position.latitude, this.markers[pos].position.longitude),
       zoom: 17,
       tilt: 30
     };
     this.map.moveCamera(position);
-    //console.log("refresh ubication " +pos); 
    };
 
 

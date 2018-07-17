@@ -9,7 +9,15 @@ import { TramiteService } from '../../services/tramites.service';
   selector: 'learn-feed-page',
   templateUrl: 'tramites-feed.html',
 })
+/**
+* class TramiteFeedPage()
+* @author: Angel Lara
+* @return {export} export class 
+*/
 export class TramiteFeedPage {
+  /**
+  * Variables locales de TramiteFeedPage
+  */
   _query : string = 'all';
   solicitudes= [];
   todoslosSolicitudes= [];
@@ -31,6 +39,9 @@ export class TramiteFeedPage {
   }
 
   ionViewWillEnter() {
+    /**
+    * Variables locales
+    */
     this.currentUser =[];
 
     let id_usuario=0;
@@ -55,7 +66,6 @@ export class TramiteFeedPage {
       id_direccion:id_direccion
     };
 
-    //Obteniendo y almacenando en el local storage los datos del solicitante
     this.tramiteService.getSolicitudes(solicitudFinal.id_usuario,solicitudFinal.id_grupo,solicitudFinal.id_unidadadministrativa,solicitudFinal.id_direccion)
     .subscribe(
       (solicitudes) => {
@@ -64,7 +74,8 @@ export class TramiteFeedPage {
         localStorage.setItem('solicitudes',JSON.stringify(this.solicitudes));
       },
     );
-    //Obteniendo y almacenando en el local storage los datos de la unidad administrativa
+
+
     this.tramiteService.getUnidadAdministrativa(solicitudFinal.id_usuario,solicitudFinal.id_grupo,solicitudFinal.id_unidadadministrativa,solicitudFinal.id_direccion)
     .subscribe(
       (unidadadministrativa)=>{
@@ -72,7 +83,7 @@ export class TramiteFeedPage {
         localStorage.setItem('unidadadministrativa',JSON.stringify(this.unidadAdministrativa));
       },
     );
-    //Obteniendo y almacenando en el local storage los datos de la direccion
+
     this.tramiteService.getDireccion(solicitudFinal.id_usuario,solicitudFinal.id_grupo,solicitudFinal.id_unidadadministrativa,solicitudFinal.id_direccion)
     .subscribe(
       (direccion)=>{
@@ -80,7 +91,7 @@ export class TramiteFeedPage {
         localStorage.setItem('direccion',JSON.stringify(this.direccion));
       },
     );
-    //Obteniendo y almacenando en el local storage los datos de los status
+
     this.tramiteService.getStatus()
     .subscribe(
       (status)=>{
@@ -105,8 +116,15 @@ export class TramiteFeedPage {
     this.solicitudes=this.todoslosSolicitudes;
     //console.log('todos los solicitudes');
   }
-  //Enviando datos a SeguimientoFeedPage
-  openDetails(params) {
+  /** 
+  * openDetails()
+  * Enviando datos a SeguimientoFeedPage
+  * @author: Angel Lara
+  * @param {any } params
+  * @param {push} SeguimientoFeedPage, params
+  * @return {void}
+  */
+  openDetails(params:any) {
     this.navCtrl.push(SeguimientoFeedPage, params);
   }
 
