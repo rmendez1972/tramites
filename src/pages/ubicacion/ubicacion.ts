@@ -3,6 +3,12 @@ import { Component } from '@angular/core';
 import {  AlertController } from 'ionic-angular';
 import { GoogleMaps,GoogleMapsEvent, LatLng, CameraPosition, MarkerOptions} from '@ionic-native/google-maps';
 
+/**
+* Component()
+* Este es el componente de la clase
+* @author: Angel Lara
+* @return {Component} Component
+*/
 @Component(
 {
   selector: 'ubicacion',
@@ -13,16 +19,25 @@ import { GoogleMaps,GoogleMapsEvent, LatLng, CameraPosition, MarkerOptions} from
 * class Ubicar()
 * Esta clase se usa para conectar con el Back End y obtener los datos a usar.
 * @author: Angel Lara
-* @return {export} export class 
+* @return {class} Ubicar 
 */
 
 export class Ubicar {
   /**
-  * Variables locales
+  * Variables local
+  * @param {any} map
   */
+
   map: any;
+  /**
+  * Variables local
+  * @param {any} myPosition
+  */
   myPosition: any = {};
-  //Declarando las posiciones de las oficinas
+  /**
+  * Variables local
+  * @param {any} markers
+  */
   markers: any[] = [
   {
     position:{
@@ -61,11 +76,35 @@ export class Ubicar {
     animation: 'DROP',
   },
   ];
+
+  /**
+  * class constructor()
+  * Constructor de la clase
+  * @author: Angel Lara
+  * @return {constructor} constructor
+  */
   constructor(
+    /**
+    * Variables local
+    * @param {AlertController} alertCtrl
+    */
+
     public alertCtrl: AlertController,
+    /**
+    * Variables local
+    * @param {CallNumber} callNumber
+    */
     private callNumber: CallNumber
     ) 
   {};
+
+  /**
+  * ionViewWillEnter()
+  * Metodo de clase para llamar al invocador del mapa
+  * @author: Angel Lara
+  * @param {void} 
+  * @return {method} 
+  */
 
   ionViewWillEnter(){
     this.loadMap();
@@ -75,15 +114,21 @@ export class Ubicar {
   * Este Metodo es para iniciar el mapa
   * @author: Angel Lara
   * @param {void } 
-  * @return {void} 
+  * @return {void}  loadMap
   */
   loadMap(){
-    //Creando variable de tipo html para el mapa
+    /**
+    * Creando variable de tipo html para el mapa
+    */
     let element: HTMLElement = document.getElementById('map_canvas');
 
-    //variable para crear el mapa
+    /**
+    * variable para crear el mapa
+    */
     this.map = GoogleMaps.create(element);
-    //Declarando opciones de control del mapa
+    /**
+    * Declarando opciones de control del mapa
+    */
     this.map.setOptions(
     {
       controls: {
@@ -186,7 +231,15 @@ export class Ubicar {
     .catch(err => console.log('Error launching dialer', err));
   };
 
-  // muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
+
+  /**
+  * showAlert()
+  * muestro el mensaje de alerta invitando a usar la aplicación web en caso de requerir adjuntar archivos
+  * @author: Angel Lara
+  * @param {string} subtitle
+  * @return {void} 
+  */
+
   showAlert(subtitle:string='En caso de requerir adjuntar algún archivo a tu trámite, te invitamos a hacerlo a través de tu laptop o computadora de escritorio desde nuestra pagina <a href="http://qroo.gob.mx/sedetus">http://qroo.gob.mx/sedetus</a>') {
 
     const alert = this.alertCtrl.create({

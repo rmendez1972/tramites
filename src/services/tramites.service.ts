@@ -8,7 +8,7 @@ import { ServiceUrl } from '../serviceUrl';
 *class SeguimientoService()
 * Esta clase se usa para conectar con el Back End y obtener los datos a usar.
 * @author: Angel Lara
-* @return {export} export class 
+* @return {class} export class 
 */
 export class TramiteService {
   private tramiteUrl: string;
