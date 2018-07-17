@@ -5,18 +5,16 @@ import { ServiceUrl } from '../serviceUrl';
 
 @Injectable()
 /**
-
- * Esta clase se usa para conectar con el Back End y obtener los datos a usar.
-
- * @author: Angel Lara
-
-
-
- 
- */
-
+* class SeguimientoService()
+* Esta clase se usa para conectar con el Back End y obtener los datos a usar.
+* @author: Angel Lara
+* @return {export} export class 
+*/
 
 export class SeguimientoService {
+  /**
+  * Variables locales
+  */
   private seguimientosUrl: string;
   private adjuntosUrl: string;
   private pushseguimientoURL: string;
@@ -41,25 +39,47 @@ export class SeguimientoService {
 
   }
 
-  //Metodo para obtener datos del solicitante del Back End
+  /**
+  * Este Metodo es para obtener datos del solicitante del Back End
+  * @author: Angel Lara
+  * @param {number,number } idSolicitud, idSolicitante
+  * @return {json, error} res, error 
+  */
   getData(idSolicitud: number,idSolicitante:number){
     return this.http.get(this.seguimientosUrl+idSolicitud+"&id_solicitante="+idSolicitante)
       .map((res) => res.json(),(error)=>{console.log(error);});
   }
-  //Metodo para obtener datos de las solicitudes del Back End
+  /**
+  * getSolicitudes()
+  * Este Metodo es para obtener datos de las solicitudes del Back End
+  * @author: Angel Lara
+  * @param {number,number } idSolicitud, idSolicitante
+  * @return {json, error} res, error 
+  */
   getSolicitudes(idSolicitud: number,idSolicitante:number){
 
     return this.http.get(this.seguimientosUrl+idSolicitud+"&id_solicitante="+idSolicitante)
        .map((res) => res.json(),(error)=>{console.log(error);});
-    //return this.http.get('http://localhost:8080/tramites/controladorseguimiento?operacion=listarjson&id_solicitud=59&id_solicitante=59')
-
   }
-  //Metodo para obtener datos del tramite del Back End
+  /**
+  * getTramite()
+  * Metodo para obtener datos del tramite del Back End
+  * @author: Angel Lara
+  * @param {number,number } idSolicitud, idSolicitante
+  * @return {json, error} res, error 
+  */
+
   getTramite(idSolicitud: number,idSolicitante:number){
     return this.http.get(this.seguimientosUrl+idSolicitud+"&id_solicitante="+idSolicitante)
       .map((res) => res.json(),(error)=>{console.log(error);});
   }
-  //Metodo para obtener datos del seguimiento del Back End
+  /**
+  * getSeguimientos()
+  * Metodo para obtener datos del seguimiento del Back End
+  * @author: Angel Lara
+  * @param {number,number } idSolicitud, idSolicitante
+  * @return {json, error} res, error 
+  */
   getSeguimientos(idSolicitud: number,idSolicitante:number){
     return this.http.get(this.seguimientosUrl+idSolicitud+"&id_solicitante="+idSolicitante)
       .map((res) => res.json(),(error)=>{console.log(error);});
@@ -76,15 +96,12 @@ export class SeguimientoService {
     return this.http.get(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
       .map((res) => res.json());
   }
-
-
   //llamado al back end para eliminar un seguimiento de nivel enlace
   deleteSeguimiento(id_seguimiento:number, id_solicitud:number){
     return this.http.get(this.deleteseguimientoURL+id_seguimiento+"&id_solicitud="+id_solicitud)
     .map((res) => res.json(),(error)=>{console.log(error);});
 
   }
-
   //llamado al back end para actualizar el seguimiento de nivel enlace
   updateSeguimiento(id_seguimiento:string, values, id_solicitud:string, id_usuario:string, id_status:number,adjunto:string){
     return this.http.get(this.updateseguimientoURL+id_seguimiento+"&id_solicitud="+id_solicitud+'&observaciones='+values+'&id_usuario='+id_usuario+'&id_status='+id_status+'&adjunto='+adjunto)
@@ -98,8 +115,14 @@ export class SeguimientoService {
     return this.http.get(this.pushcomentarioURL+observaciones+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
       .map((res) => res.json());
   }
-
-  //Metodo para obtener datos de los status del Back End
+  /**
+  * getStatus()
+  * Metodo para obtener datos de los status del Back End
+  * @author: Angel Lara
+  * @param {void } void
+  * @param {get} this.statusUrl
+  * @return {json, error} res, error 
+  */
   getStatus(){
     return this.http.get(this.statusUrl)
     .map((res) => res.json(),(error)=>{console.log(error);});

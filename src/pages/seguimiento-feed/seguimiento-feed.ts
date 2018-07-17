@@ -9,7 +9,17 @@ import { CategoryModel } from '../../services/seguimiento.model';
   selector: 'learn-feed-page',
   templateUrl: 'seguimiento-feed.html',
 })
+
+/**
+* class SeguimientoFeedPage()
+* Esta clase se usa para Obtener y almacenar en el local storage los datos.
+* @author: Angel Lara
+* @return {export} export class 
+*/
 export class SeguimientoFeedPage {
+  /**
+  * Variables locales
+  */
   _query : string = 'all';
   data : Array<CategoryModel> = new Array<CategoryModel>();
   solicitud:Array<CategoryModel> = new Array<CategoryModel>();
@@ -17,10 +27,6 @@ export class SeguimientoFeedPage {
   seguimientos=[];
   todoslosSeguimientos=[];
 
-
-  //private seguimiento:any[];
-
-  //private solicitudes:any[];
   private muestraToggle: boolean=false;
   private ocultaBack: boolean=false;
   id_solicitud:any;
@@ -47,16 +53,12 @@ export class SeguimientoFeedPage {
     //console.log('valor de SOL '+solicitud_param);
     this.id_solicitud = solicitud_param.id_solicitud;
     this.id_solicitante = solicitud_param.id_solicitante;
-
-
-
   }
 
 
   ionViewWillEnter() {
     this.verificaSiciudadano();
-
-    //Obteniendo y almacenando en el local storage los datos del solicitante
+    
     this.seguimientoService.getData(this.id_solicitud,this.id_solicitante)
     .subscribe(
       (data) => {
@@ -65,22 +67,20 @@ export class SeguimientoFeedPage {
       },
 
     );
-    //Obteniendo y almacenando en el local storage los datos de la solicitud
-    this.seguimientoService.getSolicitudes(this.id_solicitud,this.id_solicitante)
 
+    this.seguimientoService.getSolicitudes(this.id_solicitud,this.id_solicitante)
     .subscribe(
       (solicitud) => {this.solicitud = solicitud.solicitud;
       localStorage.setItem('solicitud',JSON.stringify(this.solicitud));},
 
       );
-    //Obteniendo y almacenando en el local storage los datos del tramite
+
     this.seguimientoService.getTramite(this.id_solicitud,this.id_solicitante)
     .subscribe(
       (tramite)=> {this.tramite =tramite.tramite;
         localStorage.setItem('tramite',JSON.stringify(this.tramite));},
       );
 
-    //Obteniendo y almacenando en el local storage los datos de seguimientos
     this.seguimientoService.getSeguimientos(this.id_solicitud,this.id_solicitante)
     .subscribe(
 
@@ -95,7 +95,6 @@ export class SeguimientoFeedPage {
       }
     );
 
-    //Obteniendo y almacenando en el local storage los datos de los status de tramites
     this.seguimientoService.getStatus()
     .subscribe(
       (status)=>{
@@ -128,8 +127,13 @@ export class SeguimientoFeedPage {
     this.seguimientos=this.todoslosSeguimientos;
     console.log('todos los seguimiento');
   };
-  //Enviando datos del tramite para seguimiento
-  openDetails(params) {
+  /** Este Metodo es para enviar datos a la card SeguimientoTramitePage
+  * @author: Angel Lara
+  * @param {any } params
+  * @param {push} SeguimientoTramitePage, params
+  * @return {void}
+  */
+  openDetails(params:any) {
     this.navCtrl.push(SeguimientoTramitePage, params);
   };
 
