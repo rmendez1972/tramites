@@ -1,15 +1,11 @@
+/*Clase para enlistar todos los seguimientos de un trámite*/
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController, ModalController, RefresherContent } from 'ionic-angular';
 import { isPresent } from 'ionic-angular/util/util';
-//import { SeguimientoService} from '../services/seguimiento.service'
-//import { QuestionService } from '../../services/question.service';
-//import { AnswerService } from '../../services/answer.service';
-//import { QuestionDetailsPage } from '../question-details/question-details';
 import { PreguntaSeguimientoPage } from '../pregunta-seguimiento/pregunta-seguimiento';
-//import { ManageQuestionPage } from '../manage-question/manage-question';
 import { ModrespuestaSeguimientoPage } from '../modrespuesta-seguimiento/modrespuesta-seguimiento';
 import { AdjuntosSeguimientoPage } from '../adjuntos-seguimiento/adjuntos-seguimiento';
-import { User } from '../login/user';//igh
+import { User } from '../login/user';
 import { SeguimientoService } from '../../services/seguimiento.service';
 
 
@@ -28,8 +24,6 @@ export class SeguimientoTramitePage {
   public seguimiento : any;
   seguimientos:any[];//igh
   public id_grupo: number;
-
-
 
   constructor(
     public navCtrl: NavController,
@@ -52,8 +46,7 @@ export class SeguimientoTramitePage {
   //Método para crear una pregunta/comentario por parte del ciudadano
   createQuestionModal() {
     console.log('Creando comentario..');
-    if (this.solicitud[0].status=='TRAMITE'){//Se va apoder crear siempre cuandor el estatus sea TRAMITE
-      //let create_question_modal = this.modalCtrl.create(PreguntaSeguimientoPage, { data: this.solicitud[0].observaciones });
+    if (this.solicitud[0].id_status==2){//Se va apoder crear siempre cuandor el estatus sea TRAMITE "2"
       let create_question_modal = this.modalCtrl.create(PreguntaSeguimientoPage);
       create_question_modal.onDidDismiss(data => {
       this.getQuestions();
@@ -94,7 +87,7 @@ export class SeguimientoTramitePage {
   }
 
 
-  verAdjuntos(seguimiento, tramite, solicitud){//Metod para mostrar los adjuntos
+  verAdjuntos(seguimiento, tramite, solicitud){//Metodo para mostrar los adjuntos
     let params = {
       seguimientoObservaciones:seguimiento.observaciones,
       seguimientoId_seguimiento:seguimiento.id_seguimiento,

@@ -1,6 +1,7 @@
+<!-- Vista que enlista todos los seguimiento de un trámite
+Si el usuario es el ciudadano permite ingresar una pregrunta o comentario-->
 <ion-header>
   <ion-navbar color="primary">
-    <!-- <img  width="120" height="40" style="margin: 1px; padding: 1px;" src="assets/img/header.png" > -->
     <ion-title>
       <span style="font-size: 13px; margin: 1px; padding: 1px;">Trámites SEDETUS</span>
     </ion-title>
@@ -76,21 +77,15 @@
           <div class="fechahora">{{ seguimiento.fecha }}</div>
           <ion-icon *ngIf="seguimiento.adjunto && currentUser[0].id_grupo==3" style="font-size: 2.5rem; color:#566573;" name="md-attach"  (click)="verAdjuntos(seguimiento,tramite[0].nombre,solicitud)" item-end></ion-icon>
         </ion-item>
-
-        <!-- <ion-item-options *ngIf="seguimiento.adjunto && currentUser[0].id_grupo==3" side="right">
-          <button class="edit-button" ion-button Medium round clear icon-only color="dark" (click)="verAdjuntos(seguimiento,tramite[0].nombre,solicitud[0].status)">
-            <ion-icon name="md-attach"></ion-icon>
-          </button>
-        </ion-item-options> -->
-
       </ion-item-sliding>
 
     </ion-list>
 </ion-content>
 
+<!--Validando si el usuario es un ciudadano (grupo 3) para visualizar el botón
+que le permitirá ingresar una pregunta o comentario-->
 <ion-footer >
   <ion-toolbar color="primary">
-    <!--<ion-segment [(ngModel)]="icons"  color="light" style="height: 37px;" *ngIf="solicitud[0].status=='TRAMITE' && id_grupo==3">-->
     <ion-segment [(ngModel)]="icons"  color="light" style="height: 37px;" *ngIf="id_grupo==3">
       <ion-segment-button value="camera" style="min-height: 37px; line-height: 1.2rem !important; padding-left: 0px;padding-right: 0px;  margin-top: 7px; padding-bottom: 5px;"(click)="createQuestionModal()" >
         <ion-icon  name="list-box" ></ion-icon >
