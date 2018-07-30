@@ -5,6 +5,12 @@ import { CategoryModel } from '../../services/seguimiento.model';
 import {SeguimientoService} from '../../services/seguimiento.service';
 import { Question } from '../../../sdk';
 
+/**
+* Component()
+* Este es el Componente de la clase
+* @author: Ismael García
+*/
+
 @Component({
   selector: 'pregunta-seguimiento-page',
   templateUrl: 'pregunta-seguimiento.html'
@@ -16,7 +22,12 @@ export class PreguntaSeguimientoPage {
   id_status:number;
   question: Question = new Question();
   seguimientos:Array<CategoryModel> = new Array<CategoryModel>();
-
+  
+  /**
+  * class constructor()
+  * Constructor de la clase
+  * @return {constructor} constructor
+  */
   constructor(
     public viewCtrl: ViewController,
     public alertCtrl: AlertController,
@@ -41,10 +52,11 @@ export class PreguntaSeguimientoPage {
   }
 
   /**
-   * 
-   * @param value
-   * 
-   */
+  * onSubmit() metodo para insertar de un seguimiento
+  *
+  *  @param {Object} value
+  *  @return {Void}
+  */
   onSubmit(value){
     let data = value;
     this.seguimientoservices.pushComentario(data.question,this.id_usuario,this.id_solicitud,this.id_status)
@@ -59,9 +71,11 @@ export class PreguntaSeguimientoPage {
   }
 
   /**
-   * 
-   * @param msg 
-   */
+  * showMensaje() metodo para mostrar un mensaje en la pantalla
+  *
+  *  @param {Object} msg
+  *  @return {Void}
+  */
   showMensaje(msg) {
     const alert = this.alertCtrl.create({
       title: 'Aviso',

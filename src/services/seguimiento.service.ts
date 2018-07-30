@@ -4,7 +4,17 @@ import { Http } from '@angular/http';
 import { ServiceUrl } from '../serviceUrl';
 
 @Injectable()
+/**
+* class SeguimientoService()
+* Esta clase se usa para conectar con el Back End y obtener los datos a usar.
+* @author: Angel Lara
+* @return {export} export class 
+*/
+
 export class SeguimientoService {
+  /**
+  * Variables locales
+  */
   private seguimientosUrl: string;
   private adjuntosUrl: string;
   private pushseguimientoURL: string;
@@ -29,25 +39,47 @@ export class SeguimientoService {
 
   }
 
-  //Metodo para obtener datos del solicitante del Back End
+  /**
+  * Este Metodo es para obtener datos del solicitante del Back End
+  * @author: Angel Lara
+  * @param {number,number } idSolicitud, idSolicitante
+  * @return {json, error} res, error 
+  */
   getData(idSolicitud: number,idSolicitante:number){
     return this.http.get(this.seguimientosUrl+idSolicitud+"&id_solicitante="+idSolicitante)
       .map((res) => res.json(),(error)=>{console.log(error);});
   }
-  //Metodo para obtener datos de las solicitudes del Back End
+  /**
+  * getSolicitudes()
+  * Este Metodo es para obtener datos de las solicitudes del Back End
+  * @author: Angel Lara
+  * @param {number,number } idSolicitud, idSolicitante
+  * @return {json, error} res, error 
+  */
   getSolicitudes(idSolicitud: number,idSolicitante:number){
 
     return this.http.get(this.seguimientosUrl+idSolicitud+"&id_solicitante="+idSolicitante)
        .map((res) => res.json(),(error)=>{console.log(error);});
-    //return this.http.get('http://localhost:8080/tramites/controladorseguimiento?operacion=listarjson&id_solicitud=59&id_solicitante=59')
-
   }
-  //Metodo para obtener datos del tramite del Back End
+  /**
+  * getTramite()
+  * Metodo para obtener datos del tramite del Back End
+  * @author: Angel Lara
+  * @param {number,number } idSolicitud, idSolicitante
+  * @return {json, error} res, error 
+  */
+
   getTramite(idSolicitud: number,idSolicitante:number){
     return this.http.get(this.seguimientosUrl+idSolicitud+"&id_solicitante="+idSolicitante)
       .map((res) => res.json(),(error)=>{console.log(error);});
   }
-  //Metodo para obtener datos del seguimiento del Back End
+  /**
+  * getSeguimientos()
+  * Metodo para obtener datos del seguimiento del Back End
+  * @author: Angel Lara
+  * @param {number,number } idSolicitud, idSolicitante
+  * @return {json, error} res, error 
+  */
   getSeguimientos(idSolicitud: number,idSolicitante:number){
     return this.http.get(this.seguimientosUrl+idSolicitud+"&id_solicitante="+idSolicitante)
       .map((res) => res.json(),(error)=>{console.log(error);});
@@ -59,40 +91,64 @@ export class SeguimientoService {
     return this.http.get(this.adjuntosUrl+idSeguimiento)
       .map((res) => res.json(),(error)=>{console.log(error);});
   }
-  //llamado al back end para insertar un nuevo seguimiento de parte del nivel enlace
-  pushSeguimiento(values, id_usuario:number,id_solicitud:number,id_status:number){
-    return this.http.get(this.pushseguimientoURL+values+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
+
+  /**
+  *  pushSeguimiento()  llamado al backend para insertar un seguimiento
+  *  @author: Marlon Gomez
+  *  @param {Object, Number, Number, Number}  observaciones, id_usuario, id_solicitud, id_status
+  *
+  *  @return {json, error} res, error
+  */
+  pushSeguimiento(observaciones, id_usuario:number,id_solicitud:number,id_status:number){
+    return this.http.get(this.pushseguimientoURL+observaciones+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
       .map((res) => res.json());
   }
 
 
-  //llamado al back end para eliminar un seguimiento de nivel enlace
+  /**
+  *  deleteSeguimiento()  llamado al backend para eliminar un seguimiento
+  *  @author: Marlon Gomez
+  *  @param {Number, Number}  id_seguimiento, id_solicitud
+  *
+  *  @return {json, error}   res,error
+  */
   deleteSeguimiento(id_seguimiento:number, id_solicitud:number){
     return this.http.get(this.deleteseguimientoURL+id_seguimiento+"&id_solicitud="+id_solicitud)
     .map((res) => res.json(),(error)=>{console.log(error);});
 
   }
 
-  //llamado al back end para actualizar el seguimiento de nivel enlace
-  updateSeguimiento(id_seguimiento:string, values, id_solicitud:string, id_usuario:string, id_status:number,adjunto:string){
+  /** 
+  *  updateSeguimiento()  llamado al backend para actualizar un seguimiento
+  *  @author: Marlon Gomez
+  *  @param {Number, Object, Number, Number, Number}  id_seguimiento, values, id_solicitud, id_status, adjunto
+  *
+  *  @return {json, error}   res,error
+  */
+  updateSeguimiento(id_seguimiento:number, values, id_solicitud:number, id_usuario:number, id_status:number,adjunto:number){
     return this.http.get(this.updateseguimientoURL+id_seguimiento+"&id_solicitud="+id_solicitud+'&observaciones='+values+'&id_usuario='+id_usuario+'&id_status='+id_status+'&adjunto='+adjunto)
     .map((res) => res.json(),(error)=>{console.log(error);});
 
   }
   
   /**
-   * 
-   * @param observaciones 
-   * @param id_usuario 
-   * @param id_solicitud 
-   * @param id_status 
+  *  pushComentario()  llamado al backend para insertar un comentario
+  *  @param {Object, Number, Number, Number}  observaciones, id_usuario, id_solicitud, id_status
+  *
+  *  @return {json, error} res, error
    */
   pushComentario(observaciones, id_usuario:number,id_solicitud:number,id_status:number){
     return this.http.get(this.pushcomentarioURL+observaciones+"&id_usuario="+id_usuario+"&id_solicitud="+id_solicitud+"&id_status="+id_status)
       .map((res) => res.json());
   }
-
-  //Metodo para obtener datos de los status del Back End
+  /**
+  * getStatus()
+  * Metodo para obtener datos de los status del Back End
+  * @author: Angel Lara
+  * @param {void } void
+  * @param {get} this.statusUrl
+  * @return {json, error} res, error 
+  */
   getStatus(){
     return this.http.get(this.statusUrl)
     .map((res) => res.json(),(error)=>{console.log(error);});

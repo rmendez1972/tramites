@@ -9,10 +9,9 @@ import { CategoryModel } from '../../services/seguimiento.model';
 
 
 /**
- * Generated class for the RespuestaSeguimientoPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
+ * 
+ *  Clase que realiza la Inserción de un seguimiento. 
+ * 
  */
 
 @Component({
@@ -68,11 +67,15 @@ export class RespuestaSeguimientoPage {
     this.viewCtrl.dismiss(data);
   }
 
-  //metodo para la insersion de la respuesta del enlace
+  /**
+  * onSubmit() metodo para insertar de un seguimiento
+  *
+  *  @param {Object} value
+  *  @return {Void}
+  */
   onSubmit(value){
     //se recupera el valor del Formulario
     let data = value;
-
 
     //recuperando valores del localstorage de usuario
     this.user = JSON.parse(localStorage.getItem('currentUser'));
@@ -85,10 +88,6 @@ export class RespuestaSeguimientoPage {
     for(var s in this.sol){
       this.extraer.id_solicitud = this.sol[s].id_solicitud;
     }
-
-      /*llamado al service para la insercion del seguimiento
-      valores de los parametros del metodo
-      pushSeguimiento(valor del text area, id_usuario, id_solicitud, id_status)*/
       this.seguimientoservices.pushSeguimiento(data.answer,this.extraer.id_usuario,this.extraer.id_solicitud,data.valstatus)
       .subscribe(
         (seguimiento)=>{
@@ -104,7 +103,12 @@ export class RespuestaSeguimientoPage {
 
   }
 
-  //metodo para mostrar un mensaje en la pantalla cuando se requiera
+   /**
+  * showMensaje() metodo para mostrar un mensaje en la pantalla cuando se requiera
+  *
+  *  @param {Object} msg
+  *  @return {Void}
+  */
   showMensaje(msg) {
 
     const alert = this.alertCtrl.create({

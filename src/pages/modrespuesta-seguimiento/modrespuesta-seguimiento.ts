@@ -11,10 +11,9 @@ import { isPresent } from 'ionic-angular/util/util';
 
 
 /**
- * Generated class for the ModrespuestaSeguimientoPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
+ *  
+ *  Clase que realiza la Eliminacion de un seguimiento y ademas presenta modales para la Inserción y Eliminación de seguimientos
+ *.
  */
 
 @Component({
@@ -22,7 +21,7 @@ import { isPresent } from 'ionic-angular/util/util';
   templateUrl: 'modrespuesta-seguimiento.html',
 })
 export class ModrespuestaSeguimientoPage {
-
+  //declaracion de variables
   answers: Array<any> = [];
   question: any = new Question();
   questionId: any;
@@ -33,13 +32,9 @@ export class ModrespuestaSeguimientoPage {
   actividad:Array<CategoryModel> = new Array<CategoryModel>();
   segB:Array<CategoryModel> = new Array<CategoryModel>();
   sol:Array<CategoryModel> = new Array<CategoryModel>();
-  //private muestrabot: boolean=false;
   private currentUser:any[];
   private mid_usuario: number;
-
   solicitud : any={};
-  //tramite : any;
-
   public seguimiento : any;
 
   constructor(
@@ -52,15 +47,19 @@ export class ModrespuestaSeguimientoPage {
     public segservices:SeguimientoService,
     public seguimientoservices: SeguimientoService,
   ) {
-
-
+    //recibiendo valores del navParams
     let seguimiento = navParams.get('seguimiento');
-
-
+    //se le asigna el objeto completo a la variable "seguimiento"
     this.seguimiento = isPresent(seguimiento)  ? seguimiento : '';
 
      }
-  //metodo para insertar
+  
+ /**
+  * createAmswerModal()
+  * metodo para crear y presentar un modal
+  *
+  *  @return {Void}
+  */
   createAnswerModal() {
     //comparando si el estatus del tramite es "TRAMITE" para continuar la accion
     if(this.solicitud.id_status==2){
@@ -74,17 +73,21 @@ export class ModrespuestaSeguimientoPage {
       create_answer_modal.onDidDismiss(data => {
          this.getAnswers();
       });
+      //presentando modal
       create_answer_modal.present();
-
     }else{
-
       this.showMensaje('No es posible generar comentario. El estatus del trámite es: '+this.extraer.estatus);
-
     }
-
-
   }
-  //metodo para editar
+
+
+ /**
+  * editAnswerModal()
+  * metodo para crear y presentar un modal
+  *
+  *  @param {Object} seguimiento
+  *  @return {Void}
+  */
   editAnswerModal(seguimiento: any) {
     //declarando variables e inicializando con los valores que recibimos en el objeto "seguimientos"
     let id_seguimiento = seguimiento.id_seguimiento;
@@ -106,6 +109,7 @@ export class ModrespuestaSeguimientoPage {
       edit_answer_modal.onDidDismiss(data => {
         this.getAnswers();
       });
+      //presentando modal
       edit_answer_modal.present();
 
     }else{
@@ -135,30 +139,39 @@ export class ModrespuestaSeguimientoPage {
     for(var t in tramite) {
       this.tramite = tramite[t];
     }
-
-
   }
 
-  ionViewDidEnter(){
-
-
-  }
-
-  //metodo en donde se buscan los seguimientos que estan guardados en el localStorage
+ /**
+  * getAnswers() 
+  * metodo en donde se buscan los seguimientos que estan guardados en el localStorage
+  *
+  *  @return {Void}
+  */
   getAnswers(){
+    //Preparando un LoadingCtrl
     let loading = this.loadingCtrl.create({
       content: 'Por favor espere...'
     });
+    //Presentando el LoadingCtrl
     loading.present();
 
     //recuperando valores del localstorage de seguimiento
     this.seguimientos = JSON.parse(localStorage.getItem('seguimiento'));
 
     loading.dismiss();
-
   }
-  //metodo para eliminar
-  delete(id_seguimiento,adjuntos){
+
+  /**
+  * delete() metodo para eliminar un seguimiento
+  *
+  *  @param {Object} seguimiento
+  *  @return {Void}
+  */
+  delete(seguimiento:any){
+    //recibiendo el objeto y asignandolo a las variables
+    let id_seguimiento = seguimiento.id_seguimiento;
+    let adjuntos = seguimiento.adjunto;
+
     //comparando si el estatus del tramite es "TRAMITE" para continuar la accion
     if(this.solicitud.id_status==2){
 
@@ -188,7 +201,6 @@ export class ModrespuestaSeguimientoPage {
           {
             text: 'Si',
             handler: () => {
-              //conectamos al service para el llamado al backend
               this.segservices.deleteSeguimiento(id_seguimiento,this.extraer.id_solicitud).subscribe(
                 //obtenemos la lista con los valores actualizados de la lista de seguimientos
                 (seguimiento)=>{
@@ -217,7 +229,12 @@ export class ModrespuestaSeguimientoPage {
 
   }
 
-    //metodo para mostrar un mensaje en la pantalla cuando se requiera
+    /**
+    * showMensaje() metodo para mostrar un mensaje en la pantalla cuando se requiera
+    *
+    *  @param {Object} msg
+    *  @return {Void}
+    */
     showMensaje(msg) {
 
       const alert = this.alertCtrl.create({

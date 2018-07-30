@@ -12,7 +12,11 @@ import { AdjuntosSeguimientoPage } from '../adjuntos-seguimiento/adjuntos-seguim
 import { User } from '../login/user';
 import { SeguimientoService } from '../../services/seguimiento.service';
 
-
+/**
+* Component()
+* Este es el Componente de la clase
+* @author: Ismael García
+*/
 @Component({
   selector: 'seguimiento-tramite-page',
   templateUrl: 'seguimiento-tramite.html'
@@ -29,6 +33,11 @@ export class SeguimientoTramitePage {
   seguimientos:any[];//igh
   public id_grupo: number;
 
+  /**
+  * class constructor()
+  * Constructor de la clase
+  * @return {constructor} constructor
+  */
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -47,7 +56,10 @@ export class SeguimientoTramitePage {
     this.seguimiento= isPresent(seguimientos_param) ? seguimientos_param : null;
   }
 
-  //Método para crear una pregunta/comentario por parte del ciudadano
+  /**createQuestionModal()
+  * Método para crear una pregutna/comentario por parte del ciudadano
+  * @author: Ismael García
+  */
   createQuestionModal() {
     console.log('Creando comentario..');
     if (this.solicitud[0].id_status==2){//Se va apoder crear siempre cuandor el estatus sea TRAMITE "2"
@@ -68,13 +80,19 @@ export class SeguimientoTramitePage {
 
   }
 
+  /**ionViewWillEnter()
+  * Método para asignar datos de localStore
+  */
   ionViewWillEnter() {
-    this.seguimientos=[];//igh
+    this.seguimientos=[];
     this.seguimientos =JSON.parse(localStorage.getItem('seguimiento'));//igh
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));//igh
     this.id_grupo=this.currentUser[0].id_grupo;
   }
 
+  /**getQuestions()
+  * Método para asignar datos de localStore
+  */
   getQuestions(){//Obtiene todos los seguimientos del tramite
       let loading = this.loadingCtrl.create({
       content: 'Recuperando Datos del Servidor de SEDETUS...'
